@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expat Cost of Living Advisor - International Living Calculator | CalcMin.pro</title>
+    <meta name="description" content="Compare cost of living across countries for expat life planning. Calculate monthly expenses, visa costs, and determine if international living is affordable for your budget.">
+    <meta name="keywords" content="expat cost of living, international living calculator, expat budget calculator, cost of living comparison, expat financial planning, overseas living costs, international relocation calculator">
+    <meta name="author" content="CalcMin.pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calcmin.pro/ExpatCostOfLiving/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Expat Cost of Living Advisor - International Living Calculator">
+    <meta property="og:description" content="Compare cost of living across countries for expat life planning. Calculate monthly expenses, visa costs, and determine if international living is affordable for your budget.">
+    <meta property="og:url" content="https://calcmin.pro/ExpatCostOfLiving/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CalcMin.pro">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Expat Cost of Living Advisor - International Living Calculator">
+    <meta name="twitter:description" content="Compare cost of living across countries for expat life planning. Calculate monthly expenses, visa costs, and determine if international living is affordable for your budget.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FE4E02",
+                        dark: "#00053D", 
+                        broder: "#182267",
+                        accent: "#FD803D",
+                        light: "#FECEB6",
+                        text: "#F7FBFC"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Expat Cost of Living Advisor",
+        "description": "Compare cost of living across countries for expat life planning. Calculate monthly expenses, visa costs, and determine if international living is affordable for your budget.",
+        "url": "https://calcmin.pro/ExpatCostOfLiving/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "CalcMin.pro"
+        }
+    }
+    </script>
+</head>
+<body class="bg-dark text-text min-h-screen">
+    <!-- Navigation -->
+    <nav id="navbar-container"></nav>
+
+    <!-- Top Ad Space -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+        <div class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm">
+            Top Ad Space (728x90 / 320x50)
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Calculator -->
+            <div class="lg:col-span-2">
+                <!-- Header -->
+                <div class="bg-broder p-6 rounded-lg border border-accent mb-6">
+                    <h1 class="text-3xl font-bold text-primary mb-4">
+                        <span class="material-icons text-4xl align-middle mr-2">public</span>
+                        Expat Cost of Living Advisor
+                    </h1>
+                    <p class="text-light text-lg">Compare cost of living across countries and calculate if expat life is affordable. Get personalized budget recommendations, visa costs, and hidden expenses for international living.</p>
+                </div>
+
+                <!-- Calculator Form -->
+                <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
+                    <form id="expat-form" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Current Country</label>
+                                <select id="current-country" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select current country</option>
+                                    <option value="US">United States</option>
+                                    <option value="UK">United Kingdom</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="AU">Australia</option>
+                                    <option value="DE">Germany</option>
+                                    <option value="FR">France</option>
+                                    <option value="NL">Netherlands</option>
+                                    <option value="SE">Sweden</option>
+                                    <option value="NO">Norway</option>
+                                    <option value="DK">Denmark</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Target Country</label>
+                                <select id="target-country" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select target country</option>
+                                    <option value="TH">Thailand</option>
+                                    <option value="PT">Portugal</option>
+                                    <option value="MX">Mexico</option>
+                                    <option value="CR">Costa Rica</option>
+                                    <option value="MY">Malaysia</option>
+                                    <option value="PH">Philippines</option>
+                                    <option value="VN">Vietnam</option>
+                                    <option value="ID">Indonesia</option>
+                                    <option value="ES">Spain</option>
+                                    <option value="IT">Italy</option>
+                                    <option value="GR">Greece</option>
+                                    <option value="CZ">Czech Republic</option>
+                                    <option value="PL">Poland</option>
+                                    <option value="HU">Hungary</option>
+                                    <option value="EE">Estonia</option>
+                                    <option value="LV">Latvia</option>
+                                    <option value="LT">Lithuania</option>
+                                    <option value="BG">Bulgaria</option>
+                                    <option value="RO">Romania</option>
+                                    <option value="UA">Ukraine</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Current Monthly Expenses ($)</label>
+                                <input type="number" id="current-expenses" placeholder="e.g., 3500" min="500" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Family Size</label>
+                                <select id="family-size" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="1">Single</option>
+                                    <option value="2">Couple</option>
+                                    <option value="3">Family of 3</option>
+                                    <option value="4">Family of 4</option>
+                                    <option value="5">Family of 5+</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Lifestyle Preference</label>
+                            <select id="lifestyle" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                <option value="">Select lifestyle</option>
+                                <option value="budget">Budget Living (Local lifestyle)</option>
+                                <option value="comfortable">Comfortable (Mix of local/expat)</option>
+                                <option value="luxury">Luxury (Western standards)</option>
+                            </select>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Health Insurance Needs</label>
+                                <select id="health-insurance" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="basic">Basic Local Coverage</option>
+                                    <option value="international">International Coverage</option>
+                                    <option value="premium">Premium International</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Education Needs</label>
+                                <select id="education" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="none">No Children</option>
+                                    <option value="local">Local Schools</option>
+                                    <option value="international">International Schools</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-medium py-3 px-6 rounded transition duration-200">
+                            Calculate Expat Living Costs
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results -->
+                <div id="results" class="hidden">
+                    <div id="result-content"></div>
+                </div>
+            </div>
+
+            <!-- Right Column - Ads -->
+            <div class="lg:col-span-1">
+                <!-- Top Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+
+                <!-- Middle Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Ad Space -->
+        <div class="mt-8 bg-broder p-4 rounded-lg border border-accent text-center">
+            <div class="text-light text-sm mb-2">Advertisement</div>
+            <div class="bg-dark h-24 flex items-center justify-center rounded">
+                <span class="text-accent">Ad Space 728x90</span>
+            </div>
+        </div>
+
+        <!-- Blog Content -->
+        <article class="mt-12 bg-broder p-8 rounded-lg border border-accent">
+            <h2 class="text-3xl font-bold text-primary mb-6">Complete Guide to Expat Cost of Living Planning</h2>
+            
+            <div class="prose prose-invert max-w-none">
+                <p class="text-light text-lg leading-relaxed mb-6">
+                    Moving abroad as an expat is one of life's biggest financial decisions. Understanding the true cost of living in your target country is crucial for successful international relocation. This comprehensive guide helps you calculate realistic budgets, compare living costs, and plan for hidden expenses that many expats overlook.
+                </p>
+
+                <div class="space-y-8">
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Understanding Expat Living Costs</h3>
+                        <p class="text-light mb-4">
+                            Expat living costs vary dramatically based on location, lifestyle choices, and personal circumstances. Unlike tourist expenses, expat costs include long-term considerations like visa fees, healthcare, education, and establishing local financial accounts.
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Major Cost Categories</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Housing (rent, utilities, internet)</li>
+                                    <li>• Food and dining</li>
+                                    <li>• Transportation</li>
+                                    <li>• Healthcare and insurance</li>
+                                    <li>• Education (if applicable)</li>
+                                    <li>• Visa and legal fees</li>
+                                </ul>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Hidden Expenses</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Initial setup costs</li>
+                                    <li>• Currency exchange fees</li>
+                                    <li>• International banking</li>
+                                    <li>• Home country tax obligations</li>
+                                    <li>• Emergency travel funds</li>
+                                    <li>• Cultural adaptation costs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Popular Expat Destinations Cost Analysis</h3>
+                        <p class="text-light mb-4">
+                            Different countries offer varying value propositions for expats. Here's a breakdown of popular destinations by cost level and lifestyle quality:
+                        </p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border border-accent rounded">
+                                <thead class="bg-broder">
+                                    <tr>
+                                        <th class="p-3 text-left text-accent">Country</th>
+                                        <th class="p-3 text-left text-accent">Monthly Budget (Single)</th>
+                                        <th class="p-3 text-left text-accent">Monthly Budget (Couple)</th>
+                                        <th class="p-3 text-left text-accent">Lifestyle Quality</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-light">
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Thailand</td>
+                                        <td class="p-3">$800-2000</td>
+                                        <td class="p-3">$1200-3000</td>
+                                        <td class="p-3">High</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Portugal</td>
+                                        <td class="p-3">$1200-2500</td>
+                                        <td class="p-3">$1800-3500</td>
+                                        <td class="p-3">Very High</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Mexico</td>
+                                        <td class="p-3">$700-1800</td>
+                                        <td class="p-3">$1000-2500</td>
+                                        <td class="p-3">High</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Malaysia</td>
+                                        <td class="p-3">$600-1500</td>
+                                        <td class="p-3">$900-2200</td>
+                                        <td class="p-3">High</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Czech Republic</td>
+                                        <td class="p-3">$900-2000</td>
+                                        <td class="p-3">$1400-2800</td>
+                                        <td class="p-3">Very High</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Visa and Legal Costs</h3>
+                        <p class="text-light mb-4">
+                            Visa costs can significantly impact your expat budget, especially in the first year. Different visa types have varying financial requirements and renewal costs.
+                        </p>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Tourist/Short-term</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Usually $0-100</li>
+                                    <li>• 30-90 day stays</li>
+                                    <li>• Visa runs required</li>
+                                    <li>• Limited work rights</li>
+                                </ul>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Temporary Residence</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• $200-2000 annually</li>
+                                    <li>• 1-5 year validity</li>
+                                    <li>• Work permissions vary</li>
+                                    <li>• Renewal required</li>
+                                </ul>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Permanent Residence</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• $500-5000+ one-time</li>
+                                    <li>• Long-term/permanent</li>
+                                    <li>• Full work rights</li>
+                                    <li>• Path to citizenship</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Healthcare and Insurance Considerations</h3>
+                        <p class="text-light mb-4">
+                            Healthcare costs vary dramatically between countries and can be a major budget factor for expats, especially those with families or pre-existing conditions.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Local Healthcare Systems</h4>
+                                <p class="text-sm text-light mb-2">
+                                    Many countries offer affordable local healthcare, but quality and language barriers may be concerns for expats.
+                                </p>
+                                <div class="text-sm text-light">
+                                    <strong>Pros:</strong> Low cost, integrated with local system<br>
+                                    <strong>Cons:</strong> Language barriers, different standards, limited coverage abroad
+                                </div>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">International Health Insurance</h4>
+                                <p class="text-sm text-light mb-2">
+                                    Comprehensive coverage that works globally, including home country visits and medical evacuation.
+                                </p>
+                                <div class="text-sm text-light">
+                                    <strong>Cost:</strong> $100-800+ per month per person<br>
+                                    <strong>Benefits:</strong> Global coverage, English support, familiar standards
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Education Costs for Expat Families</h3>
+                        <p class="text-light mb-4">
+                            Education is often the largest expense for expat families, with international schools commanding premium prices but offering familiar curricula and English instruction.
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-3">Local Schools</h4>
+                                <ul class="text-sm text-light space-y-2">
+                                    <li>• <strong>Cost:</strong> $0-500 per month</li>
+                                    <li>• <strong>Language:</strong> Local language instruction</li>
+                                    <li>• <strong>Curriculum:</strong> National curriculum</li>
+                                    <li>• <strong>Integration:</strong> High local integration</li>
+                                    <li>• <strong>Challenges:</strong> Language barrier, different teaching methods</li>
+                                </ul>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-3">International Schools</h4>
+                                <ul class="text-sm text-light space-y-2">
+                                    <li>• <strong>Cost:</strong> $500-3000+ per month</li>
+                                    <li>• <strong>Language:</strong> English instruction</li>
+                                    <li>• <strong>Curriculum:</strong> IB, American, British systems</li>
+                                    <li>• <strong>Integration:</strong> Expat community focused</li>
+                                    <li>• <strong>Benefits:</strong> Familiar standards, university preparation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Financial Planning Strategies</h3>
+                        <p class="text-light mb-4">
+                            Successful expat financial planning requires understanding currency risks, tax obligations, and building appropriate emergency funds for international living.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Emergency Fund Recommendations</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• 6-12 months of expenses (vs. 3-6 months domestically)</li>
+                                    <li>• Keep funds in both home and local currencies</li>
+                                    <li>• Include emergency travel costs</li>
+                                    <li>• Account for visa renewal fees</li>
+                                    <li>• Consider medical evacuation costs</li>
+                                </ul>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Currency and Banking Strategy</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Use multi-currency accounts to minimize exchange fees</li>
+                                    <li>• Consider currency hedging for large expenses</li>
+                                    <li>• Maintain banking relationships in home country</li>
+                                    <li>• Research local banking requirements and fees</li>
+                                    <li>• Plan for international money transfer costs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Frequently Asked Questions</h3>
+                        <div class="space-y-4">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">How much should I budget for my first year as an expat?</h4>
+                                <p class="text-sm text-light">
+                                    Budget 150-200% of your estimated annual living costs for the first year. This accounts for setup costs, deposits, visa fees, and unexpected expenses while you establish yourself.
+                                </p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Should I maintain financial accounts in my home country?</h4>
+                                <p class="text-sm text-light">
+                                    Yes, maintain at least one account in your home country for tax obligations, emergency access to funds, and maintaining credit history. Many expats use a combination of home and local accounts.
+                                </p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">How do I handle taxes as an expat?</h4>
+                                <p class="text-light text-sm">
+                                    Tax obligations vary by home country and destination. US citizens must file annually regardless of residence. Consult tax professionals familiar with expat situations and consider tax treaties between countries.
+                                </p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">What's the biggest financial mistake expats make?</h4>
+                                <p class="text-light text-sm">
+                                    Underestimating setup costs and not maintaining adequate emergency funds. Many expats also fail to research visa renewal requirements and associated costs, leading to expensive last-minute solutions.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer-container"></footer>
+
+    <script src="script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+</body>
+</html>

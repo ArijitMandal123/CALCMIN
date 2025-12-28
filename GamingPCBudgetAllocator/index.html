@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming PC Budget Allocator - Optimal Component Budget Calculator | CalcMin.pro</title>
+    <meta name="description" content="Calculate optimal gaming PC budget allocation across components. Get personalized PC build recommendations based on your budget, target games, resolution, and FPS goals. Free gaming PC budget calculator.">
+    <meta name="keywords" content="gaming pc budget calculator, pc build budget allocator, gaming computer budget planner, pc component budget optimizer, gaming pc cost calculator, pc build cost estimator, gaming budget allocation tool">
+    <meta name="author" content="CalcMin.pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calcmin.pro/GamingPCBudgetAllocator/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Gaming PC Budget Allocator - Optimal Component Budget Calculator">
+    <meta property="og:description" content="Calculate optimal gaming PC budget allocation across components. Get personalized PC build recommendations based on your budget and gaming goals.">
+    <meta property="og:url" content="https://calcmin.pro/GamingPCBudgetAllocator/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CalcMin.pro">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gaming PC Budget Allocator Calculator">
+    <meta name="twitter:description" content="Calculate optimal gaming PC budget allocation across components for maximum gaming performance.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FE4E02",
+                        dark: "#00053D", 
+                        broder: "#182267",
+                        accent: "#FD803D",
+                        light: "#FECEB6",
+                        text: "#F7FBFC"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Gaming PC Budget Allocator",
+        "description": "Calculate optimal gaming PC budget allocation across components based on your budget, target games, resolution, and FPS goals.",
+        "url": "https://calcmin.pro/GamingPCBudgetAllocator/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "CalcMin.pro"
+        }
+    }
+    </script>
+</head>
+<body class="bg-dark text-text min-h-screen">
+    <!-- Navigation -->
+    <nav id="navbar-container"></nav>
+
+    <!-- Top Ad Space -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+        <div class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm">
+            Top Ad Space (728x90 / 320x50)
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Calculator -->
+            <div class="lg:col-span-2">
+                <!-- Header -->
+                <div class="bg-broder p-6 rounded-lg border border-accent mb-6">
+                    <h1 class="text-3xl font-bold text-primary mb-4">
+                        <span class="material-icons text-4xl align-middle mr-2">computer</span>
+                        Gaming PC Budget Allocator
+                    </h1>
+                    <p class="text-light text-lg">Calculate optimal budget allocation across PC components based on your gaming goals, target resolution, and performance requirements.</p>
+                </div>
+
+                <!-- Calculator Form -->
+                <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
+                    <form id="gaming-pc-form" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Total Budget ($)</label>
+                                <input type="number" id="totalBudget" placeholder="e.g., 1500" min="500" max="10000" 
+                                       class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Target Resolution</label>
+                                <select id="targetResolution" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select resolution</option>
+                                    <option value="1080p">1080p (Full HD)</option>
+                                    <option value="1440p">1440p (2K)</option>
+                                    <option value="4k">4K (Ultra HD)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Target FPS</label>
+                                <select id="targetFPS" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select FPS target</option>
+                                    <option value="60">60 FPS</option>
+                                    <option value="120">120 FPS</option>
+                                    <option value="144">144 FPS</option>
+                                    <option value="240">240 FPS</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Primary Game Type</label>
+                                <select id="gameType" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select game type</option>
+                                    <option value="esports">E-Sports (CS:GO, Valorant, LoL)</option>
+                                    <option value="aaa">AAA Games (Cyberpunk, RDR2, Witcher)</option>
+                                    <option value="competitive">Competitive FPS (Apex, Overwatch)</option>
+                                    <option value="simulation">Simulation (Flight Sim, Cities)</option>
+                                    <option value="indie">Indie Games</option>
+                                    <option value="mixed">Mixed Gaming</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Brand Preferences</label>
+                            <div class="grid md:grid-cols-2 gap-3">
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="nvidia" name="brands" value="nvidia" 
+                                           class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">NVIDIA GPU Preferred</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="amd" name="brands" value="amd" 
+                                           class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">AMD GPU/CPU Preferred</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="intel" name="brands" value="intel" 
+                                           class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Intel CPU Preferred</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="budgetFocus" name="brands" value="budget" 
+                                           class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Budget-Focused Build</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Existing Components</label>
+                                <select id="existingComponents" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary">
+                                    <option value="none">Building from scratch</option>
+                                    <option value="monitor">Have monitor & peripherals</option>
+                                    <option value="storage">Have storage drives</option>
+                                    <option value="case">Have case & PSU</option>
+                                    <option value="partial">Have some components</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Future Upgrade Priority</label>
+                                <select id="upgradeStrategy" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary">
+                                    <option value="balanced">Balanced approach</option>
+                                    <option value="gpu-first">GPU upgrade priority</option>
+                                    <option value="cpu-first">CPU upgrade priority</option>
+                                    <option value="longevity">Maximum longevity</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-medium py-3 px-6 rounded transition duration-200">
+                            Calculate Optimal PC Build
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results -->
+                <div id="results" class="hidden">
+                    <div id="result-content"></div>
+                </div>
+            </div>
+
+            <!-- Right Column - Ads -->
+            <div class="lg:col-span-1">
+                <!-- Top Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+
+                <!-- Middle Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Ad Space -->
+        <div class="mt-8 bg-broder p-4 rounded-lg border border-accent text-center">
+            <div class="text-light text-sm mb-2">Advertisement</div>
+            <div class="bg-dark h-24 flex items-center justify-center rounded">
+                <span class="text-accent">Ad Space 728x90</span>
+            </div>
+        </div>
+
+        <!-- Blog Content -->
+        <article class="mt-12 bg-broder p-8 rounded-lg border border-accent">
+            <h2 class="text-3xl font-bold text-primary mb-6">Complete Guide to Gaming PC Budget Allocation</h2>
+            
+            <div class="prose prose-invert max-w-none">
+                <p class="text-light text-lg leading-relaxed mb-6">
+                    Building a gaming PC requires careful budget allocation across multiple components to achieve optimal performance. Our Gaming PC Budget Allocator helps you distribute your budget strategically, ensuring you get the best gaming experience for your money while avoiding common pitfalls like bottlenecking and overspending on unnecessary features.
+                </p>
+
+                <div class="space-y-8">
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Understanding PC Component Budget Distribution</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">GPU (Graphics Card) - 40-50%</h4>
+                                <p class="text-sm text-light">The most important component for gaming performance. Should receive the largest portion of your budget for maximum FPS and visual quality.</p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">CPU (Processor) - 20-25%</h4>
+                                <p class="text-sm text-light">Critical for overall system performance and preventing GPU bottlenecks. Balance with GPU choice for optimal performance.</p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">RAM (Memory) - 8-12%</h4>
+                                <p class="text-sm text-light">16GB is the sweet spot for gaming. Higher speeds benefit certain games and high-refresh gaming.</p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Storage - 8-10%</h4>
+                                <p class="text-sm text-light">SSD for OS and main games, optional HDD for mass storage. NVMe SSDs provide fastest loading times.</p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Motherboard - 8-12%</h4>
+                                <p class="text-sm text-light">Must support your CPU and provide necessary features. Don't overspend on unused features.</p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">PSU & Case - 8-10%</h4>
+                                <p class="text-sm text-light">Quality PSU ensures system stability. Case affects airflow and component temperatures.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Resolution and FPS Impact on Budget Allocation</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border border-accent rounded">
+                                <thead class="bg-broder">
+                                    <tr>
+                                        <th class="p-3 text-left text-primary">Resolution</th>
+                                        <th class="p-3 text-left text-primary">Target FPS</th>
+                                        <th class="p-3 text-left text-primary">GPU Budget %</th>
+                                        <th class="p-3 text-left text-primary">CPU Budget %</th>
+                                        <th class="p-3 text-left text-primary">Recommended Tier</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-light">
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">1080p</td>
+                                        <td class="p-3">60 FPS</td>
+                                        <td class="p-3">35-40%</td>
+                                        <td class="p-3">20-25%</td>
+                                        <td class="p-3">Budget Build ($500-800)</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">1080p</td>
+                                        <td class="p-3">144+ FPS</td>
+                                        <td class="p-3">40-45%</td>
+                                        <td class="p-3">25-30%</td>
+                                        <td class="p-3">Mid-Range ($800-1200)</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">1440p</td>
+                                        <td class="p-3">60-120 FPS</td>
+                                        <td class="p-3">45-50%</td>
+                                        <td class="p-3">20-25%</td>
+                                        <td class="p-3">High-End ($1200-2000)</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">4K</td>
+                                        <td class="p-3">60+ FPS</td>
+                                        <td class="p-3">50-55%</td>
+                                        <td class="p-3">18-22%</td>
+                                        <td class="p-3">Enthusiast ($2000+)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Game Type Optimization Strategies</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="space-y-4">
+                                <div class="bg-broder p-4 rounded border border-accent">
+                                    <h4 class="font-semibold text-primary mb-2">E-Sports Gaming</h4>
+                                    <ul class="text-sm text-light space-y-1">
+                                        <li>• Prioritize high refresh rate capability</li>
+                                        <li>• Focus on CPU performance for high FPS</li>
+                                        <li>• Fast RAM (3200MHz+) for competitive edge</li>
+                                        <li>• Mid-range GPU sufficient for most titles</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-broder p-4 rounded border border-accent">
+                                    <h4 class="font-semibold text-primary mb-2">AAA Gaming</h4>
+                                    <ul class="text-sm text-light space-y-1">
+                                        <li>• Maximum GPU budget allocation</li>
+                                        <li>• Balanced CPU to prevent bottlenecks</li>
+                                        <li>• 16GB+ RAM for modern titles</li>
+                                        <li>• Fast SSD for reduced loading times</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="bg-broder p-4 rounded border border-accent">
+                                    <h4 class="font-semibold text-primary mb-2">Simulation Games</h4>
+                                    <ul class="text-sm text-light space-y-1">
+                                        <li>• Strong CPU for complex calculations</li>
+                                        <li>• 32GB RAM for large simulations</li>
+                                        <li>• Moderate GPU requirements</li>
+                                        <li>• Multiple storage drives beneficial</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-broder p-4 rounded border border-accent">
+                                    <h4 class="font-semibold text-primary mb-2">Content Creation + Gaming</h4>
+                                    <ul class="text-sm text-light space-y-1">
+                                        <li>• Higher CPU budget allocation</li>
+                                        <li>• 32GB+ RAM for multitasking</li>
+                                        <li>• GPU with good encoding features</li>
+                                        <li>• Fast NVMe SSD for video editing</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Common Budget Allocation Mistakes</h3>
+                        <div class="space-y-4">
+                            <div class="bg-red-900/20 border border-red-600 rounded p-4">
+                                <h4 class="font-semibold text-red-400 mb-2">Overspending on CPU</h4>
+                                <p class="text-sm text-light">Many builders allocate too much budget to CPU, leaving insufficient funds for GPU. For gaming, GPU performance matters more than CPU beyond a certain threshold.</p>
+                            </div>
+                            <div class="bg-red-900/20 border border-red-600 rounded p-4">
+                                <h4 class="font-semibold text-red-400 mb-2">Skimping on Power Supply</h4>
+                                <p class="text-sm text-light">A quality PSU is crucial for system stability and longevity. Cheap PSUs can damage expensive components and cause system instability.</p>
+                            </div>
+                            <div class="bg-red-900/20 border border-red-600 rounded p-4">
+                                <h4 class="font-semibold text-red-400 mb-2">Ignoring Bottlenecks</h4>
+                                <p class="text-sm text-light">Pairing a high-end GPU with a weak CPU (or vice versa) creates bottlenecks that limit overall performance and waste money.</p>
+                            </div>
+                            <div class="bg-red-900/20 border border-red-600 rounded p-4">
+                                <h4 class="font-semibold text-red-400 mb-2">Forgetting Peripherals</h4>
+                                <p class="text-sm text-light">Budget should include monitor, keyboard, mouse, and headset. A great PC with a poor monitor defeats the purpose of high-end components.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Future-Proofing Your Gaming PC</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-accent mb-3">Upgrade Path Planning</h4>
+                                <ul class="text-sm text-light space-y-2">
+                                    <li>• Choose motherboard with upgrade headroom</li>
+                                    <li>• Ensure PSU can handle future GPU upgrades</li>
+                                    <li>• Plan for additional RAM slots</li>
+                                    <li>• Consider case size for larger components</li>
+                                    <li>• Factor in technology refresh cycles</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-accent mb-3">Technology Trends</h4>
+                                <ul class="text-sm text-light space-y-2">
+                                    <li>• Ray tracing becoming standard</li>
+                                    <li>• DLSS/FSR improving performance</li>
+                                    <li>• PCIe 4.0/5.0 for future storage</li>
+                                    <li>• DDR5 RAM adoption increasing</li>
+                                    <li>• USB-C and Thunderbolt integration</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Budget Tier Recommendations</h3>
+                        <div class="space-y-4">
+                            <div class="bg-green-900/20 border border-green-600 rounded p-4">
+                                <h4 class="font-semibold text-green-400 mb-2">Budget Gaming ($500-800)</h4>
+                                <p class="text-sm text-light mb-2">Perfect for 1080p gaming at 60 FPS in most titles. Focus on value components that provide solid performance without premium features.</p>
+                                <div class="text-xs text-light">
+                                    <strong>Allocation:</strong> GPU 35%, CPU 25%, RAM 12%, Storage 10%, Motherboard 10%, PSU/Case 8%
+                                </div>
+                            </div>
+                            <div class="bg-blue-900/20 border border-blue-600 rounded p-4">
+                                <h4 class="font-semibold text-blue-400 mb-2">Mid-Range Gaming ($800-1500)</h4>
+                                <p class="text-sm text-light mb-2">Excellent for 1080p high refresh or 1440p gaming. Balanced performance across all components with room for future upgrades.</p>
+                                <div class="text-xs text-light">
+                                    <strong>Allocation:</strong> GPU 42%, CPU 23%, RAM 10%, Storage 10%, Motherboard 9%, PSU/Case 6%
+                                </div>
+                            </div>
+                            <div class="bg-purple-900/20 border border-purple-600 rounded p-4">
+                                <h4 class="font-semibold text-purple-400 mb-2">High-End Gaming ($1500-2500)</h4>
+                                <p class="text-sm text-light mb-2">Designed for 1440p high refresh or 4K gaming. Premium components that deliver exceptional performance and longevity.</p>
+                                <div class="text-xs text-light">
+                                    <strong>Allocation:</strong> GPU 45%, CPU 20%, RAM 10%, Storage 10%, Motherboard 8%, PSU/Case 7%
+                                </div>
+                            </div>
+                            <div class="bg-yellow-900/20 border border-yellow-600 rounded p-4">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Enthusiast Gaming ($2500+)</h4>
+                                <p class="text-sm text-light mb-2">No-compromise builds for 4K high refresh gaming, content creation, and future-proofing. Top-tier components across the board.</p>
+                                <div class="text-xs text-light">
+                                    <strong>Allocation:</strong> GPU 48%, CPU 18%, RAM 12%, Storage 8%, Motherboard 8%, PSU/Case 6%
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer-container"></footer>
+
+    <script src="script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+</body>
+</html>

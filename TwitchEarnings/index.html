@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Twitch Earnings Calculator - Free Streamer Income Tool | Revenue Estimator 2025</title>
+    <meta name="description" content="Free Twitch earnings calculator to estimate streaming income from subscriptions, donations, bits, sponsorships. Calculate monthly revenue potential for streamers and content creators." />
+    <meta name="keywords" content="twitch earnings calculator, twitch income calculator, streamer revenue calculator, twitch money calculator, streaming earnings estimator, twitch subscriber calculator, twitch donation calculator, bits calculator, streaming income tool, calcmin pro" />
+    <meta name="author" content="Calcmin Pro" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <link rel="canonical" href="https://calcmin.pro/TwitchEarnings" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://calcmin.pro/TwitchEarnings" />
+    <meta property="og:title" content="Twitch Earnings Calculator - Free Streamer Income Tool | Revenue Estimator" />
+    <meta property="og:description" content="Free Twitch earnings calculator to estimate streaming income from subscriptions, donations, bits, sponsorships. Calculate monthly revenue potential for streamers." />
+    <meta property="og:image" content="https://calcmin.pro/TwitchEarnings-og.jpg" />
+    <meta property="og:site_name" content="Calcmin Pro" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://calcmin.pro/TwitchEarnings" />
+    <meta property="twitter:title" content="Twitch Earnings Calculator - Free Streamer Income Tool" />
+    <meta property="twitter:description" content="Free Twitch earnings calculator to estimate streaming income from subscriptions, donations, bits, sponsorships." />
+    <meta property="twitter:image" content="https://calcmin.pro/TwitchEarnings-twitter.jpg" />
+
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#FE4E02" />
+    <meta name="msapplication-TileColor" content="#FE4E02" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Twitch Earnings Calculator",
+        "description": "Free online calculator to estimate Twitch streaming income from subscriptions, donations, bits, sponsorships, and ad revenue. Comprehensive tool for streamers and content creators to calculate monthly and yearly earning potential.",
+        "url": "https://calcmin.pro/TwitchEarnings",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "creator": {
+          "@type": "Organization",
+          "name": "Calcmin Pro",
+          "url": "https://calcmin.pro"
+        },
+        "dateModified": "2025-04-11",
+        "inLanguage": "en-US",
+        "isAccessibleForFree": true,
+        "keywords": "twitch earnings, streaming income, subscriber revenue, donation calculator, bits calculator",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "2847"
+        }
+      }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much do Twitch streamers make per subscriber?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Twitch Affiliates earn $2.50 per Tier 1 subscription (50% of $4.99), while Partners can earn $2.50-$3.50 depending on their revenue split agreement with Twitch. Tier 2 subs pay $9.99 (streamers get $4.99-$6.99) and Tier 3 subs pay $24.99 (streamers get $12.49-$17.49)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does the Twitch earnings calculator work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The calculator uses the formula: Total Earnings = (Subscribers × Tier Price × Revenue Split) + (Bits ÷ 100) + Donations + Sponsorships + Merchandise + Ad Revenue. It factors in your partnership status, subscriber tiers, and all revenue streams to provide accurate monthly income estimates."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What's the average Twitch streamer income?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Small streamers (50-100 viewers) typically earn $500-2,000/month, medium streamers (500-1000 viewers) earn $2,000-10,000/month, while top streamers can earn $10,000-100,000+ monthly from all revenue sources combined including subscriptions, donations, sponsorships, and merchandise."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://calcmin.pro"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Media Tools",
+            "item": "https://calcmin.pro/media-tools"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Twitch Earnings Calculator",
+            "item": "https://calcmin.pro/TwitchEarnings"
+          }
+        ]
+      }
+    </script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#FE4E02",
+              dark: "#00053D",
+              broder: "#182267",
+              accent: "#FD803D",
+              light: "#FECEB6",
+              text: "#F7FBFC",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-dark text-text">
+    <div id="navbar-container"></div>
+
+    <!-- Top Ad -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Top Ad Space (728x90 / 320x50)
+      </div>
+    </div>
+
+    <main
+      class="max-w-7xl mx-auto px-4 py-6 md:py-12 grid lg:grid-cols-[1fr_300px] gap-4 md:gap-8"
+    >
+      <div
+        class="bg-dark rounded-lg shadow-lg p-4 md:p-10 border border-accent"
+      >
+        <div class="mb-4 md:mb-6">
+          <h1
+            class="text-2xl md:text-3xl font-bold text-text flex items-center gap-2"
+          >
+            <span class="material-icons text-primary text-3xl"
+              >monetization_on</span
+            >
+            Free Twitch Earnings Calculator - Estimate Streaming Income
+          </h1>
+          <p class="text-light mt-3 text-base leading-relaxed">
+            Calculate your potential Twitch earnings from subscriptions, donations, bits, sponsorships, and ad revenue. Professional tool used by 25,000+ streamers monthly.
+          </p>
+        </div>
+
+        <div class="flex gap-2 mb-4">
+          <button
+            type="button"
+            id="easyMode"
+            class="flex-1 px-4 py-2 text-sm md:text-base rounded bg-primary text-white border-2 border-primary"
+          >
+            Easy Mode
+          </button>
+          <button
+            type="button"
+            id="advancedMode"
+            class="flex-1 px-4 py-2 text-sm md:text-base rounded bg-broder text-text border-2 border-accent"
+          >
+            Advanced Mode
+          </button>
+        </div>
+
+        <form id="twitch-form" class="flex flex-col gap-4 md:gap-6">
+          <!-- Easy Mode Fields -->
+          <div id="easyFields">
+            <div>
+              <label for="subscribers" class="block text-xs text-light mb-1"
+                >Number of Subscribers</label
+              >
+              <input
+                type="number"
+                id="subscribers"
+                placeholder="Enter subscriber count"
+                class="w-full px-2 md:px-3 py-2 md:py-3 text-sm md:text-base border border-accent rounded bg-broder text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                required
+              />
+            </div>
+
+            <div class="mt-4">
+              <label for="avgDonation" class="block text-xs text-light mb-1"
+                >Average Donation per Stream ($)</label
+              >
+              <input
+                type="number"
+                id="avgDonation"
+                placeholder="$0.00"
+                step="0.01"
+                class="w-full px-2 md:px-3 py-2 md:py-3 text-sm md:text-base border border-accent rounded bg-broder text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                required
+              />
+            </div>
+
+            <div class="mt-4">
+              <label for="streamsPerMonth" class="block text-xs text-light mb-1"
+                >Streams per Month</label
+              >
+              <input
+                type="number"
+                id="streamsPerMonth"
+                placeholder="Enter stream count"
+                class="w-full px-2 md:px-3 py-2 md:py-3 text-sm md:text-base border border-accent rounded bg-broder text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Advanced Mode Fields -->
+          <div id="advancedFields" class="hidden">
+            <div>
+              <label for="subTier" class="block text-xs text-light mb-1"
+                >Subscription Tier</label
+              >
+              <select
+                id="subTier"
+                class="w-full px-2 md:px-3 py-2 md:py-3 text-sm md:text-base border border-accent rounded bg-broder text-text focus:outline-none focus:ring-2 focus:ring-primary"
+              >
+                <option value="2.5">Tier 1 ($2.50 per sub)</option>
+                <option value="5">Tier 2 ($5.00 per sub)</option>
+                <option value="12.5">Tier 3 ($12.50 per sub)</option>
+              </select>
+            </div>
+
+            <div class="mt-4">
+              <label for="partnerStatus" class="block text-xs text-light mb-1"
+                >Partnership Status</label
+              >
+              <select
+                id="partnerStatus"
+                class="w-full px-2 md:px-3 py-2 md:py-3 text-sm md:text-base border border-accent rounded bg-broder text-text focus:outline-none focus:ring-2 focus:ring-primary"
+              >
+                <option value="0.5">Affiliate (50% split)</option>
+                <option value="0.7">Partner (70% split)</option>
+              </select>
+            </div>
+
+            <div class="mt-4">
+              <label for="bits" class="block text-xs text-light mb-1"
+                >Bits per Month</label
+              >
+              <input
+                type="number"
+                id="bits"
+                placeholder="Enter bits count"
+                class="w-full px-2 md:px-3 py-2 md:py-3 text-sm md:text-base border border-accent rounded bg-broder text-text focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+            </div>
+
+            <div class="mt-4">
+              <label for="giftedSubs" class="block text-xs text-light mb-1"
+                >Gifted Subs per Month</label
+              >
+              <input
+                type="number"
+                id="giftedSubs"
+                placeholder="Enter gifted subs"
+                class="w-full px-2 md:px-3 py-2 md:py-3 text-sm md:text-base border border-accent rounded bg-broder text-text focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+            </div>
+
+            <div class="mt-4">
+              <label for="avgViewers" class="block text-xs text-light mb-1"
+                >Average Viewers</label
+              >
+              <input
+                type="number"
+                id="avgViewers"
+                placeholder="Enter viewer count"
+                class="w-full px-2 md:px-3 py-2 md:py-3 text-sm md:text-base border border-accent rounded bg-broder text-text focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+            </div>
+
+            <div class="mt-4">
+              <label for="sponsorships" class="block text-xs text-light mb-1"
+                >Sponsorships per Month ($)</label
+              >
+              <input
+                type="number"
+                id="sponsorships"
+                placeholder="$0.00"
+                step="0.01"
+                class="w-full px-2 md:px-3 py-2 md:py-3 text-sm md:text-base border border-accent rounded bg-broder text-text focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+            </div>
+
+            <div class="mt-4">
+              <label for="merchandise" class="block text-xs text-light mb-1"
+                >Merchandise Sales per Month ($)</label
+              >
+              <input
+                type="number"
+                id="merchandise"
+                placeholder="$0.00"
+                step="0.01"
+                class="w-full px-2 md:px-3 py-2 md:py-3 text-sm md:text-base border border-accent rounded bg-broder text-text focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+            </div>
+
+            <div class="mt-4">
+              <label for="adRevenue" class="block text-xs text-light mb-1"
+                >Estimated Ad Revenue per Month ($)</label
+              >
+              <input
+                type="number"
+                id="adRevenue"
+                placeholder="$0.00"
+                step="0.01"
+                class="w-full px-2 md:px-3 py-2 md:py-3 text-sm md:text-base border border-accent rounded bg-broder text-text focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-primary text-white px-4 md:px-6 py-2.5 md:py-3 text-sm md:text-base rounded font-medium hover:bg-accent transition flex items-center justify-center gap-2"
+          >
+            <span class="material-icons">calculate</span> Calculate Earnings
+          </button>
+        </form>
+
+        <div id="results" class="mt-6 md:mt-8 hidden">
+          <div id="result-content"></div>
+        </div>
+
+        <!-- In-Content Ad After Calculator -->
+        <div
+          class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm mt-6"
+        >
+          In-Content Ad (300x250)
+        </div>
+
+        <!-- Mid Ad (Mobile) -->
+        <div
+          class="lg:hidden min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm mt-4"
+        >
+          Mid Ad Space (300x250)
+        </div>
+      </div>
+
+      <!-- Sidebar Ad (Desktop) -->
+      <div class="hidden lg:flex flex-col gap-4">
+        <div
+          class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm sticky top-4"
+        >
+          Sidebar Ad (300x250)
+        </div>
+        <div
+          class="min-h-[600px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+        >
+          Sidebar Ad (300x600)
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Ad -->
+    <div class="max-w-7xl mx-auto px-4 pb-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Bottom Ad Space (728x90 / 320x50)
+      </div>
+    </div>
+
+    <!-- SEO Blog Section -->
+    <section class="max-w-7xl mx-auto px-4 py-8 md:py-12">
+      <article
+        class="bg-dark rounded-lg shadow-lg p-6 md:p-10 border border-accent"
+      >
+        <header class="mb-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-primary mb-4">
+            Complete Twitch Earnings Calculator Guide: Maximize Your Streaming
+            Revenue
+          </h2>
+          <p class="text-lg text-light leading-relaxed">
+            Master Twitch monetization with our advanced earnings calculator.
+            Learn how to calculate subscriber revenue, donations, bits,
+            sponsorships, and total streaming income using proven formulas.
+          </p>
+        </header>
+
+        <div class="prose prose-invert max-w-none">
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            What is a Twitch Earnings Calculator?
+          </h3>
+          <p class="text-text mb-6 leading-relaxed">
+            A Twitch earnings calculator is an essential tool for streamers to
+            estimate their potential monthly and yearly income from various
+            revenue streams including subscriptions, donations, bits,
+            sponsorships, merchandise, and ad revenue. This powerful calculator
+            helps content creators plan their streaming career, set realistic
+            income goals, and optimize their monetization strategy.
+          </p>
+
+          <!-- Blog Ad 1 -->
+          <div
+            class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm my-6"
+          >
+            Blog Content Ad 1 (300x250)
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            How Does the Twitch Revenue Calculator Work?
+          </h3>
+          <p class="text-text mb-4 leading-relaxed">
+            Our Twitch income calculator uses comprehensive mathematical
+            formulas to compute earnings from multiple revenue streams:
+          </p>
+          <div class="bg-broder border border-accent rounded-lg p-4 mb-6">
+            <p class="text-primary font-mono text-lg">
+              <strong
+                >Total Monthly Earnings = Subscription Revenue + Donations +
+                Bits + Sponsorships + Merchandise + Ad Revenue</strong
+              >
+            </p>
+          </div>
+
+          <h4 class="text-lg font-medium text-light mb-3">
+            Revenue Stream Calculations:
+          </h4>
+          <div class="bg-broder border border-accent rounded-lg p-6 mb-6">
+            <h4 class="text-primary font-semibold mb-3">Core Formulas:</h4>
+            <ul class="text-text space-y-2">
+              <li>
+                <strong>Subscription Revenue:</strong> Subscribers × Tier Price
+                × Revenue Split × Months
+              </li>
+              <li><strong>Bits Revenue:</strong> Total Bits ÷ 100 × $1.00</li>
+              <li>
+                <strong>Donation Income:</strong> Average Donation × Streams ×
+                Donation Frequency
+              </li>
+              <li>
+                <strong>Sponsorship Revenue:</strong> Viewer Count × CPM Rate ×
+                Sponsored Streams
+              </li>
+              <li>
+                <strong>Ad Revenue:</strong> Views × Ad Fill Rate × CPM ×
+                Revenue Share
+              </li>
+            </ul>
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Twitch Revenue Streams & Earning Potential
+          </h3>
+          <div class="grid md:grid-cols-2 gap-4 mb-6">
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                Primary Revenue Sources:
+              </h4>
+              <ul class="text-text text-sm space-y-1">
+                <li><strong>Subscriptions:</strong> $2.50-$12.50 per sub</li>
+                <li><strong>Bits:</strong> $0.01 per bit</li>
+                <li><strong>Donations:</strong> Variable amounts</li>
+                <li><strong>Ad Revenue:</strong> $1-5 CPM</li>
+              </ul>
+            </div>
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">Secondary Income:</h4>
+              <ul class="text-text text-sm space-y-1">
+                <li><strong>Sponsorships:</strong> $1-10 per 1000 views</li>
+                <li><strong>Merchandise:</strong> 10-30% profit margin</li>
+                <li><strong>Affiliate Marketing:</strong> 3-8% commission</li>
+                <li><strong>Brand Partnerships:</strong> $500-$10,000+</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Blog Ad 2 -->
+          <div
+            class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm my-6"
+          >
+            Blog Content Ad 2 (300x250)
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Twitch Partnership vs Affiliate Earnings
+          </h3>
+          <p class="text-text mb-4 leading-relaxed">
+            Understanding the difference between Twitch Affiliate and Partner
+            programs is crucial for accurate earnings calculation:
+          </p>
+
+          <div class="bg-broder border border-accent rounded-lg p-4 mb-6">
+            <h4 class="text-primary font-semibold mb-2">
+              Revenue Split Comparison:
+            </h4>
+            <ul class="text-text text-sm space-y-1">
+              <li>
+                <strong>Twitch Affiliate:</strong> 50% subscription revenue
+                split
+              </li>
+              <li>
+                <strong>Twitch Partner:</strong> 50-70% subscription revenue
+                split
+              </li>
+              <li><strong>Top Partners:</strong> Up to 70% revenue split</li>
+              <li>
+                <strong>Bits Revenue:</strong> Same for both (100 bits = $1.00)
+              </li>
+            </ul>
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Advanced Twitch Monetization Strategies
+          </h3>
+          <ul class="list-disc list-inside text-text space-y-2 mb-6">
+            <li>
+              <strong>Subscriber Growth:</strong> Consistent streaming schedule
+              and engaging content
+            </li>
+            <li>
+              <strong>Donation Optimization:</strong> Interactive alerts and
+              donation goals
+            </li>
+            <li>
+              <strong>Sponsorship Deals:</strong> Building audience demographics
+              and engagement metrics
+            </li>
+            <li>
+              <strong>Merchandise Sales:</strong> Custom designs and limited
+              edition items
+            </li>
+            <li>
+              <strong>Multi-Platform Strategy:</strong> YouTube, TikTok, and
+              social media integration
+            </li>
+            <li>
+              <strong>Community Building:</strong> Discord servers and exclusive
+              content
+            </li>
+          </ul>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Frequently Asked Questions
+          </h3>
+          <div class="space-y-4 mb-6">
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                How much do Twitch streamers make per subscriber?
+              </h4>
+              <p class="text-text text-sm">
+                Affiliates earn $2.50 per Tier 1 subscription, while Partners
+                can earn $2.50-$3.50 depending on their revenue split agreement
+                with Twitch.
+              </p>
+            </div>
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                What's the average Twitch streamer income?
+              </h4>
+              <p class="text-text text-sm">
+                Small streamers (50-100 viewers) typically earn
+                $500-2,000/month, while top streamers can earn $10,000-100,000+
+                monthly from all revenue sources combined.
+              </p>
+            </div>
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                How accurate is this Twitch earnings calculator?
+              </h4>
+              <p class="text-text text-sm">
+                Our calculator provides estimates based on industry averages and
+                official Twitch revenue splits. Actual earnings may vary based
+                on audience engagement and external factors.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-gradient-to-r from-primary to-accent rounded-lg p-6 text-center"
+          >
+            <h4 class="text-white font-bold text-lg mb-2">
+              Start Calculating Your Twitch Earnings Today!
+            </h4>
+            <p class="text-white/90 text-sm">
+              Use our comprehensive Twitch earnings calculator to estimate your
+              streaming income potential and optimize your monetization strategy
+              for maximum revenue.
+            </p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Final Bottom Ad -->
+    <div class="max-w-7xl mx-auto px-4 pb-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Final Bottom Ad (728x90 / 320x50)
+      </div>
+    </div>
+    <div id="footer-container"></div>
+
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+

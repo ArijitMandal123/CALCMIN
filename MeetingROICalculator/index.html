@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Meeting ROI Calculator - Calculate True Meeting Costs & Time Savings | Free Tool 2025
+    </title>
+    <meta
+      name="description"
+      content="Free meeting ROI calculator reveals true cost of meetings including attendees' hourly rates, productivity impact & annual savings potential. Calculate meeting waste, optimize team productivity & identify which meetings should be emails instead."
+    />
+    <meta
+      name="keywords"
+      content="meeting roi calculator, meeting cost calculator, productivity calculator, meeting waste calculator, team efficiency, remote work tools, calcmin pro"
+    />
+    <meta name="author" content="Calcmin Pro" />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+    <link
+      rel="canonical"
+      href="https://calcmin.pro/MeetingROICalculator"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://calcmin.pro/MeetingROICalculator"
+    />
+    <meta
+      property="og:title"
+      content="Meeting ROI Calculator - Calculate True Meeting Costs & Time Savings"
+    />
+    <meta
+      property="og:description"
+      content="Free calculator reveals true cost of meetings and identifies productivity waste for better team efficiency."
+    />
+    <meta
+      property="og:image"
+      content="https://calcmin.pro/MeetingROICalculator-og.jpg"
+    />
+    <meta property="og:site_name" content="Calcmin Pro" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:url"
+      content="https://calcmin.pro/MeetingROICalculator"
+    />
+    <meta
+      property="twitter:title"
+      content="Meeting ROI Calculator - Calculate True Meeting Costs & Time Savings"
+    />
+    <meta
+      property="twitter:description"
+      content="Free tool to calculate meeting costs and optimize team productivity."
+    />
+    <meta
+      property="twitter:image"
+      content="https://calcmin.pro/MeetingROICalculator-twitter.jpg"
+    />
+
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#FE4E02" />
+    <meta name="msapplication-TileColor" content="#FE4E02" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Meeting ROI Calculator",
+        "description": "Free online tool to calculate the true cost of meetings including attendees' hourly rates and identify productivity waste for better team efficiency.",
+        "url": "https://calcmin.pro/MeetingROICalculator",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "creator": {
+          "@type": "Organization",
+          "name": "Calcmin Pro",
+          "url": "https://calcmin.pro"
+        },
+        "dateModified": "2025-12-11",
+        "inLanguage": "en-US",
+        "isAccessibleForFree": true,
+        "keywords": "meeting cost calculator, productivity optimization, team efficiency"
+      }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do you calculate the true cost of a meeting?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Calculate meeting cost by multiplying each attendee's hourly rate by meeting duration, then add preparation time, follow-up time, and opportunity costs. Include indirect costs like context switching and productivity loss."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What meetings should be emails instead?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Meetings that are purely informational, status updates, one-way communication, or don't require real-time discussion should be emails. If no decisions need to be made or collaboration isn't required, email is more efficient."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much do unnecessary meetings cost companies?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Studies show unnecessary meetings cost companies $37 billion annually in the US alone. The average employee spends 23 hours per week in meetings, with 67% considering half of them unnecessary."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://calcmin.pro"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Remote Work Tools",
+            "item": "https://calcmin.pro/remote-work-tools"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Meeting ROI Calculator",
+            "item": "https://calcmin.pro/MeetingROICalculator"
+          }
+        ]
+      }
+    </script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#FE4E02",
+              dark: "#00053D",
+              broder: "#182267",
+              accent: "#FD803D",
+              light: "#FECEB6",
+              text: "#F7FBFC",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-dark text-text">
+    <div id="navbar-container"></div>
+    <!-- Top Ad -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Top Ad Space (728x90 / 320x50)
+      </div>
+    </div>
+
+    <main
+      class="max-w-7xl mx-auto px-4 py-6 md:py-12 grid lg:grid-cols-[1fr_300px] gap-4 md:gap-8"
+    >
+      <div
+        class="bg-dark rounded-lg shadow-lg p-4 md:p-10 border border-accent"
+      >
+        <div class="mb-4 md:mb-6">
+          <h1
+            class="text-2xl md:text-3xl font-bold text-text flex items-center gap-2"
+          >
+            <span class="material-icons text-primary text-3xl">monetization_on</span>
+            Meeting ROI Calculator
+          </h1>
+          <p class="text-light mt-3 text-base leading-relaxed">
+            Calculate the true cost of meetings including attendees' hourly rates and identify productivity waste for better team efficiency.
+          </p>
+        </div>
+
+        <form id="meeting-form" class="flex flex-col gap-4 md:gap-6">
+          <div>
+            <label class="block font-medium mb-2 text-text">Meeting Duration</label>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <input
+                  type="number"
+                  id="meeting-hours"
+                  placeholder="Hours (e.g., 1)"
+                  class="w-full px-3 py-3 text-sm md:text-base border border-accent rounded bg-broder text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  min="0"
+                  max="8"
+                  step="0.5"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  id="meeting-minutes"
+                  placeholder="Minutes (e.g., 30)"
+                  class="w-full px-3 py-3 text-sm md:text-base border border-accent rounded bg-broder text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  min="0"
+                  max="59"
+                  step="15"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-medium mb-2 text-text">Meeting Type</label>
+            <select
+              id="meeting-type"
+              class="w-full px-3 py-3 text-sm md:text-base border border-accent rounded bg-broder text-text focus:outline-none focus:ring-2 focus:ring-primary"
+              required
+            >
+              <option value="">Select meeting type</option>
+              <option value="status-update">Status Update</option>
+              <option value="brainstorming">Brainstorming Session</option>
+              <option value="decision-making">Decision Making</option>
+              <option value="planning">Planning Meeting</option>
+              <option value="review">Review/Feedback</option>
+              <option value="training">Training/Learning</option>
+              <option value="one-on-one">One-on-One</option>
+              <option value="all-hands">All Hands/Company</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block font-medium mb-2 text-text">Could This Be an Email?</label>
+            <div class="flex gap-4">
+              <label class="flex items-center gap-2">
+                <input type="radio" name="email-alternative" value="yes" class="text-primary" />
+                <span class="text-text">Yes, definitely</span>
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="radio" name="email-alternative" value="maybe" class="text-primary" />
+                <span class="text-text">Maybe</span>
+              </label>
+              <label class="flex items-center gap-2">
+                <input type="radio" name="email-alternative" value="no" class="text-primary" checked />
+                <span class="text-text">No, requires discussion</span>
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-medium mb-2 text-text">Attendees</label>
+            <div id="attendees-container">
+              <div class="attendee-row grid md:grid-cols-3 gap-4 mb-3">
+                <select class="attendee-role px-3 py-3 text-sm border border-accent rounded bg-broder text-text focus:outline-none focus:ring-2 focus:ring-primary">
+                  <option value="">Select role</option>
+                  <option value="ceo">CEO/Founder</option>
+                  <option value="cto">CTO/VP Engineering</option>
+                  <option value="director">Director</option>
+                  <option value="manager">Manager</option>
+                  <option value="senior">Senior Developer/Designer</option>
+                  <option value="mid">Mid-level Employee</option>
+                  <option value="junior">Junior Employee</option>
+                  <option value="intern">Intern</option>
+                  <option value="consultant">Consultant</option>
+                  <option value="custom">Custom Rate</option>
+                </select>
+                <input
+                  type="number"
+                  class="attendee-rate px-3 py-3 text-sm border border-accent rounded bg-broder text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  placeholder="Hourly rate ($)"
+                  min="0"
+                  step="5"
+                />
+                <input
+                  type="number"
+                  class="attendee-count px-3 py-3 text-sm border border-accent rounded bg-broder text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  placeholder="Count"
+                  min="1"
+                  value="1"
+                />
+              </div>
+            </div>
+            <button
+              type="button"
+              id="add-attendee"
+              class="text-primary hover:text-accent transition text-sm flex items-center gap-1"
+            >
+              <span class="material-icons text-sm">add</span> Add Another Attendee
+            </button>
+          </div>
+
+          <div>
+            <label class="block font-medium mb-2 text-text">Additional Costs (Optional)</label>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm text-light mb-1">Preparation Time (minutes)</label>
+                <input
+                  type="number"
+                  id="prep-time"
+                  placeholder="e.g., 15"
+                  class="w-full px-3 py-3 text-sm border border-accent rounded bg-broder text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  min="0"
+                  max="120"
+                />
+              </div>
+              <div>
+                <label class="block text-sm text-light mb-1">Follow-up Time (minutes)</label>
+                <input
+                  type="number"
+                  id="followup-time"
+                  placeholder="e.g., 10"
+                  class="w-full px-3 py-3 text-sm border border-accent rounded bg-broder text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  min="0"
+                  max="120"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-medium mb-2 text-text">Meeting Frequency</label>
+            <select
+              id="meeting-frequency"
+              class="w-full px-3 py-3 text-sm md:text-base border border-accent rounded bg-broder text-text focus:outline-none focus:ring-2 focus:ring-primary"
+            >
+              <option value="one-time">One-time meeting</option>
+              <option value="daily">Daily</option>
+              <option value="weekly">Weekly</option>
+              <option value="bi-weekly">Bi-weekly</option>
+              <option value="monthly">Monthly</option>
+              <option value="quarterly">Quarterly</option>
+            </select>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-primary text-white px-4 md:px-6 py-2.5 md:py-3 text-sm md:text-base rounded font-medium hover:bg-accent transition flex items-center justify-center gap-2"
+          >
+            <span class="material-icons">calculate</span> Calculate Meeting ROI
+          </button>
+        </form>
+
+        <div id="results" class="mt-6 md:mt-8 hidden">
+          <div id="result-content"></div>
+        </div>
+
+        <!-- In-Content Ad After Calculator -->
+        <div
+          class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm mt-6"
+        >
+          In-Content Ad (300x250)
+        </div>
+
+        <!-- Comprehensive Blog Content -->
+        <article class="mt-8 prose prose-invert max-w-none">
+          <h2 class="text-2xl font-bold text-text mb-4">The Hidden Cost of Meetings: A Complete ROI Analysis Guide</h2>
+          
+          <p class="text-light leading-relaxed mb-6">
+            In the modern workplace, meetings have become the default solution for collaboration, decision-making, and information sharing. However, the true cost of these gatherings extends far beyond the time spent in conference rooms or video calls. Understanding meeting ROI (Return on Investment) is crucial for organizations seeking to optimize productivity and reduce operational waste.
+          </p>
+
+          <h3 class="text-xl font-semibold text-text mb-3">The Real Cost of Meetings</h3>
+          <p class="text-light leading-relaxed mb-4">
+            Research consistently shows that meetings are one of the largest productivity drains in modern organizations. According to Harvard Business Review, executives spend an average of 23 hours per week in meetings, with 67% reporting that they spend too much time in meetings overall. The financial impact is staggering: unnecessary meetings cost U.S. companies an estimated $37 billion annually.
+          </p>
+
+          <p class="text-light leading-relaxed mb-6">
+            The true cost of a meeting includes several components that are often overlooked in traditional calculations. Direct costs include the hourly wages of all attendees multiplied by meeting duration. However, indirect costs can be even more significant, including preparation time, follow-up activities, context switching penalties, and opportunity costs of alternative work that could have been completed.
+          </p>
+
+          <h3 class="text-xl font-semibold text-text mb-3">Calculating Meeting ROI: A Framework</h3>
+          <p class="text-light leading-relaxed mb-4">
+            To accurately assess meeting ROI, organizations need a comprehensive framework that accounts for both tangible and intangible costs. The basic formula involves calculating total meeting cost and comparing it to the value generated or decisions made during the meeting.
+          </p>
+
+          <h4 class="text-lg font-medium text-text mb-2">Direct Cost Components</h4>
+          <ul class="list-disc list-inside text-light mb-4 space-y-2">
+            <li><strong>Attendee Wages:</strong> Sum of all participants' hourly rates × meeting duration</li>
+            <li><strong>Preparation Time:</strong> Time spent preparing materials, reviewing agendas, or researching topics</li>
+            <li><strong>Follow-up Activities:</strong> Time spent on action items, documentation, or additional communications</li>
+            <li><strong>Technology Costs:</strong> Video conferencing licenses, room booking fees, equipment usage</li>
+          </ul>
+
+          <h4 class="text-lg font-medium text-text mb-2">Indirect Cost Components</h4>
+          <ul class="list-disc list-inside text-light mb-6 space-y-2">
+            <li><strong>Context Switching:</strong> Time lost transitioning between tasks (average 23 minutes to refocus)</li>
+            <li><strong>Opportunity Cost:</strong> Value of alternative work that could have been completed</li>
+            <li><strong>Decision Delay:</strong> Cost of postponed decisions or delayed project timelines</li>
+            <li><strong>Meeting Fatigue:</strong> Reduced productivity in subsequent work due to cognitive overload</li>
+          </ul>
+
+          <h3 class="text-xl font-semibold text-text mb-3">The Email Alternative Analysis</h3>
+          <p class="text-light leading-relaxed mb-4">
+            One of the most powerful aspects of meeting ROI analysis is determining which meetings could be replaced with asynchronous communication. Research by MIT found that 25-50% of meeting time could be eliminated through better communication practices.
+          </p>
+
+          <h4 class="text-lg font-medium text-text mb-2">Meetings That Should Be Emails</h4>
+          <ul class="list-disc list-inside text-light mb-4 space-y-2">
+            <li><strong>Status Updates:</strong> One-way information sharing without discussion needed</li>
+            <li><strong>Announcements:</strong> Company news, policy changes, or procedural updates</li>
+            <li><strong>Simple Approvals:</strong> Routine decisions that don't require debate</li>
+            <li><strong>Information Distribution:</strong> Sharing reports, documents, or data</li>
+          </ul>
+
+          <h4 class="text-lg font-medium text-text mb-2">Meetings That Require Real-Time Interaction</h4>
+          <ul class="list-disc list-inside text-light mb-6 space-y-2">
+            <li><strong>Brainstorming Sessions:</strong> Creative collaboration requiring immediate feedback</li>
+            <li><strong>Complex Problem Solving:</strong> Multi-faceted issues needing diverse perspectives</li>
+            <li><strong>Conflict Resolution:</strong> Sensitive discussions requiring nuanced communication</li>
+            <li><strong>Strategic Planning:</strong> High-level decisions with significant organizational impact</li>
+          </ul>
+
+          <h3 class="text-xl font-semibold text-text mb-3">Meeting Types and Their ROI Patterns</h3>
+          <p class="text-light leading-relaxed mb-4">
+            Different types of meetings have varying ROI profiles based on their purpose, structure, and outcomes. Understanding these patterns helps organizations optimize their meeting portfolio.
+          </p>
+
+          <h4 class="text-lg font-medium text-text mb-2">High-ROI Meeting Types</h4>
+          <ul class="list-disc list-inside text-light mb-4 space-y-2">
+            <li><strong>Decision-Making Meetings:</strong> Clear outcomes with measurable business impact</li>
+            <li><strong>Strategic Planning:</strong> Long-term value creation through alignment and direction</li>
+            <li><strong>Crisis Management:</strong> Rapid response to urgent issues preventing larger costs</li>
+            <li><strong>Client/Customer Meetings:</strong> Direct revenue generation or relationship building</li>
+          </ul>
+
+          <h4 class="text-lg font-medium text-text mb-2">Low-ROI Meeting Types</h4>
+          <ul class="list-disc list-inside text-light mb-6 space-y-2">
+            <li><strong>Status Update Meetings:</strong> Information sharing without decision-making</li>
+            <li><strong>Recurring Meetings Without Agendas:</strong> Habitual gatherings lacking clear purpose</li>
+            <li><strong>Large Group Information Sessions:</strong> One-to-many communication better suited for other formats</li>
+            <li><strong>Meetings Without Clear Outcomes:</strong> Discussions that don't lead to actionable results</li>
+          </ul>
+
+          <h3 class="text-xl font-semibold text-text mb-3">The Psychology of Meeting Costs</h3>
+          <p class="text-light leading-relaxed mb-4">
+            Beyond financial calculations, meeting ROI analysis must consider psychological and cultural factors that influence productivity and employee satisfaction. Meeting fatigue is a real phenomenon that compounds over time, reducing overall team effectiveness.
+          </p>
+
+          <p class="text-light leading-relaxed mb-6">
+            Studies show that back-to-back meetings increase stress hormones and reduce cognitive performance. The "meeting recovery time" - the period needed to regain focus after a meeting - averages 23 minutes but can extend to over an hour for complex or emotionally charged discussions.
+          </p>
+
+          <h3 class="text-xl font-semibold text-text mb-3">Optimizing Meeting ROI: Best Practices</h3>
+          
+          <h4 class="text-lg font-medium text-text mb-2">Pre-Meeting Optimization</h4>
+          <ul class="list-disc list-inside text-light mb-4 space-y-2">
+            <li><strong>Clear Objectives:</strong> Define specific, measurable outcomes before scheduling</li>
+            <li><strong>Right-Sized Attendance:</strong> Include only essential decision-makers and contributors</li>
+            <li><strong>Agenda Distribution:</strong> Share detailed agendas 24-48 hours in advance</li>
+            <li><strong>Pre-Work Assignment:</strong> Require preparation to maximize meeting efficiency</li>
+          </ul>
+
+          <h4 class="text-lg font-medium text-text mb-2">During-Meeting Efficiency</h4>
+          <ul class="list-disc list-inside text-light mb-4 space-y-2">
+            <li><strong>Time Boxing:</strong> Allocate specific time limits to each agenda item</li>
+            <li><strong>Decision Documentation:</strong> Record decisions and action items in real-time</li>
+            <li><strong>Parking Lot Method:</strong> Defer off-topic discussions to maintain focus</li>
+            <li><strong>Active Facilitation:</strong> Ensure all voices are heard while maintaining momentum</li>
+          </ul>
+
+          <h4 class="text-lg font-medium text-text mb-2">Post-Meeting Follow-Through</h4>
+          <ul class="list-disc list-inside text-light mb-6 space-y-2">
+            <li><strong>Immediate Summary:</strong> Distribute action items within 24 hours</li>
+            <li><strong>Progress Tracking:</strong> Monitor completion of assigned tasks</li>
+            <li><strong>Outcome Measurement:</strong> Assess whether meeting objectives were achieved</li>
+            <li><strong>Continuous Improvement:</strong> Gather feedback to optimize future meetings</li>
+          </ul>
+
+          <h3 class="text-xl font-semibold text-text mb-3">Technology's Role in Meeting ROI</h3>
+          <p class="text-light leading-relaxed mb-4">
+            Modern technology offers numerous tools to improve meeting ROI through better preparation, execution, and follow-up. AI-powered meeting assistants can automatically generate summaries, track action items, and analyze speaking patterns to identify improvement opportunities.
+          </p>
+
+          <p class="text-light leading-relaxed mb-6">
+            Video conferencing platforms now include features like automatic transcription, real-time collaboration tools, and integration with project management systems. These capabilities can significantly reduce the administrative overhead associated with meetings while improving outcomes.
+          </p>
+
+          <h3 class="text-xl font-semibold text-text mb-3">Measuring Long-Term Meeting ROI</h3>
+          <p class="text-light leading-relaxed mb-4">
+            While individual meeting costs are relatively easy to calculate, measuring long-term ROI requires tracking broader organizational metrics. Key performance indicators include:
+          </p>
+
+          <ul class="list-disc list-inside text-light mb-6 space-y-2">
+            <li><strong>Decision Velocity:</strong> Time from problem identification to resolution</li>
+            <li><strong>Employee Satisfaction:</strong> Survey data on meeting effectiveness and workload balance</li>
+            <li><strong>Project Timeline Adherence:</strong> On-time delivery rates for initiatives discussed in meetings</li>
+            <li><strong>Innovation Metrics:</strong> Number and quality of ideas generated through collaborative sessions</li>
+          </ul>
+
+          <h3 class="text-xl font-semibold text-text mb-3">The Future of Meeting ROI</h3>
+          <p class="text-light leading-relaxed mb-4">
+            As remote and hybrid work models become permanent fixtures in many organizations, meeting ROI analysis becomes even more critical. Virtual meetings have different cost structures and effectiveness patterns compared to in-person gatherings.
+          </p>
+
+          <p class="text-light leading-relaxed mb-6">
+            Emerging trends include asynchronous video updates, AI-powered meeting optimization, and sophisticated analytics that can predict meeting success based on participant profiles and agenda content. Organizations that master meeting ROI analysis will have significant competitive advantages in productivity and employee satisfaction.
+          </p>
+
+          <h3 class="text-xl font-semibold text-text mb-3">Implementation Strategy</h3>
+          <p class="text-light leading-relaxed mb-4">
+            Successfully implementing meeting ROI analysis requires a systematic approach that balances measurement with cultural change. Start by tracking current meeting patterns and costs, then gradually introduce optimization practices based on data insights.
+          </p>
+
+          <p class="text-light leading-relaxed">
+            Remember that the goal isn't to eliminate all meetings, but to ensure that each gathering provides value commensurate with its cost. By applying rigorous ROI analysis to meeting practices, organizations can dramatically improve productivity while maintaining the collaborative benefits that effective meetings provide.
+          </p>
+        </article>
+
+        <!-- Mid Ad (Mobile) -->
+        <div
+          class="lg:hidden min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm mt-4"
+        >
+          Mid Ad Space (300x250)
+        </div>
+      </div>
+
+      <!-- Sidebar Ad (Desktop) -->
+      <div class="hidden lg:flex flex-col gap-4">
+        <div
+          class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm sticky top-4"
+        >
+          Sidebar Ad (300x250)
+        </div>
+        <div
+          class="min-h-[600px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+        >
+          Sidebar Ad (300x600)
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Ad -->
+    <div class="max-w-7xl mx-auto px-4 pb-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Bottom Ad Space (728x90 / 320x50)
+      </div>
+    </div>
+
+    <div id="footer-container"></div>
+
+    <!-- Error Popup Modal -->
+    <div id="error-popup" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4">
+      <div class="bg-dark border border-accent rounded-lg p-6 max-w-md w-full">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="material-icons text-red-400">error</span>
+          <h3 class="text-lg font-semibold text-text">Input Error</h3>
+        </div>
+        <p id="error-message" class="text-light mb-4"></p>
+        <button id="close-error" class="w-full bg-primary text-white px-4 py-2 rounded hover:bg-accent transition">
+          OK
+        </button>
+      </div>
+    </div>
+
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

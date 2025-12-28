@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interior Design Concept Feasibility Checker - Design Budget Calculator | CalcMin.pro</title>
+    <meta name="description" content="Check if your interior design concept is feasible with our comprehensive calculator. Get budget breakdowns, furniture recommendations, and phased implementation plans for any design style.">
+    <meta name="keywords" content="interior design calculator, design budget planner, room design feasibility, furniture budget calculator, home decor cost estimator, design concept checker">
+    <meta name="author" content="CalcMin.pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calcmin.pro/InteriorDesignFeasibilityChecker/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Interior Design Concept Feasibility Checker - Design Budget Calculator">
+    <meta property="og:description" content="Test the feasibility of your interior design concept with comprehensive budget analysis and personalized recommendations.">
+    <meta property="og:url" content="https://calcmin.pro/InteriorDesignFeasibilityChecker/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CalcMin.pro">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Interior Design Concept Feasibility Checker">
+    <meta name="twitter:description" content="Check if your interior design concept fits your budget with detailed analysis and recommendations.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FE4E02",
+                        dark: "#00053D", 
+                        broder: "#182267",
+                        accent: "#FD803D",
+                        light: "#FECEB6",
+                        text: "#F7FBFC"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Interior Design Concept Feasibility Checker",
+        "description": "Comprehensive tool to assess the feasibility of interior design concepts based on budget, space, and style preferences",
+        "url": "https://calcmin.pro/InteriorDesignFeasibilityChecker/",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "CalcMin.pro"
+        }
+    }
+    </script>
+</head>
+<body class="bg-dark text-text min-h-screen">
+    <!-- Navigation -->
+    <nav id="navbar-container"></nav>
+
+    <!-- Top Ad Space -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+        <div class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm">
+            Top Ad Space (728x90 / 320x50)
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Calculator -->
+            <div class="lg:col-span-2">
+                <!-- Header -->
+                <div class="bg-broder p-6 rounded-lg border border-accent mb-6">
+                    <h1 class="text-3xl font-bold text-primary mb-4">
+                        <span class="material-icons text-4xl align-middle mr-2">design_services</span>
+                        Interior Design Concept Feasibility Checker
+                    </h1>
+                    <p class="text-light text-lg">Test if your interior design concept is feasible with your budget and space. Get detailed budget breakdowns, furniture recommendations, and phased implementation plans.</p>
+                </div>
+
+                <!-- Calculator Form -->
+                <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
+                    <form id="design-feasibility-form" class="space-y-6">
+                        <!-- Room Information -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Room Type</label>
+                                <select id="roomType" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select room type</option>
+                                    <option value="living-room">Living Room</option>
+                                    <option value="bedroom">Bedroom</option>
+                                    <option value="kitchen">Kitchen</option>
+                                    <option value="dining-room">Dining Room</option>
+                                    <option value="bathroom">Bathroom</option>
+                                    <option value="home-office">Home Office</option>
+                                    <option value="nursery">Nursery</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Room Size (sq ft)</label>
+                                <input type="number" id="roomSize" placeholder="e.g., 200" min="50" max="2000"
+                                       class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <!-- Budget Information -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Total Budget ($)</label>
+                                <input type="number" id="totalBudget" placeholder="e.g., 5000" min="500"
+                                       class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Budget Flexibility</label>
+                                <select id="budgetFlexibility" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select flexibility</option>
+                                    <option value="strict">Strict - Cannot exceed budget</option>
+                                    <option value="moderate">Moderate - Up to 10% over</option>
+                                    <option value="flexible">Flexible - Up to 20% over</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Design Style -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Design Style</label>
+                                <select id="designStyle" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select design style</option>
+                                    <option value="modern">Modern/Contemporary</option>
+                                    <option value="minimalist">Minimalist</option>
+                                    <option value="scandinavian">Scandinavian</option>
+                                    <option value="bohemian">Bohemian/Boho</option>
+                                    <option value="industrial">Industrial</option>
+                                    <option value="farmhouse">Farmhouse/Rustic</option>
+                                    <option value="traditional">Traditional</option>
+                                    <option value="luxury">Luxury/High-End</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Quality Preference</label>
+                                <select id="qualityPreference" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select quality level</option>
+                                    <option value="budget">Budget-Friendly</option>
+                                    <option value="mid-range">Mid-Range</option>
+                                    <option value="high-end">High-End</option>
+                                    <option value="luxury">Luxury</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Must-Have Items -->
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Must-Have Furniture Items</label>
+                            <div class="grid md:grid-cols-3 gap-3">
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="sofa" name="mustHave" value="sofa" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Sofa/Seating</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="bed" name="mustHave" value="bed" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Bed</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="dining-table" name="mustHave" value="dining-table" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Dining Table</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="coffee-table" name="mustHave" value="coffee-table" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Coffee Table</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="storage" name="mustHave" value="storage" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Storage Units</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="lighting" name="mustHave" value="lighting" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Lighting</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="artwork" name="mustHave" value="artwork" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Artwork/Decor</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="rugs" name="mustHave" value="rugs" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Rugs</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="curtains" name="mustHave" value="curtains" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Curtains/Blinds</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Implementation Preferences -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">DIY Willingness</label>
+                                <select id="diyWillingness" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select DIY level</option>
+                                    <option value="none">No DIY - Professional only</option>
+                                    <option value="minimal">Minimal DIY - Assembly only</option>
+                                    <option value="moderate">Moderate DIY - Painting, simple projects</option>
+                                    <option value="high">High DIY - Most projects myself</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Timeline Preference</label>
+                                <select id="timeline" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select timeline</option>
+                                    <option value="immediate">Complete immediately</option>
+                                    <option value="3-months">Within 3 months</option>
+                                    <option value="6-months">Within 6 months</option>
+                                    <option value="1-year">Within 1 year</option>
+                                    <option value="phased">Phased over time</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Color Preferences -->
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Color Scheme Preference</label>
+                            <select id="colorScheme" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                <option value="">Select color scheme</option>
+                                <option value="neutral">Neutral (whites, grays, beiges)</option>
+                                <option value="monochrome">Monochrome (black and white)</option>
+                                <option value="earth-tones">Earth Tones (browns, greens)</option>
+                                <option value="bold-colors">Bold Colors (bright accents)</option>
+                                <option value="pastels">Pastels (soft colors)</option>
+                                <option value="jewel-tones">Jewel Tones (rich colors)</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-medium py-3 px-6 rounded transition duration-200">
+                            Check Design Feasibility
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results -->
+                <div id="results" class="hidden">
+                    <div id="result-content"></div>
+                </div>
+            </div>
+
+            <!-- Right Column - Ads -->
+            <div class="lg:col-span-1">
+                <!-- Top Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+
+                <!-- Middle Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Ad Space -->
+        <div class="mt-8 bg-broder p-4 rounded-lg border border-accent text-center">
+            <div class="text-light text-sm mb-2">Advertisement</div>
+            <div class="bg-dark h-24 flex items-center justify-center rounded">
+                <span class="text-accent">Ad Space 728x90</span>
+            </div>
+        </div>
+
+        <!-- Blog Content -->
+        <article class="mt-12 bg-broder p-8 rounded-lg border border-accent">
+            <h2 class="text-3xl font-bold text-primary mb-6">Complete Guide to Interior Design Feasibility Planning</h2>
+            
+            <div class="prose prose-invert max-w-none">
+                <p class="text-light text-lg leading-relaxed mb-6">
+                    Interior design dreams often clash with budget realities. Our Interior Design Concept Feasibility Checker helps you determine if your design vision is achievable within your constraints, providing realistic budget breakdowns and alternative approaches to make your dream space a reality.
+                </p>
+
+                <div class="space-y-8">
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Why Most Design Projects Go Over Budget</h3>
+                        <p class="text-light mb-4">
+                            Studies show that 80% of interior design projects exceed their initial budget by 20-50%. Understanding common pitfalls helps you plan more accurately and avoid costly surprises.
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-broder p-4 rounded">
+                                <h4 class="font-semibold text-primary mb-2">Hidden Costs</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Delivery and assembly fees</li>
+                                    <li>• Professional installation</li>
+                                    <li>• Custom modifications</li>
+                                    <li>• Paint and supplies</li>
+                                    <li>• Electrical/plumbing changes</li>
+                                    <li>• Permits and inspections</li>
+                                </ul>
+                            </div>
+                            <div class="bg-broder p-4 rounded">
+                                <h4 class="font-semibold text-primary mb-2">Scope Creep</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Upgrading to higher quality items</li>
+                                    <li>• Adding unplanned accessories</li>
+                                    <li>• Changing design mid-project</li>
+                                    <li>• Discovering structural issues</li>
+                                    <li>• Impulse purchases</li>
+                                    <li>• Professional design fees</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Budget Breakdown by Design Style</h3>
+                        <p class="text-light mb-4">
+                            Different design styles have varying cost implications. Understanding these differences helps set realistic expectations for your chosen aesthetic.
+                        </p>
+                        
+                        <div class="overflow-x-auto mb-6">
+                            <table class="w-full text-sm border border-accent rounded">
+                                <thead class="bg-broder">
+                                    <tr>
+                                        <th class="p-3 text-left text-accent">Design Style</th>
+                                        <th class="p-3 text-left text-accent">Cost Level</th>
+                                        <th class="p-3 text-left text-accent">Key Expenses</th>
+                                        <th class="p-3 text-left text-accent">Budget Range/sq ft</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-light">
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Minimalist</td>
+                                        <td class="p-3">Low-Medium</td>
+                                        <td class="p-3">Quality basics, clean lines</td>
+                                        <td class="p-3">$15-30</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Scandinavian</td>
+                                        <td class="p-3">Medium</td>
+                                        <td class="p-3">Natural materials, lighting</td>
+                                        <td class="p-3">$20-40</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Modern</td>
+                                        <td class="p-3">Medium-High</td>
+                                        <td class="p-3">Designer furniture, tech</td>
+                                        <td class="p-3">$25-50</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Bohemian</td>
+                                        <td class="p-3">Low-High</td>
+                                        <td class="p-3">Textiles, art, accessories</td>
+                                        <td class="p-3">$10-35</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Luxury</td>
+                                        <td class="p-3">High</td>
+                                        <td class="p-3">Premium materials, custom</td>
+                                        <td class="p-3">$50-150+</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Room-Specific Budget Considerations</h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="bg-broder p-4 rounded">
+                                <h4 class="font-semibold text-primary mb-2">Living Room</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Seating: 40-50% of budget</li>
+                                    <li>• Coffee table: 10-15%</li>
+                                    <li>• Lighting: 15-20%</li>
+                                    <li>• Decor/accessories: 15-25%</li>
+                                    <li>• Rugs: 10-15%</li>
+                                </ul>
+                            </div>
+                            <div class="bg-broder p-4 rounded">
+                                <h4 class="font-semibold text-primary mb-2">Bedroom</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Bed/mattress: 50-60%</li>
+                                    <li>• Storage: 15-20%</li>
+                                    <li>• Lighting: 10-15%</li>
+                                    <li>• Textiles: 10-15%</li>
+                                    <li>• Decor: 5-10%</li>
+                                </ul>
+                            </div>
+                            <div class="bg-broder p-4 rounded">
+                                <h4 class="font-semibold text-primary mb-2">Home Office</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Desk: 25-35%</li>
+                                    <li>• Chair: 20-30%</li>
+                                    <li>• Storage: 15-25%</li>
+                                    <li>• Lighting: 15-20%</li>
+                                    <li>• Tech/accessories: 10-15%</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Smart Shopping Strategies</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-primary mb-3">Budget-Friendly Options</h4>
+                                <ul class="text-sm text-light space-y-2">
+                                    <li>• Mix high and low-end pieces</li>
+                                    <li>• Shop end-of-season sales</li>
+                                    <li>• Consider vintage/secondhand</li>
+                                    <li>• DIY where possible</li>
+                                    <li>• Use discount retailers strategically</li>
+                                    <li>• Buy in phases over time</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-semibold text-primary mb-3">Investment Pieces</h4>
+                                <ul class="text-sm text-light space-y-2">
+                                    <li>• Quality sofa/seating</li>
+                                    <li>• Good mattress and bed frame</li>
+                                    <li>• Solid wood furniture</li>
+                                    <li>• Quality lighting fixtures</li>
+                                    <li>• Durable rugs</li>
+                                    <li>• Classic, timeless pieces</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">DIY vs Professional Services</h3>
+                        <p class="text-light mb-4">
+                            Deciding what to DIY and what to hire professionals for can significantly impact your budget and timeline.
+                        </p>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-green-400 mb-3">Good DIY Projects</h4>
+                                <ul class="text-sm text-light space-y-2">
+                                    <li>• Painting walls and trim</li>
+                                    <li>• Installing peel-and-stick wallpaper</li>
+                                    <li>• Furniture assembly</li>
+                                    <li>• Hanging artwork and mirrors</li>
+                                    <li>• Installing curtain rods</li>
+                                    <li>• Simple shelving installation</li>
+                                    <li>• Decorative accessories placement</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-semibold text-red-400 mb-3">Hire Professionals For</h4>
+                                <ul class="text-sm text-light space-y-2">
+                                    <li>• Electrical work</li>
+                                    <li>• Plumbing modifications</li>
+                                    <li>• Structural changes</li>
+                                    <li>• Built-in cabinetry</li>
+                                    <li>• Flooring installation</li>
+                                    <li>• Window treatments (complex)</li>
+                                    <li>• Custom upholstery</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Phased Implementation Strategy</h3>
+                        <p class="text-light mb-4">
+                            When budget constraints require a phased approach, strategic planning ensures cohesive results over time.
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-broder p-4 rounded">
+                                <h4 class="font-semibold text-primary mb-2">Phase 1: Foundation (30-40% of budget)</h4>
+                                <p class="text-light text-sm mb-2">
+                                    Focus on essential, large pieces that define the space and are hardest to change later.
+                                </p>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Major furniture pieces (sofa, bed, dining table)</li>
+                                    <li>• Paint and basic lighting</li>
+                                    <li>• Window treatments</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-broder p-4 rounded">
+                                <h4 class="font-semibold text-primary mb-2">Phase 2: Function (25-35% of budget)</h4>
+                                <p class="text-light text-sm mb-2">
+                                    Add pieces that improve functionality and comfort of the space.
+                                </p>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Storage solutions</li>
+                                    <li>• Additional seating</li>
+                                    <li>• Task lighting</li>
+                                    <li>• Rugs and textiles</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-broder p-4 rounded">
+                                <h4 class="font-semibold text-primary mb-2">Phase 3: Personality (25-35% of budget)</h4>
+                                <p class="text-light text-sm mb-2">
+                                    Complete the design with decorative elements that reflect your style.
+                                </p>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Artwork and wall decor</li>
+                                    <li>• Decorative accessories</li>
+                                    <li>• Plants and planters</li>
+                                    <li>• Throw pillows and blankets</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Common Design Mistakes to Avoid</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-broder p-4 rounded">
+                                <h4 class="font-semibold text-red-400 mb-2">Budget Mistakes</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Not accounting for delivery/assembly</li>
+                                    <li>• Buying everything at once</li>
+                                    <li>• Ignoring room proportions</li>
+                                    <li>• Choosing trendy over timeless</li>
+                                    <li>• Skipping the planning phase</li>
+                                </ul>
+                            </div>
+                            <div class="bg-broder p-4 rounded">
+                                <h4 class="font-semibold text-red-400 mb-2">Design Mistakes</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Poor lighting planning</li>
+                                    <li>• Wrong scale furniture</li>
+                                    <li>• Neglecting storage needs</li>
+                                    <li>• Too many small accessories</li>
+                                    <li>• Ignoring traffic flow</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer-container"></footer>
+
+    <script src="script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+</body>
+</html>

@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Satisfaction Pulse Calculator - Job Satisfaction & Retention Predictor | CalcMin Pro</title>
+    <meta name="description" content="Measure your job satisfaction and predict retention likelihood with our comprehensive career assessment tool. Get personalized insights on what would increase your satisfaction most.">
+    <meta name="keywords" content="job satisfaction calculator, career satisfaction assessment, employee retention predictor, workplace happiness test, career fulfillment analysis, job satisfaction survey">
+    <meta name="author" content="CalcMin Pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calcmin.pro/CareerSatisfactionPulse/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Career Satisfaction Pulse Calculator - Job Satisfaction & Retention Predictor">
+    <meta property="og:description" content="Measure your job satisfaction and predict retention likelihood with comprehensive career assessment and personalized insights.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calcmin.pro/CareerSatisfactionPulse/">
+    <meta property="og:site_name" content="CalcMin Pro">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Career Satisfaction Pulse Calculator">
+    <meta name="twitter:description" content="Measure job satisfaction and predict retention likelihood with personalized career insights.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    
+    <!-- External CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FE4E02",
+                        dark: "#00053D", 
+                        broder: "#182267",
+                        accent: "#FD803D",
+                        light: "#FECEB6",
+                        text: "#F7FBFC"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Career Satisfaction Pulse Calculator",
+        "description": "Measure your job satisfaction and predict retention likelihood with comprehensive career assessment and personalized insights.",
+        "url": "https://calcmin.pro/CareerSatisfactionPulse/",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "CalcMin Pro",
+            "url": "https://calcmin.pro"
+        }
+    }
+    </script>
+</head>
+<body class="bg-dark text-text min-h-screen">
+    <!-- Navigation -->
+    <div id="navbar-container"></div>
+
+    <!-- Breadcrumb -->
+    <div class="bg-broder py-2">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center">
+                        <a href="../" class="text-light hover:text-primary">Home</a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <span class="material-icons text-light mx-2">chevron_right</span>
+                            <a href="../#business" class="text-light hover:text-primary">Business & Finance</a>
+                        </div>
+                    </li>
+                    <li aria-current="page">
+                        <div class="flex items-center">
+                            <span class="material-icons text-light mx-2">chevron_right</span>
+                            <span class="text-primary">Career Satisfaction Calculator</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Top Ad Space -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+        <div class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm">
+            Top Ad Space (728x90 / 320x50)
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Assessment -->
+            <div class="lg:col-span-2">
+                <!-- Header -->
+                <div class="bg-broder p-6 rounded-lg border border-accent mb-6">
+                    <h1 class="text-3xl font-bold text-primary mb-4">
+                        <span class="material-icons text-4xl align-middle mr-2">work</span>
+                        Career Satisfaction Pulse Calculator
+                    </h1>
+                    <p class="text-light text-lg">Measure your current job satisfaction and predict retention likelihood. Get personalized insights on what factors would increase your career fulfillment most.</p>
+                </div>
+
+                <!-- Assessment Form -->
+                <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
+                    <h2 class="text-xl font-semibold text-primary mb-4">Career Satisfaction Assessment</h2>
+                    
+                    <form id="careerSatisfactionForm" class="space-y-6">
+                        <!-- Compensation & Benefits -->
+                        <div class="bg-dark p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-primary mb-4">💰 Compensation & Benefits</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-light mb-2">Current Annual Salary ($)</label>
+                                    <input type="number" id="currentSalary" min="20000" max="500000" 
+                                           class="w-full p-3 bg-broder border border-accent rounded text-text">
+                                </div>
+                                <div>
+                                    <label class="block text-light mb-2">Market Rate Satisfaction (1-10)</label>
+                                    <input type="range" id="salarysatisfaction" min="1" max="10" value="5" 
+                                           class="w-full accent-primary">
+                                    <div class="flex justify-between text-xs text-light">
+                                        <span>Underpaid</span>
+                                        <span id="salaryValue">5</span>
+                                        <span>Well Paid</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                <div>
+                                    <label class="block text-light mb-2">Benefits Satisfaction (1-10)</label>
+                                    <input type="range" id="benefitsSatisfaction" min="1" max="10" value="5" 
+                                           class="w-full accent-primary">
+                                    <div class="flex justify-between text-xs text-light">
+                                        <span>Poor</span>
+                                        <span id="benefitsValue">5</span>
+                                        <span>Excellent</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-light mb-2">Bonus/Equity Satisfaction (1-10)</label>
+                                    <input type="range" id="bonusSatisfaction" min="1" max="10" value="5" 
+                                           class="w-full accent-primary">
+                                    <div class="flex justify-between text-xs text-light">
+                                        <span>None/Poor</span>
+                                        <span id="bonusValue">5</span>
+                                        <span>Excellent</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Work-Life Balance -->
+                        <div class="bg-dark p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-primary mb-4">⚖️ Work-Life Balance</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-light mb-2">Hours per Week</label>
+                                    <input type="number" id="hoursPerWeek" min="20" max="80" value="40" 
+                                           class="w-full p-3 bg-broder border border-accent rounded text-text">
+                                </div>
+                                <div>
+                                    <label class="block text-light mb-2">Work-Life Balance Rating (1-10)</label>
+                                    <input type="range" id="workLifeBalance" min="1" max="10" value="5" 
+                                           class="w-full accent-primary">
+                                    <div class="flex justify-between text-xs text-light">
+                                        <span>Poor</span>
+                                        <span id="balanceValue">5</span>
+                                        <span>Excellent</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                <div>
+                                    <label class="block text-light mb-2">Flexibility Rating (1-10)</label>
+                                    <input type="range" id="flexibility" min="1" max="10" value="5" 
+                                           class="w-full accent-primary">
+                                    <div class="flex justify-between text-xs text-light">
+                                        <span>Rigid</span>
+                                        <span id="flexibilityValue">5</span>
+                                        <span>Very Flexible</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-light mb-2">Stress Level (1-10)</label>
+                                    <input type="range" id="stressLevel" min="1" max="10" value="5" 
+                                           class="w-full accent-primary">
+                                    <div class="flex justify-between text-xs text-light">
+                                        <span>Low Stress</span>
+                                        <span id="stressValue">5</span>
+                                        <span>High Stress</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Growth & Development -->
+                        <div class="bg-dark p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-primary mb-4">📈 Growth & Development</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-light mb-2">Growth Opportunities (1-10)</label>
+                                    <input type="range" id="growthOpportunities" min="1" max="10" value="5" 
+                                           class="w-full accent-primary">
+                                    <div class="flex justify-between text-xs text-light">
+                                        <span>None</span>
+                                        <span id="growthValue">5</span>
+                                        <span>Excellent</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-light mb-2">Learning & Development (1-10)</label>
+                                    <input type="range" id="learningDevelopment" min="1" max="10" value="5" 
+                                           class="w-full accent-primary">
+                                    <div class="flex justify-between text-xs text-light">
+                                        <span>Poor</span>
+                                        <span id="learningValue">5</span>
+                                        <span>Excellent</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                <div>
+                                    <label class="block text-light mb-2">Promotion Prospects (1-10)</label>
+                                    <input type="range" id="promotionProspects" min="1" max="10" value="5" 
+                                           class="w-full accent-primary">
+                                    <div class="flex justify-between text-xs text-light">
+                                        <span>None</span>
+                                        <span id="promotionValue">5</span>
+                                        <span>Excellent</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-light mb-2">Skill Utilization (1-10)</label>
+                                    <input type="range" id="skillUtilization" min="1" max="10" value="5" 
+                                           class="w-full accent-primary">
+                                    <div class="flex justify-between text-xs text-light">
+                                        <span>Underutilized</span>
+                                        <span id="skillValue">5</span>
+                                        <span>Fully Utilized</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Management & Culture -->
+                        <div class="bg-dark p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-primary mb-4">👥 Management & Culture</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-light mb-2">Manager Quality (1-10)</label>
+                                    <input type="range" id="managerQuality" min="1" max="10" value="5" 
+                                           class="w-full accent-primary">
+                                    <div class="flex justify-between text-xs text-light">
+                                        <span>Poor</span>
+                                        <span id="managerValue">5</span>
+                                        <span>Excellent</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-light mb-2">Company Culture Fit (1-10)</label>
+                                    <input type="range" id="cultureFit" min="1" max="10" value="5" 
+                                           class="w-full accent-primary">
+                                    <div class="flex justify-between text-xs text-light">
+                                        <span>Poor Fit</span>
+                                        <span id="cultureValue">5</span>
+                                        <span>Perfect Fit</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                <div>
+                                    <label class="block text-light mb-2">Team Relationships (1-10)</label>
+                                    <input type="range" id="teamRelationships" min="1" max="10" value="5" 
+                                           class="w-full accent-primary">
+                                    <div class="flex justify-between text-xs text-light">
+                                        <span>Poor</span>
+                                        <span id="teamValue">5</span>
+                                        <span>Excellent</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-light mb-2">Recognition & Appreciation (1-10)</label>
+                                    <input type="range" id="recognition" min="1" max="10" value="5" 
+                                           class="w-full accent-primary">
+                                    <div class="flex justify-between text-xs text-light">
+                                        <span>None</span>
+                                        <span id="recognitionValue">5</span>
+                                        <span>Excellent</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Job Content & Environment -->
+                        <div class="bg-dark p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-primary mb-4">🎯 Job Content & Environment</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-light mb-2">Job Meaningfulness (1-10)</label>
+                                    <input type="range" id="jobMeaning" min="1" max="10" value="5" 
+                                           class="w-full accent-primary">
+                                    <div class="flex justify-between text-xs text-light">
+                                        <span>Meaningless</span>
+                                        <span id="meaningValue">5</span>
+                                        <span>Very Meaningful</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-light mb-2">Autonomy Level (1-10)</label>
+                                    <input type="range" id="autonomy" min="1" max="10" value="5" 
+                                           class="w-full accent-primary">
+                                    <div class="flex justify-between text-xs text-light">
+                                        <span>Micromanaged</span>
+                                        <span id="autonomyValue">5</span>
+                                        <span>Full Autonomy</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                <div>
+                                    <label class="block text-light mb-2">Commute Satisfaction (1-10)</label>
+                                    <input type="range" id="commuteSatisfaction" min="1" max="10" value="5" 
+                                           class="w-full accent-primary">
+                                    <div class="flex justify-between text-xs text-light">
+                                        <span>Terrible</span>
+                                        <span id="commuteValue">5</span>
+                                        <span>Excellent</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-light mb-2">Job Security (1-10)</label>
+                                    <input type="range" id="jobSecurity" min="1" max="10" value="5" 
+                                           class="w-full accent-primary">
+                                    <div class="flex justify-between text-xs text-light">
+                                        <span>Insecure</span>
+                                        <span id="securityValue">5</span>
+                                        <span>Very Secure</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Additional Context -->
+                        <div class="bg-dark p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-primary mb-4">📋 Additional Context</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-light mb-2">Years in Current Role</label>
+                                    <input type="number" id="yearsInRole" min="0" max="50" step="0.5" value="2" 
+                                           class="w-full p-3 bg-broder border border-accent rounded text-text">
+                                </div>
+                                <div>
+                                    <label class="block text-light mb-2">Industry</label>
+                                    <select id="industry" class="w-full p-3 bg-broder border border-accent rounded text-text">
+                                        <option value="technology">Technology</option>
+                                        <option value="finance">Finance</option>
+                                        <option value="healthcare">Healthcare</option>
+                                        <option value="education">Education</option>
+                                        <option value="retail">Retail</option>
+                                        <option value="manufacturing">Manufacturing</option>
+                                        <option value="consulting">Consulting</option>
+                                        <option value="government">Government</option>
+                                        <option value="nonprofit">Non-profit</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-bold py-4 px-6 rounded-lg transition duration-300 flex items-center justify-center">
+                            <span class="material-icons mr-2">assessment</span>
+                            Calculate Career Satisfaction Pulse
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Column - Ads -->
+            <div class="lg:col-span-1">
+                <!-- Top Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+
+                <!-- Career Tips -->
+                <div class="bg-broder rounded-lg border border-accent p-6 mb-6">
+                    <h3 class="text-xl font-bold text-primary mb-4">💡 Career Satisfaction Tips</h3>
+                    <ul class="space-y-3 text-light">
+                        <li class="flex items-start">
+                            <span class="material-icons text-primary mr-2 mt-1">trending_up</span>
+                            <span>Focus on growth opportunities over immediate salary</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="material-icons text-primary mr-2 mt-1">people</span>
+                            <span>Build strong relationships with colleagues and managers</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="material-icons text-primary mr-2 mt-1">balance</span>
+                            <span>Prioritize work-life balance for long-term satisfaction</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="material-icons text-primary mr-2 mt-1">feedback</span>
+                            <span>Regularly communicate your needs and career goals</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Middle Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results" class="hidden mt-12">
+            <div class="bg-broder rounded-lg border border-accent p-6">
+                <h2 class="text-2xl font-bold text-primary mb-6 flex items-center">
+                    <span class="material-icons mr-2">assessment</span>
+                    Your Career Satisfaction Analysis
+                </h2>
+                <div id="resultsContent"></div>
+            </div>
+        </div>
+
+        <!-- Bottom Ad Space -->
+        <div class="mt-8 bg-broder p-4 rounded-lg border border-accent text-center">
+            <div class="text-light text-sm mb-2">Advertisement</div>
+            <div class="bg-dark h-24 flex items-center justify-center rounded">
+                <span class="text-accent">Ad Space 728x90</span>
+            </div>
+        </div>
+
+        <!-- Blog Content -->
+        <article class="mt-12 bg-broder p-8 rounded-lg border border-accent">
+            <h2 class="text-3xl font-bold text-primary mb-6">The Complete Guide to Career Satisfaction and Employee Retention</h2>
+            
+            <div class="prose prose-invert max-w-none">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-primary mb-4">The Career Satisfaction Crisis</h3>
+                        <p class="text-light mb-4">
+                            Only 36% of employees are engaged at work, according to Gallup's State of the Workplace report. This engagement crisis costs the global economy $8.8 trillion annually in lost productivity. Understanding and measuring career satisfaction is crucial for both individual fulfillment and organizational success.
+                        </p>
+                        <p class="text-light mb-4">
+                            The Great Resignation saw 47 million Americans quit their jobs in 2021, with 95% citing lack of career satisfaction as the primary reason. Modern workers prioritize purpose, growth, and work-life balance over traditional benefits, fundamentally changing what drives career satisfaction.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-primary mb-4">The Science of Job Satisfaction</h3>
+                        <p class="text-light mb-4">
+                            Research identifies five core factors that predict 75% of job satisfaction variance: meaningful work, growth opportunities, manager quality, work-life balance, and fair compensation. These factors interact synergistically - weakness in one area can undermine satisfaction despite strengths in others.
+                        </p>
+                        <p class="text-light mb-4">
+                            Neuroscience reveals that job satisfaction activates the same brain regions as personal relationships and hobbies. Satisfied employees show increased activity in the prefrontal cortex (decision-making) and decreased amygdala activation (stress response), leading to better performance and wellbeing.
+                        </p>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-primary mb-4">The Five Pillars of Career Satisfaction</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-dark p-4 rounded-lg">
+                        <h4 class="text-lg font-semibold text-primary mb-2">💰 Compensation & Recognition</h4>
+                        <ul class="text-light space-y-1 text-sm">
+                            <li>• Fair market compensation (within 10% of market rate)</li>
+                            <li>• Performance-based bonuses and raises</li>
+                            <li>• Comprehensive benefits package</li>
+                            <li>• Regular recognition and appreciation</li>
+                            <li>• Transparent promotion criteria</li>
+                        </ul>
+                    </div>
+                    <div class="bg-dark p-4 rounded-lg">
+                        <h4 class="text-lg font-semibold text-primary mb-2">📈 Growth & Development</h4>
+                        <ul class="text-light space-y-1 text-sm">
+                            <li>• Clear career progression paths</li>
+                            <li>• Learning and development opportunities</li>
+                            <li>• Skill-building and training programs</li>
+                            <li>• Mentorship and coaching</li>
+                            <li>• Challenging and meaningful projects</li>
+                        </ul>
+                    </div>
+                    <div class="bg-dark p-4 rounded-lg">
+                        <h4 class="text-lg font-semibold text-primary mb-2">⚖️ Work-Life Integration</h4>
+                        <ul class="text-light space-y-1 text-sm">
+                            <li>• Flexible work arrangements</li>
+                            <li>• Reasonable work hours and expectations</li>
+                            <li>• Paid time off and sabbaticals</li>
+                            <li>• Mental health and wellness support</li>
+                            <li>• Family-friendly policies</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-primary mb-4">Measuring and Predicting Retention</h3>
+                
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-primary mb-3">The Satisfaction-Retention Correlation</h4>
+                    <p class="text-light mb-4">
+                        Research shows a strong correlation between job satisfaction scores and retention likelihood. Employees with satisfaction scores above 70% have a 90% probability of staying for at least two years. Those scoring below 40% have an 80% probability of leaving within 12 months.
+                    </p>
+                    <p class="text-light mb-4">
+                        The relationship isn't linear - satisfaction scores between 50-70% show the highest variance in retention. This "satisfaction middle ground" is where other factors like external opportunities, personal circumstances, and industry trends have the greatest impact on retention decisions.
+                    </p>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-primary mb-3">Early Warning Indicators</h4>
+                    <p class="text-light mb-4">
+                        Declining satisfaction typically follows predictable patterns. The first indicator is usually decreased engagement in meetings and team activities. This is followed by reduced voluntary contributions, increased sick days, and finally, active job searching behaviors.
+                    </p>
+                    <p class="text-light mb-4">
+                        Manager quality has the highest predictive power for retention. Employees with poor managers (satisfaction score below 4/10) are 4x more likely to leave within six months, regardless of other satisfaction factors. The saying "people don't leave companies, they leave managers" is statistically validated.
+                    </p>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-primary mb-4">Industry-Specific Satisfaction Drivers</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <h4 class="text-xl font-semibold text-primary mb-3">Technology Sector</h4>
+                        <ul class="text-light space-y-2">
+                            <li><strong>Primary Drivers:</strong> Learning opportunities, cutting-edge projects, stock options</li>
+                            <li><strong>Retention Factors:</strong> Technical growth, innovation culture, work flexibility</li>
+                            <li><strong>Risk Factors:</strong> Burnout from long hours, rapid technology changes</li>
+                            <li><strong>Average Tenure:</strong> 2.3 years (shortest among major industries)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold text-primary mb-3">Healthcare</h4>
+                        <ul class="text-light space-y-2">
+                            <li><strong>Primary Drivers:</strong> Meaningful work, patient impact, job security</li>
+                            <li><strong>Retention Factors:</strong> Work-life balance, administrative burden reduction</li>
+                            <li><strong>Risk Factors:</strong> Emotional exhaustion, high-stress environment</li>
+                            <li><strong>Average Tenure:</strong> 4.6 years (above average stability)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <h4 class="text-xl font-semibold text-primary mb-3">Finance</h4>
+                        <ul class="text-light space-y-2">
+                            <li><strong>Primary Drivers:</strong> Compensation, career advancement, prestige</li>
+                            <li><strong>Retention Factors:</strong> Bonus structures, promotion opportunities</li>
+                            <li><strong>Risk Factors:</strong> High pressure, long hours, market volatility</li>
+                            <li><strong>Average Tenure:</strong> 3.8 years (moderate stability)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold text-primary mb-3">Education</h4>
+                        <ul class="text-light space-y-2">
+                            <li><strong>Primary Drivers:</strong> Mission alignment, student impact, job security</li>
+                            <li><strong>Retention Factors:</strong> Administrative support, resource availability</li>
+                            <li><strong>Risk Factors:</strong> Low pay, limited advancement, bureaucracy</li>
+                            <li><strong>Average Tenure:</strong> 5.1 years (highest stability)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-primary mb-4">The Manager Factor: Leadership's Impact on Satisfaction</h3>
+                
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibent text-primary mb-3">Characteristics of Satisfaction-Driving Managers</h4>
+                    <p class="text-light mb-4">
+                        High-satisfaction managers share five key behaviors: regular one-on-one meetings (weekly or bi-weekly), clear goal setting and feedback, advocacy for their team's career growth, recognition of achievements, and protection from organizational politics and unreasonable demands.
+                    </p>
+                    <p class="text-light mb-4">
+                        The best managers act as "career coaches" rather than just task assigners. They understand each team member's career aspirations and actively create opportunities for skill development. Teams with coaching-oriented managers show 25% higher satisfaction and 40% lower turnover.
+                    </p>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-primary mb-3">Red Flags: Manager Behaviors That Drive Turnover</h4>
+                    <p class="text-light mb-4">
+                        Micromanagement is the top satisfaction killer, reducing employee satisfaction by an average of 30 points. Other destructive behaviors include inconsistent feedback, taking credit for team achievements, lack of transparency about decisions, and failure to provide growth opportunities.
+                    </p>
+                    <p class="text-light mb-4">
+                        "Seagull management" - swooping in with criticism then disappearing - creates chronic stress and uncertainty. Employees under such managers report 60% higher stress levels and are 3x more likely to experience burnout symptoms.
+                    </p>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-primary mb-4">Compensation vs. Non-Monetary Factors</h3>
+                
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-primary mb-3">The Compensation Threshold Effect</h4>
+                    <p class="text-light mb-4">
+                        Research reveals a "satisfaction threshold" for compensation. Once employees feel fairly paid (within 10% of market rate), additional money has diminishing returns on satisfaction. Beyond this threshold, non-monetary factors become primary drivers of satisfaction and retention.
+                    </p>
+                    <p class="text-light mb-4">
+                        However, feeling underpaid (more than 15% below market rate) creates a satisfaction ceiling. Even excellent managers, meaningful work, and great culture cannot fully compensate for significant pay inequity. Fair compensation is a prerequisite, not a differentiator.
+                    </p>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-primary mb-3">The Power of Recognition and Growth</h4>
+                    <p class="text-light mb-4">
+                        Non-monetary recognition can be more powerful than bonuses for long-term satisfaction. Public acknowledgment, career development opportunities, and increased autonomy create lasting satisfaction improvements. These factors address intrinsic motivation - the desire for mastery, autonomy, and purpose.
+                    </p>
+                    <p class="text-light mb-4">
+                        Growth opportunities have the highest correlation with long-term retention. Employees who see a clear path for advancement within 18 months are 5x more likely to stay than those without growth prospects, regardless of current satisfaction levels.
+                    </p>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-primary mb-4">Remote Work's Impact on Career Satisfaction</h3>
+                
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-primary mb-3">The Flexibility Premium</h4>
+                    <p class="text-light mb-4">
+                        Remote and hybrid work options add an average of 15 points to satisfaction scores. Employees value flexibility so highly that 65% would accept a 10-15% pay cut to maintain remote work options. This "flexibility premium" has fundamentally changed retention calculations.
+                    </p>
+                    <p class="text-light mb-4">
+                        However, remote work creates new satisfaction challenges: isolation, communication difficulties, and blurred work-life boundaries. Successful remote organizations invest heavily in virtual culture, communication tools, and manager training for distributed teams.
+                    </p>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-primary mb-4">Actionable Strategies for Improving Career Satisfaction</h3>
+                
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-primary mb-3">Individual Action Steps</h4>
+                    <p class="text-light mb-4">
+                        Take ownership of your career satisfaction by scheduling regular career conversations with your manager. Come prepared with specific examples of your contributions and clear requests for growth opportunities. Document your achievements and market value to support compensation discussions.
+                    </p>
+                    <p class="text-light mb-4">
+                        Build internal networks and seek mentorship opportunities. Employees with strong internal relationships report 20% higher satisfaction and are more likely to find new opportunities within their organization rather than leaving.
+                    </p>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-primary mb-3">Organizational Best Practices</h4>
+                    <p class="text-light mb-4">
+                        Implement regular satisfaction surveys (quarterly pulse surveys are optimal) and act on the results transparently. Organizations that consistently measure and respond to satisfaction data see 25% lower turnover and 15% higher productivity.
+                    </p>
+                    <p class="text-light mb-4">
+                        Invest in manager training focused on career coaching and employee development. The ROI on manager training is 300-400% when measured through reduced turnover and increased productivity. Great managers are made, not born.
+                    </p>
+                </div>
+
+                <div class="bg-dark p-6 rounded-lg mt-8">
+                    <h3 class="text-2xl font-semibold text-primary mb-4">Your Career Satisfaction Action Plan</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="text-lg font-semibold text-primary mb-2">This Month</h4>
+                            <ul class="text-light space-y-2">
+                                <li>• Complete comprehensive satisfaction assessment</li>
+                                <li>• Schedule career conversation with manager</li>
+                                <li>• Research market compensation for your role</li>
+                                <li>• Identify 2-3 specific growth opportunities</li>
+                                <li>• Document recent achievements and contributions</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-primary mb-2">Next 6 Months</h4>
+                            <ul class="text-light space-y-2">
+                                <li>• Implement satisfaction improvement strategies</li>
+                                <li>• Build relationships with key stakeholders</li>
+                                <li>• Pursue learning and development opportunities</li>
+                                <li>• Re-assess satisfaction and retention likelihood</li>
+                                <li>• Make informed decisions about career next steps</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <script src="script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+</body>
+</html>

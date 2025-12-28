@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Completion Time Estimator - Gaming Time Calculator | CalcMin.pro</title>
+    <meta name="description" content="Predict how long to complete games based on your playstyle. Get personalized time estimates for story completion, 100% completion, and side content for any game.">
+    <meta name="keywords" content="game completion time calculator, gaming time estimator, how long to beat game, game length calculator, gaming playtime predictor, video game duration">
+    <meta name="author" content="CalcMin.pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calcmin.pro/GameCompletionTimeEstimator/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Game Completion Time Estimator - Gaming Time Calculator">
+    <meta property="og:description" content="Predict how long to complete games based on your playstyle and available gaming time.">
+    <meta property="og:url" content="https://calcmin.pro/GameCompletionTimeEstimator/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CalcMin.pro">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Game Completion Time Estimator">
+    <meta name="twitter:description" content="Calculate personalized game completion times based on your playstyle and schedule.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FE4E02",
+                        dark: "#00053D", 
+                        broder: "#182267",
+                        accent: "#FD803D",
+                        light: "#FECEB6",
+                        text: "#F7FBFC"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Game Completion Time Estimator",
+        "description": "Predict how long to complete games based on your playstyle, available time, and gaming preferences.",
+        "url": "https://calcmin.pro/GameCompletionTimeEstimator/",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "CalcMin.pro"
+        }
+    }
+    </script>
+</head>
+<body class="bg-dark text-text min-h-screen">
+    <!-- Navigation -->
+    <nav id="navbar-container"></nav>
+
+    <!-- Top Ad Space -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+        <div class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm">
+            Top Ad Space (728x90 / 320x50)
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Calculator -->
+            <div class="lg:col-span-2">
+                <!-- Header -->
+                <div class="bg-broder p-6 rounded-lg border border-accent mb-6">
+                    <h1 class="text-3xl font-bold text-primary mb-4">
+                        <span class="material-icons text-4xl align-middle mr-2">schedule</span>
+                        Game Completion Time Estimator
+                    </h1>
+                    <p class="text-light text-lg">Get personalized time estimates for completing games based on your playstyle, available gaming hours, and completion goals.</p>
+                </div>
+
+                <!-- Calculator Form -->
+                <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
+                    <form id="game-time-form" class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Game Title</label>
+                            <select id="gameTitle" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                <option value="">Select a game</option>
+                                <option value="cyberpunk2077">Cyberpunk 2077</option>
+                                <option value="witcher3">The Witcher 3: Wild Hunt</option>
+                                <option value="rdr2">Red Dead Redemption 2</option>
+                                <option value="skyrim">The Elder Scrolls V: Skyrim</option>
+                                <option value="gta5">Grand Theft Auto V</option>
+                                <option value="persona5">Persona 5 Royal</option>
+                                <option value="zelda-botw">The Legend of Zelda: Breath of the Wild</option>
+                                <option value="assassins-valhalla">Assassin's Creed Valhalla</option>
+                                <option value="horizon-zero">Horizon Zero Dawn</option>
+                                <option value="mass-effect">Mass Effect Legendary Edition</option>
+                                <option value="fallout4">Fallout 4</option>
+                                <option value="divinity2">Divinity: Original Sin 2</option>
+                                <option value="custom">Custom Game (Enter Details)</option>
+                            </select>
+                        </div>
+
+                        <div id="custom-game-section" class="hidden space-y-4">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Custom Game Name</label>
+                                    <input type="text" id="customGameName" placeholder="Enter game name" 
+                                           class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Estimated Story Hours</label>
+                                    <input type="number" id="customStoryHours" placeholder="e.g., 25" min="1" 
+                                           class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Playstyle</label>
+                                <select id="playstyle" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select playstyle</option>
+                                    <option value="speedrun">Speedrun (Story only, fast)</option>
+                                    <option value="casual">Casual (Story + some exploration)</option>
+                                    <option value="completionist">Completionist (100% everything)</option>
+                                    <option value="explorer">Explorer (Story + most side content)</option>
+                                    <option value="perfectionist">Perfectionist (All achievements/trophies)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Difficulty Preference</label>
+                                <select id="difficulty" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select difficulty</option>
+                                    <option value="easy">Easy (Story focus)</option>
+                                    <option value="normal">Normal (Balanced)</option>
+                                    <option value="hard">Hard (Challenge seeker)</option>
+                                    <option value="nightmare">Nightmare (Maximum difficulty)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Available Hours per Week</label>
+                                <input type="number" id="hoursPerWeek" placeholder="e.g., 10" min="1" max="168" 
+                                       class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Gaming Experience Level</label>
+                                <select id="experienceLevel" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select experience</option>
+                                    <option value="beginner">Beginner (New to gaming)</option>
+                                    <option value="casual">Casual (Some experience)</option>
+                                    <option value="experienced">Experienced (Regular gamer)</option>
+                                    <option value="expert">Expert (Veteran gamer)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Gaming Preferences</label>
+                            <div class="grid md:grid-cols-2 gap-3">
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="skipCutscenes" name="preferences" value="skip-cutscenes" 
+                                           class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Skip cutscenes/dialogue</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="useGuides" name="preferences" value="use-guides" 
+                                           class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Use guides/walkthroughs</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="collectibles" name="preferences" value="collectibles" 
+                                           class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Collect all items/secrets</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="multiplayer" name="preferences" value="multiplayer" 
+                                           class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Include multiplayer content</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-medium py-3 px-6 rounded transition duration-200">
+                            Calculate Completion Time
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results -->
+                <div id="results" class="hidden">
+                    <div id="result-content"></div>
+                </div>
+            </div>
+
+            <!-- Right Column - Ads -->
+            <div class="lg:col-span-1">
+                <!-- Top Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+
+                <!-- Middle Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Ad Space -->
+        <div class="mt-8 bg-broder p-4 rounded-lg border border-accent text-center">
+            <div class="text-light text-sm mb-2">Advertisement</div>
+            <div class="bg-dark h-24 flex items-center justify-center rounded">
+                <span class="text-accent">Ad Space 728x90</span>
+            </div>
+        </div>
+
+        <!-- Blog Content -->
+        <article class="mt-12 bg-broder p-8 rounded-lg border border-accent">
+            <h2 class="text-3xl font-bold text-primary mb-6">Complete Guide to Game Completion Time Estimation</h2>
+            
+            <div class="prose prose-invert max-w-none">
+                <p class="text-light text-lg leading-relaxed mb-6">
+                    Understanding how long it takes to complete a game is crucial for planning your gaming schedule and making informed purchasing decisions. Our Game Completion Time Estimator provides personalized predictions based on your playstyle, available time, and gaming preferences, helping you choose games that fit your lifestyle and avoid gaming backlog overwhelm.
+                </p>
+
+                <div class="space-y-8">
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Understanding Game Length Categories</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Story Completion (Main Quest)</h4>
+                                <p class="text-sm text-light">Focus on main storyline missions only. Fastest way to see the game's narrative conclusion without side content.</p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Main + Extras</h4>
+                                <p class="text-sm text-light">Story plus some side quests, exploration, and optional content. Balanced approach for most players.</p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Completionist (100%)</h4>
+                                <p class="text-sm text-light">Everything the game offers: all quests, collectibles, achievements, and optional content completed.</p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Speedrun Categories</h4>
+                                <p class="text-sm text-light">Optimized routes focusing on fastest completion times using advanced techniques and skips.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Factors Affecting Completion Time</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border border-accent rounded">
+                                <thead class="bg-broder">
+                                    <tr>
+                                        <th class="p-3 text-left text-primary">Factor</th>
+                                        <th class="p-3 text-left text-primary">Impact</th>
+                                        <th class="p-3 text-left text-primary">Time Multiplier</th>
+                                        <th class="p-3 text-left text-primary">Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-light">
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3 font-semibold">Difficulty Level</td>
+                                        <td class="p-3">High</td>
+                                        <td class="p-3">1.2x - 2.0x</td>
+                                        <td class="p-3">Higher difficulty increases retry time and strategic planning</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3 font-semibold">Experience Level</td>
+                                        <td class="p-3">High</td>
+                                        <td class="p-3">0.7x - 1.5x</td>
+                                        <td class="p-3">Experienced players navigate faster and solve puzzles quicker</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3 font-semibold">Guide Usage</td>
+                                        <td class="p-3">Medium</td>
+                                        <td class="p-3">0.8x - 1.0x</td>
+                                        <td class="p-3">Guides reduce exploration time but may spoil discovery</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3 font-semibold">Collectible Focus</td>
+                                        <td class="p-3">Very High</td>
+                                        <td class="p-3">1.5x - 3.0x</td>
+                                        <td class="p-3">Collecting everything significantly extends playtime</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Popular Games Completion Data</h3>
+                        <div class="space-y-4">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">The Witcher 3: Wild Hunt</h4>
+                                <div class="grid md:grid-cols-4 gap-4 text-sm text-light">
+                                    <div><strong>Story:</strong> 51 hours</div>
+                                    <div><strong>Main + Extras:</strong> 103 hours</div>
+                                    <div><strong>Completionist:</strong> 173 hours</div>
+                                    <div><strong>All Styles:</strong> 84 hours</div>
+                                </div>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Red Dead Redemption 2</h4>
+                                <div class="grid md:grid-cols-4 gap-4 text-sm text-light">
+                                    <div><strong>Story:</strong> 50 hours</div>
+                                    <div><strong>Main + Extras:</strong> 79 hours</div>
+                                    <div><strong>Completionist:</strong> 181 hours</div>
+                                    <div><strong>All Styles:</strong> 67 hours</div>
+                                </div>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Cyberpunk 2077</h4>
+                                <div class="grid md:grid-cols-4 gap-4 text-sm text-light">
+                                    <div><strong>Story:</strong> 24 hours</div>
+                                    <div><strong>Main + Extras:</strong> 62 hours</div>
+                                    <div><strong>Completionist:</strong> 103 hours</div>
+                                    <div><strong>All Styles:</strong> 54 hours</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Playstyle Optimization Strategies</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="space-y-4">
+                                <div class="bg-broder p-4 rounded border border-accent">
+                                    <h4 class="font-semibold text-primary mb-2">Time-Efficient Gaming</h4>
+                                    <ul class="text-sm text-light space-y-1">
+                                        <li>• Focus on main story missions</li>
+                                        <li>• Use fast travel when available</li>
+                                        <li>• Skip optional dialogue and cutscenes</li>
+                                        <li>• Prioritize essential upgrades only</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-broder p-4 rounded border border-accent">
+                                    <h4 class="font-semibold text-primary mb-2">Completionist Approach</h4>
+                                    <ul class="text-sm text-light space-y-1">
+                                        <li>• Plan collectible routes efficiently</li>
+                                        <li>• Use comprehensive guides</li>
+                                        <li>• Track progress with checklists</li>
+                                        <li>• Save completion for post-game</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="bg-broder p-4 rounded border border-accent">
+                                    <h4 class="font-semibold text-primary mb-2">Balanced Exploration</h4>
+                                    <ul class="text-sm text-light space-y-1">
+                                        <li>• Mix main and side content</li>
+                                        <li>• Explore areas naturally</li>
+                                        <li>• Complete side quests when convenient</li>
+                                        <li>• Focus on meaningful content</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-broder p-4 rounded border border-accent">
+                                    <h4 class="font-semibold text-primary mb-2">Achievement Hunting</h4>
+                                    <ul class="text-sm text-light space-y-1">
+                                        <li>• Research missable achievements early</li>
+                                        <li>• Plan multiple playthroughs if needed</li>
+                                        <li>• Use achievement tracking tools</li>
+                                        <li>• Join achievement hunting communities</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Gaming Schedule Planning</h3>
+                        <div class="space-y-4">
+                            <div class="bg-green-900/20 border border-green-600 rounded p-4">
+                                <h4 class="font-semibold text-green-400 mb-2">Short Gaming Sessions (1-2 hours)</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Perfect for story-driven games with chapters</li>
+                                    <li>• Focus on single objectives or missions</li>
+                                    <li>• Avoid open-world exploration sessions</li>
+                                    <li>• Save progress frequently</li>
+                                </ul>
+                            </div>
+                            <div class="bg-blue-900/20 border border-blue-600 rounded p-4">
+                                <h4 class="font-semibold text-blue-400 mb-2">Medium Gaming Sessions (3-4 hours)</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Ideal for most single-player experiences</li>
+                                    <li>• Complete multiple objectives or areas</li>
+                                    <li>• Good for side quest completion</li>
+                                    <li>• Balance story and exploration</li>
+                                </ul>
+                            </div>
+                            <div class="bg-purple-900/20 border border-purple-600 rounded p-4">
+                                <h4 class="font-semibold text-purple-400 mb-2">Long Gaming Sessions (5+ hours)</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Perfect for immersive RPGs and open-world games</li>
+                                    <li>• Deep exploration and discovery</li>
+                                    <li>• Complex quest chains and storylines</li>
+                                    <li>• Take breaks every 2 hours</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Making Games "Worth" Your Time</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-accent mb-3">Value Assessment Criteria</h4>
+                                <ul class="text-sm text-light space-y-2">
+                                    <li>• Cost per hour of entertainment</li>
+                                    <li>• Replay value and multiple endings</li>
+                                    <li>• Personal interest in genre/story</li>
+                                    <li>• Social aspects (multiplayer, streaming)</li>
+                                    <li>• Learning or skill development opportunities</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-accent mb-3">Red Flags to Avoid</h4>
+                                <ul class="text-sm text-light space-y-2">
+                                    <li>• Excessive grinding or repetitive content</li>
+                                    <li>• Pay-to-win mechanics in paid games</li>
+                                    <li>• Poor reviews for story/gameplay quality</li>
+                                    <li>• Technical issues or poor optimization</li>
+                                    <li>• Time-gated content that forces waiting</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer-container"></footer>
+
+    <script src="script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+</body>
+</html>

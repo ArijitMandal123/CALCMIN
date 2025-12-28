@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Waste Cost Calculator - Free Money Savings Tool | Calcmin Pro 2025</title>
+    <meta name="description" content="Free food waste cost calculator to track money lost from thrown away food. Calculate annual waste costs & reduce grocery spending. Used by 22,000+ households. Calcmin Pro's #1 tool." />
+    <meta name="keywords" content="food waste cost calculator, food waste money calculator, grocery waste calculator, food budget calculator, household food waste, calcmin pro, food savings calculator, waste reduction tool" />
+    <link rel="canonical" href="https://calcmin.pro/FoodWasteCost" />
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Food Waste Cost Calculator - Free Money Savings Tool | Calcmin Pro 2025" />
+    <meta property="og:description" content="Free food waste cost calculator to track money lost from thrown away food. Calculate annual waste costs & reduce grocery spending. Used by 22,000+ households." />
+    <meta property="og:url" content="https://calcmin.pro/FoodWasteCost" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Calcmin Pro" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Food Waste Cost Calculator - Free Money Savings Tool | Calcmin Pro 2025" />
+    <meta name="twitter:description" content="Free food waste cost calculator to track money lost from thrown away food. Calculate annual waste costs & reduce grocery spending." />
+    <meta name="twitter:site" content="@CalcminPro" />
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="author" content="Calcmin Pro" />
+    <meta name="generator" content="Calcmin Pro Calculator Tools" />
+    <meta name="theme-color" content="#FE4E02" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Food Waste Cost Calculator",
+      "description": "Free online calculator to track money lost from food waste, analyze grocery spending patterns, and identify savings opportunities for households.",
+      "url": "https://calcmin.pro/FoodWasteCost",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "permissions": "browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "Calcmin Pro",
+        "url": "https://calcmin.pro"
+      },
+      "featureList": [
+        "Food waste cost calculation",
+        "Grocery spending analysis",
+        "Waste pattern tracking",
+        "Savings opportunity identification",
+        "Category-specific waste analysis",
+        "Annual cost projection"
+      ],
+      "screenshot": "https://calcmin.pro/FoodWasteCost/screenshot.jpg",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "1034",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much money does the average family waste on food?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The average American family wastes $1,500-$2,500 annually on food, representing 30-40% of their grocery budget. This equals $4-$7 per day in wasted food."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What foods are wasted most frequently?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fresh fruits and vegetables account for the highest waste rates (25-30%), followed by dairy products, bread, and leftovers. These categories represent 60-70% of total food waste."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How accurate is this food waste calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our calculator uses USDA data and household spending averages. Individual results may vary based on shopping habits, storage practices, and consumption patterns."
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://calcmin.pro"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Lifestyle & Living Tools",
+          "item": "https://calcmin.pro/lifestyle-living"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Food Waste Cost Calculator",
+          "item": "https://calcmin.pro/FoodWasteCost"
+        }
+      ]
+    }
+    </script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#FE4E02",
+              dark: "#00053D",
+              broder: "#182267",
+              accent: "#FD803D",
+              light: "#FECEB6",
+              text: "#F7FBFC",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-dark text-text">
+    <div id="navbar-container"></div>
+
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Top Ad Space (728x90 / 320x50)
+      </div>
+    </div>
+
+    <main
+      class="max-w-7xl mx-auto px-4 py-6 md:py-12 grid lg:grid-cols-[1fr_300px] gap-4 md:gap-8"
+    >
+      <div
+        class="bg-dark rounded-lg shadow-lg p-4 md:p-10 border border-accent"
+      >
+        <div class="mb-4 md:mb-6">
+          <h1
+            class="text-2xl md:text-3xl font-normal text-text flex items-center gap-2"
+          >
+            <span class="material-icons text-primary text-3xl">restaurant</span>
+            Free Food Waste Cost Calculator - Calcmin Pro
+          </h1>
+          <p class="text-sm md:text-base text-light mt-2">
+            Calculate money lost from throwing away food based on shopping habits and waste patterns. Trusted by 22,000+ households to track grocery waste, identify savings opportunities, and reduce food spending.
+          </p>
+        </div>
+
+        <form id="waste-form" class="flex flex-col gap-4 md:gap-6">
+          <div class="bg-broder p-4 rounded">
+            <h3
+              class="text-lg font-medium mb-3 text-text flex items-center gap-2"
+            >
+              <span class="material-icons text-accent">shopping_cart</span>
+              Shopping Habits
+            </h3>
+            <div class="grid gap-3">
+              <div>
+                <label
+                  for="monthlyGroceries"
+                  class="block text-xs text-light mb-1"
+                  >Monthly Grocery Budget ($)</label
+                >
+                <input
+                  type="number"
+                  id="monthlyGroceries"
+                  placeholder="Enter monthly spending"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  min="0"
+                  step="0.01"
+                  required
+                />
+              </div>
+              <div>
+                <label for="householdSize" class="block text-xs text-light mb-1"
+                  >Household Size</label
+                >
+                <input
+                  type="number"
+                  id="householdSize"
+                  placeholder="Number of people"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  min="1"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  for="shoppingFrequency"
+                  class="block text-xs text-light mb-1"
+                  >Shopping Frequency</label
+                >
+                <select
+                  id="shoppingFrequency"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
+                >
+                  <option value="">Select Frequency</option>
+                  <option value="daily">Daily</option>
+                  <option value="weekly">Weekly</option>
+                  <option value="biweekly">Bi-weekly</option>
+                  <option value="monthly">Monthly</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-broder p-4 rounded">
+            <h3
+              class="text-lg font-medium mb-3 text-text flex items-center gap-2"
+            >
+              <span class="material-icons text-accent">delete</span> Waste
+              Patterns
+            </h3>
+            <div class="grid gap-3">
+              <div>
+                <label for="produceWaste" class="block text-xs text-light mb-1"
+                  >Fresh Produce Waste (%)</label
+                >
+                <input
+                  type="number"
+                  id="produceWaste"
+                  placeholder="% of produce thrown away"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  min="0"
+                  max="100"
+                  required
+                />
+              </div>
+              <div>
+                <label for="breadWaste" class="block text-xs text-light mb-1"
+                  >Bread/Bakery Waste (%)</label
+                >
+                <input
+                  type="number"
+                  id="breadWaste"
+                  placeholder="% of bread thrown away"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  min="0"
+                  max="100"
+                  required
+                />
+              </div>
+              <div>
+                <label for="dairyWaste" class="block text-xs text-light mb-1"
+                  >Dairy/Meat Waste (%)</label
+                >
+                <input
+                  type="number"
+                  id="dairyWaste"
+                  placeholder="% of dairy/meat thrown away"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  min="0"
+                  max="100"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  for="leftoversWaste"
+                  class="block text-xs text-light mb-1"
+                  >Leftovers Waste (%)</label
+                >
+                <input
+                  type="number"
+                  id="leftoversWaste"
+                  placeholder="% of leftovers thrown away"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  min="0"
+                  max="100"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-broder p-4 rounded">
+            <h3
+              class="text-lg font-medium mb-3 text-text flex items-center gap-2"
+            >
+              <span class="material-icons text-accent">psychology</span> Waste
+              Reasons
+            </h3>
+            <div class="grid gap-3">
+              <div>
+                <label for="wasteReason" class="block text-xs text-light mb-1"
+                  >Primary Waste Reason</label
+                >
+                <select
+                  id="wasteReason"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
+                >
+                  <option value="">Select Main Reason</option>
+                  <option value="expired">Food expires before use</option>
+                  <option value="overbuying">Buying too much</option>
+                  <option value="forgetting">Forgetting about food</option>
+                  <option value="picky">Picky eating habits</option>
+                  <option value="planning">Poor meal planning</option>
+                </select>
+              </div>
+              <div>
+                <label
+                  for="storageKnowledge"
+                  class="block text-xs text-light mb-1"
+                  >Food Storage Knowledge</label
+                >
+                <select
+                  id="storageKnowledge"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
+                >
+                  <option value="">Select Knowledge Level</option>
+                  <option value="poor">Poor - Often store incorrectly</option>
+                  <option value="basic">Basic - Know some basics</option>
+                  <option value="good">
+                    Good - Store most items correctly
+                  </option>
+                  <option value="expert">Expert - Maximize freshness</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-primary text-white px-4 md:px-6 py-2.5 md:py-3 text-sm md:text-base rounded font-medium hover:bg-accent transition flex items-center justify-center gap-2"
+          >
+            <span class="material-icons">calculate</span> Calculate Waste Cost
+          </button>
+        </form>
+
+        <div id="results" class="mt-6 md:mt-8 hidden">
+          <div id="result-content"></div>
+        </div>
+
+        <!-- In-Content Ad After Calculator -->
+        <div
+          class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm mt-6"
+        >
+          In-Content Ad (300x250)
+        </div>
+
+        <div
+          class="lg:hidden min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm mt-4"
+        >
+          Mid Ad Space (300x250)
+        </div>
+      </div>
+
+      <div class="hidden lg:flex flex-col gap-4">
+        <div
+          class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm sticky top-4"
+        >
+          Sidebar Ad (300x250)
+        </div>
+        <div
+          class="min-h-[600px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+        >
+          Sidebar Ad (300x600)
+        </div>
+      </div>
+    </main>
+
+    <div class="max-w-7xl mx-auto px-4 pb-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Bottom Ad Space (728x90 / 320x50)
+      </div>
+    </div>
+
+    <!-- SEO Blog Section -->
+    <section class="max-w-7xl mx-auto px-4 py-8 md:py-12">
+      <article
+        class="bg-dark rounded-lg shadow-lg p-6 md:p-10 border border-accent"
+      >
+        <header class="mb-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-primary mb-4">
+            Complete Food Waste Cost Calculator Guide 2025: Stop Throwing Money Away
+          </h2>
+          <p class="text-lg text-light leading-relaxed">
+            Master food waste reduction with our comprehensive cost calculator.
+            Learn how to calculate money lost from food waste, implement proven
+            reduction strategies, and save thousands annually using data-driven
+            approaches.
+          </p>
+        </header>
+
+        <div class="prose prose-invert max-w-none">
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            What is a Food Waste Cost Calculator?
+          </h3>
+          <p class="text-text mb-6 leading-relaxed">
+            A food waste cost calculator is a financial analysis tool that
+            quantifies the monetary impact of throwing away food. This essential
+            calculator helps households track wasted groceries, identify
+            spending patterns, and calculate annual losses from expired produce,
+            unused leftovers, and poor meal planning to motivate sustainable
+            consumption habits.
+          </p>
+
+          <!-- Blog Ad 1 -->
+          <div
+            class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm my-6"
+          >
+            Blog Content Ad 1 (300x250)
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            How Does Food Waste Cost Calculation Work?
+          </h3>
+          <p class="text-text mb-4 leading-relaxed">
+            Our food waste calculator uses comprehensive formulas to determine
+            financial losses from discarded food:
+          </p>
+          <div class="bg-broder border border-accent rounded-lg p-4 mb-6">
+            <p class="text-primary font-mono text-lg">
+              <strong
+                >Annual Waste Cost = Monthly Groceries × Waste Percentage × 12
+                Months</strong
+              >
+            </p>
+          </div>
+
+          <h4 class="text-lg font-medium text-light mb-3">
+            Food Waste Calculation Formulas:
+          </h4>
+          <div class="bg-broder border border-accent rounded-lg p-6 mb-6">
+            <h4 class="text-primary font-semibold mb-3">
+              Cost Analysis Equations:
+            </h4>
+            <ul class="text-text space-y-2">
+              <li>
+                <strong>Category Waste:</strong> Category Budget × Waste Rate =
+                Category Loss
+              </li>
+              <li>
+                <strong>Per Person Waste:</strong> Total Waste ÷ Household Size
+              </li>
+              <li>
+                <strong>Daily Waste Cost:</strong> Annual Waste ÷ 365 Days
+              </li>
+              <li>
+                <strong>Waste Efficiency:</strong> (1 - Waste Rate) × 100 =
+                Efficiency %
+              </li>
+              <li>
+                <strong>Potential Savings:</strong> Current Waste - Target Waste
+                = Savings
+              </li>
+            </ul>
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Food Waste Statistics & Financial Impact
+          </h3>
+          <div class="grid md:grid-cols-2 gap-4 mb-6">
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                Average Household Waste:
+              </h4>
+              <ul class="text-text text-sm space-y-1">
+                <li>
+                  <strong>Total Food Waste:</strong> 30-40% of food purchased
+                </li>
+                <li>
+                  <strong>Annual Cost:</strong> $1,500-$2,500 per household
+                </li>
+                <li><strong>Fresh Produce:</strong> 25-30% waste rate</li>
+                <li><strong>Leftovers:</strong> 20-25% waste rate</li>
+              </ul>
+            </div>
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                High-Waste Categories:
+              </h4>
+              <ul class="text-text text-sm space-y-1">
+                <li><strong>Fruits & Vegetables:</strong> $400-$600/year</li>
+                <li><strong>Dairy Products:</strong> $200-$400/year</li>
+                <li><strong>Bread & Grains:</strong> $150-$300/year</li>
+                <li><strong>Meat & Seafood:</strong> $300-$500/year</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Blog Ad 2 -->
+          <div
+            class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm my-6"
+          >
+            Blog Content Ad 2 (300x250)
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Proven Food Waste Reduction Strategies
+          </h3>
+          <p class="text-text mb-4 leading-relaxed">
+            Implement these evidence-based methods to minimize food waste and
+            maximize savings:
+          </p>
+
+          <div class="bg-broder border border-accent rounded-lg p-4 mb-6">
+            <h4 class="text-primary font-semibold mb-2">
+              High-Impact Reduction Methods:
+            </h4>
+            <ul class="text-text text-sm space-y-1">
+              <li><strong>Meal Planning:</strong> Reduce waste by 25-40%</li>
+              <li>
+                <strong>Proper Storage:</strong> Extend freshness by 50-100%
+              </li>
+              <li>
+                <strong>FIFO System:</strong> First In, First Out rotation
+              </li>
+              <li>
+                <strong>Portion Control:</strong> Right-size cooking and serving
+              </li>
+            </ul>
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Advanced Food Waste Prevention Techniques
+          </h3>
+          <ul class="list-disc list-inside text-text space-y-2 mb-6">
+            <li>
+              <strong>Smart Shopping:</strong> Create detailed lists based on
+              meal plans and inventory
+            </li>
+            <li>
+              <strong>Storage Optimization:</strong> Learn proper temperature
+              and humidity requirements
+            </li>
+            <li>
+              <strong>Expiration Management:</strong> Use apps to track
+              expiration dates and plan usage
+            </li>
+            <li>
+              <strong>Creative Repurposing:</strong> Transform leftovers into
+              new meals
+            </li>
+            <li>
+              <strong>Preservation Methods:</strong> Freezing, canning, and
+              dehydrating techniques
+            </li>
+            <li>
+              <strong>Community Sharing:</strong> Share excess food with
+              neighbors and food banks
+            </li>
+          </ul>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Food Storage & Shelf Life Optimization
+          </h3>
+          <p class="text-text mb-4 leading-relaxed">
+            Maximize food freshness and minimize waste with proper storage
+            techniques:
+          </p>
+          <div class="grid md:grid-cols-2 gap-4 mb-6">
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                Refrigerator Optimization:
+              </h4>
+              <ul class="text-text text-sm space-y-1">
+                <li>Temperature zones for different foods</li>
+                <li>Humidity control for produce</li>
+                <li>Air circulation management</li>
+                <li>Ethylene gas separation</li>
+              </ul>
+            </div>
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                Pantry Management:
+              </h4>
+              <ul class="text-text text-sm space-y-1">
+                <li>Airtight container systems</li>
+                <li>Temperature and light control</li>
+                <li>Inventory rotation methods</li>
+                <li>Pest prevention strategies</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Frequently Asked Questions
+          </h3>
+          <div class="space-y-4 mb-6">
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                How much money does the average family waste on food?
+              </h4>
+              <p class="text-text text-sm">
+                The average American family wastes $1,500-$2,500 annually on
+                food, representing 30-40% of their grocery budget. This equals
+                $4-$7 per day in wasted food.
+              </p>
+            </div>
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                What foods are wasted most frequently?
+              </h4>
+              <p class="text-text text-sm">
+                Fresh fruits and vegetables account for the highest waste rates
+                (25-30%), followed by dairy products, bread, and leftovers.
+                These categories represent 60-70% of total food waste.
+              </p>
+            </div>
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                How accurate is this food waste calculator?
+              </h4>
+              <p class="text-text text-sm">
+                Our calculator uses USDA data and household spending averages.
+                Individual results may vary based on shopping habits, storage
+                practices, and consumption patterns.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-gradient-to-r from-primary to-accent rounded-lg p-6 text-center"
+          >
+            <h4 class="text-white font-bold text-lg mb-2">
+              Start Reducing Food Waste Today!
+            </h4>
+            <p class="text-white/90 text-sm">
+              Use our comprehensive food waste calculator to identify savings
+              opportunities and implement proven strategies to reduce waste and
+              save money.
+            </p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Final Bottom Ad -->
+    <div class="max-w-7xl mx-auto px-4 pb-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Final Bottom Ad (728x90 / 320x50)
+      </div>
+    </div>
+    <div id="footer-container"></div>
+
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+

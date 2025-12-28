@@ -1,0 +1,3 @@
+# Authorized Digital Sellers
+# This file should be updated with your actual publisher ID from .env
+google.com, pub-PLACEHOLDER, DIRECT, f08c47fec0942fa0

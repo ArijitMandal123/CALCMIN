@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plant Growth Light Calculator - Free LED Grow Light Requirements Tool | Calcmin Pro 2025</title>
+    <meta name="description" content="Calculate optimal LED grow light requirements with our free plant growth light calculator. Determine PPFD, wattage, coverage area & energy costs for indoor plants. Used by 18,000+ growers on Calcmin Pro.">
+    <meta name="keywords" content="plant growth light calculator, LED grow light calculator, PPFD calculator, grow light requirements, indoor plant lighting, hydroponic lighting, grow tent calculator, plant light spectrum, DLI calculator, calcmin pro">
+    <link rel="canonical" href="https://calcmin.pro/PlantGrowthLight">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Plant Growth Light Calculator - Free LED Grow Light Requirements Tool | Calcmin Pro 2025">
+    <meta property="og:description" content="Calculate optimal LED grow light requirements with our free plant growth light calculator. Determine PPFD, wattage, coverage area & energy costs for indoor plants. Used by 18,000+ growers.">
+    <meta property="og:url" content="https://calcmin.pro/PlantGrowthLight">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Calcmin Pro">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Plant Growth Light Calculator - Free LED Grow Light Requirements Tool | Calcmin Pro 2025">
+    <meta name="twitter:description" content="Calculate optimal LED grow light requirements with our free plant growth light calculator. Determine PPFD, wattage, coverage area & energy costs for indoor plants.">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Plant Growth Light Calculator",
+      "description": "Calculate optimal LED grow light requirements for indoor plants including PPFD, wattage, coverage area and energy costs",
+      "url": "https://calcmin.pro/PlantGrowthLight",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "permissions": "browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "Calcmin Pro",
+        "url": "https://calcmin.pro"
+      }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many watts per square foot do I need for LED grow lights?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Generally 25-50 watts per square foot for LED grow lights, depending on plant type and growth stage. High-light plants may require up to 75 watts per square foot."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the optimal hanging height for LED grow lights?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Typically 18-36 inches from canopy, depending on light intensity and plant stage. Seedlings need lights closer (12-18 inches), while flowering plants can handle greater distances."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate PPFD for my grow space?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PPFD = (Light Wattage × LED Efficacy in μmol/J) ÷ Coverage Area in m². Use a PAR meter for accurate measurements or rely on manufacturer specifications."
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Calcmin Pro",
+          "item": "https://calcmin.pro"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Health & Wellness Tools",
+          "item": "https://calcmin.pro/#health-wellness"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Plant Growth Light Calculator",
+          "item": "https://calcmin.pro/PlantGrowthLight"
+        }
+      ]
+    }
+    </script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#FE4E02",
+              dark: "#00053D",
+              broder: "#182267",
+              accent: "#FD803D",
+              light: "#FECEB6",
+              text: "#F7FBFC",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-dark text-text">
+    <div id="navbar-container"></div>
+
+    <!-- Top Ad -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Top Ad Space (728x90 / 320x50)
+      </div>
+    </div>
+
+    <main
+      class="max-w-7xl mx-auto px-4 py-6 md:py-12 grid lg:grid-cols-[1fr_300px] gap-4 md:gap-8"
+    >
+      <div
+        class="bg-dark rounded-lg shadow-lg p-4 md:p-10 border border-accent"
+      >
+        <div class="mb-4 md:mb-6">
+          <h1
+            class="text-2xl md:text-3xl font-normal text-text flex items-center gap-2"
+          >
+            <span class="material-icons text-primary text-3xl">wb_sunny</span>
+            Free Plant Growth Light Calculator - Calcmin Pro
+          </h1>
+          <p class="text-sm md:text-base text-light mt-2">
+            Calculate optimal LED grow light requirements, PPFD, wattage, and coverage area for indoor plants and hydroponic systems. Trusted by 18,000+ indoor growers worldwide.
+          </p>
+        </div>
+
+        <form id="light-form" class="flex flex-col gap-4 md:gap-6">
+          <div class="bg-broder p-4 rounded">
+            <h3
+              class="text-lg font-medium mb-3 text-text flex items-center gap-2"
+            >
+              <span class="material-icons text-accent">eco</span> Plant
+              Information
+            </h3>
+            <div class="grid gap-3">
+              <div>
+                <label for="plantType" class="block text-xs text-light mb-1"
+                  >Plant Type</label
+                >
+                <select
+                  id="plantType"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
+                >
+                  <option value="">Select Plant Type</option>
+                  <option value="leafy">Leafy Greens (Lettuce, Spinach)</option>
+                  <option value="herbs">Herbs (Basil, Mint)</option>
+                  <option value="fruiting">
+                    Fruiting Plants (Tomatoes, Peppers)
+                  </option>
+                  <option value="flowering">Flowering Plants</option>
+                  <option value="cannabis">Cannabis</option>
+                  <option value="succulents">Succulents/Cacti</option>
+                </select>
+              </div>
+              <div>
+                <label for="growthStage" class="block text-xs text-light mb-1"
+                  >Growth Stage</label
+                >
+                <select
+                  id="growthStage"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
+                >
+                  <option value="">Select Growth Stage</option>
+                  <option value="seedling">Seedling</option>
+                  <option value="vegetative">Vegetative</option>
+                  <option value="flowering">Flowering/Fruiting</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-broder p-4 rounded">
+            <h3
+              class="text-lg font-medium mb-3 text-text flex items-center gap-2"
+            >
+              <span class="material-icons text-accent">crop_square</span>
+              Growing Area
+            </h3>
+            <div class="grid gap-3">
+              <div>
+                <label for="length" class="block text-xs text-light mb-1"
+                  >Length (feet)</label
+                >
+                <input
+                  type="number"
+                  id="length"
+                  placeholder="Enter length"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  min="0"
+                  step="0.1"
+                  required
+                />
+              </div>
+              <div>
+                <label for="width" class="block text-xs text-light mb-1"
+                  >Width (feet)</label
+                >
+                <input
+                  type="number"
+                  id="width"
+                  placeholder="Enter width"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  min="0"
+                  step="0.1"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-broder p-4 rounded">
+            <h3
+              class="text-lg font-medium mb-3 text-text flex items-center gap-2"
+            >
+              <span class="material-icons text-accent">lightbulb</span> Light
+              Setup
+            </h3>
+            <div class="grid gap-3">
+              <div>
+                <label for="lightType" class="block text-xs text-light mb-1"
+                  >Light Type</label
+                >
+                <select
+                  id="lightType"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
+                >
+                  <option value="">Select Light Type</option>
+                  <option value="led">LED Full Spectrum</option>
+                  <option value="hps">HPS (High Pressure Sodium)</option>
+                  <option value="mh">MH (Metal Halide)</option>
+                  <option value="fluorescent">Fluorescent (T5/T8)</option>
+                </select>
+              </div>
+              <div>
+                <label for="ceilingHeight" class="block text-xs text-light mb-1"
+                  >Ceiling Height (feet)</label
+                >
+                <input
+                  type="number"
+                  id="ceilingHeight"
+                  placeholder="Enter height"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  min="0"
+                  step="0.1"
+                />
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-primary text-white px-4 md:px-6 py-2.5 md:py-3 text-sm md:text-base rounded font-medium hover:bg-accent transition flex items-center justify-center gap-2"
+          >
+            <span class="material-icons">calculate</span> Calculate Light
+            Requirements
+          </button>
+        </form>
+
+        <div id="results" class="mt-6 md:mt-8 hidden">
+          <div id="result-content"></div>
+        </div>
+
+        <!-- Mid Ad (Mobile) -->
+        <div
+          class="lg:hidden min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm mt-4"
+        >
+          Mid Ad Space (300x250)
+        </div>
+      </div>
+
+      <!-- Sidebar Ad (Desktop) -->
+      <div class="hidden lg:flex flex-col gap-4">
+        <div
+          class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm sticky top-4"
+        >
+          Sidebar Ad (300x250)
+        </div>
+        <div
+          class="min-h-[600px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+        >
+          Sidebar Ad (300x600)
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Ad -->
+    <div class="max-w-7xl mx-auto px-4 pb-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Bottom Ad Space (728x90 / 320x50)
+      </div>
+    </div>
+
+    <!-- SEO Blog Section -->
+    <section class="max-w-7xl mx-auto px-4 py-8 md:py-12">
+      <article
+        class="bg-dark rounded-lg shadow-lg p-6 md:p-10 border border-accent"
+      >
+        <header class="mb-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-primary mb-4">
+            Complete Guide to Plant Growth Light Calculator 2025: Optimize LED Grow
+            Light Requirements
+          </h2>
+          <p class="text-lg text-light leading-relaxed">
+            Master indoor plant cultivation with our advanced grow light
+            calculator. Learn PPFD calculations, light spectrum requirements,
+            and energy-efficient LED grow light setups for maximum plant growth
+            and yield.
+          </p>
+        </header>
+
+        <div class="prose prose-invert max-w-none">
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            What is a Plant Growth Light Calculator?
+          </h3>
+          <p class="text-text mb-6 leading-relaxed">
+            A plant growth light calculator is a specialized horticultural tool
+            that determines optimal LED grow light requirements for indoor
+            plants based on plant type, growth stage, growing area, and light
+            specifications. This essential indoor gardening calculator helps
+            growers calculate PPFD (Photosynthetic Photon Flux Density), wattage
+            requirements, light coverage area, and energy costs for successful
+            plant cultivation in grow tents, greenhouses, and indoor gardens.
+          </p>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            How Does Plant Growth Light Calculation Work?
+          </h3>
+          <p class="text-text mb-4 leading-relaxed">
+            Plant light calculations use photosynthetic science and
+            horticultural formulas:
+          </p>
+          <div class="bg-broder border border-accent rounded-lg p-4 mb-6">
+            <p class="text-primary font-mono text-lg">
+              <strong
+                >PPFD = (Light Output × Efficiency) ÷ Coverage Area</strong
+              >
+            </p>
+            <p class="text-light text-sm mt-2">
+              Example: 240W LED (2.5 μmol/J) over 4 sq ft = 150 PPFD
+            </p>
+          </div>
+
+          <h4 class="text-lg font-medium text-light mb-3">
+            Step-by-Step Light Calculation Process:
+          </h4>
+          <ol class="list-decimal list-inside text-text space-y-2 mb-6">
+            <li>Select plant type and growth stage for PPFD requirements</li>
+            <li>Measure growing area dimensions (length × width)</li>
+            <li>Choose LED grow light type and specifications</li>
+            <li>Calculate required wattage and number of fixtures</li>
+            <li>Determine optimal hanging height and coverage pattern</li>
+            <li>Estimate daily light integral (DLI) and photoperiod</li>
+          </ol>
+
+          <!-- Blog Ad 1 -->
+          <div
+            class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm my-6"
+          >
+            Blog Content Ad 1 (300x250)
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Mathematical Formulas & Horticultural Light Equations
+          </h3>
+          <div class="bg-broder border border-accent rounded-lg p-6 mb-6">
+            <h4 class="text-primary font-semibold mb-3">
+              Core Plant Lighting Formulas:
+            </h4>
+            <ul class="text-text space-y-2">
+              <li>
+                <strong>PPFD Calculation:</strong> μmol/m²/s = (Watts ×
+                Efficacy) ÷ Area (m²)
+              </li>
+              <li>
+                <strong>DLI Formula:</strong> mol/m²/day = (PPFD × Hours) ×
+                0.0036
+              </li>
+              <li>
+                <strong>Coverage Area:</strong> Area = Length × Width (convert
+                to m²)
+              </li>
+              <li>
+                <strong>Wattage Required:</strong> Watts = (Target PPFD × Area)
+                ÷ Efficacy
+              </li>
+              <li>
+                <strong>Energy Cost:</strong> Daily Cost = (Watts × Hours ×
+                Rate) ÷ 1000
+              </li>
+              <li>
+                <strong>Light Intensity:</strong> Inverse Square Law = I₁/I₂ =
+                (d₂/d₁)²
+              </li>
+            </ul>
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            PPFD Requirements by Plant Type & Growth Stage
+          </h3>
+          <div class="grid md:grid-cols-2 gap-4 mb-6">
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                Vegetative Stage PPFD:
+              </h4>
+              <ul class="text-text text-sm space-y-1">
+                <li><strong>Leafy Greens:</strong> 150-300 μmol/m²/s</li>
+                <li><strong>Herbs:</strong> 200-400 μmol/m²/s</li>
+                <li><strong>Fruiting Plants:</strong> 300-600 μmol/m²/s</li>
+                <li><strong>Cannabis:</strong> 400-700 μmol/m²/s</li>
+              </ul>
+            </div>
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                Flowering Stage PPFD:
+              </h4>
+              <ul class="text-text text-sm space-y-1">
+                <li><strong>Flowering Plants:</strong> 400-800 μmol/m²/s</li>
+                <li><strong>Fruiting Vegetables:</strong> 500-900 μmol/m²/s</li>
+                <li><strong>Cannabis:</strong> 600-1000 μmol/m²/s</li>
+                <li><strong>Succulents:</strong> 100-300 μmol/m²/s</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Blog Ad 2 -->
+          <div
+            class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm my-6"
+          >
+            Blog Content Ad 2 (300x250)
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            LED Grow Light Types & Efficiency Calculations
+          </h3>
+          <p class="text-text mb-4 leading-relaxed">
+            Understanding different LED grow light technologies and their
+            efficiency ratings:
+          </p>
+          <ul class="list-disc list-inside text-text space-y-2 mb-6">
+            <li>
+              <strong>Full Spectrum LED:</strong> 2.0-2.8 μmol/J efficiency,
+              broad spectrum coverage
+            </li>
+            <li>
+              <strong>Quantum Board LED:</strong> 2.5-3.0 μmol/J efficiency,
+              uniform light distribution
+            </li>
+            <li>
+              <strong>COB LED:</strong> 1.8-2.5 μmol/J efficiency, high
+              intensity point source
+            </li>
+            <li>
+              <strong>Strip LED:</strong> 2.2-2.7 μmol/J efficiency, modular
+              design flexibility
+            </li>
+            <li>
+              <strong>HPS Comparison:</strong> 1.3-1.7 μmol/J efficiency, high
+              heat output
+            </li>
+            <li>
+              <strong>Fluorescent T5:</strong> 1.0-1.4 μmol/J efficiency, low
+              heat generation
+            </li>
+          </ul>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Light Spectrum & Wavelength Requirements
+          </h3>
+          <div class="bg-broder border border-accent rounded-lg p-4 mb-6">
+            <h4 class="text-primary font-semibold mb-2">
+              Essential Light Spectrums for Plant Growth:
+            </h4>
+            <ul class="text-text text-sm space-y-1">
+              <li>
+                <strong>Blue Light (400-500nm):</strong> Vegetative growth,
+                compact structure
+              </li>
+              <li>
+                <strong>Green Light (500-600nm):</strong> Canopy penetration,
+                photosynthesis
+              </li>
+              <li>
+                <strong>Red Light (600-700nm):</strong> Flowering, fruiting,
+                stem elongation
+              </li>
+              <li>
+                <strong>Far-Red Light (700-800nm):</strong> Shade avoidance,
+                flowering trigger
+              </li>
+              <li>
+                <strong>UV Light (280-400nm):</strong> Stress response,
+                secondary metabolites
+              </li>
+              <li>
+                <strong>IR Light (800-1000nm):</strong> Heat regulation,
+                morphological changes
+              </li>
+            </ul>
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Growing Area Coverage & Light Distribution
+          </h3>
+          <div class="grid md:grid-cols-3 gap-4 mb-6">
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                Small Grow (2x2 ft):
+              </h4>
+              <ul class="text-text text-sm space-y-1">
+                <li>100-200W LED required</li>
+                <li>Single fixture coverage</li>
+                <li>18-24 inch hanging height</li>
+                <li>Ideal for herbs, seedlings</li>
+              </ul>
+            </div>
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                Medium Grow (4x4 ft):
+              </h4>
+              <ul class="text-text text-sm space-y-1">
+                <li>400-600W LED required</li>
+                <li>2-4 fixture configuration</li>
+                <li>20-30 inch hanging height</li>
+                <li>Perfect for vegetables</li>
+              </ul>
+            </div>
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                Large Grow (8x4 ft):
+              </h4>
+              <ul class="text-text text-sm space-y-1">
+                <li>800-1200W LED required</li>
+                <li>4-8 fixture array</li>
+                <li>24-36 inch hanging height</li>
+                <li>Commercial production</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Daily Light Integral (DLI) Calculations
+          </h3>
+          <p class="text-text mb-4 leading-relaxed">
+            DLI measures the total amount of photosynthetically active radiation
+            (PAR) delivered to plants over a 24-hour period:
+          </p>
+          <div class="bg-broder border border-accent rounded-lg p-4 mb-6">
+            <h4 class="text-primary font-semibold mb-2">
+              DLI Requirements by Plant Category:
+            </h4>
+            <ul class="text-text text-sm space-y-1">
+              <li>
+                <strong>Low Light Plants:</strong> 5-15 mol/m²/day (houseplants,
+                lettuce)
+              </li>
+              <li>
+                <strong>Medium Light Plants:</strong> 15-25 mol/m²/day (herbs,
+                peppers)
+              </li>
+              <li>
+                <strong>High Light Plants:</strong> 25-40 mol/m²/day (tomatoes,
+                cannabis)
+              </li>
+              <li>
+                <strong>Very High Light:</strong> 40+ mol/m²/day (full sun
+                crops)
+              </li>
+            </ul>
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Energy Efficiency & Cost Calculations
+          </h3>
+          <p class="text-text mb-4 leading-relaxed">
+            Calculate operating costs and energy efficiency for sustainable
+            indoor growing:
+          </p>
+          <div class="bg-broder border border-accent rounded-lg p-4 mb-6">
+            <h4 class="text-primary font-semibold mb-2">
+              Energy Cost Formula:
+            </h4>
+            <p class="text-text text-sm mb-2">
+              <strong
+                >Daily Cost = (Watts × Hours × Electricity Rate) ÷ 1000</strong
+              >
+            </p>
+            <p class="text-light text-sm">
+              Example: 400W LED × 16 hours × $0.12/kWh = $0.77/day
+            </p>
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Frequently Asked Questions
+          </h3>
+          <div class="space-y-4 mb-6">
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                How many watts per square foot do I need for LED grow lights?
+              </h4>
+              <p class="text-text text-sm">
+                Generally 25-50 watts per square foot for LED grow lights,
+                depending on plant type and growth stage. High-light plants may
+                require up to 75 watts per square foot.
+              </p>
+            </div>
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                What is the optimal hanging height for LED grow lights?
+              </h4>
+              <p class="text-text text-sm">
+                Typically 18-36 inches from canopy, depending on light intensity
+                and plant stage. Seedlings need lights closer (12-18 inches),
+                while flowering plants can handle greater distances.
+              </p>
+            </div>
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                How do I calculate PPFD for my grow space?
+              </h4>
+              <p class="text-text text-sm">
+                PPFD = (Light Wattage × LED Efficacy in μmol/J) ÷ Coverage Area
+                in m². Use a PAR meter for accurate measurements or rely on
+                manufacturer specifications.
+              </p>
+            </div>
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Related Indoor Growing Tools & Resources
+          </h3>
+          <p class="text-text mb-4 leading-relaxed">
+            Enhance your indoor growing success with complementary calculators:
+          </p>
+          <ul class="list-disc list-inside text-text space-y-2 mb-6">
+            <li>Hydroponic nutrient calculators and EC/pH meters</li>
+            <li>Grow tent ventilation and airflow calculators</li>
+            <li>Plant spacing and yield estimation tools</li>
+            <li>Growing medium volume and cost calculators</li>
+            <li>Harvest timing and curing schedule planners</li>
+          </ul>
+
+          <div
+            class="bg-gradient-to-r from-primary to-accent rounded-lg p-6 text-center"
+          >
+            <h4 class="text-white font-bold text-lg mb-2">
+              Optimize Your Indoor Garden Lighting Today!
+            </h4>
+            <p class="text-white/90 text-sm">
+              Use our advanced plant growth light calculator to determine
+              perfect LED grow light requirements for maximum yields and energy
+              efficiency in your indoor garden.
+            </p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Final Bottom Ad -->
+    <div class="max-w-7xl mx-auto px-4 pb-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Final Bottom Ad (728x90 / 320x50)
+      </div>
+    </div>
+    <div id="footer-container"></div>
+
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+

@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Bracket Optimization Calculator - Minimize Tax Liability with Income Splitting | CalcMin Pro</title>
+    <meta name="description" content="Optimize your tax strategy with income splitting between salary, dividends, and capital gains. Calculate optimal S-Corp, LLC, or sole proprietorship structure to minimize tax liability and maximize savings.">
+    <meta name="keywords" content="tax bracket optimization, income splitting calculator, tax strategy optimizer, S-Corp vs LLC calculator, tax liability minimizer, self-employed tax calculator, business structure tax comparison">
+    <meta name="author" content="CalcMin Pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calcmin.pro/TaxBracketOptimizer/">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Tax Bracket Optimization Calculator - Minimize Tax Liability with Income Splitting">
+    <meta property="og:description" content="Optimize your tax strategy with income splitting between salary, dividends, and capital gains. Calculate optimal business structure to minimize taxes.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calcmin.pro/TaxBracketOptimizer/">
+    <meta property="og:image" content="https://calcmin.pro/public/og-image.jpg">
+    <meta property="og:site_name" content="CalcMin Pro">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tax Bracket Optimization Calculator - Minimize Tax Liability">
+    <meta name="twitter:description" content="Optimize your tax strategy with income splitting between salary, dividends, and capital gains. Calculate optimal business structure.">
+    <meta name="twitter:image" content="https://calcmin.pro/public/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../public/favicon.ico">
+    
+    <!-- External CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FE4E02",
+                        dark: "#00053D", 
+                        broder: "#182267",
+                        accent: "#FD803D",
+                        light: "#FECEB6",
+                        text: "#F7FBFC"
+                    },
+                    animation: {
+                        "fade-in-up": "fadeInUp 0.8s ease-out forwards",
+                        gradient: "gradient 3s ease infinite",
+                        float: "float 6s ease-in-out infinite"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Tax Bracket Optimization Calculator",
+        "description": "Optimize your tax strategy with income splitting between salary, dividends, and capital gains. Calculate optimal S-Corp, LLC, or sole proprietorship structure to minimize tax liability and maximize savings.",
+        "url": "https://calcmin.pro/TaxBracketOptimizer/",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "CalcMin Pro",
+            "url": "https://calcmin.pro"
+        }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://calcmin.pro/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Personal Finance & Investing",
+                "item": "https://calcmin.pro/#finance"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Tax Bracket Optimization Calculator",
+                "item": "https://calcmin.pro/TaxBracketOptimizer/"
+            }
+        ]
+    }
+    </script>
+</head>
+<body class="bg-dark text-text">
+    <div id="navbar-container"></div>
+
+    <!-- Top Ad -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Top Ad Space (728x90 / 320x50)
+      </div>
+    </div>
+
+    <main
+      class="max-w-7xl mx-auto px-4 py-6 md:py-12 grid lg:grid-cols-[1fr_300px] gap-4 md:gap-8"
+    >
+      <div
+        class="bg-dark rounded-lg shadow-lg p-4 md:p-10 border border-accent"
+      >
+        <div class="mb-4 md:mb-6">
+          <h1
+            class="text-2xl md:text-3xl font-bold text-text flex items-center gap-2"
+          >
+            <span class="material-icons text-primary text-3xl">account_balance</span>
+            Tax Bracket Optimization Calculator
+          </h1>
+          <p class="text-light mt-3 text-base leading-relaxed">
+            Optimize your tax strategy with income splitting between salary, dividends, and capital gains. Calculate optimal business structure to minimize taxes.
+          </p>
+        </div>
+        <form id="taxOptimizerForm" class="flex flex-col gap-4 md:gap-6">
+                    <!-- Income Information -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-light mb-2">
+                                Total Annual Income ($)
+                            </label>
+                            <input type="number" id="totalIncome" min="0" max="10000000" value="150000" 
+                                   class="w-full px-4 py-3 bg-dark border border-accent/30 rounded-lg text-text focus:border-primary focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-light mb-2">
+                                State of Residence
+                            </label>
+                            <select id="state" 
+                                    class="w-full px-4 py-3 bg-dark border border-accent/30 rounded-lg text-text focus:border-primary focus:outline-none">
+                                <option value="no-tax">No State Tax (FL, TX, WA, etc.)</option>
+                                <option value="low-tax">Low Tax State (3-5%)</option>
+                                <option value="medium-tax" selected>Medium Tax State (6-8%)</option>
+                                <option value="high-tax">High Tax State (9-13%)</option>
+                                <option value="ca">California (13.3%)</option>
+                                <option value="ny">New York (10.9%)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Current Income Structure -->
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-light mb-2">
+                                Current Salary Income ($)
+                            </label>
+                            <input type="number" id="currentSalary" min="0" max="10000000" value="150000" 
+                                   class="w-full px-4 py-3 bg-dark border border-accent/30 rounded-lg text-text focus:border-primary focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-light mb-2">
+                                Current Dividend Income ($)
+                            </label>
+                            <input type="number" id="currentDividends" min="0" max="10000000" value="0" 
+                                   class="w-full px-4 py-3 bg-dark border border-accent/30 rounded-lg text-text focus:border-primary focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-light mb-2">
+                                Current Capital Gains ($)
+                            </label>
+                            <input type="number" id="currentCapitalGains" min="0" max="10000000" value="0" 
+                                   class="w-full px-4 py-3 bg-dark border border-accent/30 rounded-lg text-text focus:border-primary focus:outline-none">
+                        </div>
+                    </div>
+
+                    <!-- Deductions and Business Info -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-light mb-2">
+                                Annual Deductions ($)
+                            </label>
+                            <input type="number" id="deductions" min="0" max="1000000" value="25000" 
+                                   class="w-full px-4 py-3 bg-dark border border-accent/30 rounded-lg text-text focus:border-primary focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-light mb-2">
+                                Current Business Structure
+                            </label>
+                            <select id="currentStructure" 
+                                    class="w-full px-4 py-3 bg-dark border border-accent/30 rounded-lg text-text focus:border-primary focus:outline-none">
+                                <option value="sole-prop" selected>Sole Proprietorship</option>
+                                <option value="llc">LLC (Single Member)</option>
+                                <option value="s-corp">S-Corporation</option>
+                                <option value="c-corp">C-Corporation</option>
+                                <option value="partnership">Partnership</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Filing Status and Dependents -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-light mb-2">
+                                Filing Status
+                            </label>
+                            <select id="filingStatus" 
+                                    class="w-full px-4 py-3 bg-dark border border-accent/30 rounded-lg text-text focus:border-primary focus:outline-none">
+                                <option value="single" selected>Single</option>
+                                <option value="married-joint">Married Filing Jointly</option>
+                                <option value="married-separate">Married Filing Separately</option>
+                                <option value="head-household">Head of Household</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-light mb-2">
+                                Number of Dependents
+                            </label>
+                            <input type="number" id="dependents" min="0" max="10" value="0" 
+                                   class="w-full px-4 py-3 bg-dark border border-accent/30 rounded-lg text-text focus:border-primary focus:outline-none">
+                        </div>
+                    </div>
+
+                    <!-- Self-Employment Info -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-light mb-2">
+                                Self-Employment Income ($)
+                            </label>
+                            <input type="number" id="selfEmploymentIncome" min="0" max="10000000" value="0" 
+                                   class="w-full px-4 py-3 bg-dark border border-accent/30 rounded-lg text-text focus:border-primary focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-light mb-2">
+                                Business Expenses ($)
+                            </label>
+                            <input type="number" id="businessExpenses" min="0" max="1000000" value="0" 
+                                   class="w-full px-4 py-3 bg-dark border border-accent/30 rounded-lg text-text focus:border-primary focus:outline-none">
+                        </div>
+                    </div>
+
+          <button
+            type="submit"
+            class="w-full bg-primary text-white px-4 md:px-6 py-2.5 md:py-3 text-sm md:text-base rounded font-medium hover:bg-accent transition flex items-center justify-center gap-2"
+          >
+            <span class="material-icons">calculate</span> Optimize My Tax Strategy
+          </button>
+        </form>
+
+        <div id="results" class="mt-6 md:mt-8 hidden">
+          <div id="result-content"></div>
+        </div>
+
+        <!-- In-Content Ad After Calculator -->
+        <div
+          class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm mt-6"
+        >
+          In-Content Ad (300x250)
+        </div>
+
+        <!-- Mid Ad (Mobile) -->
+        <div
+          class="lg:hidden min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm mt-4"
+        >
+          Mid Ad Space (300x250)
+        </div>
+      </div>
+
+      <!-- Sidebar Ad (Desktop) -->
+      <div class="hidden lg:flex flex-col gap-4">
+        <div
+          class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm sticky top-4"
+        >
+          Sidebar Ad (300x250)
+        </div>
+        <div
+          class="min-h-[600px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+        >
+          Sidebar Ad (300x600)
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Ad -->
+    <div class="max-w-7xl mx-auto px-4 pb-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Bottom Ad Space (728x90 / 320x50)
+      </div>
+    </div>
+
+
+
+    <!-- Custom Popup Modal -->
+    <div id="customPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-broder rounded-lg p-6 max-w-md mx-4 border border-accent/20">
+            <div class="flex items-center mb-4">
+                <span class="material-icons text-primary mr-2">info</span>
+                <h3 class="text-lg font-semibold text-text">Information</h3>
+            </div>
+            <p id="popupMessage" class="text-light mb-4"></p>
+            <button onclick="closePopup()" class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-accent transition-colors">
+                OK
+            </button>
+        </div>
+    </div>
+
+    <!-- SEO Blog Section -->
+    <section class="max-w-7xl mx-auto px-4 py-8 md:py-12">
+      <article
+        class="bg-dark rounded-lg shadow-lg p-6 md:p-10 border border-accent"
+      >
+        <header class="mb-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-primary mb-4">
+            The Complete Guide to Tax Bracket Optimization
+          </h2>
+        </header>
+        <div class="prose prose-invert max-w-none">
+                <h2 class="text-3xl font-bold text-primary mb-8">The Complete Guide to Tax Bracket Optimization</h2>
+                
+                <div class="bg-broder/50 rounded-lg p-6 mb-8 border border-accent/20">
+                    <h3 class="text-xl font-semibold text-accent mb-4">What You'll Learn</h3>
+                    <ul class="text-light space-y-2">
+                        <li>• How to optimize income splitting for maximum tax savings</li>
+                        <li>• The best business structures for different income levels</li>
+                        <li>• Advanced tax strategies for self-employed professionals</li>
+                        <li>• State tax considerations and optimization techniques</li>
+                        <li>• Real-world examples and case studies</li>
+                    </ul>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-accent mb-6">Understanding Tax Bracket Optimization</h3>
+                
+                <p class="text-light mb-6 leading-relaxed">
+                    Tax bracket optimization is the strategic practice of structuring your income across different types of earnings to minimize your overall tax liability. By understanding how different income types are taxed and leveraging various business structures, you can legally reduce your tax burden while maximizing your after-tax income.
+                </p>
+
+                <p class="text-light mb-6 leading-relaxed">
+                    The U.S. tax system uses a progressive structure where higher income levels are taxed at higher rates. However, not all income is treated equally. Ordinary income (wages, salaries) faces the highest tax rates, while qualified dividends and long-term capital gains enjoy preferential treatment with lower tax rates.
+                </p>
+
+                <h3 class="text-2xl font-semibold text-accent mb-6">Types of Income and Their Tax Treatment</h3>
+
+                <h4 class="text-xl font-semibold text-primary mb-4">Ordinary Income</h4>
+                <p class="text-light mb-6 leading-relaxed">
+                    Ordinary income includes wages, salaries, tips, commissions, and business profits. This income is subject to regular income tax rates, which range from 10% to 37% for federal taxes in 2024. Additionally, earned income is subject to Social Security and Medicare taxes (FICA), totaling 15.3% for self-employed individuals.
+                </p>
+
+                <h4 class="text-xl font-semibold text-primary mb-4">Qualified Dividends</h4>
+                <p class="text-light mb-6 leading-relaxed">
+                    Qualified dividends from domestic corporations and qualified foreign corporations are taxed at capital gains rates: 0%, 15%, or 20%, depending on your income level. This preferential treatment can result in significant tax savings compared to ordinary income rates.
+                </p>
+
+                <h4 class="text-xl font-semibold text-primary mb-4">Capital Gains</h4>
+                <p class="text-light mb-6 leading-relaxed">
+                    Long-term capital gains (assets held for more than one year) are taxed at preferential rates of 0%, 15%, or 20%. Short-term capital gains are taxed as ordinary income. Strategic timing of asset sales can optimize your tax liability across multiple years.
+                </p>
+
+                <div class="bg-primary/10 border-l-4 border-primary p-6 mb-8">
+                    <h4 class="text-lg font-semibold text-primary mb-3">2024 Tax Brackets (Single Filers)</h4>
+                    <ul class="text-light space-y-2">
+                        <li>• 10%: $0 - $11,000</li>
+                        <li>• 12%: $11,001 - $44,725</li>
+                        <li>• 22%: $44,726 - $95,375</li>
+                        <li>• 24%: $95,376 - $182,050</li>
+                        <li>• 32%: $182,051 - $231,250</li>
+                        <li>• 35%: $231,251 - $578,125</li>
+                        <li>• 37%: $578,126+</li>
+                    </ul>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-accent mb-6">Business Structure Optimization</h3>
+
+                <h4 class="text-xl font-semibold text-primary mb-4">Sole Proprietorship</h4>
+                <p class="text-light mb-6 leading-relaxed">
+                    The simplest business structure, but often the least tax-efficient for higher earners. All business income is subject to both income tax and self-employment tax (15.3%). However, it offers maximum flexibility and minimal administrative burden.
+                </p>
+
+                <h4 class="text-xl font-semibold text-primary mb-4">Single-Member LLC</h4>
+                <p class="text-light mb-6 leading-relaxed">
+                    Provides liability protection while maintaining tax simplicity. By default, it's treated as a sole proprietorship for tax purposes, but can elect S-Corp or C-Corp taxation for potential savings. Offers flexibility in profit distribution and expense deductions.
+                </p>
+
+                <h4 class="text-xl font-semibold text-primary mb-4">S-Corporation</h4>
+                <p class="text-light mb-6 leading-relaxed">
+                    Often the most tax-efficient structure for moderate to high earners. Allows you to split income between salary (subject to payroll taxes) and distributions (not subject to self-employment tax). The key is setting a "reasonable salary" that satisfies IRS requirements while maximizing tax-free distributions.
+                </p>
+
+                <h4 class="text-xl font-semibold text-primary mb-4">C-Corporation</h4>
+                <p class="text-light mb-6 leading-relaxed">
+                    Subject to double taxation but offers unique benefits for high earners. The flat 21% corporate tax rate can be advantageous, and retained earnings can be invested tax-efficiently. Qualified small business stock (QSBS) can provide up to $10 million in tax-free gains upon sale.
+                </p>
+
+                <h3 class="text-2xl font-semibold text-accent mb-6">Advanced Optimization Strategies</h3>
+
+                <h4 class="text-xl font-semibold text-primary mb-4">Income Smoothing</h4>
+                <p class="text-light mb-6 leading-relaxed">
+                    Spreading income across multiple years can keep you in lower tax brackets. This is particularly effective for irregular income patterns, such as large bonuses, business sales, or investment gains. Techniques include installment sales, deferred compensation, and strategic timing of income recognition.
+                </p>
+
+                <h4 class="text-xl font-semibold text-primary mb-4">Tax-Loss Harvesting</h4>
+                <p class="text-light mb-6 leading-relaxed">
+                    Strategically realizing investment losses to offset gains can significantly reduce your tax liability. Up to $3,000 in net losses can offset ordinary income annually, with excess losses carried forward indefinitely. This strategy is particularly powerful when combined with tax-gain harvesting in low-income years.
+                </p>
+
+                <h4 class="text-xl font-semibold text-primary mb-4">Retirement Account Optimization</h4>
+                <p class="text-light mb-6 leading-relaxed">
+                    Maximizing contributions to tax-advantaged accounts can provide immediate deductions and long-term tax benefits. Self-employed individuals have access to SEP-IRAs, Solo 401(k)s, and defined benefit plans that can shelter significant amounts of income from current taxation.
+                </p>
+
+                <div class="bg-broder/50 rounded-lg p-6 mb-8 border border-accent/20">
+                    <h4 class="text-lg font-semibold text-accent mb-4">S-Corp Salary Guidelines</h4>
+                    <ul class="text-light space-y-3">
+                        <li><strong>Conservative Approach:</strong> 60-70% of total income as salary</li>
+                        <li><strong>Moderate Approach:</strong> 40-60% of total income as salary</li>
+                        <li><strong>Aggressive Approach:</strong> 30-40% of total income as salary</li>
+                        <li><strong>Industry Standards:</strong> Research comparable salaries in your field</li>
+                        <li><strong>IRS Factors:</strong> Time spent, responsibilities, and business profitability</li>
+                    </ul>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-accent mb-6">State Tax Considerations</h3>
+
+                <p class="text-light mb-6 leading-relaxed">
+                    State taxes can significantly impact your optimization strategy. Nine states have no income tax, while others have rates exceeding 13%. Understanding your state's tax structure is crucial for comprehensive optimization.
+                </p>
+
+                <h4 class="text-xl font-semibold text-primary mb-4">No-Tax States</h4>
+                <ul class="text-light mb-6 space-y-2 ml-6">
+                    <li>• Alaska, Florida, Nevada, New Hampshire, South Dakota, Tennessee, Texas, Washington, Wyoming</li>
+                    <li>• Significant advantage for high earners</li>
+                    <li>• Consider residency requirements and other state-specific factors</li>
+                </ul>
+
+                <h4 class="text-xl font-semibold text-primary mb-4">High-Tax States</h4>
+                <ul class="text-light mb-6 space-y-2 ml-6">
+                    <li>• California (up to 13.3%), New York (up to 10.9%), New Jersey (up to 10.75%)</li>
+                    <li>• May justify more aggressive optimization strategies</li>
+                    <li>• Consider state-specific deductions and credits</li>
+                </ul>
+
+                <h3 class="text-2xl font-semibold text-accent mb-6">Quarterly Estimated Tax Planning</h3>
+
+                <p class="text-light mb-6 leading-relaxed">
+                    Self-employed individuals and business owners must make quarterly estimated tax payments to avoid penalties. Proper planning ensures you meet safe harbor requirements while optimizing cash flow throughout the year.
+                </p>
+
+                <div class="bg-broder/50 rounded-lg p-6 mb-8 border border-accent/20">
+                    <h4 class="text-lg font-semibold text-accent mb-4">Safe Harbor Rules</h4>
+                    <ul class="text-light space-y-3">
+                        <li><strong>General Rule:</strong> Pay 90% of current year's tax liability</li>
+                        <li><strong>Prior Year Safe Harbor:</strong> Pay 100% of last year's tax (110% if AGI > $150,000)</li>
+                        <li><strong>Annualized Income:</strong> Calculate based on actual quarterly income</li>
+                        <li><strong>Penalty Avoidance:</strong> Make payments by quarterly due dates</li>
+                    </ul>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-accent mb-6">Case Studies and Examples</h3>
+
+                <h4 class="text-xl font-semibold text-primary mb-4">Case Study 1: Freelance Consultant ($200,000 Income)</h4>
+                <p class="text-light mb-4 leading-relaxed">
+                    Sarah, a marketing consultant, earns $200,000 annually as a sole proprietor. Her current tax situation:
+                </p>
+                <ul class="text-light mb-6 space-y-2 ml-6">
+                    <li>• Federal income tax: ~$32,000</li>
+                    <li>• Self-employment tax: ~$28,000</li>
+                    <li>• State tax (7%): ~$14,000</li>
+                    <li>• Total tax liability: ~$74,000</li>
+                </ul>
+
+                <p class="text-light mb-4 leading-relaxed">
+                    By electing S-Corp status and paying herself a $120,000 salary with $80,000 in distributions:
+                </p>
+                <ul class="text-light mb-6 space-y-2 ml-6">
+                    <li>• Federal income tax: ~$32,000 (same)</li>
+                    <li>• Payroll taxes: ~$17,000 (on salary only)</li>
+                    <li>• State tax: ~$14,000 (same)</li>
+                    <li>• Total tax liability: ~$63,000</li>
+                    <li>• <strong>Annual savings: ~$11,000</strong></li>
+                </ul>
+
+                <h4 class="text-xl font-semibold text-primary mb-4">Case Study 2: Tech Entrepreneur ($500,000 Income)</h4>
+                <p class="text-light mb-4 leading-relaxed">
+                    Mike owns a software company generating $500,000 in annual profits. Through strategic optimization:
+                </p>
+                <ul class="text-light mb-6 space-y-2 ml-6">
+                    <li>• S-Corp election with $160,000 reasonable salary</li>
+                    <li>• $340,000 in tax-free distributions</li>
+                    <li>• Maximized retirement contributions ($69,000 to Solo 401k)</li>
+                    <li>• Strategic equipment purchases for depreciation</li>
+                    <li>• <strong>Total tax savings: ~$45,000 annually</strong></li>
+                </ul>
+
+                <h3 class="text-2xl font-semibold text-accent mb-6">Common Mistakes to Avoid</h3>
+
+                <h4 class="text-xl font-semibold text-primary mb-4">Unreasonably Low S-Corp Salary</h4>
+                <p class="text-light mb-6 leading-relaxed">
+                    Setting your S-Corp salary too low can trigger IRS scrutiny and penalties. The salary must be reasonable based on your role, industry standards, and business profitability. Document your reasoning and research comparable positions.
+                </p>
+
+                <h4 class="text-xl font-semibold text-primary mb-4">Ignoring State Tax Implications</h4>
+                <p class="text-light mb-6 leading-relaxed">
+                    Focusing solely on federal taxes while ignoring state implications can lead to suboptimal strategies. Some states don't recognize S-Corp elections or have different rules for business income taxation.
+                </p>
+
+                <h4 class="text-xl font-semibold text-primary mb-4">Poor Record Keeping</h4>
+                <p class="text-light mb-6 leading-relaxed">
+                    Complex tax strategies require meticulous documentation. Maintain detailed records of business expenses, salary justifications, and strategic decisions to support your tax positions during potential audits.
+                </p>
+
+                <h4 class="text-xl font-semibold text-primary mb-4">Overcomplicating Simple Situations</h4>
+                <p class="text-light mb-6 leading-relaxed">
+                    Not every situation benefits from complex optimization. Lower-income earners or those with simple financial situations may find that the administrative burden outweighs the tax savings.
+                </p>
+
+                <h3 class="text-2xl font-semibold text-accent mb-6">Tools and Resources for Implementation</h3>
+
+                <h4 class="text-xl font-semibold text-primary mb-4">Tax Software and Calculators</h4>
+                <ul class="text-light mb-6 space-y-2 ml-6">
+                    <li>• <strong>TurboTax Business:</strong> Comprehensive business tax preparation</li>
+                    <li>• <strong>H&R Block:</strong> Professional tax planning services</li>
+                    <li>• <strong>FreeTaxUSA:</strong> Affordable option for complex returns</li>
+                    <li>• <strong>IRS Withholding Calculator:</strong> Optimize quarterly payments</li>
+                </ul>
+
+                <h4 class="text-xl font-semibold text-primary mb-4">Professional Services</h4>
+                <ul class="text-light mb-6 space-y-2 ml-6">
+                    <li>• <strong>CPAs:</strong> Comprehensive tax planning and preparation</li>
+                    <li>• <strong>Tax Attorneys:</strong> Complex situations and IRS disputes</li>
+                    <li>• <strong>Financial Advisors:</strong> Holistic financial planning integration</li>
+                    <li>• <strong>Business Formation Services:</strong> Entity structure setup and maintenance</li>
+                </ul>
+
+                <h3 class="text-2xl font-semibold text-accent mb-6">Future Tax Planning Considerations</h3>
+
+                <p class="text-light mb-6 leading-relaxed">
+                    Tax laws are constantly evolving, and successful optimization requires staying informed about changes that could impact your strategy. The Tax Cuts and Jobs Act provisions are set to expire in 2025, potentially affecting individual tax rates and deductions.
+                </p>
+
+                <h4 class="text-xl font-semibold text-primary mb-4">Potential Changes to Monitor</h4>
+                <ul class="text-light mb-6 space-y-2 ml-6">
+                    <li>• Individual tax rate adjustments</li>
+                    <li>• Changes to business deduction limitations</li>
+                    <li>• State and local tax deduction modifications</li>
+                    <li>• Retirement account contribution limits</li>
+                    <li>• Capital gains tax rate proposals</li>
+                </ul>
+
+                <div class="bg-primary/10 border-l-4 border-primary p-6 mb-8">
+                    <h4 class="text-lg font-semibold text-primary mb-3">Take Action Today</h4>
+                    <p class="text-light mb-4">
+                        Use our Tax Bracket Optimization Calculator to analyze your current situation and identify potential savings opportunities. Remember that tax optimization is an ongoing process that requires regular review and adjustment.
+                    </p>
+                    <p class="text-light">
+                        Always consult with qualified tax professionals before implementing significant changes to your tax strategy. The potential savings from proper optimization can be substantial, but the strategies must be implemented correctly to avoid penalties and maximize benefits.
+                    </p>
+                </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Final Bottom Ad -->
+    <div class="max-w-7xl mx-auto px-4 pb-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Final Bottom Ad (728x90 / 320x50)
+      </div>
+    </div>
+
+    <div id="footer-container"></div>
+
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

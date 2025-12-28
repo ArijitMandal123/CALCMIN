@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staycation vs Vacation Cost Comparison - Compare Travel Costs & Value | CalcMin.pro</title>
+    <meta name="description" content="Compare staycation vs vacation costs with detailed analysis. Calculate travel expenses, accommodation, activities, and value scores to make informed travel decisions.">
+    <meta name="keywords" content="staycation vs vacation, travel cost comparison, vacation budget calculator, staycation cost, travel planning, vacation value analysis">
+    <meta name="author" content="CalcMin.pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calcmin.pro/StaycationVsVacation/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Staycation vs Vacation Cost Comparison - Travel Cost Calculator">
+    <meta property="og:description" content="Compare the true costs and value of staycations vs travel vacations. Get detailed breakdowns of expenses and ROI analysis for better travel decisions.">
+    <meta property="og:url" content="https://calcmin.pro/StaycationVsVacation/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CalcMin.pro">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Staycation vs Vacation Cost Comparison">
+    <meta name="twitter:description" content="Calculate and compare staycation vs vacation costs with detailed value analysis for smarter travel planning.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FE4E02",
+                        dark: "#00053D", 
+                        broder: "#182267",
+                        accent: "#FD803D",
+                        light: "#FECEB6",
+                        text: "#F7FBFC"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Staycation vs Vacation Cost Comparison",
+        "description": "Compare costs and value between staycations and travel vacations with detailed expense breakdowns and ROI analysis for informed travel planning.",
+        "url": "https://calcmin.pro/StaycationVsVacation/",
+        "applicationCategory": "TravelApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "CalcMin.pro"
+        }
+    }
+    </script>
+</head>
+<body class="bg-dark text-text min-h-screen">
+    <!-- Navigation -->
+    <nav id="navbar-container"></nav>
+
+    <!-- Top Ad Space -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+        <div class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm">
+            Top Ad Space (728x90 / 320x50)
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Calculator -->
+            <div class="lg:col-span-2">
+                <!-- Header -->
+                <div class="bg-broder p-6 rounded-lg border border-accent mb-6">
+                    <h1 class="text-3xl font-bold text-primary mb-4">
+                        <span class="material-icons text-4xl align-middle mr-2">compare</span>
+                        Staycation vs Vacation Cost Comparison
+                    </h1>
+                    <p class="text-light text-lg">Compare the true costs and value of staycations versus travel vacations. Get detailed expense breakdowns and value analysis to make informed travel decisions.</p>
+                </div>
+
+                <!-- Calculator Form -->
+                <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
+                    <form id="vacation-comparison-form" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Vacation Duration (days)</label>
+                                <input type="number" id="duration" placeholder="e.g., 7" min="1" max="30" 
+                                       class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Group Size</label>
+                                <input type="number" id="group-size" placeholder="e.g., 2" min="1" max="20" value="2"
+                                       class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Travel Destination (optional)</label>
+                            <input type="text" id="destination" placeholder="e.g., Paris, New York, Hawaii"
+                                   class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Distance to Destination (miles)</label>
+                                <input type="number" id="distance" placeholder="e.g., 500" min="0"
+                                       class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Transportation Mode</label>
+                                <select id="transport-mode" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary">
+                                    <option value="flight">Flight</option>
+                                    <option value="car">Car</option>
+                                    <option value="train">Train</option>
+                                    <option value="bus">Bus</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Accommodation Type</label>
+                                <select id="accommodation-type" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select accommodation</option>
+                                    <option value="budget">Budget Hotel/Hostel</option>
+                                    <option value="mid-range">Mid-range Hotel</option>
+                                    <option value="luxury">Luxury Hotel/Resort</option>
+                                    <option value="airbnb">Airbnb/Vacation Rental</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Daily Food Budget</label>
+                                <select id="food-budget" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select food budget</option>
+                                    <option value="budget">Budget ($30-50/day)</option>
+                                    <option value="moderate">Moderate ($50-80/day)</option>
+                                    <option value="upscale">Upscale ($80-120/day)</option>
+                                    <option value="luxury">Luxury ($120+/day)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Activity Budget per Day</label>
+                                <input type="number" id="activity-budget" placeholder="e.g., 100" min="0"
+                                       class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Your Location Type</label>
+                                <select id="location-type" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select your area</option>
+                                    <option value="major-city">Major City</option>
+                                    <option value="suburban">Suburban Area</option>
+                                    <option value="small-town">Small Town/Rural</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-medium py-3 px-6 rounded transition duration-200">
+                            Compare Costs & Value
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results -->
+                <div id="results" class="hidden">
+                    <div id="result-content"></div>
+                </div>
+            </div>
+
+            <!-- Right Column - Ads -->
+            <div class="lg:col-span-1">
+                <!-- Top Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+
+                <!-- Middle Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Ad Space -->
+        <div class="mt-8 bg-broder p-4 rounded-lg border border-accent text-center">
+            <div class="text-light text-sm mb-2">Advertisement</div>
+            <div class="bg-dark h-24 flex items-center justify-center rounded">
+                <span class="text-accent">Ad Space 728x90</span>
+            </div>
+        </div>
+
+        <!-- Blog Content -->
+        <article class="mt-12 bg-broder p-8 rounded-lg border border-accent">
+            <h2 class="text-3xl font-bold text-primary mb-6">Complete Guide to Staycation vs Vacation Cost Analysis</h2>
+            
+            <div class="prose prose-invert max-w-none">
+                <p class="text-light text-lg leading-relaxed mb-6">
+                    The rise of staycations has transformed how we think about vacation planning. With travel costs increasing and remote work enabling flexible schedules, many travelers are discovering that staying local can offer exceptional value and unique experiences. Our calculator helps you make data-driven decisions about your next getaway.
+                </p>
+
+                <div class="space-y-8">
+                    <section class="bg-broder rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-primary">Understanding True Vacation Costs</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Transportation Costs</h4>
+                                <p class="text-sm text-light">Often 20-40% of total vacation budget. Includes flights, car rentals, gas, parking, airport transfers, and local transportation. Hidden costs include baggage fees, seat upgrades, and travel insurance.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Accommodation Expenses</h4>
+                                <p class="text-sm text-light">Typically 30-50% of vacation budget. Varies dramatically by location, season, and type. Resort fees, taxes, and cleaning fees can add 15-25% to advertised rates.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Food & Dining</h4>
+                                <p class="text-sm text-light">Restaurant prices in tourist areas average 2-3x local prices. Hotel minibar and room service add significant premiums. Vacation dining typically costs 3-5x home cooking.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Activities & Entertainment</h4>
+                                <p class="text-sm text-light">Tourist attractions, tours, and experiences. Popular destinations charge premium prices. Group discounts and city passes can reduce costs by 20-40%.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-broder rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-primary">Staycation Cost Breakdown</h3>
+                        
+                        <div class="overflow-x-auto mb-6">
+                            <table class="w-full text-sm border border-accent rounded">
+                                <thead class="bg-dark">
+                                    <tr>
+                                        <th class="p-3 text-left text-accent">Expense Category</th>
+                                        <th class="p-3 text-left text-accent">Staycation Cost</th>
+                                        <th class="p-3 text-left text-accent">Travel Vacation</th>
+                                        <th class="p-3 text-left text-accent">Savings</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-light">
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Transportation</td>
+                                        <td class="p-3">$20-50/day</td>
+                                        <td class="p-3">$200-800/trip</td>
+                                        <td class="p-3">60-90%</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Accommodation</td>
+                                        <td class="p-3">$80-200/night</td>
+                                        <td class="p-3">$150-500/night</td>
+                                        <td class="p-3">30-60%</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Food & Dining</td>
+                                        <td class="p-3">$40-80/day</td>
+                                        <td class="p-3">$60-150/day</td>
+                                        <td class="p-3">20-50%</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Activities</td>
+                                        <td class="p-3">$30-100/day</td>
+                                        <td class="p-3">$50-200/day</td>
+                                        <td class="p-3">25-50%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="bg-broder rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-primary">Value Analysis Framework</h3>
+                        <div class="space-y-4">
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Relaxation Value</h4>
+                                <p class="text-sm text-light">Staycations eliminate travel stress, jet lag, and packing hassles. You can sleep in your own bed and maintain routines. Travel vacations offer complete environment change and mental reset.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Adventure & Discovery</h4>
+                                <p class="text-sm text-light">Travel vacations excel in new experiences, cultures, and perspectives. Staycations can reveal hidden local gems and activities you've overlooked in your own area.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Social & Cultural Exposure</h4>
+                                <p class="text-sm text-light">International travel provides irreplaceable cultural immersion and language practice. Staycations allow deeper connections with local community and friends.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Flexibility & Spontaneity</h4>
+                                <p class="text-sm text-light">Staycations offer ultimate flexibility - extend, modify, or cancel plans easily. Travel vacations require more commitment but provide structured adventure.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-broder rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-primary">Maximizing Staycation Value</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Create Vacation Mindset</h4>
+                                <p class="text-sm text-light">Book accommodations even if local. Set out-of-office messages. Avoid household chores. Plan activities in advance like a real vacation.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Explore Like a Tourist</h4>
+                                <p class="text-sm text-light">Visit local attractions you've never seen. Take guided tours of your city. Try restaurants in different neighborhoods. Use tourism websites for your own area.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Upgrade Your Experience</h4>
+                                <p class="text-sm text-light">Use savings for luxury experiences: spa days, fine dining, premium activities. Book better accommodations than you'd afford while traveling.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Invite Friends & Family</h4>
+                                <p class="text-sm text-light">Host friends from out of town. Plan group activities. Create shared experiences that strengthen local relationships.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-broder rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-primary">When to Choose Travel vs Staycation</h3>
+                        
+                        <h4 class="text-xl font-semibold mb-3 text-accent">Choose Travel Vacation When:</h4>
+                        <ul class="list-disc list-inside text-light space-y-2 mb-6">
+                            <li>You need complete environment change and mental reset</li>
+                            <li>Specific destinations offer unique experiences unavailable locally</li>
+                            <li>You have significant time off (2+ weeks) to justify travel costs</li>
+                            <li>Cultural immersion and language practice are priorities</li>
+                            <li>You're celebrating major milestones or special occasions</li>
+                            <li>Travel costs represent good value for your income level</li>
+                        </ul>
+
+                        <h4 class="text-xl font-semibold mb-3 text-accent">Choose Staycation When:</h4>
+                        <ul class="list-disc list-inside text-light space-y-2">
+                            <li>Budget is limited or you're saving for other goals</li>
+                            <li>Time off is short (3-5 days) making travel inefficient</li>
+                            <li>You live in an area with abundant local attractions</li>
+                            <li>Travel stress outweighs benefits for your situation</li>
+                            <li>You want to strengthen local relationships and community ties</li>
+                            <li>Environmental impact of travel is a concern</li>
+                        </ul>
+                    </section>
+
+                    <section class="bg-broder rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-primary">Frequently Asked Questions</h3>
+                        <div class="space-y-4">
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">How much can I really save with a staycation?</h4>
+                                <p class="text-sm text-light">Typical savings range from 40-70% compared to equivalent travel vacations. The biggest savings come from eliminating transportation costs and choosing local accommodation rates over tourist pricing.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Do staycations feel like real vacations?</h4>
+                                <p class="text-sm text-light">Success depends on mindset and planning. Booking accommodation, avoiding home responsibilities, and planning activities in advance help create authentic vacation feelings.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">What's the ideal staycation length?</h4>
+                                <p class="text-sm text-light">3-5 days works well for most people. Long enough to disconnect from routine but short enough to maintain vacation mindset without home distractions creeping in.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Should I book local hotels for staycations?</h4>
+                                <p class="text-sm text-light">Yes, if budget allows. Hotels provide vacation atmosphere, eliminate household distractions, and often offer amenities like pools, spas, and room service that enhance the experience.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer-container"></footer>
+
+    <script src="script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+</body>
+</html>

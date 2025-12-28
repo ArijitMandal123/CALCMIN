@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustainable Shopping Impact Tracker - Monitor Your Environmental Footprint | CalcMin Pro</title>
+    <meta name="description" content="Track your shopping habits and environmental impact over time. Get personalized recommendations for sustainable swaps, monitor waste generation, and discover cost-effective eco-friendly alternatives.">
+    <meta name="keywords" content="sustainable shopping tracker, environmental impact calculator, eco-friendly shopping, waste tracking, carbon footprint shopping, sustainable alternatives, green shopping habits">
+    <meta name="author" content="CalcMin Pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calcmin.pro/SustainableShoppingTracker/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Sustainable Shopping Impact Tracker - Monitor Your Environmental Footprint">
+    <meta property="og:description" content="Track your shopping habits and environmental impact over time with personalized recommendations for sustainable alternatives.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calcmin.pro/SustainableShoppingTracker/">
+    <meta property="og:site_name" content="CalcMin Pro">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sustainable Shopping Impact Tracker">
+    <meta name="twitter:description" content="Track your shopping habits and environmental impact with personalized sustainability recommendations.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    
+    <!-- External CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FE4E02",
+                        dark: "#00053D", 
+                        broder: "#182267",
+                        accent: "#FD803D",
+                        light: "#FECEB6",
+                        text: "#F7FBFC"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Sustainable Shopping Impact Tracker",
+        "description": "Track your shopping habits and environmental impact over time with personalized recommendations for sustainable alternatives.",
+        "url": "https://calcmin.pro/SustainableShoppingTracker/",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "CalcMin Pro",
+            "url": "https://calcmin.pro"
+        }
+    }
+    </script>
+</head>
+<body class="bg-dark text-text min-h-screen">
+    <!-- Navigation -->
+    <div id="navbar-container"></div>
+
+    <!-- Breadcrumb -->
+    <div class="bg-broder py-2">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center">
+                        <a href="../" class="text-light hover:text-primary">Home</a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <span class="material-icons text-light mx-2">chevron_right</span>
+                            <a href="../#sustainability" class="text-light hover:text-primary">Sustainability</a>
+                        </div>
+                    </li>
+                    <li aria-current="page">
+                        <div class="flex items-center">
+                            <span class="material-icons text-light mx-2">chevron_right</span>
+                            <span class="text-primary">Sustainable Shopping Tracker</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Top Ad Space -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+        <div class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm">
+            Top Ad Space (728x90 / 320x50)
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Calculator -->
+            <div class="lg:col-span-2">
+                <!-- Header -->
+                <div class="bg-broder p-6 rounded-lg border border-accent mb-6">
+                    <h1 class="text-3xl font-bold text-primary mb-4">
+                        <span class="material-icons text-4xl align-middle mr-2">shopping_cart</span>
+                        Sustainable Shopping Impact Tracker
+                    </h1>
+                    <p class="text-light text-lg">Track your purchases and environmental impact over time. Get personalized recommendations for sustainable swaps and monitor your progress toward eco-friendly shopping habits.</p>
+                </div>
+
+                <!-- Calculator Form -->
+                <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
+                    <h2 class="text-xl font-semibold text-primary mb-4">Add Shopping Items</h2>
+                    
+                    <form id="shoppingTrackerForm" class="space-y-6">
+                        <!-- Item Details -->
+                        <div class="bg-dark p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-primary mb-4">Item Information</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-light mb-2">Item Name</label>
+                                    <input type="text" id="itemName" placeholder="e.g., Cotton T-shirt" 
+                                           class="w-full p-3 bg-broder border border-accent rounded text-text">
+                                </div>
+                                <div>
+                                    <label class="block text-light mb-2">Category</label>
+                                    <select id="itemCategory" class="w-full p-3 bg-broder border border-accent rounded text-text">
+                                        <option value="clothing">Clothing & Accessories</option>
+                                        <option value="electronics">Electronics</option>
+                                        <option value="home">Home & Garden</option>
+                                        <option value="food">Food & Beverages</option>
+                                        <option value="personal">Personal Care</option>
+                                        <option value="books">Books & Media</option>
+                                        <option value="toys">Toys & Games</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                <div>
+                                    <label class="block text-light mb-2">Cost ($)</label>
+                                    <input type="number" id="itemCost" step="0.01" min="0" 
+                                           class="w-full p-3 bg-broder border border-accent rounded text-text">
+                                </div>
+                                <div>
+                                    <label class="block text-light mb-2">Purchase Type</label>
+                                    <select id="purchaseType" class="w-full p-3 bg-broder border border-accent rounded text-text">
+                                        <option value="new">New</option>
+                                        <option value="secondhand">Secondhand</option>
+                                        <option value="refurbished">Refurbished</option>
+                                        <option value="rental">Rental/Borrowed</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Materials & Sustainability -->
+                        <div class="bg-dark p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-primary mb-4">Sustainability Details</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-light mb-2">Primary Material</label>
+                                    <select id="primaryMaterial" class="w-full p-3 bg-broder border border-accent rounded text-text">
+                                        <option value="cotton">Cotton</option>
+                                        <option value="polyester">Polyester</option>
+                                        <option value="plastic">Plastic</option>
+                                        <option value="metal">Metal</option>
+                                        <option value="wood">Wood</option>
+                                        <option value="glass">Glass</option>
+                                        <option value="paper">Paper</option>
+                                        <option value="leather">Leather</option>
+                                        <option value="organic">Organic Materials</option>
+                                        <option value="recycled">Recycled Materials</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-light mb-2">Brand Sustainability Rating</label>
+                                    <select id="brandRating" class="w-full p-3 bg-broder border border-accent rounded text-text">
+                                        <option value="1">1 - Poor (Fast fashion, no sustainability)</option>
+                                        <option value="2">2 - Below Average (Limited efforts)</option>
+                                        <option value="3">3 - Average (Some sustainable practices)</option>
+                                        <option value="4">4 - Good (Strong sustainability focus)</option>
+                                        <option value="5">5 - Excellent (B-Corp, carbon neutral)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                <div>
+                                    <label class="block text-light mb-2">Packaging Type</label>
+                                    <select id="packagingType" class="w-full p-3 bg-broder border border-accent rounded text-text">
+                                        <option value="minimal">Minimal/No packaging</option>
+                                        <option value="recyclable">Recyclable packaging</option>
+                                        <option value="biodegradable">Biodegradable packaging</option>
+                                        <option value="plastic">Plastic packaging</option>
+                                        <option value="excessive">Excessive packaging</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-light mb-2">Expected Lifespan</label>
+                                    <select id="expectedLifespan" class="w-full p-3 bg-broder border border-accent rounded text-text">
+                                        <option value="1">Less than 1 year</option>
+                                        <option value="2">1-2 years</option>
+                                        <option value="5">3-5 years</option>
+                                        <option value="10">5-10 years</option>
+                                        <option value="20">10+ years</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tracking Period -->
+                        <div class="bg-dark p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-primary mb-4">Tracking Settings</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-light mb-2">Tracking Period</label>
+                                    <select id="trackingPeriod" class="w-full p-3 bg-broder border border-accent rounded text-text">
+                                        <option value="monthly">Monthly Analysis</option>
+                                        <option value="quarterly">Quarterly Analysis</option>
+                                        <option value="yearly">Yearly Analysis</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-light mb-2">Shopping Budget Goal ($/month)</label>
+                                    <input type="number" id="budgetGoal" min="0" value="500" 
+                                           class="w-full p-3 bg-broder border border-accent rounded text-text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-bold py-4 px-6 rounded-lg transition duration-300 flex items-center justify-center">
+                            <span class="material-icons mr-2">add_shopping_cart</span>
+                            Add Item & Calculate Impact
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Column - Ads -->
+            <div class="lg:col-span-1">
+                <!-- Top Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+
+                <!-- Sustainability Tips -->
+                <div class="bg-broder rounded-lg border border-accent p-6 mb-6">
+                    <h3 class="text-xl font-bold text-primary mb-4">🌱 Sustainable Shopping Tips</h3>
+                    <ul class="space-y-3 text-light">
+                        <li class="flex items-start">
+                            <span class="material-icons text-primary mr-2 mt-1">shopping_bag</span>
+                            <span>Buy secondhand first - reduces waste by 80%</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="material-icons text-primary mr-2 mt-1">schedule</span>
+                            <span>Wait 24 hours before non-essential purchases</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="material-icons text-primary mr-2 mt-1">star</span>
+                            <span>Choose quality over quantity for longevity</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="material-icons text-primary mr-2 mt-1">recycling</span>
+                            <span>Look for recyclable or biodegradable packaging</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Middle Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results" class="hidden mt-12">
+            <div class="bg-broder rounded-lg border border-accent p-6">
+                <h2 class="text-2xl font-bold text-primary mb-6 flex items-center">
+                    <span class="material-icons mr-2">assessment</span>
+                    Your Shopping Impact Analysis
+                </h2>
+                <div id="resultsContent"></div>
+            </div>
+        </div>
+
+        <!-- Bottom Ad Space -->
+        <div class="mt-8 bg-broder p-4 rounded-lg border border-accent text-center">
+            <div class="text-light text-sm mb-2">Advertisement</div>
+            <div class="bg-dark h-24 flex items-center justify-center rounded">
+                <span class="text-accent">Ad Space 728x90</span>
+            </div>
+        </div>
+
+        <!-- Blog Content -->
+        <article class="mt-12 bg-broder p-8 rounded-lg border border-accent">
+            <h2 class="text-3xl font-bold text-primary mb-6">The Complete Guide to Sustainable Shopping and Environmental Impact Tracking</h2>
+            
+            <div class="prose prose-invert max-w-none">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-primary mb-4">Why Track Your Shopping Impact?</h3>
+                        <p class="text-light mb-4">
+                            The average American generates 4.9 pounds of waste daily, with consumer goods accounting for 60% of global carbon emissions. By tracking your shopping habits, you can identify patterns, reduce waste, and make more sustainable choices that benefit both the environment and your wallet.
+                        </p>
+                        <p class="text-light mb-4">
+                            Studies show that people who track their environmental impact reduce their carbon footprint by 15-25% within the first year. This awareness leads to better purchasing decisions, reduced impulse buying, and a shift toward quality over quantity.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-primary mb-4">The Hidden Costs of Fast Consumption</h3>
+                        <p class="text-light mb-4">
+                            Fast fashion alone produces 10% of global carbon emissions and is the second-largest polluter after oil. The average garment is worn only 7 times before disposal, with Americans throwing away 81 pounds of clothing annually.
+                        </p>
+                        <p class="text-light mb-4">
+                            Electronics waste is growing 3x faster than any other waste stream. The average smartphone contains materials from 16 different countries, requiring 240 pounds of raw materials to produce. Tracking helps identify opportunities for repair, resale, or responsible disposal.
+                        </p>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-primary mb-4">Environmental Impact by Product Category</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-dark p-4 rounded-lg">
+                        <h4 class="text-lg font-semibold text-primary mb-2">👕 Clothing & Textiles</h4>
+                        <ul class="text-light space-y-1 text-sm">
+                            <li>• Cotton: 2,700L water per t-shirt</li>
+                            <li>• Polyester: 70% more CO2 than cotton</li>
+                            <li>• Fast fashion: 92M tons waste/year</li>
+                            <li>• Secondhand: 80% less environmental impact</li>
+                        </ul>
+                    </div>
+                    <div class="bg-dark p-4 rounded-lg">
+                        <h4 class="text-lg font-semibold text-primary mb-2">📱 Electronics</h4>
+                        <ul class="text-light space-y-1 text-sm">
+                            <li>• Smartphone: 85kg CO2 to produce</li>
+                            <li>• Laptop: 300kg CO2 to produce</li>
+                            <li>• E-waste: 54M tons globally/year</li>
+                            <li>• Refurbished: 70% less impact</li>
+                        </ul>
+                    </div>
+                    <div class="bg-dark p-4 rounded-lg">
+                        <h4 class="text-lg font-semibold text-primary mb-2">🏠 Home Goods</h4>
+                        <ul class="text-light space-y-1 text-sm">
+                            <li>• Furniture: 25% of household CO2</li>
+                            <li>• Plastic items: 500+ year lifespan</li>
+                            <li>• Packaging: 30% of waste stream</li>
+                            <li>• Durable goods: 5x better cost/impact</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-primary mb-4">Sustainable Shopping Strategies</h3>
+                
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-primary mb-3">The 5 R's Hierarchy</h4>
+                    <p class="text-light mb-4">
+                        <strong>Refuse:</strong> Decline unnecessary items, freebies, and impulse purchases. The most sustainable product is the one you don't buy. This prevents waste at the source and saves money.
+                    </p>
+                    <p class="text-light mb-4">
+                        <strong>Reduce:</strong> Buy less by choosing quality over quantity. One $100 item lasting 10 years has lower environmental impact than ten $10 items lasting 1 year each.
+                    </p>
+                    <p class="text-light mb-4">
+                        <strong>Reuse:</strong> Repurpose items for different functions. Glass jars become storage containers, old t-shirts become cleaning rags. Creative reuse extends product lifecycles significantly.
+                    </p>
+                    <p class="text-light mb-4">
+                        <strong>Recycle:</strong> Properly dispose of items through appropriate recycling programs. Many electronics, textiles, and specialty items have dedicated recycling streams beyond curbside pickup.
+                    </p>
+                    <p class="text-light mb-4">
+                        <strong>Rot:</strong> Choose biodegradable materials when possible. Natural fibers, wood, and organic materials return to the earth safely, unlike synthetic alternatives.
+                    </p>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-primary mb-3">Secondhand First Strategy</h4>
+                    <p class="text-light mb-4">
+                        Buying secondhand reduces environmental impact by 80% compared to new purchases. Thrift stores, consignment shops, and online marketplaces offer quality items at fraction of retail prices while extending product lifecycles.
+                    </p>
+                    <p class="text-light mb-4">
+                        For electronics, certified refurbished products provide warranties while reducing e-waste. Refurbished laptops and phones perform comparably to new devices at 30-50% lower cost and environmental impact.
+                    </p>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-primary mb-4">Brand Sustainability Assessment</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <h4 class="text-xl font-semibold text-primary mb-3">Green Certifications to Look For</h4>
+                        <ul class="text-light space-y-2">
+                            <li><strong>B-Corporation:</strong> Meets highest standards of social and environmental performance</li>
+                            <li><strong>Fair Trade:</strong> Ensures fair wages and sustainable farming practices</li>
+                            <li><strong>ENERGY STAR:</strong> 10-50% more energy efficient than standard products</li>
+                            <li><strong>Forest Stewardship Council (FSC):</strong> Responsibly sourced wood and paper</li>
+                            <li><strong>OEKO-TEX:</strong> Textiles tested for harmful substances</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold text-primary mb-3">Red Flags to Avoid</h4>
+                        <ul class="text-light space-y-2">
+                            <li><strong>Greenwashing:</strong> Vague claims like "eco-friendly" without specifics</li>
+                            <li><strong>Fast Fashion:</strong> Extremely low prices, rapid trend cycles</li>
+                            <li><strong>Planned Obsolescence:</strong> Products designed to fail after short periods</li>
+                            <li><strong>Excessive Packaging:</strong> Multiple layers of non-recyclable materials</li>
+                            <li><strong>No Transparency:</strong> Brands that won't disclose supply chain information</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-primary mb-4">Cost-Benefit Analysis of Sustainable Choices</h3>
+                
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-primary mb-3">Initial Investment vs Long-term Savings</h4>
+                    <p class="text-light mb-4">
+                        Sustainable products often have higher upfront costs but lower total cost of ownership. A $200 organic cotton shirt lasting 5 years costs $40/year, while five $20 fast fashion shirts lasting 1 year each cost $100/year.
+                    </p>
+                    <p class="text-light mb-4">
+                        Energy-efficient appliances save $100-500 annually in utility costs. LED bulbs cost 3x more initially but last 25x longer and use 75% less energy, saving $100+ over their lifetime.
+                    </p>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-primary mb-3">Hidden Costs of Cheap Products</h4>
+                    <p class="text-light mb-4">
+                        Low-quality items require frequent replacement, increasing total cost and environmental impact. Cheap furniture, electronics, and clothing often contain harmful chemicals and break quickly, leading to disposal costs and health risks.
+                    </p>
+                    <p class="text-light mb-4">
+                        Fast fashion's true cost includes environmental cleanup, health impacts from chemical pollution, and social costs of poor working conditions. These externalized costs eventually affect everyone through environmental degradation and healthcare expenses.
+                    </p>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-primary mb-4">Tracking Tools and Metrics</h3>
+                
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-primary mb-3">Key Performance Indicators</h4>
+                    <p class="text-light mb-4">
+                        <strong>Carbon Footprint:</strong> Track CO2 equivalent emissions from purchases. Aim for 20% annual reduction through better choices and reduced consumption.
+                    </p>
+                    <p class="text-light mb-4">
+                        <strong>Waste Generation:</strong> Monitor pounds of waste created monthly. Include packaging, broken items, and end-of-life disposal.
+                    </p>
+                    <p class="text-light mb-4">
+                        <strong>Cost Per Use:</strong> Calculate total cost divided by number of uses. Higher-quality items often have lower cost per use despite higher initial prices.
+                    </p>
+                    <p class="text-light mb-4">
+                        <strong>Sustainability Score:</strong> Rate purchases 1-10 based on materials, brand practices, packaging, and expected lifespan. Aim for average scores above 7.
+                    </p>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-primary mb-4">Building Sustainable Habits</h3>
+                
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-primary mb-3">The 24-Hour Rule</h4>
+                    <p class="text-light mb-4">
+                        Wait 24 hours before non-essential purchases. This simple rule reduces impulse buying by 60% and allows time to research sustainable alternatives or find secondhand options.
+                    </p>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-primary mb-3">Monthly Sustainability Challenges</h4>
+                    <p class="text-light mb-4">
+                        Set monthly goals like "Buy Nothing New" month, "Secondhand September," or "Repair Don't Replace" challenges. These focused efforts build sustainable habits while creating measurable impact.
+                    </p>
+                </div>
+
+                <div class="bg-dark p-6 rounded-lg mt-8">
+                    <h3 class="text-2xl font-semibold text-primary mb-4">Your Sustainable Shopping Action Plan</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="text-lg font-semibold text-primary mb-2">This Week</h4>
+                            <ul class="text-light space-y-2">
+                                <li>• Audit current shopping habits and track for 7 days</li>
+                                <li>• Research secondhand options for next planned purchase</li>
+                                <li>• Implement 24-hour rule for non-essentials</li>
+                                <li>• Identify 3 sustainable brands in your categories</li>
+                                <li>• Calculate cost-per-use for recent purchases</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-primary mb-2">This Month</h4>
+                            <ul class="text-light space-y-2">
+                                <li>• Set monthly sustainability score target</li>
+                                <li>• Try one "buy nothing new" category</li>
+                                <li>• Research repair options for broken items</li>
+                                <li>• Join local buy/sell/trade groups</li>
+                                <li>• Track environmental impact metrics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <script src="script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+</body>
+</html>

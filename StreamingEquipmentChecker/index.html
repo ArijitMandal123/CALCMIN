@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streaming Equipment Sufficiency Checker - Stream Setup Analyzer | CalcMin.pro</title>
+    <meta name="description" content="Analyze your streaming setup and get personalized upgrade recommendations. Check if your equipment is sufficient for Twitch, YouTube, and other platforms.">
+    <meta name="keywords" content="streaming equipment checker, stream setup analyzer, streaming gear calculator, twitch equipment requirements, streaming hardware analyzer, content creator tools">
+    <meta name="author" content="CalcMin.pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calcmin.pro/StreamingEquipmentChecker/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Streaming Equipment Sufficiency Checker - Stream Setup Analyzer">
+    <meta property="og:description" content="Analyze your streaming setup and get personalized equipment upgrade recommendations for better streaming quality.">
+    <meta property="og:url" content="https://calcmin.pro/StreamingEquipmentChecker/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CalcMin.pro">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Streaming Equipment Sufficiency Checker">
+    <meta name="twitter:description" content="Check if your streaming equipment is sufficient and get upgrade recommendations.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FE4E02",
+                        dark: "#00053D", 
+                        broder: "#182267",
+                        accent: "#FD803D",
+                        light: "#FECEB6",
+                        text: "#F7FBFC"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Streaming Equipment Sufficiency Checker",
+        "description": "Analyze your streaming setup and get personalized equipment upgrade recommendations for content creation.",
+        "url": "https://calcmin.pro/StreamingEquipmentChecker/",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "CalcMin.pro"
+        }
+    }
+    </script>
+</head>
+<body class="bg-dark text-text min-h-screen">
+    <!-- Navigation -->
+    <nav id="navbar-container"></nav>
+
+    <!-- Top Ad Space -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+        <div class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm">
+            Top Ad Space (728x90 / 320x50)
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Calculator -->
+            <div class="lg:col-span-2">
+                <!-- Header -->
+                <div class="bg-broder p-6 rounded-lg border border-accent mb-6">
+                    <h1 class="text-3xl font-bold text-primary mb-4">
+                        <span class="material-icons text-4xl align-middle mr-2">videocam</span>
+                        Streaming Equipment Sufficiency Checker
+                    </h1>
+                    <p class="text-light text-lg">Analyze your current streaming setup and get personalized recommendations for equipment upgrades to improve your stream quality and performance.</p>
+                </div>
+
+                <!-- Calculator Form -->
+                <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
+                    <form id="streaming-form" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Streaming Platform</label>
+                                <select id="platform" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select platform</option>
+                                    <option value="twitch">Twitch</option>
+                                    <option value="youtube">YouTube Live</option>
+                                    <option value="facebook">Facebook Gaming</option>
+                                    <option value="tiktok">TikTok Live</option>
+                                    <option value="kick">Kick</option>
+                                    <option value="multiple">Multiple Platforms</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Content Type</label>
+                                <select id="contentType" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select content type</option>
+                                    <option value="gaming">Gaming</option>
+                                    <option value="just-chatting">Just Chatting</option>
+                                    <option value="creative">Creative/Art</option>
+                                    <option value="music">Music Performance</option>
+                                    <option value="educational">Educational/Tutorial</option>
+                                    <option value="irl">IRL/Outdoor</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Target Viewer Count</label>
+                                <select id="viewerGoal" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select goal</option>
+                                    <option value="hobby">Hobby (0-50 viewers)</option>
+                                    <option value="growing">Growing (50-200 viewers)</option>
+                                    <option value="established">Established (200-1000 viewers)</option>
+                                    <option value="partner">Partner Level (1000+ viewers)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Upgrade Budget ($)</label>
+                                <input type="number" id="budget" placeholder="e.g., 500" min="0" max="10000" 
+                                       class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <!-- Current Equipment Section -->
+                        <div class="space-y-4">
+                            <h3 class="text-lg font-semibold text-accent">Current Equipment</h3>
+                            
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">CPU</label>
+                                    <select id="cpu" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                        <option value="">Select CPU</option>
+                                        <option value="budget">Budget (i3/Ryzen 3)</option>
+                                        <option value="mid-range">Mid-range (i5/Ryzen 5)</option>
+                                        <option value="high-end">High-end (i7/Ryzen 7)</option>
+                                        <option value="enthusiast">Enthusiast (i9/Ryzen 9)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">GPU</label>
+                                    <select id="gpu" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                        <option value="">Select GPU</option>
+                                        <option value="integrated">Integrated Graphics</option>
+                                        <option value="budget">Budget (GTX 1650/RX 5500)</option>
+                                        <option value="mid-range">Mid-range (RTX 3060/RX 6600)</option>
+                                        <option value="high-end">High-end (RTX 3070/RX 6800)</option>
+                                        <option value="enthusiast">Enthusiast (RTX 4080+/RX 7900+)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">RAM</label>
+                                    <select id="ram" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                        <option value="">Select RAM</option>
+                                        <option value="8gb">8GB</option>
+                                        <option value="16gb">16GB</option>
+                                        <option value="32gb">32GB</option>
+                                        <option value="64gb">64GB+</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Internet Upload Speed (Mbps)</label>
+                                    <input type="number" id="uploadSpeed" placeholder="e.g., 10" min="1" max="1000" 
+                                           class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                </div>
+                            </div>
+
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Camera</label>
+                                    <select id="camera" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                        <option value="">Select camera</option>
+                                        <option value="none">No camera</option>
+                                        <option value="webcam-basic">Basic webcam (720p)</option>
+                                        <option value="webcam-good">Good webcam (1080p)</option>
+                                        <option value="dslr">DSLR/Mirrorless</option>
+                                        <option value="professional">Professional camera</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Microphone</label>
+                                    <select id="microphone" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                        <option value="">Select microphone</option>
+                                        <option value="headset">Gaming headset mic</option>
+                                        <option value="usb-basic">Basic USB mic</option>
+                                        <option value="usb-good">Good USB mic (Blue Yeti, etc.)</option>
+                                        <option value="xlr">XLR microphone + interface</option>
+                                        <option value="professional">Professional setup</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Additional Equipment</label>
+                            <div class="grid md:grid-cols-2 gap-3">
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="lighting" name="equipment" value="lighting" 
+                                           class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Dedicated lighting setup</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="greenscreen" name="equipment" value="greenscreen" 
+                                           class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Green screen</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="capturecard" name="equipment" value="capturecard" 
+                                           class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Capture card</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="streamdeck" name="equipment" value="streamdeck" 
+                                           class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Stream Deck</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-medium py-3 px-6 rounded transition duration-200">
+                            Analyze Streaming Setup
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results -->
+                <div id="results" class="hidden">
+                    <div id="result-content"></div>
+                </div>
+            </div>
+
+            <!-- Right Column - Ads -->
+            <div class="lg:col-span-1">
+                <!-- Top Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+
+                <!-- Middle Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Ad Space -->
+        <div class="mt-8 bg-broder p-4 rounded-lg border border-accent text-center">
+            <div class="text-light text-sm mb-2">Advertisement</div>
+            <div class="bg-dark h-24 flex items-center justify-center rounded">
+                <span class="text-accent">Ad Space 728x90</span>
+            </div>
+        </div>
+
+        <!-- Blog Content -->
+        <article class="mt-12 bg-broder p-8 rounded-lg border border-accent">
+            <h2 class="text-3xl font-bold text-primary mb-6">Complete Guide to Streaming Equipment Analysis</h2>
+            
+            <div class="prose prose-invert max-w-none">
+                <p class="text-light text-lg leading-relaxed mb-6">
+                    Building the perfect streaming setup requires balancing performance, quality, and budget constraints. Our Streaming Equipment Sufficiency Checker analyzes your current hardware and provides personalized upgrade recommendations to help you achieve your streaming goals. Whether you're starting out or looking to improve your existing setup, understanding your equipment's capabilities and limitations is crucial for streaming success.
+                </p>
+
+                <div class="space-y-8">
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Essential Streaming Equipment Categories</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Core Hardware</h4>
+                                <p class="text-sm text-light">CPU, GPU, RAM, and internet connection form the foundation of your streaming capability and determine encoding quality.</p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Audio Equipment</h4>
+                                <p class="text-sm text-light">Microphones, audio interfaces, and headphones directly impact viewer experience and stream professionalism.</p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Video Equipment</h4>
+                                <p class="text-sm text-light">Cameras, lighting, and capture cards determine visual quality and production value of your content.</p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Accessories</h4>
+                                <p class="text-sm text-light">Stream decks, green screens, and lighting enhance production quality and streaming workflow efficiency.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Platform-Specific Requirements</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border border-accent rounded">
+                                <thead class="bg-broder">
+                                    <tr>
+                                        <th class="p-3 text-left text-primary">Platform</th>
+                                        <th class="p-3 text-left text-primary">Max Bitrate</th>
+                                        <th class="p-3 text-left text-primary">Resolution</th>
+                                        <th class="p-3 text-left text-primary">Special Features</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-light">
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3 font-semibold">Twitch</td>
+                                        <td class="p-3">6000 kbps</td>
+                                        <td class="p-3">1080p60</td>
+                                        <td class="p-3">Low latency, chat integration</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3 font-semibold">YouTube Live</td>
+                                        <td class="p-3">9000 kbps</td>
+                                        <td class="p-3">4K60</td>
+                                        <td class="p-3">Higher quality, VOD integration</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3 font-semibold">Facebook Gaming</td>
+                                        <td class="p-3">4000 kbps</td>
+                                        <td class="p-3">1080p30</td>
+                                        <td class="p-3">Social integration, mobile focus</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3 font-semibold">TikTok Live</td>
+                                        <td class="p-3">2000 kbps</td>
+                                        <td class="p-3">720p30</td>
+                                        <td class="p-3">Mobile-first, short attention spans</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Hardware Performance Tiers</h3>
+                        <div class="space-y-4">
+                            <div class="bg-green-900/20 border border-green-600 rounded p-4">
+                                <h4 class="font-semibold text-green-400 mb-2">Entry Level ($300-800)</h4>
+                                <div class="grid md:grid-cols-3 gap-4 text-sm text-light">
+                                    <div><strong>CPU:</strong> i3/Ryzen 3</div>
+                                    <div><strong>GPU:</strong> GTX 1650/RX 5500</div>
+                                    <div><strong>Quality:</strong> 720p30, basic streaming</div>
+                                </div>
+                            </div>
+                            <div class="bg-blue-900/20 border border-blue-600 rounded p-4">
+                                <h4 class="font-semibold text-blue-400 mb-2">Mid-Range ($800-1500)</h4>
+                                <div class="grid md:grid-cols-3 gap-4 text-sm text-light">
+                                    <div><strong>CPU:</strong> i5/Ryzen 5</div>
+                                    <div><strong>GPU:</strong> RTX 3060/RX 6600</div>
+                                    <div><strong>Quality:</strong> 1080p30-60, good streaming</div>
+                                </div>
+                            </div>
+                            <div class="bg-purple-900/20 border border-purple-600 rounded p-4">
+                                <h4 class="font-semibold text-purple-400 mb-2">High-End ($1500-3000)</h4>
+                                <div class="grid md:grid-cols-3 gap-4 text-sm text-light">
+                                    <div><strong>CPU:</strong> i7/Ryzen 7</div>
+                                    <div><strong>GPU:</strong> RTX 3070+/RX 6800+</div>
+                                    <div><strong>Quality:</strong> 1080p60+, professional streaming</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Common Bottlenecks and Solutions</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="space-y-4">
+                                <div class="bg-broder p-4 rounded border border-accent">
+                                    <h4 class="font-semibold text-primary mb-2">CPU Bottleneck</h4>
+                                    <ul class="text-sm text-light space-y-1">
+                                        <li>• Symptoms: Dropped frames, encoding lag</li>
+                                        <li>• Solution: Upgrade CPU or use GPU encoding</li>
+                                        <li>• Quick fix: Lower encoding preset</li>
+                                        <li>• Budget option: Use NVENC/AMF encoding</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-broder p-4 rounded border border-accent">
+                                    <h4 class="font-semibold text-primary mb-2">Internet Bandwidth</h4>
+                                    <ul class="text-sm text-light space-y-1">
+                                        <li>• Symptoms: Stream buffering, quality drops</li>
+                                        <li>• Solution: Upgrade internet plan</li>
+                                        <li>• Quick fix: Lower bitrate settings</li>
+                                        <li>• Optimization: Use wired connection</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="bg-broder p-4 rounded border border-accent">
+                                    <h4 class="font-semibold text-primary mb-2">Audio Quality Issues</h4>
+                                    <ul class="text-sm text-light space-y-1">
+                                        <li>• Symptoms: Background noise, poor clarity</li>
+                                        <li>• Solution: Upgrade microphone and audio interface</li>
+                                        <li>• Quick fix: Use noise suppression filters</li>
+                                        <li>• Budget option: USB microphone upgrade</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-broder p-4 rounded border border-accent">
+                                    <h4 class="font-semibold text-primary mb-2">Video Quality Problems</h4>
+                                    <ul class="text-sm text-light space-y-1">
+                                        <li>• Symptoms: Pixelation, poor lighting</li>
+                                        <li>• Solution: Better camera and lighting setup</li>
+                                        <li>• Quick fix: Improve room lighting</li>
+                                        <li>• Budget option: Webcam with good low-light performance</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Upgrade Priority Matrix</h3>
+                        <div class="space-y-4">
+                            <div class="bg-red-900/20 border border-red-600 rounded p-4">
+                                <h4 class="font-semibold text-red-400 mb-2">High Priority Upgrades</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Microphone (biggest impact on viewer experience)</li>
+                                    <li>• Internet connection (prevents technical issues)</li>
+                                    <li>• CPU/GPU for encoding (core streaming capability)</li>
+                                    <li>• Basic lighting (immediate visual improvement)</li>
+                                </ul>
+                            </div>
+                            <div class="bg-yellow-900/20 border border-yellow-600 rounded p-4">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Medium Priority Upgrades</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Camera upgrade (visual quality improvement)</li>
+                                    <li>• RAM increase (multitasking performance)</li>
+                                    <li>• Audio interface (professional audio quality)</li>
+                                    <li>• Capture card (console streaming capability)</li>
+                                </ul>
+                            </div>
+                            <div class="bg-green-900/20 border border-green-600 rounded p-4">
+                                <h4 class="font-semibold text-green-400 mb-2">Low Priority Upgrades</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Stream Deck (workflow convenience)</li>
+                                    <li>• Green screen (background flexibility)</li>
+                                    <li>• Professional lighting kit (advanced visual quality)</li>
+                                    <li>• Multiple monitors (productivity enhancement)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Budget-Conscious Upgrade Strategies</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-accent mb-3">Immediate Improvements ($0-100)</h4>
+                                <ul class="text-sm text-light space-y-2">
+                                    <li>• Optimize OBS settings for your hardware</li>
+                                    <li>• Improve room lighting with existing lamps</li>
+                                    <li>• Use noise suppression and audio filters</li>
+                                    <li>• Position camera at eye level</li>
+                                    <li>• Clean up background and streaming area</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-accent mb-3">Phased Upgrade Plan</h4>
+                                <ul class="text-sm text-light space-y-2">
+                                    <li>• Month 1: Microphone upgrade ($50-150)</li>
+                                    <li>• Month 2: Basic lighting setup ($30-80)</li>
+                                    <li>• Month 3: Webcam upgrade ($100-200)</li>
+                                    <li>• Month 4-6: Save for major hardware upgrade</li>
+                                    <li>• Month 6+: CPU/GPU upgrade ($300-800)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer-container"></footer>
+
+    <script src="script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+</body>
+</html>

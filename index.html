@@ -1,0 +1,3115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tools Website - Free Online Calculators</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#FE4E02",
+              dark: "#00053D",
+              broder: "#182267",
+              accent: "#FD803D",
+              light: "#FECEB6",
+              text: "#F7FBFC",
+            },
+            animation: {
+              "fade-in-up": "fadeInUp 0.8s ease-out forwards",
+              gradient: "gradient 3s ease infinite",
+              float: "float 6s ease-in-out infinite",
+              "spin-slow": "spin 3s linear infinite",
+            },
+            keyframes: {
+              fadeInUp: {
+                "0%": { opacity: "0", transform: "translateY(30px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+              gradient: {
+                "0%, 100%": { backgroundPosition: "0% 50%" },
+                "50%": { backgroundPosition: "100% 50%" },
+              },
+              float: {
+                "0%, 100%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-20px)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Glitch Text Effect */
+      .glitch-text {
+        position: relative;
+        color: #f7fbfc;
+        font-family: "Courier New", monospace;
+        text-shadow: 0 0 20px #fe4e02;
+        animation: glitch-main 2s infinite;
+      }
+
+      .glitch-text::before,
+      .glitch-text::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .glitch-text::before {
+        animation: glitch-1 0.5s infinite;
+        color: #fe4e02;
+        z-index: -1;
+      }
+
+      .glitch-text::after {
+        animation: glitch-2 0.5s infinite;
+        color: #fd803d;
+        z-index: -2;
+      }
+
+      @keyframes glitch-main {
+        0%,
+        100% {
+          transform: translate(0);
+        }
+        20% {
+          transform: translate(-2px, 2px);
+        }
+        40% {
+          transform: translate(-2px, -2px);
+        }
+        60% {
+          transform: translate(2px, 2px);
+        }
+        80% {
+          transform: translate(2px, -2px);
+        }
+      }
+
+      @keyframes glitch-1 {
+        0%,
+        100% {
+          transform: translate(0);
+        }
+        10% {
+          transform: translate(-5px, -2px);
+        }
+        20% {
+          transform: translate(-10px, 2px);
+        }
+        30% {
+          transform: translate(10px, -1px);
+        }
+        40% {
+          transform: translate(-1px, 3px);
+        }
+        50% {
+          transform: translate(-3px, 2px);
+        }
+        60% {
+          transform: translate(-5px, -1px);
+        }
+        70% {
+          transform: translate(2px, 1px);
+        }
+        80% {
+          transform: translate(-1px, -1px);
+        }
+        90% {
+          transform: translate(1px, 2px);
+        }
+      }
+
+      @keyframes glitch-2 {
+        0%,
+        100% {
+          transform: translate(0);
+        }
+        10% {
+          transform: translate(5px, 2px);
+        }
+        20% {
+          transform: translate(10px, -2px);
+        }
+        30% {
+          transform: translate(-10px, 1px);
+        }
+        40% {
+          transform: translate(1px, -3px);
+        }
+        50% {
+          transform: translate(3px, -2px);
+        }
+        60% {
+          transform: translate(5px, 1px);
+        }
+        70% {
+          transform: translate(-2px, -1px);
+        }
+        80% {
+          transform: translate(1px, 1px);
+        }
+        90% {
+          transform: translate(-1px, -2px);
+        }
+      }
+
+      /* Holographic Subtitle */
+      .hologram-subtitle {
+        background: linear-gradient(
+          45deg,
+          #fe4e02,
+          #fd803d,
+          #feceb6,
+          #fd803d,
+          #fe4e02
+        );
+        background-size: 400% 400%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: hologram 3s ease-in-out infinite;
+        text-shadow: 0 0 30px rgba(254, 78, 2, 0.5);
+      }
+
+      @keyframes hologram {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      /* Quantum Description */
+      .quantum-description {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .morphing-word-display {
+        position: relative;
+        height: 80px;
+        width: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid transparent;
+        background: linear-gradient(45deg, #00053d, #182267) padding-box,
+          linear-gradient(45deg, #fe4e02, #fd803d, #fe4e02) border-box;
+        border-radius: 12px;
+      }
+
+      .morphing-word-display .word {
+        position: absolute;
+        font-size: 2rem;
+        font-weight: 900;
+        font-family: "Courier New", monospace;
+        opacity: 0;
+        transform: rotateX(90deg) scale(0.5);
+        transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        text-shadow: 0 0 30px currentColor;
+      }
+
+      .morphing-word-display .word.active {
+        opacity: 1;
+        transform: rotateX(0deg) scale(1);
+        color: #fe4e02;
+        animation: word-glow 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes word-glow {
+        0% {
+          text-shadow: 0 0 20px #fe4e02, 0 0 40px #fe4e02;
+        }
+        100% {
+          text-shadow: 0 0 30px #fd803d, 0 0 60px #fd803d;
+        }
+      }
+
+      .quantum-tagline {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 1.1rem;
+        letter-spacing: 3px;
+        color: #feceb6;
+      }
+
+      .quantum-particle {
+        color: #fe4e02;
+        font-size: 1.5rem;
+        animation: particle-spin 3s linear infinite;
+      }
+
+      .tagline-text {
+        background: linear-gradient(90deg, #feceb6, #fd803d, #feceb6);
+        background-size: 200% 100%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: text-shimmer 3s ease-in-out infinite;
+      }
+
+      @keyframes particle-spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes text-shimmer {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      /* Quantum Buttons */
+      .quantum-btn {
+        position: relative;
+        padding: 16px 32px;
+        border: 2px solid transparent;
+        background: linear-gradient(45deg, transparent, transparent) padding-box,
+          linear-gradient(45deg, #fe4e02, #fd803d, #fe4e02) border-box;
+        color: #f7fbfc;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .quantum-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 30px rgba(254, 78, 2, 0.6);
+      }
+
+      .quantum-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(254, 78, 2, 0.3),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .quantum-btn:hover::before {
+        left: 100%;
+      }
+
+      /* Calculator Particles */
+      .calc-particle {
+        position: absolute;
+        font-size: 2rem;
+        color: #fe4e02;
+        opacity: 0.6;
+        animation: particle-float 8s ease-in-out infinite;
+        text-shadow: 0 0 10px #fe4e02;
+      }
+
+      @keyframes particle-float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+          opacity: 0.6;
+        }
+        25% {
+          transform: translateY(-30px) rotate(90deg);
+          opacity: 1;
+        }
+        50% {
+          transform: translateY(-60px) rotate(180deg);
+          opacity: 0.8;
+        }
+        75% {
+          transform: translateY(-30px) rotate(270deg);
+          opacity: 1;
+        }
+      }
+
+      /* Data Stream Stats */
+      .data-stream {
+        position: relative;
+        text-align: center;
+      }
+
+      .stream-number {
+        font-size: 3rem;
+        font-weight: 900;
+        color: #fe4e02;
+        text-shadow: 0 0 20px #fe4e02;
+        font-family: "Courier New", monospace;
+        margin-bottom: 8px;
+      }
+
+      .stream-label {
+        font-size: 0.8rem;
+        color: #feceb6;
+        letter-spacing: 2px;
+        margin-bottom: 16px;
+      }
+
+      .stream-line {
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #fe4e02, transparent);
+        animation: stream-pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes stream-pulse {
+        0%,
+        100% {
+          opacity: 0.3;
+          transform: scaleX(0.5);
+        }
+        50% {
+          opacity: 1;
+          transform: scaleX(1);
+        }
+      }
+
+      /* Morphing SVG Animation */
+      .animate-morph {
+        animation: morph 10s ease-in-out infinite;
+      }
+
+      @keyframes morph {
+        0%,
+        100% {
+          d: path(
+            "M 0,400 C 0,400 0,200 0,200 C 100,250 200,150 300,200 C 400,250 500,150 600,200 C 700,250 800,150 900,200 C 1000,250 1100,150 1200,200 C 1200,200 1200,400 1200,400 Z"
+          );
+        }
+        25% {
+          d: path(
+            "M 0,400 C 0,400 0,200 0,200 C 100,150 200,250 300,200 C 400,150 500,250 600,200 C 700,150 800,250 900,200 C 1000,150 1100,250 1200,200 C 1200,200 1200,400 1200,400 Z"
+          );
+        }
+        50% {
+          d: path(
+            "M 0,400 C 0,400 0,200 0,200 C 100,200 200,200 300,200 C 400,200 500,100 600,150 C 700,200 800,300 900,250 C 1000,200 1100,100 1200,150 C 1200,150 1200,400 1200,400 Z"
+          );
+        }
+        75% {
+          d: path(
+            "M 0,400 C 0,400 0,200 0,200 C 100,300 200,100 300,200 C 400,300 500,100 600,200 C 700,300 800,100 900,200 C 1000,300 1100,100 1200,200 C 1200,200 1200,400 1200,400 Z"
+          );
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-dark text-text">
+    <div id="navbar-container"></div>
+
+    <!-- Revolutionary Morphing Hero -->
+    <section class="relative h-screen overflow-hidden bg-dark">
+      <!-- Liquid Morphing Background -->
+      <div class="absolute inset-0">
+        <svg
+          class="w-full h-full"
+          viewBox="0 0 1200 800"
+          preserveAspectRatio="xMidYMid slice"
+        >
+          <defs>
+            <linearGradient id="morphGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#FE4E02" stop-opacity="0.3" />
+              <stop offset="50%" stop-color="#FD803D" stop-opacity="0.2" />
+              <stop offset="100%" stop-color="#182267" stop-opacity="0.4" />
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+              <feMerge>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          <path
+            id="morphPath"
+            fill="url(#morphGrad1)"
+            filter="url(#glow)"
+            class="animate-morph"
+          />
+        </svg>
+      </div>
+
+      <!-- Floating Calculator Particles -->
+      <div class="absolute inset-0 pointer-events-none">
+        <div
+          class="calc-particle"
+          style="left: 10%; top: 20%; animation-delay: 0s"
+        >
+          ∑
+        </div>
+        <div
+          class="calc-particle"
+          style="left: 80%; top: 15%; animation-delay: 1s"
+        >
+          ∫
+        </div>
+        <div
+          class="calc-particle"
+          style="left: 15%; top: 70%; animation-delay: 2s"
+        >
+          π
+        </div>
+        <div
+          class="calc-particle"
+          style="left: 85%; top: 75%; animation-delay: 3s"
+        >
+          ∆
+        </div>
+        <div
+          class="calc-particle"
+          style="left: 50%; top: 10%; animation-delay: 4s"
+        >
+          ∞
+        </div>
+        <div
+          class="calc-particle"
+          style="left: 25%; top: 45%; animation-delay: 5s"
+        >
+          √
+        </div>
+        <div
+          class="calc-particle"
+          style="left: 75%; top: 50%; animation-delay: 6s"
+        >
+          %
+        </div>
+      </div>
+
+      <!-- Holographic Content Container -->
+      <div class="relative z-20 h-full flex items-center justify-center">
+        <div class="text-center max-w-6xl mx-auto px-4">
+          <!-- Glitch Title -->
+          <div class="mb-8">
+            <h1
+              class="glitch-text text-6xl md:text-8xl lg:text-9xl font-black mb-4"
+              data-text="CALCMIN"
+            >
+              CALCMIN
+            </h1>
+            <div
+              class="hologram-subtitle text-2xl md:text-4xl text-accent font-light tracking-widest"
+            >
+              BEYOND CALCULATION
+            </div>
+          </div>
+
+          <!-- Morphing Description -->
+          <div class="quantum-description mb-12">
+            <div class="morphing-word-display">
+              <span class="word active">TRANSFORM</span>
+              <span class="word">OPTIMIZE</span>
+              <span class="word">CALCULATE</span>
+              <span class="word">INNOVATE</span>
+            </div>
+            <div class="quantum-tagline">
+              <span class="quantum-particle">◆</span>
+              <span class="tagline-text"
+                >REALITY THROUGH QUANTUM ALGORITHMS</span
+              >
+              <span class="quantum-particle">◆</span>
+            </div>
+          </div>
+
+          <!-- Quantum Buttons -->
+          <div
+            class="flex flex-col md:flex-row gap-6 justify-center items-center mb-16"
+          >
+            <button class="quantum-btn primary-quantum group">
+              <span class="quantum-text">ENTER MATRIX</span>
+              <div class="quantum-particles"></div>
+            </button>
+          </div>
+
+          <!-- Data Stream Stats -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="data-stream">
+              <div class="stream-number">
+                <span class="counter" data-target="90">00</span
+                ><span class="text-primary">+</span>
+              </div>
+              <div class="stream-label">TOOLS</div>
+              <div class="stream-line"></div>
+            </div>
+            <div class="data-stream">
+              <div class="stream-number counter" data-target="100">00</div>
+              <div class="stream-label">EFFICIENCY</div>
+              <div class="stream-line"></div>
+            </div>
+            <div class="data-stream">
+              <div class="stream-number counter" data-target="6">0</div>
+              <div class="stream-label">DIMENSIONS</div>
+              <div class="stream-line"></div>
+            </div>
+            <div class="data-stream">
+              <div class="stream-number counter" data-target="24">00</div>
+              <div class="stream-label">HOURS SAVED</div>
+              <div class="stream-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Neural Network Lines -->
+      <canvas
+        id="neuralCanvas"
+        class="absolute inset-0 pointer-events-none opacity-30"
+      ></canvas>
+    </section>
+
+    <!-- Top Ad -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Top Ad Space (728x90 / 320x50)
+      </div>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-4 py-8 md:py-12">
+      <!-- 🤖 AI Content & Creators -->
+      <div class="mb-12">
+        <div class="text-center mb-8">
+          <h2
+            class="text-2xl md:text-3xl font-normal mb-3 text-text flex items-center justify-center gap-3"
+          >
+            <span class="material-icons text-4xl text-primary">psychology</span>
+            AI Content & Creators
+          </h2>
+          <p class="text-light text-base md:text-lg">
+            Advanced tools for AI optimization and content creation
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >psychology</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                AI Prompt Quality Scorer
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Analyze ChatGPT, Claude & AI prompts for clarity, specificity &
+              effectiveness. Get instant scores (1-100), weakness analysis &
+              improvement suggestions.
+            </p>
+            <a
+              href="AIPromptQualityScorer"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">psychology</span> Try Scorer
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >content_copy</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Content Repurposing Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate how many content pieces you can create from one original
+              content. Get 20-50+ content ideas, reach estimates & time
+              calculations for multiple platforms.
+            </p>
+            <a
+              href="ContentRepurposingCalculator"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">content_copy</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >trending_up</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                LinkedIn Engagement Predictor
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Predict LinkedIn post engagement BEFORE posting. Get estimated
+              likes, comments, shares & optimal posting times for maximum B2B
+              reach.
+            </p>
+            <a
+              href="LinkedInEngagementPredictor"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">trending_up</span> Try Predictor
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3">tag</span>
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Hashtag ROI Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate which hashtags drive actual conversions vs vanity
+              metrics. Track ROI per hashtag, cost-per-conversion & optimize
+              influencer marketing strategy.
+            </p>
+            <a
+              href="HashtagROICalculator"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">analytics</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >movie</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Video Script Length Optimizer
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate ideal script length for YouTube, TikTok, Instagram &
+              more. Get optimal word count, video duration & content breakdown
+              recommendations.
+            </p>
+            <a
+              href="VideoScriptOptimizer"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">movie</span> Try Optimizer
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 💼 Business & Finance -->
+      <div class="mb-12">
+        <div class="text-center mb-8">
+          <h2
+            class="text-2xl md:text-3xl font-normal mb-3 text-text flex items-center justify-center gap-3"
+          >
+            <span class="material-icons text-4xl text-primary"
+              >business_center</span
+            >
+            Business & Finance
+          </h2>
+          <p class="text-light text-base md:text-lg">
+            Professional tools for business planning and financial decisions
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >trending_up</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Bid Optimizer Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Optimize your freelance bids with data-driven pricing and proposal
+              strategies. Increase win rates and maximize project success on
+              platforms.
+            </p>
+            <a
+              href="BidOptimizer"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">trending_up</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >security</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Business Insurance Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Estimate insurance costs for different business types, employee
+              counts, and risk factors.
+            </p>
+            <a
+              href="BusinessInsurance"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">calculate</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >school</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                College Major ROI Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate return on investment for different college majors
+              considering tuition, time to degree, starting salaries, and career
+              growth.
+            </p>
+            <a
+              href="CollegeMajorROI"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">calculate</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >compare</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Contractor vs Employee Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate true cost comparison between hiring contractors vs
+              full-time employees including benefits, taxes, and overhead.
+            </p>
+            <a
+              href="ContractorVsEmployee"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">compare</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >business_center</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Coworking ROI Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate return on investment for coworking space membership vs
+              traditional office setups.
+            </p>
+            <a
+              href="CoworkingROI"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">calculate</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >security</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Emergency Fund Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Determine if your emergency fund is adequate based on industry,
+              job security, family size, health status, and location.
+            </p>
+            <a
+              href="EmergencyFund"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">security</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >trending_up</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Financial Independence Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate when you can achieve financial independence based on
+              savings rate, expenses, investments, and lifestyle with multiple
+              FIRE scenarios.
+            </p>
+            <a
+              href="FinancialIndependence"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">calculate</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >analytics</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Freelance Profitability Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate true profitability of freelance projects after
+              accounting for time, revisions, communication overhead, tools, and
+              taxes.
+            </p>
+            <a
+              href="FreelanceProfitability"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">calculate</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >work</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Freelancer Rate Comparison Tool
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Compare freelancing rates by skill, experience, location, and
+              platform to optimize your pricing strategy.
+            </p>
+            <a
+              href="FreelancerRate"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">compare</span> Try Tool
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >school</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Online Course Pricing Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Optimize pricing for online courses based on content length,
+              niche, and target audience.
+            </p>
+            <a
+              href="OnlineCoursePricing"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">calculate</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >timeline</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Passive Income Timeline Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Create realistic timeline for building passive income streams
+              based on method, time investment, and starting capital.
+            </p>
+            <a
+              href="PassiveIncomeTimeline"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">timeline</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >home_work</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Remote Work Tax Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate home office deductions, equipment expenses, and remote
+              work-related tax benefits for remote workers.
+            </p>
+            <a
+              href="RemoteWorkTax"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">calculate</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >subscriptions</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Subscription Audit Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Analyze all subscriptions and identify which can be downgraded,
+              paused seasonally, or replaced with free alternatives.
+            </p>
+            <a
+              href="SubscriptionAudit"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">subscriptions</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >home</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Vacation Rental ROI Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate potential ROI for Airbnb/vacation rental properties
+              including occupancy rates, cleaning costs, management fees.
+            </p>
+            <a
+              href="VacationRentalROI"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">calculate</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >attach_money</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Freelance Hourly Rate Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate minimum hourly rate needed for sustainable freelance
+              income with profit margins, tax considerations, and project rate
+              suggestions.
+            </p>
+            <a
+              href="FreelanceHourlyRate"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">attach_money</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >trending_up</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Business Breakeven Analysis Tool
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate when your business reaches profitability. Analyze
+              breakeven points, cash runway, funding needs, and business
+              feasibility with comprehensive modeling.
+            </p>
+            <a
+              href="BusinessBreakeven"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">trending_up</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >tune</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Service Business Pricing Optimizer
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Determine optimal pricing for consulting, freelancing, coaching,
+              and professional services with market analysis and profit
+              optimization.
+            </p>
+            <a
+              href="ServiceBusinessPricing"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">tune</span> Try Optimizer
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >assessment</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Product Viability Scorer
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Score your product idea's viability before building an MVP. Get
+              objective analysis, risk assessment, and data-driven
+              recommendations for startup success.
+            </p>
+            <a
+              href="ProductViabilityScorer"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">assessment</span> Try Scorer
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >shopping_cart</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                E-Commerce Product Profitability Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate true e-commerce product profitability accounting for all
+              costs. Analyze profit margins, break-even points, and optimize
+              pricing for all platforms.
+            </p>
+            <a
+              href="ECommerceProductProfitability"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">shopping_cart</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >work</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Career Satisfaction Pulse Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Measure your job satisfaction and predict retention likelihood.
+              Get personalized insights on what factors would increase your
+              career fulfillment most.
+            </p>
+            <a
+              href="CareerSatisfactionPulse"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">work</span> Try Calculator
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 🏢 Remote Work & Productivity -->
+      <div class="mb-12">
+        <div class="text-center mb-8">
+          <h2
+            class="text-2xl md:text-3xl font-normal mb-3 text-text flex items-center justify-center gap-3"
+          >
+            <span class="material-icons text-4xl text-primary">home</span>
+            Remote Work & Productivity
+          </h2>
+          <p class="text-light text-base md:text-lg">
+            Advanced tools for remote work optimization and productivity (5
+            tools)
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >schedule</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Deep Work Block Scheduler
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate optimal deep work blocks based on your calendar, energy
+              levels & task complexity. Maximize productivity with personalized
+              focus scheduling.
+            </p>
+            <a
+              href="DeepWorkScheduler"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">schedule</span> Try Scheduler
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >monetization_on</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Meeting ROI Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate true cost of meetings including attendees' hourly rates,
+              productivity impact & identify which meetings should be emails
+              instead.
+            </p>
+            <a
+              href="MeetingROICalculator"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">calculate</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >schedule</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Timezone Fair Meeting Finder
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Find meeting times that are 'fairly unfair' across distributed
+              teams. Get unfairness scores, rotation schedules & optimal times
+              for global remote teams.
+            </p>
+            <a
+              href="TimezoneFairMeetingFinder"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">schedule</span> Try Finder
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >psychology</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Focus Session Sustainability Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate how many hours of deep focus you can sustain before
+              burnout. Get personalized break schedules, vacation timing &
+              sustainable work capacity.
+            </p>
+            <a
+              href="FocusSessionSustainabilityCalculator"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">psychology</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >forum</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Asynchronous Communication Audit Tool
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Analyze your communication patterns and get an async score
+              (1-100). Discover improvement opportunities and estimate team
+              productivity impact.
+            </p>
+            <a
+              href="AsynchronousCommunicationAudit"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">forum</span> Try Audit Tool
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 📚 Education & Productivity -->
+      <div class="mb-12">
+        <div class="text-center mb-8">
+          <h2
+            class="text-2xl md:text-3xl font-normal mb-3 text-text flex items-center justify-center gap-3"
+          >
+            <span class="material-icons text-4xl text-primary">school</span>
+            Education & Productivity (9 Tools)
+          </h2>
+          <p class="text-light text-base md:text-lg">
+            Tools for learning, growth, and productivity optimization
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >school</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Study Material Format Optimizer
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Optimize your study methods based on learning style, subject area,
+              and academic goals. Get personalized format recommendations for
+              maximum efficiency.
+            </p>
+            <a
+              href="StudyMaterialOptimizer"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">school</span> Try Optimizer
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >assessment</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Exam Score Predictor
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Predict your exam scores with AI-powered analysis. Get
+              personalized predictions, confidence intervals, and study
+              recommendations for SAT, ACT, GRE, GMAT and more.
+            </p>
+            <a
+              href="ExamScorePredictor"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">assessment</span> Try Predictor
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >translate</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Language Learning Timeline Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate realistic timelines to language fluency based on
+              scientific research. Get personalized predictions, milestone
+              tracking, and cost estimates for any language.
+            </p>
+            <a
+              href="LanguageLearningTimelineCalculator"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">translate</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >translate</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Language Learning Time Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Estimate time needed to reach different language fluency levels
+              based on study method and commitment.
+            </p>
+            <a
+              href="LanguageLearningTime"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">schedule</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >trending_up</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                LinkedIn Predictor Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Predict LinkedIn post engagement and reach before posting. Analyze
+              content length, hashtags, timing, and format for optimal B2B
+              performance.
+            </p>
+            <a
+              href="LinkedInPredictor"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">trending_up</span> Try Predictor
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >thumb_up</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Social Engagement Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate true engagement rates across different platforms with
+              platform-specific algorithms and benchmarks.
+            </p>
+            <a
+              href="SocialEngagement"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">analytics</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >schedule</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Time Zone Coordinator Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Find optimal meeting times across distributed teams in different
+              time zones, considering work hours and preferences for fair
+              scheduling.
+            </p>
+            <a
+              href="TimeZoneCoordinator"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">schedule</span> Try Coordinator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >school</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Certification ROI Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate return on investment for professional certifications
+              including salary increases, payback periods, and career
+              advancement opportunities.
+            </p>
+            <a
+              href="CertificationROICalculator"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">school</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >verified</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Micro-Credential Value Assessor
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Evaluate micro-credentials, certificates, and bootcamp programs.
+              Get value ratings, employer recognition scores, and ROI
+              predictions for career advancement.
+            </p>
+            <a
+              href="MicroCredentialValueAssessor"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">verified</span> Try Assessor
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 🌱 Health & Wellness -->
+      <div class="mb-12">
+        <div class="text-center mb-8">
+          <h2
+            class="text-2xl md:text-3xl font-normal mb-3 text-text flex items-center justify-center gap-3"
+          >
+            <span class="material-icons text-4xl text-primary"
+              >health_and_safety</span
+            >
+            Health & Wellness (13 Tools)
+          </h2>
+          <p class="text-light text-base md:text-lg">
+            Tools for health optimization and wellness planning
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >local_cafe</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Coffee Tolerance Reset Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Create gradual caffeine reduction plan to reset tolerance without
+              withdrawal symptoms. Science-based approach to maintain coffee
+              effectiveness.
+            </p>
+            <a
+              href="CoffeeToleranceReset"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">local_cafe</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >trending_up</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Habit Streak Probability Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate probability of maintaining habit streaks based on
+              personal factors and behavioral science research.
+            </p>
+            <a
+              href="HabitStreakProbability"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">trending_up</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >pets</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Pet Adoption Readiness Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Assess financial readiness, lifestyle compatibility, and time
+              availability for adopting different types of pets. Prevent impulse
+              adoptions.
+            </p>
+            <a
+              href="PetAdoptionReadiness"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">pets</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >pets</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Pet Medication Dosage Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate safe medication doses for pets based on weight, species,
+              and medication type.
+            </p>
+            <a
+              href="PetMedicationDosage"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">calculate</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >wb_sunny</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Plant Growth Light Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate optimal LED grow light requirements (watts, spectrum,
+              distance) for different plants and growth stages.
+            </p>
+            <a
+              href="PlantGrowthLight"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">calculate</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >bedtime</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Sleep Debt Recovery Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate accumulated sleep debt and create personalized recovery
+              plan with realistic timeline for better health and productivity.
+            </p>
+            <a
+              href="SleepDebtRecovery"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">bedtime</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >fitness_center</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Workout Rest Day Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Determine optimal rest days based on training intensity, muscle
+              groups, recovery markers, and goals. Prevent overtraining with
+              personalized schedules.
+            </p>
+            <a
+              href="WorkoutRestDay"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">fitness_center</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >directions_walk</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Walking Step Equivalent Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Convert any activity to equivalent walking steps for fitness
+              tracking. Calculate steps for swimming, cycling, weight training
+              and more.
+            </p>
+            <a
+              href="WalkingStepEquivalent"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">directions_walk</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >local_cafe</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Caffeine Dependency Recovery Timeline
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Create personalized caffeine weaning schedule without withdrawal
+              headaches. Get day-by-day reduction plan and symptom management
+              strategies.
+            </p>
+            <a
+              href="CaffeineDependencyRecovery"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">local_cafe</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >wb_sunny</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Sunscreen SPF Effectiveness Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate real sun protection time based on SPF rating,
+              application amount, and activity level. Get accurate reapplication
+              schedules and skin cancer risk reduction data.
+            </p>
+            <a
+              href="SunscreenSPFCalculator"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">wb_sunny</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >bedtime</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Sleep Debt Payback Plan Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate your accumulated sleep debt and create a personalized
+              recovery plan. Get optimal sleep schedules and realistic timelines
+              for better health.
+            </p>
+            <a
+              href="SleepDebtPaybackPlan"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">bedtime</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >local_bar</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Alcohol Tolerance Reset Planner
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Create safe alcohol reduction plans with withdrawal risk
+              assessment, health benefits timeline, and alternative activities
+              for moderation or sobriety goals.
+            </p>
+            <a
+              href="AlcoholToleranceReset"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">local_bar</span> Try Planner
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >psychology</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                AI Anxiety Symptom Severity Predictor
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              AI-powered anxiety assessment tool that predicts symptom severity
+              and provides personalized intervention recommendations with
+              professional guidance.
+            </p>
+            <a
+              href="AIAnxietyPredictor"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">psychology</span> Try Assessment
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 🚗 Transportation & Environment -->
+      <div class="mb-12">
+        <div class="text-center mb-8">
+          <h2
+            class="text-2xl md:text-3xl font-normal mb-3 text-text flex items-center justify-center gap-3"
+          >
+            <span class="material-icons text-4xl text-primary"
+              >directions_car</span
+            >
+            Transportation & Environment (8 Tools)
+          </h2>
+          <p class="text-light text-base md:text-lg">
+            Calculate environmental impact and transportation costs
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >electric_car</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                EV Charging Cost Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Compare electric vehicle charging costs to gasoline expenses based
+              on local utility rates.
+            </p>
+            <a
+              href="EVChargingCost"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">electric_car</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >event</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Event Carbon Footprint Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate environmental impact of events including travel,
+              catering, materials, and energy usage.
+            </p>
+            <a
+              href="EventCarbonFootprint"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">event</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >local_gas_station</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Fuel Station Queue Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Predict wait times at gas stations using crowd-sourced data and
+              historical patterns.
+            </p>
+            <a
+              href="FuelStationQueue"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">local_gas_station</span> Try
+              Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3">eco</span>
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Plastic Usage Carbon Footprint Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate your plastic consumption's environmental impact. Track
+              carbon footprint, waste generation, and get personalized
+              recommendations to reduce plastic usage.
+            </p>
+            <a
+              href="PlasticCarbonFootprint"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">eco</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >water_drop</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Water Usage Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Track household water consumption, calculate monthly costs, and
+              discover environmental impact with personalized conservation
+              recommendations.
+            </p>
+            <a
+              href="WaterUsageCalculator"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">water_drop</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >agriculture</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Organic Food Impact Analyzer
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Compare environmental impact and health benefits of organic vs
+              conventional foods. Get personalized recommendations on where to
+              prioritize organic purchases.
+            </p>
+            <a
+              href="OrganicFoodImpactAnalyzer"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">agriculture</span> Try Analyzer
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >solar_power</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Renewable Energy Feasibility Checker
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Determine if solar or wind energy is feasible for your home. Get
+              system size recommendations, cost estimates, and payback analysis.
+            </p>
+            <a
+              href="RenewableEnergyChecker"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">solar_power</span> Check Feasibility
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >shopping_cart</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Sustainable Shopping Impact Tracker
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Track your purchases and environmental impact over time. Get
+              personalized recommendations for sustainable swaps and monitor
+              your progress toward eco-friendly shopping habits.
+            </p>
+            <a
+              href="SustainableShoppingTracker"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">shopping_cart</span> Try Tracker
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 🎮 Gaming & Entertainment -->
+      <div class="mb-12">
+        <div class="text-center mb-8">
+          <h2
+            class="text-2xl md:text-3xl font-normal mb-3 text-text flex items-center justify-center gap-3"
+          >
+            <span class="material-icons text-4xl text-primary"
+              >sports_esports</span
+            >
+            Gaming & Entertainment (5 Tools)
+          </h2>
+          <p class="text-light text-base md:text-lg">
+            Gaming PC optimization and entertainment calculations
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >computer</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Gaming PC Budget Allocator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate optimal budget allocation across PC components based on
+              your gaming goals, target resolution, and performance
+              requirements. Get personalized build recommendations.
+            </p>
+            <a
+              href="GamingPCBudgetAllocator"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">computer</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >casino</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Gacha Game Spending ROI Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate ROI and value per dollar spent on gacha games. Get whale
+              classification, entertainment value analysis, and spending
+              recommendations for mobile gaming.
+            </p>
+            <a
+              href="GachaGameROICalculator"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">casino</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >schedule</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Game Completion Time Estimator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Predict how long to complete games based on your playstyle and
+              available time. Get personalized estimates for story, extras, and
+              100% completion.
+            </p>
+            <a
+              href="GameCompletionTimeEstimator"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">schedule</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >speed</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Speedrun Potential Analyzer
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Analyze your speedrunning potential for competitive gaming. Get
+              personalized assessments, practice plans, and realistic timelines
+              with reaction time testing.
+            </p>
+            <a
+              href="SpeedrunPotentialAnalyzer"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">speed</span> Try Analyzer
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >videocam</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Streaming Equipment Sufficiency Checker
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Analyze your streaming setup and get personalized equipment
+              upgrade recommendations. Check bottlenecks and optimize for
+              Twitch, YouTube, and other platforms.
+            </p>
+            <a
+              href="StreamingEquipmentChecker"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">videocam</span> Try Checker
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 🎵 Media & Entertainment -->
+      <div class="mb-12">
+        <div class="text-center mb-8">
+          <h2
+            class="text-2xl md:text-3xl font-normal mb-3 text-text flex items-center justify-center gap-3"
+          >
+            <span class="material-icons text-4xl text-primary">music_note</span>
+            Media & Entertainment
+          </h2>
+          <p class="text-light text-base md:text-lg">
+            Calculate earnings, optimize content, and grow your digital presence
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >speed</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Audiobook Speed Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate exact time to finish audiobooks at different playback
+              speeds: 1.25x, 1.5x, 2x, 3x, 5x, 7x, 10x, or custom speed.
+            </p>
+            <a
+              href="AudiobookSpeed"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">speed</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >monetization_on</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Twitch Earnings Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Estimate potential monthly earnings from Twitch streaming based on
+              subscribers, donations, bits, sponsorships, and more.
+            </p>
+            <a
+              href="TwitchEarnings"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">monetization_on</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >podcasts</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Podcast Revenue Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate potential podcast advertising income based on downloads,
+              niche, and audience demographics.
+            </p>
+            <a
+              href="PodcastRevenue"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">podcasts</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >play_circle</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                YouTube Optimizer Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Get optimal video length recommendations based on your niche,
+              audience retention, and content goals for maximum performance.
+            </p>
+            <a
+              href="YouTubeOptimizer"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">play_circle</span> Try Calculator
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 💰 Personal Finance & Investing -->
+      <div class="mb-12">
+        <div class="text-center mb-8">
+          <h2
+            class="text-2xl md:text-3xl font-normal mb-3 text-text flex items-center justify-center gap-3"
+          >
+            <span class="material-icons text-4xl text-primary"
+              >account_balance</span
+            >
+            Personal Finance & Investing (5 Tools)
+          </h2>
+          <p class="text-light text-base md:text-lg">
+            Advanced tools for tax optimization and investment planning
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >account_balance</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Tax Bracket Optimization Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Optimize your tax strategy with income splitting between salary,
+              dividends, and capital gains. Calculate optimal business structure
+              to minimize taxes.
+            </p>
+            <a
+              href="TaxBracketOptimizer"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">calculate</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >subscriptions</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Recurring Subscription Savings Tracker
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Identify forgotten subscriptions and calculate annual savings.
+              Track recurring payments, find cheaper alternatives, and optimize
+              subscription spending.
+            </p>
+            <a
+              href="SubscriptionSavingsTracker"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">subscriptions</span> Try Tracker
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >trending_up</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Salary Negotiation Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate your market salary range and get data-driven negotiation
+              tactics. Discover your worth, build confidence, and maximize
+              earning potential.
+            </p>
+            <a
+              href="SalaryNegotiationCalculator"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">trending_up</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >trending_down</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Crypto Tax Loss Harvesting Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate optimal crypto tax loss harvesting trades to minimize
+              your tax burden. Get specific trade recommendations and estimated
+              tax savings.
+            </p>
+            <a
+              href="CryptoTaxLossHarvesting"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">trending_down</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >show_chart</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Dividend Growth Projection Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Project dividend income over 5-30 years with reinvestment
+              assumptions. Calculate when dividends will cover expenses and
+              track milestones.
+            </p>
+            <a
+              href="DividendGrowthProjection"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">show_chart</span> Try Calculator
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 🏠 Lifestyle & Living -->
+      <div class="mb-12">
+        <div class="text-center mb-8">
+          <h2
+            class="text-2xl md:text-3xl font-normal mb-3 text-text flex items-center justify-center gap-3"
+          >
+            <span class="material-icons text-4xl text-primary">home</span>
+            Lifestyle & Living
+          </h2>
+          <p class="text-light text-base md:text-lg">
+            Tools for lifestyle planning and living decisions
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >groups</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Coliving Expense Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Split rent, utilities, groceries, and shared expenses fairly among
+              roommates with unequal rent options and settlement tracking.
+            </p>
+            <a
+              href="ColivingExpense"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">groups</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3">bed</span>
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Dorm Room Planner Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Plan furniture arrangement in small dorm rooms with standard
+              dimensions and regulations.
+            </p>
+            <a
+              href="DormRoomPlanner"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">bed</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >restaurant</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Food Waste Cost Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate money lost from throwing away food based on shopping
+              habits and waste patterns.
+            </p>
+            <a
+              href="FoodWasteCost"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">restaurant</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >home</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                House vs Apartment Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Compare true costs including maintenance, utilities, time
+              investment, opportunity costs, and lifestyle factors beyond
+              mortgage vs rent.
+            </p>
+            <a
+              href="HouseVsApartment"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">home</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >inventory_2</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Moving Box Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate exact number and sizes of boxes needed for moving based
+              on room inventory and item types.
+            </p>
+            <a
+              href="MovingBoxCalculator"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">inventory_2</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >rv_hookup</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Van Life Budget Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate complete van life costs including conversion,
+              maintenance, camping fees, insurance, and lifestyle expenses for
+              nomadic living.
+            </p>
+            <a
+              href="VanLifeBudget"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">rv_hookup</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >home_repair_service</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Home Renovation Priority Sequencer
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Determine optimal order for home renovations based on ROI,
+              urgency, and dependencies. Get year-by-year budget plans and
+              priority rankings.
+            </p>
+            <a
+              href="HomeRenovationPrioritySequencer"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">home_repair_service</span> Try
+              Sequencer
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >home</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Rent vs Buy Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Compare the true total cost of renting vs buying a home with
+              comprehensive analysis including all hidden costs and opportunity
+              costs.
+            </p>
+            <a
+              href="RentVsBuyCalculator"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">home</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >pets</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Pet Adoption Readiness Financial Test
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Test your financial readiness for pet adoption with comprehensive
+              cost analysis. Get 10-year projections, emergency fund
+              requirements, and personalized recommendations.
+            </p>
+            <a
+              href="PetAdoptionReadinessTest"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">pets</span> Try Test
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >design_services</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Interior Design Concept Feasibility Checker
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Check if your interior design concept is feasible with your budget
+              and space. Get detailed budget breakdowns, furniture
+              recommendations, and phased implementation plans.
+            </p>
+            <a
+              href="InteriorDesignFeasibilityChecker"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">design_services</span> Try Checker
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >local_shipping</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Moving Cost Estimator & Company Comparison
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate accurate moving costs and compare moving companies. Get
+              comprehensive estimates with hidden fees analysis and negotiation
+              tips.
+            </p>
+            <a
+              href="MovingCostEstimator"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">local_shipping</span> Try Estimator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >flight_takeoff</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Digital Nomad Visa Feasibility Checker
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Check if you qualify for digital nomad visas worldwide based on
+              income, family size, and travel preferences. Get personalized
+              recommendations for 50+ countries.
+            </p>
+            <a
+              href="DigitalNomadVisa"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">flight_takeoff</span> Check
+              Eligibility
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3">eco</span>
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Sustainable Travel Carbon Offset Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate your travel carbon footprint and discover offset
+              options. Get CO2 emissions for flights, cars, trains plus tree
+              planting and carbon credit costs.
+            </p>
+            <a
+              href="SustainableTravelCarbon"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">eco</span> Calculate Footprint
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >compare</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Staycation vs Vacation Cost Comparison
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Compare staycation vs travel vacation costs with detailed value
+              analysis. Get cost breakdowns, savings calculations, and
+              personalized recommendations.
+            </p>
+            <a
+              href="StaycationVsVacation"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">compare</span> Compare Options
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >directions_boat</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Cruise Ship ROI Calculator
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Calculate true value and ROI of cruise vacations vs alternatives.
+              Analyze costs per day, meal value, entertainment worth, and
+              overall vacation ROI.
+            </p>
+            <a
+              href="CruiseShipROI"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">directions_boat</span> Try Calculator
+            </a>
+          </div>
+
+          <div
+            class="bg-broder rounded-lg shadow-lg p-6 md:p-8 border border-accent hover:shadow-xl transition-all hover:-translate-y-1"
+          >
+            <div class="flex items-center mb-4">
+              <span class="material-icons text-primary text-4xl mr-3"
+                >public</span
+              >
+              <h3 class="text-xl md:text-2xl font-medium text-text">
+                Expat Cost of Living Advisor
+              </h3>
+            </div>
+            <p class="text-light mb-6 leading-relaxed">
+              Compare cost of living across countries for expat life planning.
+              Calculate monthly expenses, visa costs, and determine if
+              international living is affordable.
+            </p>
+            <a
+              href="ExpatCostOfLiving"
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded font-medium hover:bg-accent transition"
+            >
+              <span class="material-icons">public</span> Try Advisor
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Ad -->
+    <div class="max-w-7xl mx-auto px-4 pb-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Bottom Ad Space (728x90 / 320x50)
+      </div>
+    </div>
+
+    <div id="footer-container"></div>
+
+    <script src="src/components/navbar.js"></script>
+    <script src="src/components/footer.js"></script>
+
+    <!-- Revolutionary Hero Script -->
+    <script>
+      // Morphing text animation
+      function initMorphingText() {
+        const words = document.querySelectorAll(".morphing-word-display .word");
+        let currentIndex = 0;
+
+        setInterval(() => {
+          words[currentIndex].classList.remove("active");
+          currentIndex = (currentIndex + 1) % words.length;
+          words[currentIndex].classList.add("active");
+        }, 2500);
+      }
+
+      // Neural network canvas
+      function initNeuralNetwork() {
+        const canvas = document.getElementById("neuralCanvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const nodes = [];
+        const nodeCount = 50;
+
+        // Create nodes
+        for (let i = 0; i < nodeCount; i++) {
+          nodes.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: (Math.random() - 0.5) * 0.5,
+            radius: Math.random() * 2 + 1,
+          });
+        }
+
+        function animate() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          // Update and draw nodes
+          nodes.forEach((node, i) => {
+            node.x += node.vx;
+            node.y += node.vy;
+
+            if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
+            if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
+
+            // Draw node
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+            ctx.fillStyle = "#FE4E02";
+            ctx.fill();
+
+            // Draw connections
+            nodes.forEach((otherNode, j) => {
+              if (i !== j) {
+                const distance = Math.sqrt(
+                  Math.pow(node.x - otherNode.x, 2) +
+                    Math.pow(node.y - otherNode.y, 2)
+                );
+
+                if (distance < 100) {
+                  ctx.beginPath();
+                  ctx.moveTo(node.x, node.y);
+                  ctx.lineTo(otherNode.x, otherNode.y);
+                  ctx.strokeStyle = `rgba(254, 78, 2, ${1 - distance / 100})`;
+                  ctx.stroke();
+                }
+              }
+            });
+          });
+
+          requestAnimationFrame(animate);
+        }
+
+        animate();
+      }
+
+      // Quantum counter animation
+      function quantumCounters() {
+        const counters = document.querySelectorAll(".counter");
+        counters.forEach((counter) => {
+          const target = parseInt(counter.getAttribute("data-target"));
+          let current = 0;
+
+          const updateCounter = () => {
+            if (current < target) {
+              current += Math.ceil(target / 50);
+              if (current > target) current = target;
+              counter.textContent = current.toString().padStart(2, "0");
+              setTimeout(updateCounter, 50);
+            }
+          };
+
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                updateCounter();
+                observer.unobserve(entry.target);
+              }
+            });
+          });
+
+          observer.observe(counter);
+        });
+      }
+
+      // Initialize morphing SVG path
+      function initMorphingSVG() {
+        const path = document.getElementById("morphPath");
+        const paths = [
+          "M 0,400 C 0,400 0,200 0,200 C 100,250 200,150 300,200 C 400,250 500,150 600,200 C 700,250 800,150 900,200 C 1000,250 1100,150 1200,200 C 1200,200 1200,400 1200,400 Z",
+          "M 0,400 C 0,400 0,200 0,200 C 100,150 200,250 300,200 C 400,150 500,250 600,200 C 700,150 800,250 900,200 C 1000,150 1100,250 1200,200 C 1200,200 1200,400 1200,400 Z",
+          "M 0,400 C 0,400 0,200 0,200 C 100,200 200,200 300,200 C 400,200 500,100 600,150 C 700,200 800,300 900,250 C 1000,200 1100,100 1200,150 C 1200,150 1200,400 1200,400 Z",
+        ];
+
+        let currentPath = 0;
+        setInterval(() => {
+          currentPath = (currentPath + 1) % paths.length;
+          path.setAttribute("d", paths[currentPath]);
+        }, 3000);
+      }
+
+      // Tagline text animation
+      function initTaglineAnimation() {
+        const taglineText = document.querySelector(".tagline-text");
+        const originalText = "REALITY THROUGH QUANTUM ALGORITHMS";
+        const chars = originalText.split("");
+
+        function scrambleText() {
+          const scrambleChars = "!@#$%^&*()_+-=[]{}|;:,.<>?";
+          let scrambled = "";
+
+          for (let i = 0; i < chars.length; i++) {
+            if (chars[i] === " ") {
+              scrambled += " ";
+            } else {
+              scrambled +=
+                scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+            }
+          }
+
+          taglineText.textContent = scrambled;
+
+          // Gradually reveal original text
+          let revealIndex = 0;
+          const revealInterval = setInterval(() => {
+            if (revealIndex < chars.length) {
+              scrambled =
+                scrambled.substring(0, revealIndex) +
+                chars[revealIndex] +
+                scrambled.substring(revealIndex + 1);
+              taglineText.textContent = scrambled;
+              revealIndex++;
+            } else {
+              clearInterval(revealInterval);
+            }
+          }, 50);
+        }
+
+        // Initial scramble
+        setTimeout(scrambleText, 1000);
+
+        // Repeat scramble effect
+        setInterval(scrambleText, 8000);
+      }
+
+      // Initialize everything
+      document.addEventListener("DOMContentLoaded", () => {
+        initMorphingText();
+        initNeuralNetwork();
+        quantumCounters();
+        initMorphingSVG();
+        initTaglineAnimation();
+
+        // Quantum button handlers
+        const enterBtn = document.querySelector(".primary-quantum");
+
+        if (enterBtn) {
+          enterBtn.addEventListener("click", () => {
+            document
+              .querySelector("main")
+              .scrollIntoView({ behavior: "smooth" });
+          });
+        }
+
+        // Resize handler for canvas
+        window.addEventListener("resize", () => {
+          const canvas = document.getElementById("neuralCanvas");
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        });
+      });
+    </script>
+  </body>
+</html>

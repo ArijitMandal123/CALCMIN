@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustainable Travel Carbon Offset Calculator - Calculate & Offset Your Travel Footprint | CalcMin.pro</title>
+    <meta name="description" content="Calculate your travel carbon footprint and find offset options. Get CO2 emissions for flights, cars, trains, cruises plus tree planting and offset costs for sustainable travel.">
+    <meta name="keywords" content="carbon footprint calculator, travel emissions, carbon offset, sustainable travel, CO2 calculator, flight emissions, travel environmental impact, carbon neutral travel">
+    <meta name="author" content="CalcMin.pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calcmin.pro/SustainableTravelCarbon/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Sustainable Travel Carbon Offset Calculator - Travel Footprint Calculator">
+    <meta property="og:description" content="Calculate carbon emissions from flights, cars, trains, and cruises. Find offset costs and tree planting options for sustainable travel planning.">
+    <meta property="og:url" content="https://calcmin.pro/SustainableTravelCarbon/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CalcMin.pro">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sustainable Travel Carbon Offset Calculator">
+    <meta name="twitter:description" content="Calculate your travel carbon footprint and discover offset options for eco-friendly travel planning.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FE4E02",
+                        dark: "#00053D", 
+                        broder: "#182267",
+                        accent: "#FD803D",
+                        light: "#FECEB6",
+                        text: "#F7FBFC"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Sustainable Travel Carbon Offset Calculator",
+        "description": "Calculate carbon footprint of travel and find offset options including tree planting costs and carbon credit providers for sustainable travel planning.",
+        "url": "https://calcmin.pro/SustainableTravelCarbon/",
+        "applicationCategory": "TravelApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "CalcMin.pro"
+        }
+    }
+    </script>
+</head>
+<body class="bg-dark text-text min-h-screen">
+    <!-- Navigation -->
+    <nav id="navbar-container"></nav>
+
+    <!-- Top Ad Space -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+        <div class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm">
+            Top Ad Space (728x90 / 320x50)
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Calculator -->
+            <div class="lg:col-span-2">
+                <!-- Header -->
+                <div class="bg-broder p-6 rounded-lg border border-accent mb-6">
+                    <h1 class="text-3xl font-bold text-primary mb-4">
+                        <span class="material-icons text-4xl align-middle mr-2">eco</span>
+                        Sustainable Travel Carbon Offset Calculator
+                    </h1>
+                    <p class="text-light text-lg">Calculate your travel carbon footprint and discover offset options to make your trips carbon neutral. Get accurate CO2 emissions and tree planting costs for sustainable travel.</p>
+                </div>
+
+                <!-- Calculator Form -->
+                <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
+                    <form id="carbon-calculator-form" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Mode of Transport</label>
+                                <select id="transport-mode" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select transport</option>
+                                    <option value="flight">Flight</option>
+                                    <option value="car">Car</option>
+                                    <option value="train">Train</option>
+                                    <option value="bus">Bus</option>
+                                    <option value="cruise">Cruise Ship</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Trip Type</label>
+                                <select id="trip-type" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="round-trip">Round Trip</option>
+                                    <option value="one-way">One Way</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Distance (miles)</label>
+                                <input type="number" id="distance" placeholder="e.g., 500" min="1" 
+                                       class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Number of Passengers</label>
+                                <input type="number" id="passengers" placeholder="e.g., 2" min="1" max="20" value="1"
+                                       class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <!-- Flight-specific options -->
+                        <div id="flight-options" class="hidden">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Flight Class</label>
+                                    <select id="flight-class" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary">
+                                        <option value="economy">Economy</option>
+                                        <option value="premium-economy">Premium Economy</option>
+                                        <option value="business">Business</option>
+                                        <option value="first">First Class</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Flight Type</label>
+                                    <select id="flight-type" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary">
+                                        <option value="domestic">Domestic</option>
+                                        <option value="short-haul">Short-haul International</option>
+                                        <option value="long-haul">Long-haul International</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Car-specific options -->
+                        <div id="car-options" class="hidden">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Vehicle Type</label>
+                                    <select id="vehicle-type" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary">
+                                        <option value="small">Small Car</option>
+                                        <option value="medium">Medium Car</option>
+                                        <option value="large">Large Car</option>
+                                        <option value="suv">SUV</option>
+                                        <option value="hybrid">Hybrid</option>
+                                        <option value="electric">Electric</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Fuel Efficiency (MPG)</label>
+                                    <input type="number" id="fuel-efficiency" placeholder="e.g., 30" min="5" max="150"
+                                           class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accommodation -->
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Accommodation Nights (optional)</label>
+                            <input type="number" id="accommodation-nights" placeholder="e.g., 3" min="0" max="365"
+                                   class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+
+                        <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-medium py-3 px-6 rounded transition duration-200">
+                            Calculate Carbon Footprint
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results -->
+                <div id="results" class="hidden">
+                    <div id="result-content"></div>
+                </div>
+            </div>
+
+            <!-- Right Column - Ads -->
+            <div class="lg:col-span-1">
+                <!-- Top Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+
+                <!-- Middle Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Ad Space -->
+        <div class="mt-8 bg-broder p-4 rounded-lg border border-accent text-center">
+            <div class="text-light text-sm mb-2">Advertisement</div>
+            <div class="bg-dark h-24 flex items-center justify-center rounded">
+                <span class="text-accent">Ad Space 728x90</span>
+            </div>
+        </div>
+
+        <!-- Blog Content -->
+        <article class="mt-12 bg-broder p-8 rounded-lg border border-accent">
+            <h2 class="text-3xl font-bold text-primary mb-6">Complete Guide to Sustainable Travel Carbon Offsetting</h2>
+            
+            <div class="prose prose-invert max-w-none">
+                <p class="text-light text-lg leading-relaxed mb-6">
+                    Travel accounts for approximately 8% of global greenhouse gas emissions, making carbon offsetting an essential consideration for environmentally conscious travelers. Our calculator helps you understand your travel's environmental impact and provides actionable offset solutions.
+                </p>
+
+                <div class="space-y-8">
+                    <section class="bg-broder rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-primary">Understanding Travel Carbon Emissions</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Flight Emissions</h4>
+                                <p class="text-sm text-light">Aviation accounts for 2.5% of global CO2 emissions. Long-haul flights produce 0.15-0.2 kg CO2 per passenger-mile, while short flights are less efficient at 0.2-0.3 kg per mile.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Car Travel</h4>
+                                <p class="text-sm text-light">Average car produces 0.4 kg CO2 per mile. Electric vehicles produce 0.1-0.2 kg per mile depending on electricity source. Carpooling significantly reduces per-person emissions.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Train & Bus</h4>
+                                <p class="text-sm text-light">Trains produce 0.04-0.08 kg CO2 per passenger-mile, making them the most efficient land transport. Buses produce 0.05-0.1 kg per passenger-mile.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Cruise Ships</h4>
+                                <p class="text-sm text-light">Cruises produce 0.25-0.4 kg CO2 per passenger-mile plus significant emissions from onboard facilities, making them among the highest-emission travel options.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-broder rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-primary">Carbon Offset Options & Costs</h3>
+                        
+                        <h4 class="text-xl font-semibold mb-3 text-accent">Tree Planting Programs</h4>
+                        <div class="overflow-x-auto mb-6">
+                            <table class="w-full text-sm border border-accent rounded">
+                                <thead class="bg-dark">
+                                    <tr>
+                                        <th class="p-3 text-left text-accent">Provider</th>
+                                        <th class="p-3 text-left text-accent">Cost per Tree</th>
+                                        <th class="p-3 text-left text-accent">CO2 Absorbed</th>
+                                        <th class="p-3 text-left text-accent">Time to Maturity</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-light">
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">One Tree Planted</td>
+                                        <td class="p-3">$1.00</td>
+                                        <td class="p-3">48 lbs/year</td>
+                                        <td class="p-3">10-20 years</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Trees for the Future</td>
+                                        <td class="p-3">$0.10</td>
+                                        <td class="p-3">35 lbs/year</td>
+                                        <td class="p-3">5-15 years</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Eden Reforestation</td>
+                                        <td class="p-3">$0.33</td>
+                                        <td class="p-3">50 lbs/year</td>
+                                        <td class="p-3">8-25 years</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h4 class="text-xl font-semibold mb-3 text-accent">Carbon Credit Programs</h4>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border border-accent rounded">
+                                <thead class="bg-dark">
+                                    <tr>
+                                        <th class="p-3 text-left text-accent">Provider</th>
+                                        <th class="p-3 text-left text-accent">Cost per Ton CO2</th>
+                                        <th class="p-3 text-left text-accent">Project Type</th>
+                                        <th class="p-3 text-left text-accent">Verification</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-light">
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Gold Standard</td>
+                                        <td class="p-3">$15-25</td>
+                                        <td class="p-3">Renewable Energy</td>
+                                        <td class="p-3">Third-party verified</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Verified Carbon Standard</td>
+                                        <td class="p-3">$8-20</td>
+                                        <td class="p-3">Forest Conservation</td>
+                                        <td class="p-3">VCS certified</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Climate Action Reserve</td>
+                                        <td class="p-3">$12-18</td>
+                                        <td class="p-3">Methane Capture</td>
+                                        <td class="p-3">CAR protocol</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="bg-broder rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-primary">Sustainable Travel Strategies</h3>
+                        <div class="space-y-4">
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Choose Lower-Emission Transport</h4>
+                                <p class="text-sm text-light">Train travel produces 80% fewer emissions than flying. For distances under 500 miles, consider driving or taking the bus. For flights, choose direct routes and economy class when possible.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Stay Longer, Travel Less Frequently</h4>
+                                <p class="text-sm text-light">Extend your trips to reduce the emissions-per-day ratio. A 10-day trip has a much lower daily carbon footprint than two 5-day trips to the same destination.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Choose Eco-Friendly Accommodations</h4>
+                                <p class="text-sm text-light">Look for hotels with green certifications (LEED, Green Key). Smaller accommodations typically have lower per-guest emissions than large resorts.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Pack Light and Smart</h4>
+                                <p class="text-sm text-light">Every extra pound on a flight increases fuel consumption. Pack efficiently and consider leaving space for local purchases rather than bringing everything from home.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-broder rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-primary">How Our Calculator Works</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Emission Factors</h4>
+                                <p class="text-sm text-light">We use IPCC and EPA emission factors specific to each transport mode, adjusted for passenger load factors, fuel efficiency, and trip characteristics.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Radiative Forcing</h4>
+                                <p class="text-sm text-light">For flights, we include radiative forcing multiplier (1.9x) to account for high-altitude emissions' increased warming effect.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Accommodation Impact</h4>
+                                <p class="text-sm text-light">Hotel emissions calculated based on average energy use per room-night, varying by hotel type and location energy grid.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Offset Calculations</h4>
+                                <p class="text-sm text-light">Tree offset calculations based on species-specific CO2 absorption rates over 20-year periods. Carbon credit costs reflect current market rates.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-broder rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-primary">Frequently Asked Questions</h3>
+                        <div class="space-y-4">
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Are carbon offsets actually effective?</h4>
+                                <p class="text-sm text-light">High-quality offsets from verified programs can be effective, but they should supplement, not replace, emission reduction efforts. Look for third-party verified projects with clear additionality.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">How accurate are travel emission calculations?</h4>
+                                <p class="text-sm text-light">Our calculations are accurate within 10-15% for most trips. Actual emissions vary based on specific aircraft, load factors, and operational efficiency.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Should I offset all my travel?</h4>
+                                <p class="text-sm text-light">Offsetting is one tool in sustainable travel. Prioritize reducing emissions first, then offset unavoidable emissions through high-quality programs.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">What's the difference between offsetting and carbon neutral?</h4>
+                                <p class="text-sm text-light">Carbon neutral means total emissions equal total offsets. True carbon neutrality requires measuring all trip-related emissions, including local transport and activities.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer-container"></footer>
+
+    <script src="script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+</body>
+</html>

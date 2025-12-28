@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Nomad Visa Feasibility Checker - Qualify for Remote Work Visas | CalcMin.pro</title>
+    <meta name="description" content="Check if you qualify for digital nomad visas worldwide. Calculate income requirements, cost of living ratios, and find the best countries for remote work based on your budget and lifestyle.">
+    <meta name="keywords" content="digital nomad visa, remote work visa, nomad visa calculator, digital nomad countries, visa requirements, cost of living calculator, remote work abroad, nomad visa eligibility">
+    <meta name="author" content="CalcMin.pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calcmin.pro/DigitalNomadVisa/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Digital Nomad Visa Feasibility Checker - Remote Work Visa Calculator">
+    <meta property="og:description" content="Discover which digital nomad visas you qualify for based on your income and travel plans. Compare visa requirements across 50+ countries offering remote work visas.">
+    <meta property="og:url" content="https://calcmin.pro/DigitalNomadVisa/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CalcMin.pro">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Digital Nomad Visa Feasibility Checker">
+    <meta name="twitter:description" content="Check visa eligibility for remote work abroad. Calculate income requirements and find the best nomad-friendly countries for your budget.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FE4E02",
+                        dark: "#00053D", 
+                        broder: "#182267",
+                        accent: "#FD803D",
+                        light: "#FECEB6",
+                        text: "#F7FBFC"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Digital Nomad Visa Feasibility Checker",
+        "description": "Calculate your eligibility for digital nomad visas worldwide based on income requirements, cost of living, and visa criteria across 50+ countries.",
+        "url": "https://calcmin.pro/DigitalNomadVisa/",
+        "applicationCategory": "TravelApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "CalcMin.pro"
+        }
+    }
+    </script>
+</head>
+<body class="bg-dark text-text min-h-screen">
+    <!-- Navigation -->
+    <nav id="navbar-container"></nav>
+
+    <!-- Top Ad Space -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+        <div class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm">
+            Top Ad Space (728x90 / 320x50)
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Calculator -->
+            <div class="lg:col-span-2">
+                <!-- Header -->
+                <div class="bg-broder p-6 rounded-lg border border-accent mb-6">
+                    <h1 class="text-3xl font-bold text-primary mb-4">
+                        <span class="material-icons text-4xl align-middle mr-2">flight_takeoff</span>
+                        Digital Nomad Visa Feasibility Checker
+                    </h1>
+                    <p class="text-light text-lg">Discover which digital nomad visas you qualify for based on your income, travel plans, and lifestyle preferences. Get personalized recommendations for the best countries to work remotely.</p>
+                </div>
+
+                <!-- Calculator Form -->
+                <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
+                    <form id="nomad-visa-form" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Monthly Income (USD)</label>
+                                <input type="number" id="monthly-income" placeholder="e.g., 3000" min="500" 
+                                       class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Current Location</label>
+                                <select id="current-location" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select your country</option>
+                                    <option value="US">United States</option>
+                                    <option value="UK">United Kingdom</option>
+                                    <option value="CA">Canada</option>
+                                    <option value="AU">Australia</option>
+                                    <option value="DE">Germany</option>
+                                    <option value="FR">France</option>
+                                    <option value="NL">Netherlands</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Family Size</label>
+                                <select id="family-size" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="1">Just me</option>
+                                    <option value="2">Me + partner</option>
+                                    <option value="3">Me + partner + 1 child</option>
+                                    <option value="4">Me + partner + 2 children</option>
+                                    <option value="5">5+ family members</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Preferred Cost of Living</label>
+                                <select id="cost-preference" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="budget">Budget (Under $1500/month)</option>
+                                    <option value="moderate">Moderate ($1500-3000/month)</option>
+                                    <option value="comfortable">Comfortable ($3000-5000/month)</option>
+                                    <option value="luxury">Luxury ($5000+/month)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Preferred Regions (Select all that interest you)</label>
+                            <div class="grid md:grid-cols-3 gap-3">
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="region-europe" name="regions" value="europe" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Europe</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="region-asia" name="regions" value="asia" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Asia</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="region-americas" name="regions" value="americas" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Americas</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="region-africa" name="regions" value="africa" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Africa</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="region-oceania" name="regions" value="oceania" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Oceania</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="region-caribbean" name="regions" value="caribbean" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Caribbean</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Visa Duration Preference</label>
+                                <select id="visa-duration" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="short">Short-term (3-6 months)</option>
+                                    <option value="medium">Medium-term (6-12 months)</option>
+                                    <option value="long">Long-term (1-2 years)</option>
+                                    <option value="permanent">Permanent residency path</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Work Type</label>
+                                <select id="work-type" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="employee">Remote Employee</option>
+                                    <option value="freelancer">Freelancer</option>
+                                    <option value="entrepreneur">Entrepreneur</option>
+                                    <option value="investor">Investor</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-medium py-3 px-6 rounded transition duration-200">
+                            Check Visa Eligibility
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results -->
+                <div id="results" class="hidden">
+                    <div id="result-content"></div>
+                </div>
+            </div>
+
+            <!-- Right Column - Ads -->
+            <div class="lg:col-span-1">
+                <!-- Top Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+
+                <!-- Middle Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Ad Space -->
+        <div class="mt-8 bg-broder p-4 rounded-lg border border-accent text-center">
+            <div class="text-light text-sm mb-2">Advertisement</div>
+            <div class="bg-dark h-24 flex items-center justify-center rounded">
+                <span class="text-accent">Ad Space 728x90</span>
+            </div>
+        </div>
+
+        <!-- Blog Content -->
+        <article class="mt-12 bg-broder p-8 rounded-lg border border-accent">
+            <h2 class="text-3xl font-bold text-primary mb-6">Complete Guide to Digital Nomad Visas in 2025</h2>
+            
+            <div class="prose prose-invert max-w-none">
+                <p class="text-light text-lg leading-relaxed mb-6">
+                    The digital nomad lifestyle has exploded in popularity, with over 50 countries now offering specialized visas for remote workers. Our Digital Nomad Visa Feasibility Checker helps you navigate this complex landscape by analyzing your income, family situation, and preferences to recommend the best visa options for your circumstances.
+                </p>
+
+                <div class="space-y-8">
+                    <section class="bg-broder rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-primary">Understanding Digital Nomad Visa Requirements</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Income Requirements</h4>
+                                <p class="text-sm text-light">Most countries require proof of monthly income ranging from $2,000 to $6,000 USD. Higher-income requirements often correlate with better infrastructure and quality of life.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Visa Duration</h4>
+                                <p class="text-sm text-light">Digital nomad visas typically range from 6 months to 2 years, with some offering renewal options or pathways to permanent residency.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Tax Implications</h4>
+                                <p class="text-sm text-light">Understanding tax obligations in both your home country and destination is crucial. Some countries offer tax exemptions for digital nomads.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Health Insurance</h4>
+                                <p class="text-sm text-light">Most visas require comprehensive health insurance coverage, often with minimum coverage amounts specified by the destination country.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-broder rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-primary">Top Digital Nomad Destinations by Region</h3>
+                        
+                        <h4 class="text-xl font-semibold mb-3 text-accent">Europe</h4>
+                        <div class="overflow-x-auto mb-6">
+                            <table class="w-full text-sm border border-accent rounded">
+                                <thead class="bg-dark">
+                                    <tr>
+                                        <th class="p-3 text-left text-accent">Country</th>
+                                        <th class="p-3 text-left text-accent">Min. Income</th>
+                                        <th class="p-3 text-left text-accent">Duration</th>
+                                        <th class="p-3 text-left text-accent">Cost of Living</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-light">
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Portugal</td>
+                                        <td class="p-3">$2,800/month</td>
+                                        <td class="p-3">1 year</td>
+                                        <td class="p-3">$1,200-2,000</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Estonia</td>
+                                        <td class="p-3">$3,500/month</td>
+                                        <td class="p-3">1 year</td>
+                                        <td class="p-3">$1,000-1,800</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Spain</td>
+                                        <td class="p-3">$2,400/month</td>
+                                        <td class="p-3">1 year</td>
+                                        <td class="p-3">$1,500-2,500</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h4 class="text-xl font-semibold mb-3 text-accent">Americas</h4>
+                        <div class="overflow-x-auto mb-6">
+                            <table class="w-full text-sm border border-accent rounded">
+                                <thead class="bg-dark">
+                                    <tr>
+                                        <th class="p-3 text-left text-accent">Country</th>
+                                        <th class="p-3 text-left text-accent">Min. Income</th>
+                                        <th class="p-3 text-left text-accent">Duration</th>
+                                        <th class="p-3 text-left text-accent">Cost of Living</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-light">
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Barbados</td>
+                                        <td class="p-3">$5,000/month</td>
+                                        <td class="p-3">1 year</td>
+                                        <td class="p-3">$2,000-3,500</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Costa Rica</td>
+                                        <td class="p-3">$3,000/month</td>
+                                        <td class="p-3">2 years</td>
+                                        <td class="p-3">$1,200-2,200</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Mexico</td>
+                                        <td class="p-3">$2,500/month</td>
+                                        <td class="p-3">4 years</td>
+                                        <td class="p-3">$800-1,800</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h4 class="text-xl font-semibold mb-3 text-accent">Asia & Oceania</h4>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border border-accent rounded">
+                                <thead class="bg-dark">
+                                    <tr>
+                                        <th class="p-3 text-left text-accent">Country</th>
+                                        <th class="p-3 text-left text-accent">Min. Income</th>
+                                        <th class="p-3 text-left text-accent">Duration</th>
+                                        <th class="p-3 text-left text-accent">Cost of Living</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-light">
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Dubai, UAE</td>
+                                        <td class="p-3">$5,000/month</td>
+                                        <td class="p-3">1 year</td>
+                                        <td class="p-3">$2,500-4,000</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Malaysia</td>
+                                        <td class="p-3">$2,400/month</td>
+                                        <td class="p-3">1 year</td>
+                                        <td class="p-3">$800-1,500</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Thailand</td>
+                                        <td class="p-3">$2,500/month</td>
+                                        <td class="p-3">4 years</td>
+                                        <td class="p-3">$700-1,400</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="bg-broder rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-primary">How to Calculate Your Visa Feasibility</h3>
+                        <div class="space-y-4">
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Step 1: Income Assessment</h4>
+                                <p class="text-sm text-light">Calculate your stable monthly income from all sources. Most countries require 3-6 months of bank statements as proof. Include salary, freelance income, investment returns, and passive income streams.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Step 2: Cost of Living Analysis</h4>
+                                <p class="text-sm text-light">Research actual living costs in your target destinations. Factor in accommodation, food, transportation, healthcare, and entertainment. Aim for your income to be 2-3x the cost of living for financial security.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Step 3: Visa Requirements Check</h4>
+                                <p class="text-sm text-light">Each country has specific requirements beyond income, including health insurance, criminal background checks, proof of accommodation, and sometimes language proficiency tests.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Step 4: Tax Planning</h4>
+                                <p class="text-sm text-light">Understand tax implications in both your home country and destination. Some countries have tax treaties that prevent double taxation, while others may require you to pay local taxes.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-broder rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-primary">Common Mistakes to Avoid</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Underestimating Costs</h4>
+                                <p class="text-sm text-light">Many nomads focus only on accommodation and food costs, forgetting about visa fees, health insurance, coworking spaces, and emergency funds.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Ignoring Tax Obligations</h4>
+                                <p class="text-sm text-light">Failing to understand tax implications can lead to significant financial penalties. Consult with tax professionals familiar with international tax law.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Inadequate Health Coverage</h4>
+                                <p class="text-sm text-light">Basic travel insurance isn't sufficient for long-term stays. Ensure your coverage meets visa requirements and includes emergency evacuation.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Poor Documentation</h4>
+                                <p class="text-sm text-light">Keep meticulous records of income, expenses, and visa compliance. Poor documentation can lead to visa rejection or renewal issues.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-broder rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-primary">Frequently Asked Questions</h3>
+                        <div class="space-y-4">
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Can I work for local companies on a digital nomad visa?</h4>
+                                <p class="text-sm text-light">Most digital nomad visas prohibit working for local companies. You can only work remotely for foreign employers or run your own business serving foreign clients.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">What happens if my income drops below the requirement?</h4>
+                                <p class="text-sm text-light">Income requirements are typically checked at application and renewal. If your income drops significantly, it could affect visa renewal, so maintain financial buffers.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Can I bring my family on a digital nomad visa?</h4>
+                                <p class="text-sm text-light">Many countries allow dependents (spouse and children) but require higher income thresholds and additional documentation for each family member.</p>
+                            </div>
+                            <div class="bg-dark p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">How long does the application process take?</h4>
+                                <p class="text-sm text-light">Processing times vary from 2 weeks to 3 months depending on the country. Start your application well in advance of your planned travel date.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer-container"></footer>
+
+    <script src="script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+</body>
+</html>

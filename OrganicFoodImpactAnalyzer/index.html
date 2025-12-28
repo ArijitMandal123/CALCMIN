@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organic vs Conventional Food Environmental Impact Analyzer | CalcMin Pro</title>
+    <meta name="description" content="Compare environmental impact and health benefits of organic vs conventional foods. Get personalized recommendations on where to buy organic first with cost analysis and pesticide exposure data.">
+    <meta name="keywords" content="organic food calculator, conventional vs organic, environmental impact food, pesticide exposure calculator, dirty dozen foods, organic food cost analysis">
+    <meta name="author" content="CalcMin Pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calcmin.pro/OrganicFoodImpactAnalyzer/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Organic vs Conventional Food Environmental Impact Analyzer">
+    <meta property="og:description" content="Compare environmental impact and health benefits of organic vs conventional foods with personalized recommendations and cost analysis.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calcmin.pro/OrganicFoodImpactAnalyzer/">
+    <meta property="og:site_name" content="CalcMin Pro">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Organic vs Conventional Food Environmental Impact Analyzer">
+    <meta name="twitter:description" content="Compare environmental impact and health benefits of organic vs conventional foods with personalized recommendations.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    
+    <!-- External CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FE4E02",
+                        dark: "#00053D", 
+                        broder: "#182267",
+                        accent: "#FD803D",
+                        light: "#FECEB6",
+                        text: "#F7FBFC"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Organic vs Conventional Food Environmental Impact Analyzer",
+        "description": "Compare environmental impact and health benefits of organic vs conventional foods with personalized recommendations and cost analysis.",
+        "url": "https://calcmin.pro/OrganicFoodImpactAnalyzer/",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "CalcMin Pro",
+            "url": "https://calcmin.pro"
+        }
+    }
+    </script>
+</head>
+<body class="bg-dark text-text min-h-screen">
+    <!-- Navigation -->
+    <div id="navbar-container"></div>
+
+    <!-- Breadcrumb -->
+    <div class="bg-broder py-2">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center">
+                        <a href="../" class="text-light hover:text-primary">Home</a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <span class="material-icons text-light mx-2">chevron_right</span>
+                            <a href="../#sustainability" class="text-light hover:text-primary">Sustainability</a>
+                        </div>
+                    </li>
+                    <li aria-current="page">
+                        <div class="flex items-center">
+                            <span class="material-icons text-light mx-2">chevron_right</span>
+                            <span class="text-primary">Organic Food Impact Analyzer</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Top Ad Space -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+        <div class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm">
+            Top Ad Space (728x90 / 320x50)
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Calculator -->
+            <div class="lg:col-span-2">
+                <!-- Header -->
+                <div class="bg-broder p-6 rounded-lg border border-accent mb-6">
+                    <h1 class="text-3xl font-bold text-primary mb-4">
+                        <span class="material-icons text-4xl align-middle mr-2">agriculture</span>
+                        Organic Food Impact Analyzer
+                    </h1>
+                    <p class="text-light text-lg">Compare environmental impact and health benefits of organic vs conventional foods. Get personalized recommendations on where to prioritize organic purchases.</p>
+                </div>
+
+                <!-- Calculator Form -->
+                <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
+                    <h2 class="text-xl font-semibold text-primary mb-4">Food Impact Calculator</h2>
+                    
+                    <form id="foodImpactForm" class="space-y-6">
+                        <!-- Food Selection -->
+                        <div class="bg-dark p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-primary mb-4">Select Your Foods</h3>
+                            <div id="foodItems" class="space-y-4">
+                                <!-- Food items will be dynamically added here -->
+                            </div>
+                            <button type="button" id="addFoodItem" class="mt-4 bg-accent hover:bg-primary text-white px-4 py-2 rounded transition">
+                                <span class="material-icons mr-1">add</span>
+                                Add Food Item
+                            </button>
+                        </div>
+
+                        <!-- Shopping Preferences -->
+                        <div class="bg-dark p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-primary mb-4">Shopping Preferences</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-light mb-2">Monthly Food Budget ($)</label>
+                                    <input type="number" id="monthlyBudget" min="50" max="2000" value="400" 
+                                           class="w-full p-3 bg-broder border border-accent rounded text-text">
+                                </div>
+                                <div>
+                                    <label class="block text-light mb-2">Priority Factor</label>
+                                    <select id="priorityFactor" class="w-full p-3 bg-broder border border-accent rounded text-text">
+                                        <option value="health">Health Benefits</option>
+                                        <option value="environment">Environmental Impact</option>
+                                        <option value="cost">Cost Effectiveness</option>
+                                        <option value="balanced">Balanced Approach</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sourcing Preferences -->
+                        <div class="bg-dark p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-primary mb-4">Sourcing Preferences</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-light mb-2">Local vs Shipped Preference</label>
+                                    <select id="sourcingPreference" class="w-full p-3 bg-broder border border-accent rounded text-text">
+                                        <option value="local">Prefer Local (within 100 miles)</option>
+                                        <option value="regional">Regional (within 500 miles)</option>
+                                        <option value="national">National (any domestic)</option>
+                                        <option value="international">International OK</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-light mb-2">Household Size</label>
+                                    <input type="number" id="householdSize" min="1" max="10" value="2" 
+                                           class="w-full p-3 bg-broder border border-accent rounded text-text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-bold py-4 px-6 rounded-lg transition duration-300 flex items-center justify-center">
+                            <span class="material-icons mr-2">analytics</span>
+                            Analyze Food Impact
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Column - Ads -->
+            <div class="lg:col-span-1">
+                <!-- Top Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+
+                <!-- Dirty Dozen Quick Reference -->
+                <div class="bg-broder rounded-lg border border-accent p-6">
+                    <h3 class="text-xl font-bold text-primary mb-4">🍓 Dirty Dozen 2026</h3>
+                    <p class="text-light text-sm mb-3">Foods with highest pesticide residues (buy organic first):</p>
+                    <ul class="space-y-1 text-light text-sm">
+                        <li>• Strawberries</li>
+                        <li>• Spinach</li>
+                        <li>• Kale, collard & mustard greens</li>
+                        <li>• Peaches</li>
+                        <li>• Pears</li>
+                        <li>• Nectarines</li>
+                        <li>• Apples</li>
+                        <li>• Grapes</li>
+                        <li>• Bell & hot peppers</li>
+                        <li>• Cherries</li>
+                        <li>• Blueberries</li>
+                        <li>• Green beans</li>
+                    </ul>
+                </div>
+
+                <!-- Clean Fifteen -->
+                <div class="bg-broder rounded-lg border border-accent p-6">
+                    <h3 class="text-xl font-bold text-primary mb-4">✅ Clean Fifteen 2026</h3>
+                    <p class="text-light text-sm mb-3">Foods with lowest pesticide residues (conventional OK):</p>
+                    <ul class="space-y-1 text-light text-sm">
+                        <li>• Avocados</li>
+                        <li>• Sweet corn</li>
+                        <li>• Pineapple</li>
+                        <li>• Onions</li>
+                        <li>• Papaya</li>
+                        <li>• Sweet peas (frozen)</li>
+                        <li>• Asparagus</li>
+                        <li>• Honeydew melon</li>
+                        <li>• Kiwi</li>
+                        <li>• Cabbage</li>
+                    </ul>
+                </div>
+
+                <!-- Middle Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results" class="hidden mt-12">
+            <div class="bg-broder rounded-lg border border-accent p-6">
+                <h2 class="text-2xl font-bold text-primary mb-6 flex items-center">
+                    <span class="material-icons mr-2">assessment</span>
+                    Your Food Impact Analysis
+                </h2>
+                <div id="resultsContent"></div>
+            </div>
+        </div>
+
+        <!-- Bottom Ad Space -->
+        <div class="mt-8 bg-broder p-4 rounded-lg border border-accent text-center">
+            <div class="text-light text-sm mb-2">Advertisement</div>
+            <div class="bg-dark h-24 flex items-center justify-center rounded">
+                <span class="text-accent">Ad Space 728x90</span>
+            </div>
+        </div>
+
+        <!-- Blog Content -->
+        <article class="mt-12 bg-broder p-8 rounded-lg border border-accent">
+            <h2 class="text-3xl font-bold text-primary mb-6">Organic vs Conventional: The Complete Environmental & Health Guide</h2>
+            
+            <div class="prose prose-invert max-w-none">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-primary mb-4">Environmental Impact Comparison</h3>
+                        <p class="text-light mb-4">
+                            Organic farming typically uses 30-50% less energy per unit of land and produces 40% fewer greenhouse gas emissions than conventional farming. However, organic yields are often 20-25% lower, meaning more land is needed to produce the same amount of food.
+                        </p>
+                        <p class="text-light mb-4">
+                            The environmental equation becomes complex when considering transportation. A locally-grown conventional apple may have a lower carbon footprint than an organic apple shipped from across the country. Distance matters as much as farming method.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-primary mb-4">Health Benefits Analysis</h3>
+                        <p class="text-light mb-4">
+                            Organic foods contain 17% more antioxidants on average and significantly lower pesticide residues. Children consuming organic diets show 6x lower pesticide metabolites in urine tests. However, nutritional differences for vitamins and minerals are generally minimal.
+                        </p>
+                        <p class="text-light mb-4">
+                            The "Dirty Dozen" list identifies foods with highest pesticide residues where organic provides the greatest health benefit. Conversely, the "Clean Fifteen" shows foods where conventional options are relatively safe.
+                        </p>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-primary mb-4">Cost-Benefit Analysis by Food Category</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-dark p-4 rounded-lg">
+                        <h4 class="text-lg font-semibold text-primary mb-2">🍓 High Priority Organic</h4>
+                        <p class="text-light text-sm mb-2">Greatest health/environmental benefit per dollar:</p>
+                        <ul class="text-light text-sm space-y-1">
+                            <li>• Strawberries (70% pesticide reduction)</li>
+                            <li>• Spinach (60% pesticide reduction)</li>
+                            <li>• Apples (50% pesticide reduction)</li>
+                            <li>• Grapes (45% pesticide reduction)</li>
+                            <li>• Peaches (40% pesticide reduction)</li>
+                        </ul>
+                    </div>
+                    <div class="bg-dark p-4 rounded-lg">
+                        <h4 class="text-lg font-semibold text-primary mb-2">🥕 Medium Priority</h4>
+                        <p class="text-light text-sm mb-2">Moderate benefits, consider budget:</p>
+                        <ul class="text-light text-sm space-y-1">
+                            <li>• Carrots (25% pesticide reduction)</li>
+                            <li>• Tomatoes (30% pesticide reduction)</li>
+                            <li>• Potatoes (35% pesticide reduction)</li>
+                            <li>• Lettuce (20% pesticide reduction)</li>
+                            <li>• Broccoli (15% pesticide reduction)</li>
+                        </ul>
+                    </div>
+                    <div class="bg-dark p-4 rounded-lg">
+                        <h4 class="text-lg font-semibold text-primary mb-2">🥑 Low Priority</h4>
+                        <p class="text-light text-sm mb-2">Conventional options are relatively safe:</p>
+                        <ul class="text-light text-sm space-y-1">
+                            <li>• Avocados (5% pesticide reduction)</li>
+                            <li>• Sweet corn (8% pesticide reduction)</li>
+                            <li>• Pineapple (3% pesticide reduction)</li>
+                            <li>• Onions (10% pesticide reduction)</li>
+                            <li>• Asparagus (7% pesticide reduction)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-primary mb-4">Smart Shopping Strategies</h3>
+                
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-primary mb-3">Budget Optimization Approach</h4>
+                    <p class="text-light mb-4">
+                        With a limited organic budget, prioritize the "Dirty Dozen" foods where pesticide reduction is greatest. A $50 monthly organic budget is most effective when spent on strawberries, spinach, and apples rather than spread across all produce.
+                    </p>
+                    <p class="text-light mb-4">
+                        Seasonal organic shopping can reduce costs by 30-50%. Organic strawberries cost $6/lb in winter but $3/lb during peak season. Frozen organic options provide year-round access at consistent pricing.
+                    </p>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-primary mb-3">Local vs Organic Decision Matrix</h4>
+                    <p class="text-light mb-4">
+                        When choosing between local conventional and distant organic, consider the food type. For foods with edible skins (apples, grapes), organic provides greater benefit. For foods with removed peels (bananas, oranges), local conventional may be the better environmental choice.
+                    </p>
+                    <p class="text-light mb-4">
+                        Transportation accounts for 6% of food's carbon footprint on average, while production methods account for 80%. However, air-freighted organic produce can have 10x higher emissions than local conventional alternatives.
+                    </p>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-primary mb-4">Health Impact by Demographics</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <h4 class="text-xl font-semibold text-primary mb-3">Children & Pregnant Women</h4>
+                        <p class="text-light mb-4">
+                            Children consume 3-4x more food per body weight than adults, making pesticide exposure more significant. Pregnant women consuming organic foods show 60% lower organophosphate metabolites, potentially reducing developmental risks.
+                        </p>
+                        <p class="text-light mb-4">
+                            Priority organic foods for families: apples (common snack), strawberries (high consumption), milk (daily intake), and any foods eaten with skins. The investment in organic for children often justifies the 20-40% price premium.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold text-primary mb-3">Adults & Seniors</h4>
+                        <p class="text-light mb-4">
+                            Adult bodies process pesticides more efficiently, making the health benefits of organic foods less dramatic but still measurable. Focus on foods consumed in large quantities or those with highest residue levels.
+                        </p>
+                        <p class="text-light mb-4">
+                            For seniors on fixed incomes, prioritizing organic purchases based on the Dirty Dozen list maximizes health benefits within budget constraints. Frozen organic options provide nutrition and cost benefits year-round.
+                        </p>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-primary mb-4">Environmental Considerations Beyond Organic</h3>
+                
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-primary mb-3">Packaging and Processing</h4>
+                    <p class="text-light mb-4">
+                        Organic foods often use more packaging due to separation requirements and smaller production runs. A conventional apple in bulk may have lower environmental impact than an individually-wrapped organic apple. Consider packaging when making choices.
+                    </p>
+                    <p class="text-light mb-4">
+                        Processed organic foods (cookies, chips, frozen meals) provide minimal health benefits over conventional versions while commanding premium prices. Focus organic spending on whole foods where benefits are greatest.
+                    </p>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-primary mb-3">Water Usage and Soil Health</h4>
+                    <p class="text-light mb-4">
+                        Organic farming builds soil carbon over time, sequestering CO2 and improving water retention. However, organic farms may use 50% more water per unit of production due to less efficient pest and weed control methods.
+                    </p>
+                    <p class="text-light mb-4">
+                        The long-term environmental benefits of organic farming (biodiversity, soil health, pollinator protection) may outweigh short-term efficiency concerns, especially for perennial crops like fruit trees and vineyards.
+                    </p>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-primary mb-4">Making Informed Decisions</h3>
+                
+                <div class="bg-dark p-6 rounded-lg mt-8">
+                    <h3 class="text-2xl font-semibold text-primary mb-4">Your Personalized Action Plan</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="text-lg font-semibold text-primary mb-2">High-Impact Organic Purchases</h4>
+                            <ul class="text-light space-y-2">
+                                <li>• Start with Dirty Dozen foods you eat most</li>
+                                <li>• Prioritize children's foods and daily staples</li>
+                                <li>• Choose organic for thin-skinned fruits</li>
+                                <li>• Buy seasonal organic when prices drop</li>
+                                <li>• Consider frozen organic for year-round access</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-primary mb-2">Smart Conventional Choices</h4>
+                            <ul class="text-light space-y-2">
+                                <li>• Clean Fifteen foods are safe conventional</li>
+                                <li>• Local conventional beats distant organic</li>
+                                <li>• Thick-skinned fruits (bananas, oranges)</li>
+                                <li>• Foods where you remove outer layers</li>
+                                <li>• Processed foods with minimal organic benefit</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <script src="script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+</body>
+</html>

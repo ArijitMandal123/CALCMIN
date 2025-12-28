@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Renovation Priority Sequencer - Optimal Project Planning | CalcMin.pro</title>
+    <meta name="description" content="Determine optimal order for home renovations based on ROI, urgency, and dependencies. Get year-by-year budget plans, resale value increases, and priority rankings for maximum home improvement efficiency.">
+    <meta name="keywords" content="home renovation priority calculator, renovation sequence planner, home improvement ROI calculator, renovation budget planner, home project prioritizer, renovation timeline calculator">
+    <meta name="author" content="CalcMin.pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calcmin.pro/HomeRenovationPrioritySequencer/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Home Renovation Priority Sequencer - Optimal Project Planning">
+    <meta property="og:description" content="Determine optimal order for home renovations based on ROI, urgency, and dependencies. Get budget plans and priority rankings.">
+    <meta property="og:url" content="https://calcmin.pro/HomeRenovationPrioritySequencer/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CalcMin.pro">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Home Renovation Priority Sequencer">
+    <meta name="twitter:description" content="Plan optimal home renovation sequence based on ROI, urgency, and dependencies for maximum efficiency.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FE4E02",
+                        dark: "#00053D", 
+                        broder: "#182267",
+                        accent: "#FD803D",
+                        light: "#FECEB6",
+                        text: "#F7FBFC"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Home Renovation Priority Sequencer",
+        "description": "Determine optimal order for home renovations based on ROI, urgency, and dependencies with budget planning and timeline optimization.",
+        "url": "https://calcmin.pro/HomeRenovationPrioritySequencer/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "CalcMin.pro"
+        }
+    }
+    </script>
+</head>
+<body class="bg-dark text-text min-h-screen">
+    <!-- Navigation -->
+    <nav id="navbar-container"></nav>
+
+    <!-- Top Ad Space -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+        <div class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm">
+            Top Ad Space (728x90 / 320x50)
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Calculator -->
+            <div class="lg:col-span-2">
+                <!-- Header -->
+                <div class="bg-broder p-6 rounded-lg border border-accent mb-6">
+                    <h1 class="text-3xl font-bold text-primary mb-4">
+                        <span class="material-icons text-4xl align-middle mr-2">home_repair_service</span>
+                        Home Renovation Priority Sequencer
+                    </h1>
+                    <p class="text-light text-lg">Determine optimal order for home renovations based on ROI, urgency, and dependencies. Get year-by-year budget plans, resale value increases, and priority rankings for maximum efficiency.</p>
+                </div>
+
+                <!-- Project Input Form -->
+                <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
+                    <h3 class="text-xl font-bold text-primary mb-4">Add Renovation Projects</h3>
+                    <form id="project-form" class="space-y-4">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Project Name</label>
+                                <input type="text" id="project-name" placeholder="e.g., Kitchen Remodel" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Project Type</label>
+                                <select id="project-type" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select type</option>
+                                    <option value="kitchen">Kitchen Renovation</option>
+                                    <option value="bathroom">Bathroom Renovation</option>
+                                    <option value="flooring">Flooring</option>
+                                    <option value="roofing">Roofing</option>
+                                    <option value="hvac">HVAC System</option>
+                                    <option value="windows">Windows/Doors</option>
+                                    <option value="painting">Interior/Exterior Painting</option>
+                                    <option value="electrical">Electrical Work</option>
+                                    <option value="plumbing">Plumbing</option>
+                                    <option value="insulation">Insulation</option>
+                                    <option value="landscaping">Landscaping</option>
+                                    <option value="deck-patio">Deck/Patio</option>
+                                    <option value="basement">Basement Finishing</option>
+                                    <option value="attic">Attic Conversion</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Budget ($)</label>
+                                <input type="number" id="project-budget" placeholder="e.g., 25000" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Urgency (1-10)</label>
+                                <input type="range" id="project-urgency" min="1" max="10" value="5" class="w-full">
+                                <div class="flex justify-between text-xs text-light mt-1">
+                                    <span>Low</span>
+                                    <span id="urgency-value">5</span>
+                                    <span>Critical</span>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Comfort Impact (1-10)</label>
+                                <input type="range" id="comfort-impact" min="1" max="10" value="5" class="w-full">
+                                <div class="flex justify-between text-xs text-light mt-1">
+                                    <span>Low</span>
+                                    <span id="comfort-value">5</span>
+                                    <span>High</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Expected ROI (%)</label>
+                                <input type="number" id="project-roi" placeholder="e.g., 75" min="0" max="200" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                <p class="text-xs text-light mt-1">Percentage of cost recovered at resale</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Dependencies</label>
+                                <select id="project-dependencies" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary">
+                                    <option value="">No dependencies</option>
+                                    <option value="electrical">Requires electrical work first</option>
+                                    <option value="plumbing">Requires plumbing work first</option>
+                                    <option value="structural">Requires structural work first</option>
+                                    <option value="roofing">Requires roofing work first</option>
+                                    <option value="hvac">Requires HVAC work first</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-medium py-3 px-6 rounded transition duration-200">
+                            Add Project
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Projects List -->
+                <div id="projects-list" class="bg-broder rounded-lg p-6 border border-accent mb-6 hidden">
+                    <h3 class="text-xl font-bold text-primary mb-4">Added Projects</h3>
+                    <div id="projects-container"></div>
+                    <button id="calculate-sequence" class="w-full bg-accent hover:bg-primary text-white font-medium py-3 px-6 rounded transition duration-200 mt-4">
+                        Calculate Optimal Sequence
+                    </button>
+                </div>
+
+                <!-- Results -->
+                <div id="results" class="hidden">
+                    <div id="result-content"></div>
+                </div>
+            </div>
+
+            <!-- Right Column - Ads -->
+            <div class="lg:col-span-1">
+                <!-- Top Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+
+                <!-- Middle Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Ad Space -->
+        <div class="mt-8 bg-broder p-4 rounded-lg border border-accent text-center">
+            <div class="text-light text-sm mb-2">Advertisement</div>
+            <div class="bg-dark h-24 flex items-center justify-center rounded">
+                <span class="text-accent">Ad Space 728x90</span>
+            </div>
+        </div>
+
+        <!-- Blog Content -->
+        <article class="mt-12 bg-broder p-8 rounded-lg border border-accent">
+            <h2 class="text-3xl font-bold text-primary mb-6">Home Renovation Priority Planning: Maximizing ROI and Efficiency</h2>
+            
+            <div class="prose prose-invert max-w-none">
+                <p class="text-light text-lg leading-relaxed mb-6">
+                    Home renovations are major investments that require strategic planning to maximize return on investment while addressing urgent needs and dependencies. Our Home Renovation Priority Sequencer helps you create an optimal timeline that balances financial returns, practical necessities, and project dependencies for the most efficient renovation journey.
+                </p>
+
+                <div class="space-y-8">
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Strategic Renovation Planning</h3>
+                        <p class="text-light mb-4">
+                            Successful home renovation requires more than just picking projects you like. The optimal sequence considers multiple factors that affect both immediate livability and long-term value:
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Financial Factors</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Return on investment percentages</li>
+                                    <li>• Budget constraints and cash flow</li>
+                                    <li>• Market timing and resale value</li>
+                                    <li>• Tax benefits and energy rebates</li>
+                                </ul>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Practical Considerations</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Urgency and safety requirements</li>
+                                    <li>• Project dependencies and sequencing</li>
+                                    <li>• Seasonal timing and weather factors</li>
+                                    <li>• Living disruption and comfort impact</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">High-ROI Renovation Projects</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border border-accent rounded">
+                                <thead class="bg-broder">
+                                    <tr>
+                                        <th class="p-3 text-left text-accent">Project Type</th>
+                                        <th class="p-3 text-left text-accent">Average ROI</th>
+                                        <th class="p-3 text-left text-accent">Cost Range</th>
+                                        <th class="p-3 text-left text-accent">Timeline</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-light">
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Minor Kitchen Remodel</td>
+                                        <td class="p-3">85%</td>
+                                        <td class="p-3">$15,000-$30,000</td>
+                                        <td class="p-3">2-4 weeks</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Bathroom Remodel</td>
+                                        <td class="p-3">70%</td>
+                                        <td class="p-3">$10,000-$25,000</td>
+                                        <td class="p-3">2-3 weeks</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Hardwood Flooring</td>
+                                        <td class="p-3">75%</td>
+                                        <td class="p-3">$8,000-$20,000</td>
+                                        <td class="p-3">1-2 weeks</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Window Replacement</td>
+                                        <td class="p-3">65%</td>
+                                        <td class="p-3">$12,000-$25,000</td>
+                                        <td class="p-3">1-2 days</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Roof Replacement</td>
+                                        <td class="p-3">60%</td>
+                                        <td class="p-3">$15,000-$40,000</td>
+                                        <td class="p-3">3-5 days</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Renovation Sequencing Strategy</h3>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Phase 1: Infrastructure</h4>
+                                <p class="text-sm text-light mb-2">Foundation and systems first</p>
+                                <ul class="text-xs text-light space-y-1">
+                                    <li>• Structural repairs</li>
+                                    <li>• Roofing and weatherproofing</li>
+                                    <li>• HVAC system upgrades</li>
+                                    <li>• Electrical and plumbing</li>
+                                </ul>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Phase 2: Major Spaces</h4>
+                                <p class="text-sm text-light mb-2">High-impact living areas</p>
+                                <ul class="text-xs text-light space-y-1">
+                                    <li>• Kitchen renovation</li>
+                                    <li>• Bathroom remodeling</li>
+                                    <li>• Flooring installation</li>
+                                    <li>• Window replacements</li>
+                                </ul>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Phase 3: Finishing</h4>
+                                <p class="text-sm text-light mb-2">Aesthetic and comfort</p>
+                                <ul class="text-xs text-light space-y-1">
+                                    <li>• Interior/exterior painting</li>
+                                    <li>• Landscaping projects</li>
+                                    <li>• Deck and patio additions</li>
+                                    <li>• Cosmetic improvements</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Budget Planning and Financing</h3>
+                        <div class="space-y-4">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">20% Rule for Contingencies</h4>
+                                <p class="text-sm text-light">Always budget an additional 20% beyond estimated costs for unexpected issues, permit delays, and material price fluctuations. Older homes may require 25-30% contingency budgets.</p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Financing Options</h4>
+                                <div class="grid md:grid-cols-2 gap-4 text-sm text-light">
+                                    <div>
+                                        <strong class="text-accent">Cash Payment:</strong> Best for small projects, no interest costs, faster completion
+                                    </div>
+                                    <div>
+                                        <strong class="text-accent">Home Equity Loan:</strong> Lower interest rates, tax-deductible interest, fixed payments
+                                    </div>
+                                    <div>
+                                        <strong class="text-accent">Personal Loan:</strong> Quick approval, no collateral required, higher interest rates
+                                    </div>
+                                    <div>
+                                        <strong class="text-accent">Credit Cards:</strong> Convenience for small projects, rewards points, high interest if not paid quickly
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Seasonal Timing Considerations</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-primary mb-3">Spring/Summer Projects</h4>
+                                <p class="text-light text-sm mb-3">Ideal for exterior work and major disruptions:</p>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Roofing and siding projects</li>
+                                    <li>• Exterior painting and landscaping</li>
+                                    <li>• Deck and patio construction</li>
+                                    <li>• Window and door replacements</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-primary mb-3">Fall/Winter Projects</h4>
+                                <p class="text-light text-sm mb-3">Focus on interior work and planning:</p>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Kitchen and bathroom remodels</li>
+                                    <li>• Flooring installation</li>
+                                    <li>• Interior painting and finishing</li>
+                                    <li>• HVAC and insulation upgrades</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Common Renovation Mistakes</h3>
+                        <div class="space-y-3">
+                            <div class="bg-broder p-3 rounded border border-accent">
+                                <h4 class="font-semibold text-primary text-sm mb-1">Over-Improving for the Neighborhood</h4>
+                                <p class="text-xs text-light">Avoid spending more than 10-15% above the neighborhood average home value. Luxury upgrades in modest neighborhoods rarely provide good ROI.</p>
+                            </div>
+                            <div class="bg-broder p-3 rounded border border-accent">
+                                <h4 class="font-semibold text-primary text-sm mb-1">Ignoring Permits and Codes</h4>
+                                <p class="text-xs text-light">Unpermitted work can cause problems during resale and may need to be redone. Always check local requirements and obtain proper permits.</p>
+                            </div>
+                            <div class="bg-broder p-3 rounded border border-accent">
+                                <h4 class="font-semibold text-primary text-sm mb-1">Poor Project Sequencing</h4>
+                                <p class="text-xs text-light">Installing new flooring before painting or doing electrical work after drywall can double costs and timelines. Plan the logical order carefully.</p>
+                            </div>
+                            <div class="bg-broder p-3 rounded border border-accent">
+                                <h4 class="font-semibold text-primary text-sm mb-1">Underestimating Timeline Impact</h4>
+                                <p class="text-xs text-light">Living through renovations is stressful. Plan for temporary living arrangements during major kitchen or bathroom remodels.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer-container"></footer>
+
+    <script src="script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+</body>
+</html>

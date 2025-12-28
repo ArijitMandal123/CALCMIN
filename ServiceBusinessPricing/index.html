@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Business Pricing Optimizer - Calculate Optimal Service Rates | CalcMin.pro</title>
+    <meta name="description" content="Optimize your service business pricing with our comprehensive calculator. Determine optimal rates for consulting, freelancing, coaching, and professional services based on market data and profit margins.">
+    <meta name="keywords" content="service pricing calculator, consulting rates, freelance pricing, coaching fees, business pricing strategy, hourly rate calculator, service business optimization, pricing model">
+    <meta name="author" content="CalcMin.pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calcmin.pro/ServiceBusinessPricing/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Service Business Pricing Optimizer - Calculate Optimal Service Rates">
+    <meta property="og:description" content="Optimize your service business pricing with data-driven calculations. Get recommended rates for consulting, freelancing, and coaching services.">
+    <meta property="og:url" content="https://calcmin.pro/ServiceBusinessPricing/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CalcMin.pro">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Service Business Pricing Optimizer">
+    <meta name="twitter:description" content="Calculate optimal pricing for your service business with our comprehensive pricing strategy tool.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FE4E02",
+                        dark: "#00053D", 
+                        broder: "#182267",
+                        accent: "#FD803D",
+                        light: "#FECEB6",
+                        text: "#F7FBFC"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Service Business Pricing Optimizer",
+        "description": "Calculate optimal pricing for service businesses including consulting, freelancing, and coaching with comprehensive market analysis and profit optimization.",
+        "url": "https://calcmin.pro/ServiceBusinessPricing/",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "CalcMin.pro"
+        }
+    }
+    </script>
+</head>
+<body class="bg-dark text-text min-h-screen">
+    <!-- Navigation -->
+    <nav id="navbar-container"></nav>
+
+    <!-- Top Ad Space -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+        <div class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm">
+            Top Ad Space (728x90 / 320x50)
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Calculator -->
+            <div class="lg:col-span-2">
+                <!-- Header -->
+                <div class="bg-broder p-6 rounded-lg border border-accent mb-6">
+                    <h1 class="text-3xl font-bold text-primary mb-4">
+                        <span class="material-icons text-4xl align-middle mr-2">tune</span>
+                        Service Business Pricing Optimizer
+                    </h1>
+                    <p class="text-light text-lg">Determine optimal pricing for your service business with data-driven analysis. Get recommended rates for consulting, freelancing, coaching, and professional services based on market conditions and profit margins.</p>
+                </div>
+
+                <!-- Calculator Form -->
+                <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
+                    <form id="pricing-form" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Service Type</label>
+                                <select id="serviceType" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select service type</option>
+                                    <option value="consulting">Business Consulting</option>
+                                    <option value="coaching">Life/Business Coaching</option>
+                                    <option value="freelance-design">Freelance Design</option>
+                                    <option value="freelance-dev">Freelance Development</option>
+                                    <option value="freelance-writing">Freelance Writing</option>
+                                    <option value="marketing">Marketing Services</option>
+                                    <option value="legal">Legal Services</option>
+                                    <option value="accounting">Accounting Services</option>
+                                    <option value="therapy">Therapy/Counseling</option>
+                                    <option value="fitness">Fitness Training</option>
+                                    <option value="other">Other Professional Service</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Geographic Market</label>
+                                <select id="geoMarket" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select market</option>
+                                    <option value="tier1">Tier 1 Cities (NYC, SF, London)</option>
+                                    <option value="tier2">Tier 2 Cities (Austin, Seattle, Toronto)</option>
+                                    <option value="tier3">Tier 3 Cities (Regional Markets)</option>
+                                    <option value="rural">Rural/Small Town</option>
+                                    <option value="global">Global/Remote Market</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Years of Experience</label>
+                                <input type="number" id="experience" placeholder="e.g., 5" min="0" max="50" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Education Level</label>
+                                <select id="education" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select education</option>
+                                    <option value="highschool">High School</option>
+                                    <option value="associate">Associate Degree</option>
+                                    <option value="bachelor">Bachelor's Degree</option>
+                                    <option value="master">Master's Degree</option>
+                                    <option value="phd">PhD/Doctorate</option>
+                                    <option value="certification">Professional Certification</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Monthly Operating Costs ($)</label>
+                                <input type="number" id="operatingCosts" placeholder="e.g., 2000" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Desired Annual Income ($)</label>
+                                <input type="number" id="desiredIncome" placeholder="e.g., 80000" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Billable Hours per Week</label>
+                                <input type="number" id="billableHours" placeholder="e.g., 30" min="1" max="80" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Vacation Weeks per Year</label>
+                                <input type="number" id="vacationWeeks" placeholder="e.g., 4" min="0" max="20" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Unique Value Proposition</label>
+                            <div class="grid md:grid-cols-2 gap-3">
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="specialized" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Highly Specialized Expertise</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="certified" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Industry Certifications</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="results" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Proven Track Record</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="premium" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Premium Brand/Reputation</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Market Demand Level</label>
+                            <div class="flex gap-4">
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="demand" value="low" class="text-primary">
+                                    <span class="text-text">Low Demand</span>
+                                </label>
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="demand" value="medium" class="text-primary" checked>
+                                    <span class="text-text">Medium Demand</span>
+                                </label>
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="demand" value="high" class="text-primary">
+                                    <span class="text-text">High Demand</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-medium py-3 px-6 rounded transition duration-200">
+                            Calculate Optimal Pricing
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results -->
+                <div id="results" class="hidden">
+                    <div id="result-content"></div>
+                </div>
+            </div>
+
+            <!-- Right Column - Ads -->
+            <div class="lg:col-span-1">
+                <!-- Top Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+
+                <!-- Middle Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Ad Space -->
+        <div class="mt-8 bg-broder p-4 rounded-lg border border-accent text-center">
+            <div class="text-light text-sm mb-2">Advertisement</div>
+            <div class="bg-dark h-24 flex items-center justify-center rounded">
+                <span class="text-accent">Ad Space 728x90</span>
+            </div>
+        </div>
+
+        <!-- Blog Content -->
+        <article class="mt-12 bg-broder p-8 rounded-lg border border-accent">
+            <h2 class="text-3xl font-bold text-primary mb-6">Complete Guide to Service Business Pricing Optimization</h2>
+            
+            <div class="prose prose-invert max-w-none">
+                <p class="text-light text-lg leading-relaxed mb-6">
+                    Pricing your services correctly is one of the most critical decisions for any service-based business. Whether you're a consultant, coach, freelancer, or professional service provider, getting your pricing strategy right can make the difference between struggling to survive and building a thriving, profitable business. Our Service Business Pricing Optimizer helps you calculate data-driven rates that reflect your true value while remaining competitive in your market.
+                </p>
+
+                <div class="space-y-8">
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Why Service Pricing is So Challenging</h3>
+                        <p class="text-light mb-4">
+                            Unlike product-based businesses, service pricing involves numerous intangible factors that make it difficult to establish clear value propositions. Service providers often struggle with:
+                        </p>
+                        <ul class="list-disc list-inside text-light space-y-2 mb-4">
+                            <li>Difficulty quantifying the value of expertise and experience</li>
+                            <li>Varying market rates across different geographic regions</li>
+                            <li>Competition from both local and global service providers</li>
+                            <li>Client perception of value versus actual delivery</li>
+                            <li>Balancing profitability with market competitiveness</li>
+                            <li>Accounting for all hidden costs and overhead expenses</li>
+                        </ul>
+                        <p class="text-light">
+                            Our calculator addresses these challenges by providing a comprehensive framework that considers market conditions, your unique value proposition, operating costs, and profit requirements to generate optimal pricing recommendations.
+                        </p>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Key Factors in Service Pricing Strategy</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-primary mb-2">Cost-Based Factors</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Operating expenses and overhead</li>
+                                    <li>• Desired profit margins</li>
+                                    <li>• Tax obligations and business insurance</li>
+                                    <li>• Equipment and software costs</li>
+                                    <li>• Professional development investments</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-primary mb-2">Market-Based Factors</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Competitive landscape analysis</li>
+                                    <li>• Geographic market conditions</li>
+                                    <li>• Industry demand levels</li>
+                                    <li>• Client budget expectations</li>
+                                    <li>• Economic conditions and trends</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-primary mb-2">Value-Based Factors</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Years of experience and expertise</li>
+                                    <li>• Educational background and certifications</li>
+                                    <li>• Proven track record and results</li>
+                                    <li>• Unique methodologies or approaches</li>
+                                    <li>• Brand reputation and recognition</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-primary mb-2">Operational Factors</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Available billable hours per week</li>
+                                    <li>• Seasonal demand fluctuations</li>
+                                    <li>• Client acquisition and retention costs</li>
+                                    <li>• Administrative and non-billable time</li>
+                                    <li>• Scalability and growth potential</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Service Pricing Models and Strategies</h3>
+                        <div class="space-y-4">
+                            <div class="border-l-4 border-primary pl-4">
+                                <h4 class="font-semibold text-primary mb-2">Hourly Rate Pricing</h4>
+                                <p class="text-light text-sm">
+                                    The most straightforward model, charging clients based on time spent. Best for well-defined tasks with predictable time requirements. Consider efficiency improvements over time and avoid penalizing yourself for becoming faster.
+                                </p>
+                            </div>
+                            <div class="border-l-4 border-accent pl-4">
+                                <h4 class="font-semibold text-accent mb-2">Project-Based Pricing</h4>
+                                <p class="text-light text-sm">
+                                    Fixed pricing for specific deliverables or outcomes. Allows for better profit margins when you can deliver efficiently. Requires careful scope definition and change management processes.
+                                </p>
+                            </div>
+                            <div class="border-l-4 border-primary pl-4">
+                                <h4 class="font-semibold text-primary mb-2">Value-Based Pricing</h4>
+                                <p class="text-light text-sm">
+                                    Pricing based on the value delivered to the client rather than time or costs. Highest profit potential but requires strong client relationships and clear value demonstration.
+                                </p>
+                            </div>
+                            <div class="border-l-4 border-accent pl-4">
+                                <h4 class="font-semibold text-accent mb-2">Retainer Pricing</h4>
+                                <p class="text-light text-sm">
+                                    Monthly or quarterly fees for ongoing services. Provides predictable revenue and stronger client relationships. Ideal for advisory, maintenance, or support services.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Market Rate Analysis by Service Type</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border border-accent rounded">
+                                <thead class="bg-broder">
+                                    <tr>
+                                        <th class="p-3 text-left text-primary">Service Type</th>
+                                        <th class="p-3 text-left text-primary">Entry Level</th>
+                                        <th class="p-3 text-left text-primary">Experienced</th>
+                                        <th class="p-3 text-left text-primary">Expert</th>
+                                        <th class="p-3 text-left text-primary">Premium</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-light">
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Business Consulting</td>
+                                        <td class="p-3">$75-125/hr</td>
+                                        <td class="p-3">$125-200/hr</td>
+                                        <td class="p-3">$200-350/hr</td>
+                                        <td class="p-3">$350-500+/hr</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Life/Business Coaching</td>
+                                        <td class="p-3">$50-100/hr</td>
+                                        <td class="p-3">$100-175/hr</td>
+                                        <td class="p-3">$175-300/hr</td>
+                                        <td class="p-3">$300-500+/hr</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Freelance Development</td>
+                                        <td class="p-3">$40-75/hr</td>
+                                        <td class="p-3">$75-125/hr</td>
+                                        <td class="p-3">$125-200/hr</td>
+                                        <td class="p-3">$200-300+/hr</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Freelance Design</td>
+                                        <td class="p-3">$35-65/hr</td>
+                                        <td class="p-3">$65-110/hr</td>
+                                        <td class="p-3">$110-175/hr</td>
+                                        <td class="p-3">$175-250+/hr</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Marketing Services</td>
+                                        <td class="p-3">$45-80/hr</td>
+                                        <td class="p-3">$80-140/hr</td>
+                                        <td class="p-3">$140-225/hr</td>
+                                        <td class="p-3">$225-350+/hr</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="text-light text-sm mt-4">
+                            *Rates vary significantly by geographic market, specialization, and demand. Tier 1 cities typically command 25-50% higher rates than shown.
+                        </p>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Geographic Market Considerations</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-primary mb-3">Tier 1 Markets (Premium Pricing)</h4>
+                                <ul class="text-light text-sm space-y-1 mb-4">
+                                    <li>• New York City, San Francisco, London, Tokyo</li>
+                                    <li>• 40-60% higher rates than national average</li>
+                                    <li>• Higher cost of living and business expenses</li>
+                                    <li>• More sophisticated client expectations</li>
+                                    <li>• Greater competition but higher budgets</li>
+                                </ul>
+                                <h4 class="font-semibold text-primary mb-3">Tier 2 Markets (Standard Pricing)</h4>
+                                <ul class="text-light text-sm space-y-1">
+                                    <li>• Austin, Seattle, Toronto, Berlin, Sydney</li>
+                                    <li>• 10-25% above national average</li>
+                                    <li>• Growing tech and business hubs</li>
+                                    <li>• Good balance of opportunity and competition</li>
+                                    <li>• Emerging market opportunities</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-primary mb-3">Tier 3 Markets (Regional Pricing)</h4>
+                                <ul class="text-light text-sm space-y-1 mb-4">
+                                    <li>• Regional cities and suburban markets</li>
+                                    <li>• National average or 10-20% below</li>
+                                    <li>• Lower competition but smaller budgets</li>
+                                    <li>• Relationship-based business development</li>
+                                    <li>• Opportunity for market leadership</li>
+                                </ul>
+                                <h4 class="font-semibold text-primary mb-3">Global/Remote Markets</h4>
+                                <ul class="text-light text-sm space-y-1">
+                                    <li>• Location-independent service delivery</li>
+                                    <li>• Compete on value rather than geography</li>
+                                    <li>• Access to global client base</li>
+                                    <li>• Currency and time zone considerations</li>
+                                    <li>• Digital marketing and positioning critical</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Pricing Psychology and Client Perception</h3>
+                        <p class="text-light mb-4">
+                            Understanding how clients perceive and respond to pricing is crucial for service businesses. Price often serves as a quality indicator, especially when clients can't easily evaluate service quality beforehand.
+                        </p>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Price Anchoring</h4>
+                                <p class="text-light text-sm">
+                                    Present your premium option first to establish a high anchor point. This makes your standard pricing appear more reasonable and valuable.
+                                </p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Value Communication</h4>
+                                <p class="text-light text-sm">
+                                    Clearly articulate the specific outcomes and benefits clients receive. Focus on ROI and business impact rather than just features or time.
+                                </p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Pricing Confidence</h4>
+                                <p class="text-light text-sm">
+                                    Present prices confidently without apology or justification. Hesitation or defensiveness can undermine perceived value.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Common Pricing Mistakes to Avoid</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <span class="material-icons text-red-400 mt-1">error</span>
+                                <div>
+                                    <h4 class="font-semibold text-red-400 mb-1">Underpricing to Win Business</h4>
+                                    <p class="text-light text-sm">
+                                        Competing solely on price attracts price-sensitive clients and devalues your expertise. Focus on value differentiation instead.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="material-icons text-red-400 mt-1">error</span>
+                                <div>
+                                    <h4 class="font-semibold text-red-400 mb-1">Ignoring Hidden Costs</h4>
+                                    <p class="text-light text-sm">
+                                        Failing to account for non-billable time, taxes, insurance, and business development costs leads to unsustainable pricing.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="material-icons text-red-400 mt-1">error</span>
+                                <div>
+                                    <h4 class="font-semibold text-red-400 mb-1">One-Size-Fits-All Pricing</h4>
+                                    <p class="text-light text-sm">
+                                        Using the same rates for all clients ignores varying complexity, urgency, and value delivered. Develop tiered pricing strategies.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="material-icons text-red-400 mt-1">error</span>
+                                <div>
+                                    <h4 class="font-semibold text-red-400 mb-1">Avoiding Price Increases</h4>
+                                    <p class="text-light text-sm">
+                                        Failing to raise prices regularly leads to stagnant income and inability to invest in business growth and improvement.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Implementing Your Pricing Strategy</h3>
+                        <div class="space-y-4">
+                            <div class="border-l-4 border-primary pl-4">
+                                <h4 class="font-semibold text-primary mb-2">1. Test and Validate</h4>
+                                <p class="text-light text-sm">
+                                    Start with calculated rates and test market response. Track conversion rates, client feedback, and profitability to refine your approach.
+                                </p>
+                            </div>
+                            <div class="border-l-4 border-accent pl-4">
+                                <h4 class="font-semibold text-accent mb-2">2. Communicate Value Clearly</h4>
+                                <p class="text-light text-sm">
+                                    Develop clear value propositions that justify your pricing. Use case studies, testimonials, and specific outcomes to demonstrate ROI.
+                                </p>
+                            </div>
+                            <div class="border-l-4 border-primary pl-4">
+                                <h4 class="font-semibold text-primary mb-2">3. Offer Multiple Options</h4>
+                                <p class="text-light text-sm">
+                                    Create tiered service packages (good, better, best) to accommodate different budgets while encouraging upsells to higher-value options.
+                                </p>
+                            </div>
+                            <div class="border-l-4 border-accent pl-4">
+                                <h4 class="font-semibold text-accent mb-2">4. Review and Adjust Regularly</h4>
+                                <p class="text-light text-sm">
+                                    Conduct quarterly pricing reviews to account for market changes, increased expertise, and business growth. Plan annual rate increases.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer-container"></footer>
+
+    <script src="script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+</body>
+</html>

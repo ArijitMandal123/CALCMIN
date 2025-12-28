@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving Cost Estimator & Company Comparison - Moving Calculator | CalcMin.pro</title>
+    <meta name="description" content="Calculate moving costs and compare moving companies with our comprehensive estimator. Get accurate quotes, hidden fee alerts, and negotiation tips for local and long-distance moves.">
+    <meta name="keywords" content="moving cost calculator, moving company comparison, relocation cost estimator, moving quote calculator, moving budget planner, long distance moving costs">
+    <meta name="author" content="CalcMin.pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calcmin.pro/MovingCostEstimator/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Moving Cost Estimator & Company Comparison - Moving Calculator">
+    <meta property="og:description" content="Calculate accurate moving costs and compare moving companies. Get comprehensive estimates with hidden fees and negotiation tips.">
+    <meta property="og:url" content="https://calcmin.pro/MovingCostEstimator/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CalcMin.pro">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Moving Cost Estimator & Company Comparison">
+    <meta name="twitter:description" content="Calculate moving costs and compare companies with comprehensive analysis and hidden fee alerts.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FE4E02",
+                        dark: "#00053D", 
+                        broder: "#182267",
+                        accent: "#FD803D",
+                        light: "#FECEB6",
+                        text: "#F7FBFC"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Moving Cost Estimator & Company Comparison",
+        "description": "Comprehensive tool to estimate moving costs and compare moving companies with hidden fee analysis and negotiation tips",
+        "url": "https://calcmin.pro/MovingCostEstimator/",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "CalcMin.pro"
+        }
+    }
+    </script>
+</head>
+<body class="bg-dark text-text min-h-screen">
+    <!-- Navigation -->
+    <nav id="navbar-container"></nav>
+
+    <!-- Top Ad Space -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+        <div class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm">
+            Top Ad Space (728x90 / 320x50)
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Calculator -->
+            <div class="lg:col-span-2">
+                <!-- Header -->
+                <div class="bg-broder p-6 rounded-lg border border-accent mb-6">
+                    <h1 class="text-3xl font-bold text-primary mb-4">
+                        <span class="material-icons text-4xl align-middle mr-2">local_shipping</span>
+                        Moving Cost Estimator & Company Comparison
+                    </h1>
+                    <p class="text-light text-lg">Calculate accurate moving costs and compare moving companies. Get comprehensive estimates with hidden fees analysis, budget recommendations, and negotiation tips.</p>
+                </div>
+
+                <!-- Calculator Form -->
+                <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
+                    <form id="moving-cost-form" class="space-y-6">
+                        <!-- Location Information -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Current Location (State)</label>
+                                <select id="currentState" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select current state</option>
+                                    <option value="AL">Alabama</option>
+                                    <option value="CA">California</option>
+                                    <option value="FL">Florida</option>
+                                    <option value="NY">New York</option>
+                                    <option value="TX">Texas</option>
+                                    <option value="other">Other State</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Destination Location (State)</label>
+                                <select id="destinationState" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select destination state</option>
+                                    <option value="AL">Alabama</option>
+                                    <option value="CA">California</option>
+                                    <option value="FL">Florida</option>
+                                    <option value="NY">New York</option>
+                                    <option value="TX">Texas</option>
+                                    <option value="other">Other State</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Distance and Move Type -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Approximate Distance (miles)</label>
+                                <input type="number" id="distance" placeholder="e.g., 500" min="1" max="3000"
+                                       class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Move Type</label>
+                                <select id="moveType" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select move type</option>
+                                    <option value="local">Local (under 50 miles)</option>
+                                    <option value="long-distance">Long Distance (50+ miles)</option>
+                                    <option value="interstate">Interstate</option>
+                                    <option value="international">International</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Home Size -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Home Size</label>
+                                <select id="homeSize" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select home size</option>
+                                    <option value="studio">Studio/1 Room</option>
+                                    <option value="1-bedroom">1 Bedroom</option>
+                                    <option value="2-bedroom">2 Bedroom</option>
+                                    <option value="3-bedroom">3 Bedroom</option>
+                                    <option value="4-bedroom">4 Bedroom</option>
+                                    <option value="5-bedroom">5+ Bedroom</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Estimated Weight (lbs)</label>
+                                <input type="number" id="estimatedWeight" placeholder="e.g., 8000" min="500" max="20000"
+                                       class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                        </div>
+
+                        <!-- Moving Date -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Moving Date</label>
+                                <input type="date" id="movingDate" 
+                                       class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Flexibility</label>
+                                <select id="dateFlexibility" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select flexibility</option>
+                                    <option value="fixed">Fixed Date - Cannot change</option>
+                                    <option value="flexible">Flexible - Within 2 weeks</option>
+                                    <option value="very-flexible">Very Flexible - Within 1 month</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Special Items -->
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Special Items (Check all that apply)</label>
+                            <div class="grid md:grid-cols-3 gap-3">
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="piano" name="specialItems" value="piano" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Piano</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="artwork" name="specialItems" value="artwork" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Artwork/Antiques</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="wine" name="specialItems" value="wine" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Wine Collection</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="safe" name="specialItems" value="safe" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Safe/Heavy Items</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="plants" name="specialItems" value="plants" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Plants</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="electronics" name="specialItems" value="electronics" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Expensive Electronics</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Service Level -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Service Level</label>
+                                <select id="serviceLevel" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select service level</option>
+                                    <option value="diy">DIY (Truck Rental Only)</option>
+                                    <option value="labor-only">Labor Only (You provide truck)</option>
+                                    <option value="full-service">Full Service Moving</option>
+                                    <option value="white-glove">White Glove Service</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Insurance Coverage</label>
+                                <select id="insuranceCoverage" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select coverage</option>
+                                    <option value="basic">Basic (60¢/lb)</option>
+                                    <option value="declared-value">Declared Value</option>
+                                    <option value="full-replacement">Full Replacement Value</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Additional Services -->
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Additional Services (Check all that apply)</label>
+                            <div class="grid md:grid-cols-3 gap-3">
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="packing" name="additionalServices" value="packing" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Packing Services</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="unpacking" name="additionalServices" value="unpacking" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Unpacking Services</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="storage" name="additionalServices" value="storage" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Storage Services</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="disassembly" name="additionalServices" value="disassembly" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Furniture Disassembly</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="cleaning" name="additionalServices" value="cleaning" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Cleaning Services</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="appliance" name="additionalServices" value="appliance" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Appliance Setup</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-medium py-3 px-6 rounded transition duration-200">
+                            Calculate Moving Costs
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results -->
+                <div id="results" class="hidden">
+                    <div id="result-content"></div>
+                </div>
+            </div>
+
+            <!-- Right Column - Ads -->
+            <div class="lg:col-span-1">
+                <!-- Top Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+
+                <!-- Middle Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Ad Space -->
+        <div class="mt-8 bg-broder p-4 rounded-lg border border-accent text-center">
+            <div class="text-light text-sm mb-2">Advertisement</div>
+            <div class="bg-dark h-24 flex items-center justify-center rounded">
+                <span class="text-accent">Ad Space 728x90</span>
+            </div>
+        </div>
+
+        <!-- Blog Content -->
+        <article class="mt-12 bg-broder p-8 rounded-lg border border-accent">
+            <h2 class="text-3xl font-bold text-primary mb-6">Complete Guide to Moving Costs and Company Selection</h2>
+            
+            <div class="prose prose-invert max-w-none">
+                <p class="text-light text-lg leading-relaxed mb-6">
+                    Moving can be one of life's most stressful and expensive experiences. Our Moving Cost Estimator & Company Comparison tool helps you understand the true cost of your move and provides strategies to save money while ensuring quality service.
+                </p>
+
+                <div class="space-y-8">
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Understanding Moving Cost Factors</h3>
+                        <p class="text-light mb-4">
+                            Moving costs vary significantly based on multiple factors. Understanding these variables helps you budget accurately and avoid surprises.
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-broder p-4 rounded">
+                                <h4 class="font-semibold text-primary mb-2">Distance Factors</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Local moves: $80-120/hour</li>
+                                    <li>• Long-distance: $2,500-5,000+</li>
+                                    <li>• Interstate: Additional regulations</li>
+                                    <li>• International: $3,000-10,000+</li>
+                                    <li>• Fuel costs and tolls</li>
+                                </ul>
+                            </div>
+                            <div class="bg-broder p-4 rounded">
+                                <h4 class="font-semibold text-primary mb-2">Size & Weight</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Studio: 2,000-3,000 lbs</li>
+                                    <li>• 1 bedroom: 3,000-5,000 lbs</li>
+                                    <li>• 2 bedroom: 5,000-7,000 lbs</li>
+                                    <li>• 3 bedroom: 7,000-9,000 lbs</li>
+                                    <li>• 4+ bedroom: 9,000+ lbs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Moving Cost Breakdown by Service Type</h3>
+                        
+                        <div class="overflow-x-auto mb-6">
+                            <table class="w-full text-sm border border-accent rounded">
+                                <thead class="bg-broder">
+                                    <tr>
+                                        <th class="p-3 text-left text-accent">Service Type</th>
+                                        <th class="p-3 text-left text-accent">Local Cost</th>
+                                        <th class="p-3 text-left text-accent">Long Distance</th>
+                                        <th class="p-3 text-left text-accent">Pros & Cons</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-light">
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">DIY Truck Rental</td>
+                                        <td class="p-3">$30-300</td>
+                                        <td class="p-3">$1,200-2,000</td>
+                                        <td class="p-3">Cheapest but most work</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Labor Only</td>
+                                        <td class="p-3">$200-800</td>
+                                        <td class="p-3">$800-1,500</td>
+                                        <td class="p-3">You drive, they load</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Full Service</td>
+                                        <td class="p-3">$800-2,500</td>
+                                        <td class="p-3">$2,500-5,000</td>
+                                        <td class="p-3">Most convenient</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">White Glove</td>
+                                        <td class="p-3">$3,000-8,000</td>
+                                        <td class="p-3">$5,000-15,000</td>
+                                        <td class="p-3">Premium service</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Hidden Costs to Watch For</h3>
+                        <p class="text-light mb-4">
+                            Many moving companies add unexpected fees that can significantly increase your final bill. Being aware of these helps you budget accurately and negotiate better.
+                        </p>
+                        
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="bg-broder p-4 rounded">
+                                <h4 class="font-semibold text-red-400 mb-2">Common Hidden Fees</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Long carry charges</li>
+                                    <li>• Stair/elevator fees</li>
+                                    <li>• Shuttle service fees</li>
+                                    <li>• Fuel surcharges</li>
+                                    <li>• Packing material costs</li>
+                                    <li>• Storage-in-transit fees</li>
+                                </ul>
+                            </div>
+                            <div class="bg-broder p-4 rounded">
+                                <h4 class="font-semibold text-red-400 mb-2">Peak Season Surcharges</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Summer months (May-Sept)</li>
+                                    <li>• End/beginning of month</li>
+                                    <li>• Weekends and holidays</li>
+                                    <li>• College move-in periods</li>
+                                    <li>• Weather-related delays</li>
+                                </ul>
+                            </div>
+                            <div class="bg-broder p-4 rounded">
+                                <h4 class="font-semibold text-red-400 mb-2">Special Handling Fees</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Piano moving: $200-1,000</li>
+                                    <li>• Artwork crating: $100-500</li>
+                                    <li>• Appliance disconnect: $50-150</li>
+                                    <li>• Hoisting services: $300-800</li>
+                                    <li>• Disassembly/assembly: $100-300</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">How to Choose the Right Moving Company</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-primary mb-3">Research Checklist</h4>
+                                <ul class="text-sm text-light space-y-2">
+                                    <li>• Verify licensing and insurance</li>
+                                    <li>• Check Better Business Bureau rating</li>
+                                    <li>• Read recent customer reviews</li>
+                                    <li>• Get at least 3 written estimates</li>
+                                    <li>• Confirm binding vs non-binding quotes</li>
+                                    <li>• Ask about claims process</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-semibold text-primary mb-3">Red Flags to Avoid</h4>
+                                <ul class="text-sm text-light space-y-2">
+                                    <li>• Door-to-door solicitation</li>
+                                    <li>• Large upfront deposits required</li>
+                                    <li>• No physical address or license</li>
+                                    <li>• Estimates significantly lower than others</li>
+                                    <li>• No written contract provided</li>
+                                    <li>• Poor communication or pressure tactics</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Money-Saving Strategies</h3>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-broder p-4 rounded">
+                                <h4 class="font-semibold text-green-400 mb-2">Timing Strategies</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Move during off-peak seasons</li>
+                                    <li>• Choose mid-month dates</li>
+                                    <li>• Avoid weekends and holidays</li>
+                                    <li>• Be flexible with dates</li>
+                                    <li>• Book 6-8 weeks in advance</li>
+                                </ul>
+                            </div>
+                            <div class="bg-broder p-4 rounded">
+                                <h4 class="font-semibold text-green-400 mb-2">Cost Reduction Tips</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Declutter before moving</li>
+                                    <li>• Pack yourself when possible</li>
+                                    <li>• Use free boxes from stores</li>
+                                    <li>• Compare multiple quotes</li>
+                                    <li>• Negotiate based on competitors</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Insurance and Protection Options</h3>
+                        <p class="text-light mb-4">
+                            Understanding insurance options is crucial for protecting your belongings during the move.
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-broder p-4 rounded">
+                                <h4 class="font-semibold text-primary mb-2">Basic Coverage (Released Value)</h4>
+                                <p class="text-light text-sm mb-2">
+                                    Free but minimal protection at 60¢ per pound. A 50-pound TV would only be covered for $30.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-broder p-4 rounded">
+                                <h4 class="font-semibold text-primary mb-2">Declared Value Protection</h4>
+                                <p class="text-light text-sm mb-2">
+                                    You declare the value of your shipment. Coverage is typically $6 per pound with a deductible.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-broder p-4 rounded">
+                                <h4 class="font-semibold text-primary mb-2">Full Replacement Value</h4>
+                                <p class="text-light text-sm mb-2">
+                                    Most comprehensive coverage. Mover repairs, replaces, or compensates for lost/damaged items at current market value.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Negotiation Tips and Tactics</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-primary mb-3">Before You Negotiate</h4>
+                                <ul class="text-sm text-light space-y-2">
+                                    <li>• Get multiple written estimates</li>
+                                    <li>• Research company reputations</li>
+                                    <li>• Understand all fees and charges</li>
+                                    <li>• Know your moving timeline flexibility</li>
+                                    <li>• Prepare list of questions</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-semibold text-primary mb-3">Negotiation Strategies</h4>
+                                <ul class="text-sm text-light space-y-2">
+                                    <li>• Use competitor quotes as leverage</li>
+                                    <li>• Ask about discounts and promotions</li>
+                                    <li>• Negotiate binding estimates</li>
+                                    <li>• Request fee waivers for extras</li>
+                                    <li>• Consider package deals</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer-container"></footer>
+
+    <script src="script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+</body>
+</html>

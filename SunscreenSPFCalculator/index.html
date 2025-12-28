@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunscreen SPF Effectiveness Truth Calculator - Real Sun Protection Time | CalcMin.pro</title>
+    <meta name="description" content="Calculate real sunscreen protection time based on SPF rating, application amount, and reapplication frequency. Get accurate sun protection schedules and skin cancer risk reduction data.">
+    <meta name="keywords" content="sunscreen calculator, SPF effectiveness, sun protection time, UV protection, skin cancer prevention, sunscreen reapplication, SPF truth">
+    <meta name="author" content="CalcMin.pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calcmin.pro/SunscreenSPFCalculator/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Sunscreen SPF Effectiveness Truth Calculator - Real Sun Protection Time">
+    <meta property="og:description" content="Calculate real sunscreen protection time based on SPF rating, application amount, and reapplication frequency. Get accurate sun protection schedules.">
+    <meta property="og:url" content="https://calcmin.pro/SunscreenSPFCalculator/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CalcMin.pro">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sunscreen SPF Effectiveness Truth Calculator">
+    <meta name="twitter:description" content="Calculate real sunscreen protection time based on SPF rating and application frequency.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FE4E02",
+                        dark: "#00053D", 
+                        broder: "#182267",
+                        accent: "#FD803D",
+                        light: "#FECEB6",
+                        text: "#F7FBFC"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Sunscreen SPF Effectiveness Truth Calculator",
+        "description": "Calculate real sunscreen protection time based on SPF rating, application amount, and reapplication frequency",
+        "url": "https://calcmin.pro/SunscreenSPFCalculator/",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "CalcMin.pro"
+        }
+    }
+    </script>
+</head>
+<body class="bg-dark text-text min-h-screen">
+    <!-- Navigation -->
+    <nav id="navbar-container"></nav>
+
+    <!-- Top Ad Space -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+        <div class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm">
+            Top Ad Space (728x90 / 320x50)
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 py-8">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold mb-4 text-primary">Sunscreen SPF Effectiveness Truth Calculator</h1>
+            <p class="text-lg text-light max-w-2xl mx-auto">Calculate real sun protection time based on SPF rating, application amount, and reapplication frequency. Get accurate protection schedules and skin cancer risk reduction data.</p>
+        </div>
+
+        <!-- Calculator Form -->
+        <div class="bg-broder rounded-lg p-6 border border-accent mb-8">
+            <form id="sunscreen-form" class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Sunscreen SPF Rating</label>
+                        <select id="spf-rating" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            <option value="">Select SPF</option>
+                            <option value="15">SPF 15</option>
+                            <option value="30">SPF 30</option>
+                            <option value="50">SPF 50</option>
+                            <option value="70">SPF 70</option>
+                            <option value="100">SPF 100+</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Amount Applied</label>
+                        <select id="amount-applied" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            <option value="">Select Amount</option>
+                            <option value="0.5">Light application (50% of recommended)</option>
+                            <option value="0.75">Moderate application (75% of recommended)</option>
+                            <option value="1.0">Proper application (2mg/cm²)</option>
+                            <option value="1.25">Heavy application (125% of recommended)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Skin Type</label>
+                        <select id="skin-type" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            <option value="">Select Skin Type</option>
+                            <option value="1">Type I - Very fair, always burns</option>
+                            <option value="2">Type II - Fair, usually burns</option>
+                            <option value="3">Type III - Medium, sometimes burns</option>
+                            <option value="4">Type IV - Olive, rarely burns</option>
+                            <option value="5">Type V - Brown, very rarely burns</option>
+                            <option value="6">Type VI - Dark brown/black, never burns</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-2">UV Index Today</label>
+                        <select id="uv-index" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            <option value="">Select UV Index</option>
+                            <option value="1">1-2 (Low)</option>
+                            <option value="3">3-5 (Moderate)</option>
+                            <option value="6">6-7 (High)</option>
+                            <option value="8">8-10 (Very High)</option>
+                            <option value="11">11+ (Extreme)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Activity Level</label>
+                        <select id="activity-level" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            <option value="">Select Activity</option>
+                            <option value="sedentary">Sedentary (reading, sitting)</option>
+                            <option value="light">Light activity (walking)</option>
+                            <option value="moderate">Moderate activity (hiking, sports)</option>
+                            <option value="intense">Intense activity (running, swimming)</option>
+                            <option value="water">Water activities (beach, pool)</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Reapplication Frequency (hours)</label>
+                        <select id="reapplication-frequency" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            <option value="">Select Frequency</option>
+                            <option value="1">Every 1 hour</option>
+                            <option value="2">Every 2 hours (recommended)</option>
+                            <option value="3">Every 3 hours</option>
+                            <option value="4">Every 4 hours</option>
+                            <option value="6">Every 6 hours</option>
+                            <option value="8">Never reapply</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-2">Planned Sun Exposure Duration (hours)</label>
+                    <input type="number" id="exposure-duration" min="0.5" max="12" step="0.5" placeholder="e.g., 4" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                </div>
+
+                <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-medium py-3 px-6 rounded transition duration-200">
+                    Calculate Real Sun Protection
+                </button>
+            </form>
+        </div>
+
+        <!-- Results -->
+        <div id="results" class="hidden">
+            <div id="result-content"></div>
+        </div>
+
+        <!-- Educational Content -->
+        <div class="mt-12 space-y-8">
+            <section class="bg-broder rounded-lg p-6 border border-accent">
+                <h2 class="text-2xl font-bold mb-4 text-primary">Understanding Real SPF Effectiveness</h2>
+                <div class="prose prose-invert max-w-none">
+                    <p class="text-light mb-4">Most people don't realize that the SPF number on their sunscreen bottle doesn't tell the whole story. Real-world sun protection depends on multiple factors that significantly impact effectiveness.</p>
+                    
+                    <h3 class="text-xl font-semibold mb-3 text-accent">The SPF Reality Gap</h3>
+                    <p class="text-light mb-4">Laboratory SPF testing uses 2mg of sunscreen per square centimeter of skin - that's about 1/4 teaspoon for your face alone. Most people apply only 25-50% of this amount, dramatically reducing protection.</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mt-6">
+                        <div class="bg-dark p-4 rounded border border-accent">
+                            <h4 class="font-semibold text-accent mb-2">Common Mistakes</h4>
+                            <ul class="text-sm text-light space-y-1">
+                                <li>• Applying too little sunscreen (50% reduction in SPF)</li>
+                                <li>• Missing spots during application</li>
+                                <li>• Not reapplying every 2 hours</li>
+                                <li>• Ignoring water/sweat removal</li>
+                                <li>• Relying on makeup SPF alone</li>
+                            </ul>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-accent">
+                            <h4 class="font-semibold text-accent mb-2">Effectiveness Factors</h4>
+                            <ul class="text-sm text-light space-y-1">
+                                <li>• Application thickness (most critical)</li>
+                                <li>• Reapplication frequency</li>
+                                <li>• Activity level and sweating</li>
+                                <li>• UV index intensity</li>
+                                <li>• Skin type sensitivity</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-broder rounded-lg p-6 border border-accent">
+                <h2 class="text-2xl font-bold mb-4 text-primary">Skin Cancer Prevention Science</h2>
+                <div class="prose prose-invert max-w-none">
+                    <p class="text-light mb-4">Proper sunscreen use can reduce skin cancer risk by up to 40-50%. Understanding your skin type and UV exposure helps optimize protection strategies.</p>
+                    
+                    <h3 class="text-xl font-semibold mb-3 text-accent">Skin Type Protection Needs</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border border-accent rounded">
+                            <thead class="bg-dark">
+                                <tr>
+                                    <th class="p-3 text-left text-accent">Skin Type</th>
+                                    <th class="p-3 text-left text-accent">Natural Protection</th>
+                                    <th class="p-3 text-left text-accent">Minimum SPF</th>
+                                    <th class="p-3 text-left text-accent">Burn Time (no protection)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-light">
+                                <tr class="border-t border-accent">
+                                    <td class="p-3">Type I (Very Fair)</td>
+                                    <td class="p-3">5-10 minutes</td>
+                                    <td class="p-3">SPF 30+</td>
+                                    <td class="p-3">5-10 minutes</td>
+                                </tr>
+                                <tr class="border-t border-accent">
+                                    <td class="p-3">Type II (Fair)</td>
+                                    <td class="p-3">10-20 minutes</td>
+                                    <td class="p-3">SPF 30+</td>
+                                    <td class="p-3">10-20 minutes</td>
+                                </tr>
+                                <tr class="border-t border-accent">
+                                    <td class="p-3">Type III (Medium)</td>
+                                    <td class="p-3">20-30 minutes</td>
+                                    <td class="p-3">SPF 15-30</td>
+                                    <td class="p-3">20-30 minutes</td>
+                                </tr>
+                                <tr class="border-t border-accent">
+                                    <td class="p-3">Type IV (Olive)</td>
+                                    <td class="p-3">30-45 minutes</td>
+                                    <td class="p-3">SPF 15+</td>
+                                    <td class="p-3">30-45 minutes</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-broder rounded-lg p-6 border border-accent">
+                <h2 class="text-2xl font-bold mb-4 text-primary">Optimal Sunscreen Application Guide</h2>
+                <div class="prose prose-invert max-w-none">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-3 text-accent">Application Amounts</h3>
+                            <ul class="text-light space-y-2">
+                                <li><strong>Face & Neck:</strong> 1/4 teaspoon (1.25ml)</li>
+                                <li><strong>Each Arm:</strong> 1/2 teaspoon (2.5ml)</li>
+                                <li><strong>Torso (front):</strong> 1 teaspoon (5ml)</li>
+                                <li><strong>Back:</strong> 1 teaspoon (5ml)</li>
+                                <li><strong>Each Leg:</strong> 1 teaspoon (5ml)</li>
+                                <li><strong>Total Body:</strong> ~1 ounce (30ml)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-3 text-accent">Application Tips</h3>
+                            <ul class="text-light space-y-2">
+                                <li>• Apply 15-30 minutes before sun exposure</li>
+                                <li>• Use broad-spectrum (UVA + UVB) protection</li>
+                                <li>• Don't forget ears, feet, and lips</li>
+                                <li>• Reapply immediately after swimming/sweating</li>
+                                <li>• Use water-resistant formulas for activities</li>
+                                <li>• Layer with protective clothing when possible</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-broder rounded-lg p-6 border border-accent">
+                <h2 class="text-2xl font-bold mb-4 text-primary">UV Index and Protection Strategies</h2>
+                <div class="prose prose-invert max-w-none">
+                    <p class="text-light mb-4">The UV Index measures ultraviolet radiation intensity. Higher values require more aggressive protection strategies and shorter safe exposure times.</p>
+                    
+                    <div class="grid md:grid-cols-3 gap-4 mt-6">
+                        <div class="bg-dark p-4 rounded border border-green-500">
+                            <h4 class="font-semibold text-green-400 mb-2">Low (1-2)</h4>
+                            <p class="text-sm text-light">Minimal protection needed. Sunglasses recommended for snow/water activities.</p>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-yellow-500">
+                            <h4 class="font-semibold text-yellow-400 mb-2">Moderate (3-5)</h4>
+                            <p class="text-sm text-light">SPF 15+ recommended. Seek shade during midday hours.</p>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-orange-500">
+                            <h4 class="font-semibold text-orange-400 mb-2">High (6-7)</h4>
+                            <p class="text-sm text-light">SPF 30+ required. Protective clothing and shade essential.</p>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-red-500">
+                            <h4 class="font-semibold text-red-400 mb-2">Very High (8-10)</h4>
+                            <p class="text-sm text-light">SPF 50+ recommended. Avoid midday sun (10am-4pm).</p>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-purple-500">
+                            <h4 class="font-semibold text-purple-400 mb-2">Extreme (11+)</h4>
+                            <p class="text-sm text-light">Maximum protection required. Stay indoors during peak hours.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-broder rounded-lg p-6 border border-accent">
+                <h2 class="text-2xl font-bold mb-4 text-primary">Cost-Effective Sun Protection</h2>
+                <div class="prose prose-invert max-w-none">
+                    <p class="text-light mb-4">Quality sun protection doesn't have to be expensive. Understanding cost per application helps you choose effective, budget-friendly options.</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-dark p-4 rounded border border-accent">
+                            <h4 class="font-semibold text-accent mb-2">Budget-Friendly Options</h4>
+                            <ul class="text-sm text-light space-y-1">
+                                <li>• Generic/store brand sunscreens (same active ingredients)</li>
+                                <li>• Large family-size bottles (better cost per ounce)</li>
+                                <li>• Zinc oxide/titanium dioxide (physical blockers)</li>
+                                <li>• Multi-purpose face/body formulas</li>
+                                <li>• Seasonal sales and bulk purchasing</li>
+                            </ul>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-accent">
+                            <h4 class="font-semibold text-accent mb-2">Cost Calculation Tips</h4>
+                            <ul class="text-sm text-light space-y-1">
+                                <li>• Calculate cost per application (not per bottle)</li>
+                                <li>• Factor in reapplication frequency</li>
+                                <li>• Consider water-resistance for activities</li>
+                                <li>• Compare active ingredient concentrations</li>
+                                <li>• Account for expiration dates (2-3 year shelf life)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Bottom Ad Space -->
+    <div class="max-w-7xl mx-auto px-4 pb-4">
+        <div class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm">
+            Bottom Ad Space (728x90 / 320x50)
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer-container"></footer>
+
+    <script src="script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+</body>
+</html>

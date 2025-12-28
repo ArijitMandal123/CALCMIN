@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelance Hourly Rate Calculator - Sustainable Pricing Tool | CalcMin.pro</title>
+    <meta name="description" content="Calculate minimum hourly rate needed for sustainable freelance income. Get pricing recommendations with profit margins, tax considerations, and project rate suggestions.">
+    <meta name="keywords" content="freelance hourly rate calculator, freelance pricing calculator, hourly rate calculator, freelance rate calculator, freelance income calculator, sustainable freelance rates">
+    <meta name="author" content="CalcMin.pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calcmin.pro/FreelanceHourlyRate/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Freelance Hourly Rate Calculator - Sustainable Pricing Tool">
+    <meta property="og:description" content="Calculate minimum hourly rate needed for sustainable freelance income. Get pricing recommendations with profit margins, tax considerations, and project rate suggestions.">
+    <meta property="og:url" content="https://calcmin.pro/FreelanceHourlyRate/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CalcMin.pro">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Freelance Hourly Rate Calculator - Sustainable Pricing Tool">
+    <meta name="twitter:description" content="Calculate minimum hourly rate needed for sustainable freelance income. Get pricing recommendations with profit margins, tax considerations, and project rate suggestions.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FE4E02",
+                        dark: "#00053D", 
+                        broder: "#182267",
+                        accent: "#FD803D",
+                        light: "#FECEB6",
+                        text: "#F7FBFC"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Freelance Hourly Rate Calculator",
+        "description": "Calculate minimum hourly rate needed for sustainable freelance income. Get pricing recommendations with profit margins, tax considerations, and project rate suggestions.",
+        "url": "https://calcmin.pro/FreelanceHourlyRate/",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "CalcMin.pro"
+        }
+    }
+    </script>
+</head>
+<body class="bg-dark text-text min-h-screen">
+    <!-- Navigation -->
+    <nav id="navbar-container"></nav>
+
+    <!-- Top Ad Space -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+        <div class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm">
+            Top Ad Space (728x90 / 320x50)
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Calculator -->
+            <div class="lg:col-span-2">
+                <!-- Header -->
+                <div class="bg-broder p-6 rounded-lg border border-accent mb-6">
+                    <h1 class="text-3xl font-bold text-primary mb-4">
+                        <span class="material-icons text-4xl align-middle mr-2">attach_money</span>
+                        Freelance Hourly Rate Calculator
+                    </h1>
+                    <p class="text-light text-lg">Calculate the minimum hourly rate needed for sustainable freelance income. Get data-driven pricing recommendations with profit margins, tax considerations, and project rate suggestions.</p>
+                </div>
+
+                <!-- Calculator Form -->
+                <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
+                    <form id="freelance-rate-form" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Annual Income Goal ($)</label>
+                                <input type="number" id="income-goal" placeholder="e.g., 75000" min="20000" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Billable Hours per Week</label>
+                                <input type="number" id="billable-hours" placeholder="e.g., 30" min="10" max="60" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Vacation Weeks per Year</label>
+                                <input type="number" id="vacation-weeks" placeholder="e.g., 4" min="0" max="12" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Sick Days per Year</label>
+                                <input type="number" id="sick-days" placeholder="e.g., 5" min="0" max="30" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Non-Billable Hours per Week</label>
+                            <input type="number" id="non-billable-hours" placeholder="e.g., 10" min="0" max="40" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            <p class="text-xs text-light mt-1">Admin, marketing, accounting, business development</p>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Self-Employment Tax Rate (%)</label>
+                                <input type="number" id="se-tax-rate" placeholder="e.g., 15.3" min="0" max="20" step="0.1" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Income Tax Rate (%)</label>
+                                <input type="number" id="income-tax-rate" placeholder="e.g., 22" min="0" max="40" step="0.1" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Monthly Business Expenses ($)</label>
+                                <input type="number" id="business-expenses" placeholder="e.g., 500" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Emergency Fund Months</label>
+                                <input type="number" id="emergency-months" placeholder="e.g., 6" min="3" max="12" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-medium py-3 px-6 rounded transition duration-200">
+                            Calculate Hourly Rate
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results -->
+                <div id="results" class="hidden">
+                    <div id="result-content"></div>
+                </div>
+            </div>
+
+            <!-- Right Column - Ads -->
+            <div class="lg:col-span-1">
+                <!-- Top Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+
+                <!-- Middle Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Ad Space -->
+        <div class="mt-8 bg-broder p-4 rounded-lg border border-accent text-center">
+            <div class="text-light text-sm mb-2">Advertisement</div>
+            <div class="bg-dark h-24 flex items-center justify-center rounded">
+                <span class="text-accent">Ad Space 728x90</span>
+            </div>
+        </div>
+
+        <!-- Blog Content -->
+        <article class="mt-12 bg-broder p-8 rounded-lg border border-accent">
+            <h2 class="text-3xl font-bold text-primary mb-6">Complete Guide to Freelance Hourly Rate Calculation</h2>
+            
+            <div class="prose prose-invert max-w-none">
+                <p class="text-light text-lg leading-relaxed mb-6">
+                    Setting the right hourly rate is crucial for freelance success. Too low, and you'll struggle financially; too high, and you'll lose clients. This comprehensive guide helps you calculate a sustainable hourly rate that covers all your costs, taxes, and provides a healthy profit margin for long-term freelance success.
+                </p>
+
+                <div class="space-y-8">
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Why Most Freelancers Undercharge</h3>
+                        <p class="text-light mb-4">
+                            Many freelancers make the mistake of only considering their desired salary when setting rates, forgetting about taxes, business expenses, non-billable time, and profit margins. This leads to unsustainable pricing that can destroy your freelance business.
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Hidden Costs Freelancers Forget</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Self-employment taxes (15.3%)</li>
+                                    <li>• Income taxes (varies by bracket)</li>
+                                    <li>• Health insurance premiums</li>
+                                    <li>• Business equipment and software</li>
+                                    <li>• Professional development</li>
+                                    <li>• Emergency fund contributions</li>
+                                </ul>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Non-Billable Time</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Client acquisition and sales</li>
+                                    <li>• Administrative tasks</li>
+                                    <li>• Invoicing and accounting</li>
+                                    <li>• Marketing and networking</li>
+                                    <li>• Skill development and training</li>
+                                    <li>• Proposal writing</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Hourly Rate Calculation Formula</h3>
+                        <p class="text-light mb-4">
+                            Our calculator uses a comprehensive formula that accounts for all aspects of freelance business operations:
+                        </p>
+                        <div class="bg-broder p-4 rounded border border-accent mb-4">
+                            <h4 class="font-semibold text-accent mb-2">Step-by-Step Calculation</h4>
+                            <ol class="text-sm text-light space-y-2">
+                                <li>1. <strong>Calculate working weeks:</strong> 52 weeks - vacation weeks - (sick days ÷ 5)</li>
+                                <li>2. <strong>Calculate billable hours:</strong> Working weeks × billable hours per week</li>
+                                <li>3. <strong>Add business expenses:</strong> Monthly expenses × 12</li>
+                                <li>4. <strong>Calculate tax burden:</strong> (Income goal + expenses) × total tax rate</li>
+                                <li>5. <strong>Add emergency fund:</strong> Monthly personal expenses × emergency months ÷ years</li>
+                                <li>6. <strong>Minimum rate:</strong> Total needed income ÷ billable hours</li>
+                            </ol>
+                        </div>
+                        <div class="bg-primary/10 p-4 rounded border border-primary">
+                            <p class="text-sm text-light">
+                                <strong>Pro Tip:</strong> Always add a 10-30% profit margin on top of your minimum rate to account for business growth, equipment upgrades, and unexpected expenses.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Freelance Rate Benchmarks by Industry</h3>
+                        <p class="text-light mb-4">
+                            Understanding market rates helps you position your pricing competitively while ensuring profitability:
+                        </p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border border-accent rounded">
+                                <thead class="bg-broder">
+                                    <tr>
+                                        <th class="p-3 text-left text-accent">Industry</th>
+                                        <th class="p-3 text-left text-accent">Entry Level</th>
+                                        <th class="p-3 text-left text-accent">Experienced</th>
+                                        <th class="p-3 text-left text-accent">Expert</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-light">
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Web Development</td>
+                                        <td class="p-3">$25-50/hr</td>
+                                        <td class="p-3">$50-100/hr</td>
+                                        <td class="p-3">$100-200/hr</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Graphic Design</td>
+                                        <td class="p-3">$20-40/hr</td>
+                                        <td class="p-3">$40-75/hr</td>
+                                        <td class="p-3">$75-150/hr</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Content Writing</td>
+                                        <td class="p-3">$15-30/hr</td>
+                                        <td class="p-3">$30-60/hr</td>
+                                        <td class="p-3">$60-120/hr</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Digital Marketing</td>
+                                        <td class="p-3">$25-45/hr</td>
+                                        <td class="p-3">$45-85/hr</td>
+                                        <td class="p-3">$85-175/hr</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Consulting</td>
+                                        <td class="p-3">$50-100/hr</td>
+                                        <td class="p-3">$100-200/hr</td>
+                                        <td class="p-3">$200-500/hr</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Pricing Strategies for Different Client Types</h3>
+                        <p class="text-light mb-4">
+                            Different clients have different budgets and expectations. Adjust your pricing strategy accordingly:
+                        </p>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Startups & Small Business</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Budget-conscious clients</li>
+                                    <li>• Offer package deals</li>
+                                    <li>• Consider equity/revenue share</li>
+                                    <li>• Focus on value delivery</li>
+                                    <li>• Build long-term relationships</li>
+                                </ul>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Mid-Size Companies</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Moderate budgets</li>
+                                    <li>• Value expertise and efficiency</li>
+                                    <li>• Charge market rates</li>
+                                    <li>• Offer retainer agreements</li>
+                                    <li>• Emphasize ROI and results</li>
+                                </ul>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Enterprise Clients</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Higher budgets available</li>
+                                    <li>• Premium pricing acceptable</li>
+                                    <li>• Focus on specialization</li>
+                                    <li>• Longer sales cycles</li>
+                                    <li>• Emphasize credentials and case studies</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">When and How to Raise Your Rates</h3>
+                        <p class="text-light mb-4">
+                            Regularly increasing your rates is essential for freelance growth and keeping up with inflation and skill development:
+                        </p>
+                        <div class="space-y-4">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Signs It's Time to Raise Rates</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• You're booked solid with a waiting list</li>
+                                    <li>• You've gained significant new skills or certifications</li>
+                                    <li>• It's been 12+ months since your last increase</li>
+                                    <li>• Your expenses have increased substantially</li>
+                                    <li>• Market rates have increased in your industry</li>
+                                    <li>• You're delivering exceptional results for clients</li>
+                                </ul>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">How to Implement Rate Increases</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Give existing clients 30-60 days notice</li>
+                                    <li>• Explain the value you provide</li>
+                                    <li>• Offer grandfathered rates for loyal clients</li>
+                                    <li>• Start with new clients first</li>
+                                    <li>• Increase gradually (10-25% annually)</li>
+                                    <li>• Be confident and professional</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Project-Based vs. Hourly Pricing</h3>
+                        <p class="text-light mb-4">
+                            While hourly rates provide a foundation, many successful freelancers transition to project-based or value-based pricing:
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-3">Hourly Pricing</h4>
+                                <div class="text-sm text-light mb-3">
+                                    <strong>Pros:</strong>
+                                    <ul class="mt-1 space-y-1">
+                                        <li>• Predictable income</li>
+                                        <li>• Easy to calculate</li>
+                                        <li>• Good for ongoing work</li>
+                                        <li>• Protects against scope creep</li>
+                                    </ul>
+                                </div>
+                                <div class="text-sm text-light">
+                                    <strong>Cons:</strong>
+                                    <ul class="mt-1 space-y-1">
+                                        <li>• Income capped by hours</li>
+                                        <li>• Clients may micromanage time</li>
+                                        <li>• Penalizes efficiency</li>
+                                        <li>• Harder to scale</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-3">Project-Based Pricing</h4>
+                                <div class="text-sm text-light mb-3">
+                                    <strong>Pros:</strong>
+                                    <ul class="mt-1 space-y-1">
+                                        <li>• Higher profit potential</li>
+                                        <li>• Rewards efficiency</li>
+                                        <li>• Easier client budgeting</li>
+                                        <li>• Focus on outcomes</li>
+                                    </ul>
+                                </div>
+                                <div class="text-sm text-light">
+                                    <strong>Cons:</strong>
+                                    <ul class="mt-1 space-y-1">
+                                        <li>• Scope creep risk</li>
+                                        <li>• Harder to estimate</li>
+                                        <li>• Requires clear boundaries</li>
+                                        <li>• May underestimate complexity</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Frequently Asked Questions</h3>
+                        <div class="space-y-4">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Should I charge different rates for different clients?</h4>
+                                <p class="text-sm text-light">
+                                    Yes, it's common to have different rates based on client size, project complexity, and your relationship with them. However, maintain consistency within each client category and always charge at least your minimum sustainable rate.
+                                </p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">How do I handle clients who say my rates are too high?</h4>
+                                <p class="text-sm text-light">
+                                    Focus on value, not price. Explain what they get for your rate, show case studies, and be willing to walk away. Clients who only care about price are rarely good long-term partners.
+                                </p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Should I offer discounts for long-term contracts?</h4>
+                                <p class="text-light text-sm">
+                                    Small discounts (5-10%) for guaranteed long-term work can be worthwhile, but avoid deep discounts. The security of ongoing work is valuable, but don't undervalue your services significantly.
+                                </p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">How often should I review and adjust my rates?</h4>
+                                <p class="text-light text-sm">
+                                    Review your rates quarterly and adjust annually at minimum. Consider increases when you gain new skills, take on more complex projects, or when your demand exceeds your capacity.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer-container"></footer>
+
+    <script src="script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Breakeven Analysis Tool - Profitability Calculator | CalcMin.pro</title>
+    <meta name="description" content="Calculate when your business idea reaches profitability. Analyze breakeven points, cash runway, funding needs, and business feasibility with comprehensive financial modeling.">
+    <meta name="keywords" content="business breakeven calculator, breakeven analysis tool, business profitability calculator, startup financial calculator, business feasibility calculator, cash flow calculator">
+    <meta name="author" content="CalcMin.pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calcmin.pro/BusinessBreakeven/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Business Breakeven Analysis Tool - Profitability Calculator">
+    <meta property="og:description" content="Calculate when your business idea reaches profitability. Analyze breakeven points, cash runway, funding needs, and business feasibility with comprehensive financial modeling.">
+    <meta property="og:url" content="https://calcmin.pro/BusinessBreakeven/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CalcMin.pro">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Business Breakeven Analysis Tool - Profitability Calculator">
+    <meta name="twitter:description" content="Calculate when your business idea reaches profitability. Analyze breakeven points, cash runway, funding needs, and business feasibility with comprehensive financial modeling.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FE4E02",
+                        dark: "#00053D", 
+                        broder: "#182267",
+                        accent: "#FD803D",
+                        light: "#FECEB6",
+                        text: "#F7FBFC"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Business Breakeven Analysis Tool",
+        "description": "Calculate when your business idea reaches profitability. Analyze breakeven points, cash runway, funding needs, and business feasibility with comprehensive financial modeling.",
+        "url": "https://calcmin.pro/BusinessBreakeven/",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "CalcMin.pro"
+        }
+    }
+    </script>
+</head>
+<body class="bg-dark text-text min-h-screen">
+    <!-- Navigation -->
+    <nav id="navbar-container"></nav>
+
+    <!-- Top Ad Space -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+        <div class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm">
+            Top Ad Space (728x90 / 320x50)
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Calculator -->
+            <div class="lg:col-span-2">
+                <!-- Header -->
+                <div class="bg-broder p-6 rounded-lg border border-accent mb-6">
+                    <h1 class="text-3xl font-bold text-primary mb-4">
+                        <span class="material-icons text-4xl align-middle mr-2">trending_up</span>
+                        Business Breakeven Analysis Tool
+                    </h1>
+                    <p class="text-light text-lg">Calculate when your business idea reaches profitability. Analyze breakeven points, cash runway, funding requirements, and determine if your business model is financially viable.</p>
+                </div>
+
+                <!-- Calculator Form -->
+                <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
+                    <form id="breakeven-form" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Fixed Monthly Costs ($)</label>
+                                <input type="number" id="fixed-costs" placeholder="e.g., 5000" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                <p class="text-xs text-light mt-1">Rent, salaries, insurance, utilities</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Variable Cost per Unit ($)</label>
+                                <input type="number" id="variable-cost" placeholder="e.g., 25" min="0" step="0.01" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                <p class="text-xs text-light mt-1">Materials, labor, shipping per unit</p>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Selling Price per Unit ($)</label>
+                                <input type="number" id="selling-price" placeholder="e.g., 75" min="0" step="0.01" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Expected Monthly Growth (%)</label>
+                                <input type="number" id="growth-rate" placeholder="e.g., 15" min="0" max="100" step="0.1" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Initial Units Sold (Month 1)</label>
+                                <input type="number" id="initial-units" placeholder="e.g., 50" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Startup Costs ($)</label>
+                                <input type="number" id="startup-costs" placeholder="e.g., 25000" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Available Funding ($)</label>
+                                <input type="number" id="funding" placeholder="e.g., 50000" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Target Profit Margin (%)</label>
+                                <input type="number" id="target-margin" placeholder="e.g., 20" min="0" max="100" step="0.1" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-medium py-3 px-6 rounded transition duration-200">
+                            Calculate Breakeven Analysis
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results -->
+                <div id="results" class="hidden">
+                    <div id="result-content"></div>
+                </div>
+            </div>
+
+            <!-- Right Column - Ads -->
+            <div class="lg:col-span-1">
+                <!-- Top Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+
+                <!-- Middle Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Ad Space -->
+        <div class="mt-8 bg-broder p-4 rounded-lg border border-accent text-center">
+            <div class="text-light text-sm mb-2">Advertisement</div>
+            <div class="bg-dark h-24 flex items-center justify-center rounded">
+                <span class="text-accent">Ad Space 728x90</span>
+            </div>
+        </div>
+
+        <!-- Blog Content -->
+        <article class="mt-12 bg-broder p-8 rounded-lg border border-accent">
+            <h2 class="text-3xl font-bold text-primary mb-6">Complete Guide to Business Breakeven Analysis</h2>
+            
+            <div class="prose prose-invert max-w-none">
+                <p class="text-light text-lg leading-relaxed mb-6">
+                    Breakeven analysis is one of the most critical financial tools for entrepreneurs and business owners. It determines the point where your business stops losing money and starts generating profit. Understanding your breakeven point helps you make informed decisions about pricing, costs, and growth strategies while assessing the viability of your business model.
+                </p>
+
+                <div class="space-y-8">
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Understanding Breakeven Analysis</h3>
+                        <p class="text-light mb-4">
+                            Breakeven analysis calculates the minimum amount of revenue needed to cover all business costs. At the breakeven point, your business neither makes a profit nor incurs a loss - it simply covers all expenses.
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Key Components</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• <strong>Fixed Costs:</strong> Expenses that don't change with sales volume</li>
+                                    <li>• <strong>Variable Costs:</strong> Expenses that increase with each unit sold</li>
+                                    <li>• <strong>Selling Price:</strong> Revenue per unit sold</li>
+                                    <li>• <strong>Contribution Margin:</strong> Selling price minus variable cost</li>
+                                </ul>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Breakeven Formula</h4>
+                                <div class="text-sm text-light">
+                                    <p class="mb-2"><strong>Breakeven Units =</strong></p>
+                                    <p class="bg-dark p-2 rounded text-center">Fixed Costs ÷ (Selling Price - Variable Cost)</p>
+                                    <p class="mt-2"><strong>Breakeven Revenue =</strong></p>
+                                    <p class="bg-dark p-2 rounded text-center">Breakeven Units × Selling Price</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Types of Business Costs</h3>
+                        <p class="text-light mb-4">
+                            Properly categorizing your costs is essential for accurate breakeven analysis. Understanding the difference between fixed and variable costs helps you make better pricing and operational decisions.
+                        </p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border border-accent rounded">
+                                <thead class="bg-broder">
+                                    <tr>
+                                        <th class="p-3 text-left text-accent">Cost Type</th>
+                                        <th class="p-3 text-left text-accent">Examples</th>
+                                        <th class="p-3 text-left text-accent">Behavior</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-light">
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3"><strong>Fixed Costs</strong></td>
+                                        <td class="p-3">Rent, salaries, insurance, software subscriptions</td>
+                                        <td class="p-3">Remain constant regardless of sales volume</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3"><strong>Variable Costs</strong></td>
+                                        <td class="p-3">Materials, shipping, commissions, payment processing</td>
+                                        <td class="p-3">Increase proportionally with each unit sold</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3"><strong>Semi-Variable</strong></td>
+                                        <td class="p-3">Utilities, phone bills, some labor costs</td>
+                                        <td class="p-3">Have both fixed and variable components</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Cash Flow and Runway Analysis</h3>
+                        <p class="text-light mb-4">
+                            Beyond breakeven, understanding your cash runway is crucial for startup survival. Cash runway shows how long your business can operate before running out of money.
+                        </p>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Cash Runway</h4>
+                                <p class="text-sm text-light mb-2">
+                                    Time until you run out of money at current burn rate.
+                                </p>
+                                <div class="bg-dark p-2 rounded text-xs text-center">
+                                    Available Cash ÷ Monthly Burn Rate
+                                </div>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Burn Rate</h4>
+                                <p class="text-sm text-light mb-2">
+                                    Monthly cash outflow from operations.
+                                </p>
+                                <div class="bg-dark p-2 rounded text-xs text-center">
+                                    Monthly Expenses - Monthly Revenue
+                                </div>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-2">Funding Gap</h4>
+                                <p class="text-sm text-light mb-2">
+                                    Additional funding needed to reach profitability.
+                                </p>
+                                <div class="bg-dark p-2 rounded text-xs text-center">
+                                    Cumulative Losses Until Breakeven
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Breakeven Analysis for Different Business Models</h3>
+                        <p class="text-light mb-4">
+                            Different business models require different approaches to breakeven analysis. Here's how to apply breakeven concepts across various business types:
+                        </p>
+                        <div class="space-y-4">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Product-Based Businesses</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Focus on unit economics and contribution margins</li>
+                                    <li>• Consider inventory costs and storage expenses</li>
+                                    <li>• Account for seasonal demand variations</li>
+                                    <li>• Include shipping and fulfillment costs in variable expenses</li>
+                                </ul>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Service-Based Businesses</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Calculate breakeven based on billable hours or projects</li>
+                                    <li>• Consider capacity constraints and utilization rates</li>
+                                    <li>• Account for non-billable time in cost calculations</li>
+                                    <li>• Factor in client acquisition and retention costs</li>
+                                </ul>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">SaaS/Subscription Businesses</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Focus on monthly recurring revenue (MRR) and churn rates</li>
+                                    <li>• Calculate customer lifetime value (CLV) vs. acquisition cost (CAC)</li>
+                                    <li>• Consider server costs and support expenses as variable costs</li>
+                                    <li>• Account for free trial periods and conversion rates</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Sensitivity Analysis and Scenario Planning</h3>
+                        <p class="text-light mb-4">
+                            Business conditions change, so it's important to understand how variations in key assumptions affect your breakeven point. Sensitivity analysis helps you prepare for different scenarios.
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-3">Key Variables to Test</h4>
+                                <ul class="text-sm text-light space-y-2">
+                                    <li>• <strong>Price Changes:</strong> How does a 10% price increase/decrease affect breakeven?</li>
+                                    <li>• <strong>Cost Fluctuations:</strong> Impact of material cost increases or rent changes</li>
+                                    <li>• <strong>Demand Variations:</strong> Best case, worst case, and most likely scenarios</li>
+                                    <li>• <strong>Competition:</strong> Effect of new competitors on pricing and volume</li>
+                                </ul>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-primary mb-3">Scenario Planning</h4>
+                                <ul class="text-sm text-light space-y-2">
+                                    <li>• <strong>Optimistic:</strong> 25% better than expected performance</li>
+                                    <li>• <strong>Realistic:</strong> Most likely outcome based on research</li>
+                                    <li>• <strong>Pessimistic:</strong> 25% worse than expected performance</li>
+                                    <li>• <strong>Stress Test:</strong> Extreme scenarios like economic downturns</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Using Breakeven Analysis for Decision Making</h3>
+                        <p class="text-light mb-4">
+                            Breakeven analysis isn't just about finding when you'll be profitable - it's a powerful tool for making strategic business decisions.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Pricing Decisions</h4>
+                                <p class="text-sm text-light">
+                                    Use breakeven analysis to set minimum pricing thresholds and understand the impact of discounts on profitability. Calculate how many additional units you need to sell to offset a price reduction.
+                                </p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Cost Management</h4>
+                                <p class="text-sm text-light">
+                                    Identify which costs have the biggest impact on your breakeven point. Focus cost reduction efforts on areas that will most significantly improve your path to profitability.
+                                </p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Growth Planning</h4>
+                                <p class="text-sm text-light">
+                                    Determine how much funding you need to reach profitability and plan your growth trajectory. Set realistic milestones and track progress toward breakeven.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Frequently Asked Questions</h3>
+                        <div class="space-y-4">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">What if my business has multiple products with different margins?</h4>
+                                <p class="text-sm text-light">
+                                    Calculate a weighted average contribution margin based on your sales mix. Alternatively, perform separate breakeven analyses for each product line to understand their individual profitability.
+                                </p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">How often should I update my breakeven analysis?</h4>
+                                <p class="text-sm text-light">
+                                    Review your breakeven analysis monthly during the startup phase and quarterly once established. Update immediately when there are significant changes in costs, pricing, or market conditions.
+                                </p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">What if I can't reach breakeven with current assumptions?</h4>
+                                <p class="text-light text-sm">
+                                    Consider adjusting your business model: increase prices, reduce costs, improve efficiency, or pivot to a more profitable market segment. Sometimes this means reconsidering the viability of the business idea.
+                                </p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Should I include my salary in fixed costs?</h4>
+                                <p class="text-light text-sm">
+                                    Yes, include a reasonable salary for yourself in fixed costs. This ensures your breakeven analysis accounts for the true cost of running the business and provides you with a living wage.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer-container"></footer>
+
+    <script src="script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+</body>
+</html>

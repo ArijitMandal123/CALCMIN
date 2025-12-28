@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plastic Usage Carbon Footprint Calculator - Environmental Impact Analysis | CalcMin.pro</title>
+    <meta name="description" content="Calculate your plastic consumption's environmental impact. Track carbon footprint, waste generation, and get personalized recommendations to reduce plastic usage and save money.">
+    <meta name="keywords" content="plastic footprint calculator, plastic waste calculator, environmental impact plastic, carbon footprint plastic, plastic consumption tracker, eco friendly calculator">
+    <meta name="author" content="CalcMin.pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calcmin.pro/PlasticCarbonFootprint/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Plastic Usage Carbon Footprint Calculator - Environmental Impact Analysis">
+    <meta property="og:description" content="Calculate your plastic consumption's environmental impact and get personalized recommendations to reduce waste and carbon footprint.">
+    <meta property="og:url" content="https://calcmin.pro/PlasticCarbonFootprint/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CalcMin.pro">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Plastic Usage Carbon Footprint Calculator">
+    <meta name="twitter:description" content="Track your plastic consumption's environmental impact and discover ways to reduce waste and carbon emissions.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FE4E02",
+                        dark: "#00053D", 
+                        broder: "#182267",
+                        accent: "#FD803D",
+                        light: "#FECEB6",
+                        text: "#F7FBFC"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Plastic Usage Carbon Footprint Calculator",
+        "description": "Environmental impact calculator that analyzes plastic consumption habits, calculates carbon footprint, and provides personalized recommendations for reducing plastic waste.",
+        "url": "https://calcmin.pro/PlasticCarbonFootprint/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "CalcMin.pro"
+        }
+    }
+    </script>
+</head>
+<body class="bg-dark text-text min-h-screen">
+    <!-- Navigation -->
+    <nav id="navbar-container"></nav>
+
+    <!-- Top Ad Space -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+        <div class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm">
+            Top Ad Space (728x90 / 320x50)
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Calculator -->
+            <div class="lg:col-span-2">
+                <!-- Header -->
+                <div class="bg-broder p-6 rounded-lg border border-accent mb-6">
+                    <h1 class="text-3xl font-bold text-primary mb-4">
+                        <span class="material-icons text-4xl align-middle mr-2">eco</span>
+                        Plastic Usage Carbon Footprint Calculator
+                    </h1>
+                    <p class="text-light text-lg">Calculate your plastic consumption's environmental impact. Track carbon footprint, waste generation, and get personalized recommendations to reduce plastic usage and save money.</p>
+                </div>
+
+                <!-- Calculator Form -->
+                <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
+                    <form id="plastic-form" class="space-y-6">
+                        <h3 class="text-xl font-bold text-primary mb-4">Weekly Plastic Usage</h3>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Plastic Water Bottles</label>
+                                <input type="number" id="waterBottles" placeholder="e.g., 7" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Plastic Shopping Bags</label>
+                                <input type="number" id="shoppingBags" placeholder="e.g., 5" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Food Packaging Items</label>
+                                <input type="number" id="foodPackaging" placeholder="e.g., 15" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Disposable Cups/Containers</label>
+                                <input type="number" id="disposableCups" placeholder="e.g., 10" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Plastic Utensils</label>
+                                <input type="number" id="plasticUtensils" placeholder="e.g., 8" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Other Plastic Items</label>
+                                <input type="number" id="otherPlastic" placeholder="e.g., 5" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-primary mb-4 mt-8">Reusable Items & Habits</h3>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Reusable Water Bottles Owned</label>
+                                <input type="number" id="reusableBottles" placeholder="e.g., 2" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Reusable Shopping Bags Owned</label>
+                                <input type="number" id="reusableBags" placeholder="e.g., 3" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Recycling Rate (%)</label>
+                                <input type="number" id="recyclingRate" placeholder="e.g., 70" min="0" max="100" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Household Size</label>
+                                <input type="number" id="householdSize" placeholder="e.g., 3" min="1" max="10" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Primary Shopping Habits</label>
+                            <div class="grid md:grid-cols-2 gap-3">
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="bulkBuying" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Buy in Bulk to Reduce Packaging</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="localShopping" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Shop at Local Markets</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="avoidPackaging" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Actively Avoid Over-packaged Items</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="refillStations" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Use Refill Stations When Available</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-medium py-3 px-6 rounded transition duration-200">
+                            Calculate Environmental Impact
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results -->
+                <div id="results" class="hidden">
+                    <div id="result-content"></div>
+                </div>
+            </div>
+
+            <!-- Right Column - Ads -->
+            <div class="lg:col-span-1">
+                <!-- Top Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+
+                <!-- Middle Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Ad Space -->
+        <div class="mt-8 bg-broder p-4 rounded-lg border border-accent text-center">
+            <div class="text-light text-sm mb-2">Advertisement</div>
+            <div class="bg-dark h-24 flex items-center justify-center rounded">
+                <span class="text-accent">Ad Space 728x90</span>
+            </div>
+        </div>
+
+        <!-- Blog Content -->
+        <article class="mt-12 bg-broder p-8 rounded-lg border border-accent">
+            <h2 class="text-3xl font-bold text-primary mb-6">Complete Guide to Plastic Consumption and Environmental Impact</h2>
+            
+            <div class="prose prose-invert max-w-none">
+                <p class="text-light text-lg leading-relaxed mb-6">
+                    Plastic pollution has become one of the most pressing environmental challenges of our time, with over 300 million tons of plastic waste generated globally each year. Understanding your personal plastic consumption and its environmental impact is the first step toward making meaningful changes that benefit both the planet and your wallet. Our Plastic Usage Carbon Footprint Calculator helps you quantify your plastic consumption, calculate its environmental cost, and discover actionable ways to reduce your impact.
+                </p>
+
+                <div class="space-y-8">
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">The Hidden Environmental Cost of Plastic</h3>
+                        <p class="text-light mb-4">
+                            Every piece of plastic you use has a complex environmental footprint that extends far beyond its disposal:
+                        </p>
+                        <ul class="list-disc list-inside text-light space-y-2 mb-4">
+                            <li>Production: Manufacturing plastic requires fossil fuels and releases CO2</li>
+                            <li>Transportation: Moving plastic products generates additional emissions</li>
+                            <li>Usage: Single-use plastics have the highest environmental cost per use</li>
+                            <li>Disposal: Only 9% of plastic is actually recycled globally</li>
+                            <li>Persistence: Plastic takes 400-1000 years to decompose naturally</li>
+                            <li>Microplastics: Degraded plastic contaminates food chains and ecosystems</li>
+                        </ul>
+                        <p class="text-light">
+                            Our calculator accounts for these lifecycle impacts to provide a comprehensive view of your plastic consumption's true environmental cost.
+                        </p>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Plastic Types and Their Environmental Impact</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border border-accent rounded">
+                                <thead class="bg-broder">
+                                    <tr>
+                                        <th class="p-3 text-left text-primary">Plastic Type</th>
+                                        <th class="p-3 text-left text-primary">CO2 per Item (kg)</th>
+                                        <th class="p-3 text-left text-primary">Decomposition Time</th>
+                                        <th class="p-3 text-left text-primary">Recycling Rate</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-light">
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Water Bottle (PET)</td>
+                                        <td class="p-3">0.082</td>
+                                        <td class="p-3">450 years</td>
+                                        <td class="p-3">29%</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Shopping Bag (HDPE)</td>
+                                        <td class="p-3">0.040</td>
+                                        <td class="p-3">20 years</td>
+                                        <td class="p-3">12%</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Food Container (PP)</td>
+                                        <td class="p-3">0.065</td>
+                                        <td class="p-3">30 years</td>
+                                        <td class="p-3">3%</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Disposable Cup (PS)</td>
+                                        <td class="p-3">0.025</td>
+                                        <td class="p-3">50 years</td>
+                                        <td class="p-3">1%</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Plastic Utensils</td>
+                                        <td class="p-3">0.015</td>
+                                        <td class="p-3">200 years</td>
+                                        <td class="p-3">5%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">The Economics of Plastic Reduction</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-primary mb-2">Cost of Single-Use Plastics</h4>
+                                <ul class="text-light text-sm space-y-1 mb-4">
+                                    <li>• Water bottles: $1,400/year vs $50 reusable</li>
+                                    <li>• Shopping bags: $0.10 each vs $2 reusable</li>
+                                    <li>• Disposable cups: $200/year vs $15 reusable</li>
+                                    <li>• Plastic utensils: $100/year vs $20 metal set</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-primary mb-2">Hidden Costs</h4>
+                                <ul class="text-light text-sm space-y-1">
+                                    <li>• Environmental cleanup taxes</li>
+                                    <li>• Health impacts from microplastics</li>
+                                    <li>• Waste management fees</li>
+                                    <li>• Resource depletion costs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Effective Plastic Reduction Strategies</h3>
+                        <div class="space-y-4">
+                            <div class="border-l-4 border-primary pl-4">
+                                <h4 class="font-semibold text-primary mb-2">1. Replace Single-Use Items</h4>
+                                <p class="text-light text-sm">
+                                    Invest in quality reusable alternatives: stainless steel water bottles, canvas shopping bags, glass food containers, and metal utensils. Initial cost pays for itself within months.
+                                </p>
+                            </div>
+                            <div class="border-l-4 border-accent pl-4">
+                                <h4 class="font-semibold text-accent mb-2">2. Choose Plastic-Free Packaging</h4>
+                                <p class="text-light text-sm">
+                                    Shop at farmers markets, buy in bulk, choose products with minimal packaging, and support brands committed to sustainable packaging alternatives.
+                                </p>
+                            </div>
+                            <div class="border-l-4 border-primary pl-4">
+                                <h4 class="font-semibold text-primary mb-2">3. Optimize Recycling Habits</h4>
+                                <p class="text-light text-sm">
+                                    Learn your local recycling guidelines, clean containers properly, and focus on high-value recyclables like PET bottles and aluminum cans.
+                                </p>
+                            </div>
+                            <div class="border-l-4 border-accent pl-4">
+                                <h4 class="font-semibold text-accent mb-2">4. Support Circular Economy</h4>
+                                <p class="text-light text-sm">
+                                    Choose products made from recycled materials, participate in take-back programs, and support companies with closed-loop manufacturing processes.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Plastic Alternatives and Their Benefits</h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Glass Containers</h4>
+                                <p class="text-light text-sm">
+                                    100% recyclable, no chemical leaching, preserves food quality, dishwasher safe, and lasts decades with proper care.
+                                </p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Stainless Steel</h4>
+                                <p class="text-light text-sm">
+                                    Durable, lightweight, temperature retention, no flavor transfer, and 100% recyclable at end of life.
+                                </p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Natural Fibers</h4>
+                                <p class="text-light text-sm">
+                                    Cotton, hemp, and jute bags are biodegradable, washable, and can carry more weight than plastic bags.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Global Plastic Pollution Statistics</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-primary mb-3">Production & Waste</h4>
+                                <ul class="text-light text-sm space-y-2">
+                                    <li><strong>9.2 billion tons</strong> of plastic produced since 1950</li>
+                                    <li><strong>300 million tons</strong> of plastic waste generated annually</li>
+                                    <li><strong>8 million tons</strong> enter oceans each year</li>
+                                    <li><strong>5 trillion</strong> plastic pieces floating in oceans</li>
+                                    <li><strong>1 million</strong> plastic bottles sold per minute globally</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-primary mb-3">Environmental Impact</h4>
+                                <ul class="text-light text-sm space-y-2">
+                                    <li><strong>700 species</strong> affected by plastic pollution</li>
+                                    <li><strong>90%</strong> of seabirds have plastic in stomachs</li>
+                                    <li><strong>$139 billion</strong> annual damage to marine ecosystems</li>
+                                    <li><strong>3.4%</strong> of global greenhouse gas emissions from plastic</li>
+                                    <li><strong>5g</strong> of microplastics consumed weekly per person</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Building Sustainable Habits</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <span class="material-icons text-green-400 mt-1">eco</span>
+                                <div>
+                                    <h4 class="font-semibold text-green-400 mb-1">Start Small, Think Big</h4>
+                                    <p class="text-light text-sm">
+                                        Begin with one plastic item replacement per week. Small consistent changes create lasting habits and significant cumulative impact.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="material-icons text-green-400 mt-1">group</span>
+                                <div>
+                                    <h4 class="font-semibold text-green-400 mb-1">Influence Your Network</h4>
+                                    <p class="text-light text-sm">
+                                        Share your plastic reduction journey with family and friends. Social influence multiplies individual impact exponentially.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="material-icons text-green-400 mt-1">trending_up</span>
+                                <div>
+                                    <h4 class="font-semibold text-green-400 mb-1">Track and Celebrate Progress</h4>
+                                    <p class="text-light text-sm">
+                                        Monitor your plastic reduction monthly, calculate savings, and celebrate milestones to maintain motivation for long-term change.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer-container"></footer>
+
+    <script src="script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+</body>
+</html>

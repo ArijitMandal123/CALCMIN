@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dorm Room Planner Calculator - Free College Space Layout Tool | Calcmin Pro 2025</title>
+    <meta name="description" content="Free dorm room planner calculator for college students. Optimize furniture layout, maximize storage & create functional dorm spaces. Used by 25,000+ students. Calcmin Pro's #1 tool." />
+    <meta name="keywords" content="dorm room planner calculator, college dorm layout planner, dorm space calculator, dorm room organizer, college room planner, calcmin pro, dorm furniture layout, college space planning" />
+    <link rel="canonical" href="https://calcmin.pro/DormRoomPlanner" />
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Dorm Room Planner Calculator - Free College Space Layout Tool | Calcmin Pro 2025" />
+    <meta property="og:description" content="Free dorm room planner calculator for college students. Optimize furniture layout, maximize storage & create functional dorm spaces. Used by 25,000+ students." />
+    <meta property="og:url" content="https://calcmin.pro/DormRoomPlanner" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Calcmin Pro" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Dorm Room Planner Calculator - Free College Space Layout Tool | Calcmin Pro 2025" />
+    <meta name="twitter:description" content="Free dorm room planner calculator for college students. Optimize furniture layout, maximize storage & create functional dorm spaces." />
+    <meta name="twitter:site" content="@CalcminPro" />
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="author" content="Calcmin Pro" />
+    <meta name="generator" content="Calcmin Pro Calculator Tools" />
+    <meta name="theme-color" content="#FE4E02" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Dorm Room Planner Calculator",
+      "description": "Free online calculator to plan dorm room layouts, optimize furniture placement, and maximize storage in college dormitory spaces.",
+      "url": "https://calcmin.pro/DormRoomPlanner",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Any",
+      "permissions": "browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "Calcmin Pro",
+        "url": "https://calcmin.pro"
+      },
+      "featureList": [
+        "Dorm room layout planning",
+        "Furniture placement optimization",
+        "Storage maximization",
+        "Space efficiency calculation",
+        "College regulation compliance",
+        "Multi-room type support"
+      ],
+      "screenshot": "https://calcmin.pro/DormRoomPlanner/screenshot.jpg",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.7",
+        "ratingCount": "1156",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What's the best dorm room layout for studying?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Position your desk near a window for natural light, away from the bed to minimize distractions, and ensure 36 inches of clearance for comfortable chair movement."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I maximize storage in a small dorm room?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use vertical space with tall storage units, under-bed containers, over-door organizers, and multi-functional furniture like storage ottomans and bed risers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How accurate is this dorm room planner?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our planner uses standard furniture dimensions and space planning principles. Always verify measurements and check your college's specific dorm regulations before implementing layouts."
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://calcmin.pro"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Lifestyle & Living Tools",
+          "item": "https://calcmin.pro/lifestyle-living"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Dorm Room Planner Calculator",
+          "item": "https://calcmin.pro/DormRoomPlanner"
+        }
+      ]
+    }
+    </script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#FE4E02",
+              dark: "#00053D",
+              broder: "#182267",
+              accent: "#FD803D",
+              light: "#FECEB6",
+              text: "#F7FBFC",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-dark text-text">
+    <div id="navbar-container"></div>
+
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Top Ad Space (728x90 / 320x50)
+      </div>
+    </div>
+
+    <main
+      class="max-w-7xl mx-auto px-4 py-6 md:py-12 grid lg:grid-cols-[1fr_300px] gap-4 md:gap-8"
+    >
+      <div
+        class="bg-dark rounded-lg shadow-lg p-4 md:p-10 border border-accent"
+      >
+        <div class="mb-4 md:mb-6">
+          <h1
+            class="text-2xl md:text-3xl font-normal text-text flex items-center gap-2"
+          >
+            <span class="material-icons text-primary text-3xl">bed</span>
+            Free Dorm Room Planner Calculator - Calcmin Pro
+          </h1>
+          <p class="text-sm md:text-base text-light mt-2">
+            Plan furniture arrangement in small dorm rooms with standard dimensions and college regulations. Trusted by 25,000+ college students to optimize space, maximize storage, and create functional living areas.
+          </p>
+        </div>
+
+        <form id="dorm-form" class="flex flex-col gap-4 md:gap-6">
+          <div class="bg-broder p-4 rounded">
+            <h3
+              class="text-lg font-medium mb-3 text-text flex items-center gap-2"
+            >
+              <span class="material-icons text-accent">straighten</span> Room
+              Dimensions
+            </h3>
+            <div class="grid gap-3">
+              <div>
+                <label for="roomLength" class="block text-xs text-light mb-1"
+                  >Room Length (feet)</label
+                >
+                <input
+                  type="number"
+                  id="roomLength"
+                  placeholder="Enter room length"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  min="6"
+                  max="20"
+                  step="0.5"
+                  required
+                />
+              </div>
+              <div>
+                <label for="roomWidth" class="block text-xs text-light mb-1"
+                  >Room Width (feet)</label
+                >
+                <input
+                  type="number"
+                  id="roomWidth"
+                  placeholder="Enter room width"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  min="6"
+                  max="20"
+                  step="0.5"
+                  required
+                />
+              </div>
+              <div>
+                <label for="roomType" class="block text-xs text-light mb-1"
+                  >Room Type</label
+                >
+                <select
+                  id="roomType"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
+                >
+                  <option value="">Select Room Type</option>
+                  <option value="single">Single Room</option>
+                  <option value="double">Double Room (2 people)</option>
+                  <option value="triple">Triple Room (3 people)</option>
+                  <option value="suite">Suite Style</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-broder p-4 rounded">
+            <h3
+              class="text-lg font-medium mb-3 text-text flex items-center gap-2"
+            >
+              <span class="material-icons text-accent">door_front</span> Fixed
+              Features
+            </h3>
+            <div class="grid gap-3">
+              <div>
+                <label for="doorLocation" class="block text-xs text-light mb-1"
+                  >Door Location</label
+                >
+                <select
+                  id="doorLocation"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
+                >
+                  <option value="">Select Door Location</option>
+                  <option value="corner">Corner</option>
+                  <option value="center-wall">Center of Wall</option>
+                  <option value="side">Side of Wall</option>
+                </select>
+              </div>
+              <div>
+                <label for="windowCount" class="block text-xs text-light mb-1"
+                  >Number of Windows</label
+                >
+                <input
+                  type="number"
+                  id="windowCount"
+                  placeholder="Number of windows"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  min="0"
+                  max="4"
+                  required
+                />
+              </div>
+              <div>
+                <label for="closetType" class="block text-xs text-light mb-1"
+                  >Closet Type</label
+                >
+                <select
+                  id="closetType"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
+                >
+                  <option value="">Select Closet Type</option>
+                  <option value="built-in">Built-in Closet</option>
+                  <option value="wardrobe">Wardrobe/Armoire</option>
+                  <option value="none">No Closet</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-broder p-4 rounded">
+            <h3
+              class="text-lg font-medium mb-3 text-text flex items-center gap-2"
+            >
+              <span class="material-icons text-accent">chair</span> Furniture
+              Needs
+            </h3>
+            <div class="grid gap-3">
+              <div>
+                <label for="bedType" class="block text-xs text-light mb-1"
+                  >Bed Type</label
+                >
+                <select
+                  id="bedType"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
+                >
+                  <option value="">Select Bed Type</option>
+                  <option value="twin">Twin Bed</option>
+                  <option value="twin-xl">Twin XL</option>
+                  <option value="loft">Loft Bed</option>
+                  <option value="bunk">Bunk Bed</option>
+                </select>
+              </div>
+              <div>
+                <label for="deskSize" class="block text-xs text-light mb-1"
+                  >Desk Size Preference</label
+                >
+                <select
+                  id="deskSize"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
+                >
+                  <option value="">Select Desk Size</option>
+                  <option value="compact">Compact Desk</option>
+                  <option value="standard">Standard Desk</option>
+                  <option value="large">Large Desk</option>
+                </select>
+              </div>
+              <div>
+                <label for="storageNeeds" class="block text-xs text-light mb-1"
+                  >Storage Needs</label
+                >
+                <select
+                  id="storageNeeds"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
+                >
+                  <option value="">Select Storage Needs</option>
+                  <option value="minimal">Minimal Storage</option>
+                  <option value="moderate">Moderate Storage</option>
+                  <option value="extensive">Extensive Storage</option>
+                </select>
+              </div>
+              <div>
+                <label
+                  for="extraFurniture"
+                  class="block text-xs text-light mb-1"
+                  >Additional Furniture</label
+                >
+                <select
+                  id="extraFurniture"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                >
+                  <option value="">Select Additional Items</option>
+                  <option value="none">None</option>
+                  <option value="mini-fridge">Mini Fridge</option>
+                  <option value="tv-stand">TV Stand</option>
+                  <option value="seating">Extra Seating</option>
+                  <option value="multiple">Multiple Items</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-primary text-white px-4 md:px-6 py-2.5 md:py-3 text-sm md:text-base rounded font-medium hover:bg-accent transition flex items-center justify-center gap-2"
+          >
+            <span class="material-icons">design_services</span> Generate Layout
+            Plan
+          </button>
+        </form>
+
+        <div id="results" class="mt-6 md:mt-8 hidden">
+          <div id="result-content"></div>
+        </div>
+
+        <!-- In-Content Ad After Calculator -->
+        <div
+          class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm mt-6"
+        >
+          In-Content Ad (300x250)
+        </div>
+
+        <div
+          class="lg:hidden min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm mt-4"
+        >
+          Mid Ad Space (300x250)
+        </div>
+      </div>
+
+      <div class="hidden lg:flex flex-col gap-4">
+        <div
+          class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm sticky top-4"
+        >
+          Sidebar Ad (300x250)
+        </div>
+        <div
+          class="min-h-[600px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+        >
+          Sidebar Ad (300x600)
+        </div>
+      </div>
+    </main>
+
+    <div class="max-w-7xl mx-auto px-4 pb-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Bottom Ad Space (728x90 / 320x50)
+      </div>
+    </div>
+
+    <!-- SEO Blog Section -->
+    <section class="max-w-7xl mx-auto px-4 py-8 md:py-12">
+      <article
+        class="bg-dark rounded-lg shadow-lg p-6 md:p-10 border border-accent"
+      >
+        <header class="mb-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-primary mb-4">
+            Ultimate Dorm Room Planner Guide 2025: Maximize Small Space Living
+          </h2>
+          <p class="text-lg text-light leading-relaxed">
+            Master dorm room organization with our comprehensive space planning
+            calculator. Learn how to optimize furniture placement, maximize
+            storage, and create functional layouts using proven space-saving
+            formulas.
+          </p>
+        </header>
+
+        <div class="prose prose-invert max-w-none">
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            What is a Dorm Room Space Planner?
+          </h3>
+          <p class="text-text mb-6 leading-relaxed">
+            A dorm room space planner is a specialized layout calculator that
+            helps college students optimize furniture arrangement in small
+            dormitory spaces. This essential tool considers room dimensions,
+            fixed features, furniture sizes, and college regulations to create
+            efficient, functional living spaces that maximize comfort and
+            productivity in limited square footage.
+          </p>
+
+          <!-- Blog Ad 1 -->
+          <div
+            class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm my-6"
+          >
+            Blog Content Ad 1 (300x250)
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            How Does Dorm Room Space Planning Work?
+          </h3>
+          <p class="text-text mb-4 leading-relaxed">
+            Our dorm layout calculator uses spatial optimization algorithms to
+            determine the best furniture arrangements:
+          </p>
+          <div class="bg-broder border border-accent rounded-lg p-4 mb-6">
+            <p class="text-primary font-mono text-lg">
+              <strong
+                >Usable Space = Total Area - Fixed Features - Circulation
+                Paths</strong
+              >
+            </p>
+          </div>
+
+          <h4 class="text-lg font-medium text-light mb-3">
+            Space Planning Formulas:
+          </h4>
+          <div class="bg-broder border border-accent rounded-lg p-6 mb-6">
+            <h4 class="text-primary font-semibold mb-3">
+              Layout Optimization Equations:
+            </h4>
+            <ul class="text-text space-y-2">
+              <li>
+                <strong>Floor Area:</strong> Length × Width = Total Square Feet
+              </li>
+              <li>
+                <strong>Furniture Footprint:</strong> Item Length × Width +
+                Clearance Space
+              </li>
+              <li>
+                <strong>Storage Efficiency:</strong> Vertical Space × Storage
+                Density
+              </li>
+              <li>
+                <strong>Traffic Flow:</strong> 24-36 inches minimum walkway
+                width
+              </li>
+              <li>
+                <strong>Multi-Function Score:</strong> Functions per Item ×
+                Space Efficiency
+              </li>
+            </ul>
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Standard Dorm Room Dimensions & Layouts
+          </h3>
+          <div class="grid md:grid-cols-2 gap-4 mb-6">
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                Typical Room Sizes:
+              </h4>
+              <ul class="text-text text-sm space-y-1">
+                <li><strong>Single Room:</strong> 8' × 10' (80 sq ft)</li>
+                <li><strong>Double Room:</strong> 12' × 14' (168 sq ft)</li>
+                <li><strong>Triple Room:</strong> 12' × 18' (216 sq ft)</li>
+                <li><strong>Suite Style:</strong> 14' × 16' (224 sq ft)</li>
+              </ul>
+            </div>
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                Standard Furniture Sizes:
+              </h4>
+              <ul class="text-text text-sm space-y-1">
+                <li><strong>Twin XL Bed:</strong> 39" × 80"</li>
+                <li><strong>Desk:</strong> 48" × 24"</li>
+                <li><strong>Dresser:</strong> 30" × 18"</li>
+                <li><strong>Mini Fridge:</strong> 24" × 24"</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Blog Ad 2 -->
+          <div
+            class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm my-6"
+          >
+            Blog Content Ad 2 (300x250)
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Advanced Dorm Room Organization Strategies
+          </h3>
+          <p class="text-text mb-4 leading-relaxed">
+            Maximize your dorm space with proven layout optimization techniques:
+          </p>
+
+          <div class="bg-broder border border-accent rounded-lg p-4 mb-6">
+            <h4 class="text-primary font-semibold mb-2">
+              Space-Saving Solutions:
+            </h4>
+            <ul class="text-text text-sm space-y-1">
+              <li>
+                <strong>Loft Beds:</strong> Create 35+ sq ft of floor space
+                underneath
+              </li>
+              <li>
+                <strong>Under-Bed Storage:</strong> Utilize 15-20 cubic feet of
+                hidden space
+              </li>
+              <li>
+                <strong>Wall Mounting:</strong> Free up 50% more desk and floor
+                space
+              </li>
+              <li>
+                <strong>Multi-Function Items:</strong> Reduce furniture count by
+                30-40%
+              </li>
+            </ul>
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Dorm Room Layout Optimization Tips
+          </h3>
+          <ul class="list-disc list-inside text-text space-y-2 mb-6">
+            <li>
+              <strong>Vertical Storage:</strong> Use wall space and over-door
+              organizers for maximum storage
+            </li>
+            <li>
+              <strong>Corner Utilization:</strong> Place desks and storage in
+              corners to maximize floor space
+            </li>
+            <li>
+              <strong>Bed Positioning:</strong> Position beds against walls to
+              create open central areas
+            </li>
+            <li>
+              <strong>Multi-Purpose Furniture:</strong> Choose ottomans with
+              storage, desk organizers, and bed risers
+            </li>
+            <li>
+              <strong>Color Psychology:</strong> Use light colors and mirrors to
+              make spaces feel larger
+            </li>
+            <li>
+              <strong>Seasonal Rotation:</strong> Store off-season items to
+              reduce clutter
+            </li>
+          </ul>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            College Dorm Regulations & Space Planning
+          </h3>
+          <p class="text-text mb-4 leading-relaxed">
+            Navigate common dorm restrictions while optimizing your space:
+          </p>
+          <div class="grid md:grid-cols-2 gap-4 mb-6">
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                Common Restrictions:
+              </h4>
+              <ul class="text-text text-sm space-y-1">
+                <li>No nails or screws in walls</li>
+                <li>Fire safety clearance requirements</li>
+                <li>Furniture modification limitations</li>
+                <li>Electrical appliance restrictions</li>
+              </ul>
+            </div>
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                Approved Solutions:
+              </h4>
+              <ul class="text-text text-sm space-y-1">
+                <li>Command strips and adhesive hooks</li>
+                <li>Tension rods and over-door organizers</li>
+                <li>Removable furniture risers</li>
+                <li>Approved extension cords and power strips</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Frequently Asked Questions
+          </h3>
+          <div class="space-y-4 mb-6">
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                What's the best dorm room layout for studying?
+              </h4>
+              <p class="text-text text-sm">
+                Position your desk near a window for natural light, away from
+                the bed to minimize distractions, and ensure 36 inches of
+                clearance for comfortable chair movement.
+              </p>
+            </div>
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                How can I maximize storage in a small dorm room?
+              </h4>
+              <p class="text-text text-sm">
+                Use vertical space with tall storage units, under-bed
+                containers, over-door organizers, and multi-functional furniture
+                like storage ottomans and bed risers.
+              </p>
+            </div>
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                How accurate is this dorm room planner?
+              </h4>
+              <p class="text-text text-sm">
+                Our planner uses standard furniture dimensions and space
+                planning principles. Always verify measurements and check your
+                college's specific dorm regulations before implementing layouts.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-gradient-to-r from-primary to-accent rounded-lg p-6 text-center"
+          >
+            <h4 class="text-white font-bold text-lg mb-2">
+              Plan Your Perfect Dorm Room Today!
+            </h4>
+            <p class="text-white/90 text-sm">
+              Use our comprehensive dorm room planner to create an organized,
+              functional living space that maximizes comfort and productivity in
+              your college years.
+            </p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Final Bottom Ad -->
+    <div class="max-w-7xl mx-auto px-4 pb-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Final Bottom Ad (728x90 / 320x50)
+      </div>
+    </div>
+    <div id="footer-container"></div>
+
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+

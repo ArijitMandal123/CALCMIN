@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Product Profitability Calculator - True Profit Analysis | CalcMin.pro</title>
+    <meta name="description" content="Calculate true e-commerce product profitability accounting for all costs. Analyze profit margins, break-even points, and optimize pricing for Amazon, Shopify, and other platforms.">
+    <meta name="keywords" content="ecommerce profitability calculator, product profit margin, amazon fba calculator, shopify profit calculator, ecommerce cost analysis, product pricing calculator">
+    <meta name="author" content="CalcMin.pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calcmin.pro/ECommerceProductProfitability/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="E-Commerce Product Profitability Calculator - True Profit Analysis">
+    <meta property="og:description" content="Calculate true e-commerce product profitability with comprehensive cost analysis for all platforms and selling channels.">
+    <meta property="og:url" content="https://calcmin.pro/ECommerceProductProfitability/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CalcMin.pro">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="E-Commerce Product Profitability Calculator">
+    <meta name="twitter:description" content="Analyze true product profitability with comprehensive cost breakdown for e-commerce success.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FE4E02",
+                        dark: "#00053D", 
+                        broder: "#182267",
+                        accent: "#FD803D",
+                        light: "#FECEB6",
+                        text: "#F7FBFC"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "E-Commerce Product Profitability Calculator",
+        "description": "Comprehensive e-commerce profitability calculator that analyzes true product profit margins accounting for all costs including platform fees, shipping, advertising, and returns.",
+        "url": "https://calcmin.pro/ECommerceProductProfitability/",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "CalcMin.pro"
+        }
+    }
+    </script>
+</head>
+<body class="bg-dark text-text min-h-screen">
+    <!-- Navigation -->
+    <nav id="navbar-container"></nav>
+
+    <!-- Top Ad Space -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+        <div class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm">
+            Top Ad Space (728x90 / 320x50)
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Calculator -->
+            <div class="lg:col-span-2">
+                <!-- Header -->
+                <div class="bg-broder p-6 rounded-lg border border-accent mb-6">
+                    <h1 class="text-3xl font-bold text-primary mb-4">
+                        <span class="material-icons text-4xl align-middle mr-2">shopping_cart</span>
+                        E-Commerce Product Profitability Calculator
+                    </h1>
+                    <p class="text-light text-lg">Calculate true e-commerce product profitability accounting for all costs. Analyze profit margins, break-even points, and optimize pricing for Amazon, Shopify, and other platforms.</p>
+                </div>
+
+                <!-- Calculator Form -->
+                <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
+                    <form id="profitability-form" class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Product Name</label>
+                            <input type="text" id="productName" placeholder="e.g., Wireless Bluetooth Headphones" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Product Cost ($)</label>
+                                <input type="number" id="productCost" placeholder="e.g., 25.00" step="0.01" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Selling Price ($)</label>
+                                <input type="number" id="sellingPrice" placeholder="e.g., 79.99" step="0.01" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">E-Commerce Platform</label>
+                            <select id="platform" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                <option value="">Select platform</option>
+                                <option value="amazon-fba">Amazon FBA</option>
+                                <option value="amazon-fbm">Amazon FBM</option>
+                                <option value="shopify">Shopify</option>
+                                <option value="ebay">eBay</option>
+                                <option value="etsy">Etsy</option>
+                                <option value="walmart">Walmart Marketplace</option>
+                                <option value="own-website">Own Website</option>
+                                <option value="custom">Custom Platform</option>
+                            </select>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Platform Fee (%)</label>
+                                <input type="number" id="platformFee" placeholder="e.g., 15" step="0.1" min="0" max="50" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Payment Processing Fee (%)</label>
+                                <input type="number" id="paymentFee" placeholder="e.g., 2.9" step="0.1" min="0" max="10" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Shipping Cost ($)</label>
+                                <input type="number" id="shippingCost" placeholder="e.g., 5.50" step="0.01" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Packaging Cost ($)</label>
+                                <input type="number" id="packagingCost" placeholder="e.g., 2.00" step="0.01" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Advertising Spend per Sale ($)</label>
+                                <input type="number" id="advertisingCost" placeholder="e.g., 8.00" step="0.01" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Returns Rate (%)</label>
+                                <input type="number" id="returnsRate" placeholder="e.g., 5" step="0.1" min="0" max="100" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Storage/Fulfillment Cost ($)</label>
+                                <input type="number" id="storageCost" placeholder="e.g., 1.50" step="0.01" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Other Costs ($)</label>
+                                <input type="number" id="otherCosts" placeholder="e.g., 0.50" step="0.01" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Expected Monthly Sales Volume</label>
+                            <input type="number" id="monthlyVolume" placeholder="e.g., 100" min="1" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                        </div>
+
+                        <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-medium py-3 px-6 rounded transition duration-200">
+                            Calculate Profitability
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results -->
+                <div id="results" class="hidden">
+                    <div id="result-content"></div>
+                </div>
+            </div>
+
+            <!-- Right Column - Ads -->
+            <div class="lg:col-span-1">
+                <!-- Top Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+
+                <!-- Middle Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Ad Space -->
+        <div class="mt-8 bg-broder p-4 rounded-lg border border-accent text-center">
+            <div class="text-light text-sm mb-2">Advertisement</div>
+            <div class="bg-dark h-24 flex items-center justify-center rounded">
+                <span class="text-accent">Ad Space 728x90</span>
+            </div>
+        </div>
+
+        <!-- Blog Content -->
+        <article class="mt-12 bg-broder p-8 rounded-lg border border-accent">
+            <h2 class="text-3xl font-bold text-primary mb-6">Complete Guide to E-Commerce Product Profitability Analysis</h2>
+            
+            <div class="prose prose-invert max-w-none">
+                <p class="text-light text-lg leading-relaxed mb-6">
+                    Understanding true product profitability is crucial for e-commerce success, yet many sellers focus only on gross margins while ignoring the numerous hidden costs that can make profitable-looking products actually lose money. Our E-Commerce Product Profitability Calculator provides comprehensive analysis of all costs associated with selling products online, helping you make data-driven decisions about pricing, product selection, and business strategy.
+                </p>
+
+                <div class="space-y-8">
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Hidden Costs That Kill E-Commerce Profits</h3>
+                        <p class="text-light mb-4">
+                            Many e-commerce sellers underestimate the true cost of doing business online. Beyond the obvious product and shipping costs, numerous hidden expenses can dramatically impact profitability:
+                        </p>
+                        <ul class="list-disc list-inside text-light space-y-2 mb-4">
+                            <li>Platform fees that vary by category and selling price</li>
+                            <li>Payment processing fees on gross sales amount</li>
+                            <li>Advertising costs required to maintain visibility</li>
+                            <li>Returns processing and restocking fees</li>
+                            <li>Storage and fulfillment costs for inventory</li>
+                            <li>Packaging materials and branded inserts</li>
+                            <li>Customer service and support overhead</li>
+                        </ul>
+                        <p class="text-light">
+                            Our calculator accounts for all these factors to provide accurate profit analysis that reflects real-world e-commerce operations.
+                        </p>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Platform-Specific Fee Structures</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border border-accent rounded">
+                                <thead class="bg-broder">
+                                    <tr>
+                                        <th class="p-3 text-left text-primary">Platform</th>
+                                        <th class="p-3 text-left text-primary">Referral Fee</th>
+                                        <th class="p-3 text-left text-primary">Fulfillment</th>
+                                        <th class="p-3 text-left text-primary">Additional Costs</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-light">
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Amazon FBA</td>
+                                        <td class="p-3">8-15%</td>
+                                        <td class="p-3">$2.50-8.00</td>
+                                        <td class="p-3">Storage, removal fees</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Amazon FBM</td>
+                                        <td class="p-3">8-15%</td>
+                                        <td class="p-3">Self-fulfilled</td>
+                                        <td class="p-3">Shipping, packaging</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Shopify</td>
+                                        <td class="p-3">2.4-2.9%</td>
+                                        <td class="p-3">Variable</td>
+                                        <td class="p-3">Monthly fees, apps</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">eBay</td>
+                                        <td class="p-3">10-12%</td>
+                                        <td class="p-3">Self-fulfilled</td>
+                                        <td class="p-3">Listing fees, PayPal</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Etsy</td>
+                                        <td class="p-3">6.5%</td>
+                                        <td class="p-3">Self-fulfilled</td>
+                                        <td class="p-3">Listing, payment fees</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Profitability Metrics That Matter</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-primary mb-2">Gross Profit Margin</h4>
+                                <p class="text-light text-sm mb-3">
+                                    (Selling Price - Product Cost) / Selling Price × 100
+                                </p>
+                                <p class="text-light text-sm">
+                                    Basic profitability before fees and expenses. Minimum 50% recommended for most categories.
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-primary mb-2">Net Profit Margin</h4>
+                                <p class="text-light text-sm mb-3">
+                                    (Revenue - All Costs) / Revenue × 100
+                                </p>
+                                <p class="text-light text-sm">
+                                    True profitability after all expenses. Target 15-25% for sustainable business.
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-primary mb-2">Return on Ad Spend (ROAS)</h4>
+                                <p class="text-light text-sm mb-3">
+                                    Revenue / Advertising Spend
+                                </p>
+                                <p class="text-light text-sm">
+                                    Advertising efficiency metric. Minimum 3:1 ROAS typically required for profitability.
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-primary mb-2">Break-Even Point</h4>
+                                <p class="text-light text-sm mb-3">
+                                    Fixed Costs / (Price - Variable Costs)
+                                </p>
+                                <p class="text-light text-sm">
+                                    Units needed to cover all costs. Critical for inventory and cash flow planning.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Cost Optimization Strategies</h3>
+                        <div class="space-y-4">
+                            <div class="border-l-4 border-primary pl-4">
+                                <h4 class="font-semibold text-primary mb-2">Product Sourcing Optimization</h4>
+                                <p class="text-light text-sm">
+                                    Negotiate better wholesale prices, explore alternative suppliers, consider private labeling, and optimize minimum order quantities to reduce per-unit costs.
+                                </p>
+                            </div>
+                            <div class="border-l-4 border-accent pl-4">
+                                <h4 class="font-semibold text-accent mb-2">Shipping Cost Reduction</h4>
+                                <p class="text-light text-sm">
+                                    Negotiate carrier rates, optimize packaging dimensions, use regional fulfillment centers, and consider dimensional weight pricing in product selection.
+                                </p>
+                            </div>
+                            <div class="border-l-4 border-primary pl-4">
+                                <h4 class="font-semibold text-primary mb-2">Platform Fee Management</h4>
+                                <p class="text-light text-sm">
+                                    Choose optimal product categories, maintain high seller metrics for fee reductions, and consider multi-channel selling to reduce dependency.
+                                </p>
+                            </div>
+                            <div class="border-l-4 border-accent pl-4">
+                                <h4 class="font-semibold text-accent mb-2">Advertising Efficiency</h4>
+                                <p class="text-light text-sm">
+                                    Optimize keyword targeting, improve conversion rates, use negative keywords, and focus on high-intent search terms to reduce cost per acquisition.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Pricing Strategy Framework</h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Cost-Plus Pricing</h4>
+                                <p class="text-light text-sm">
+                                    Add fixed markup to total costs. Simple but may not reflect market value or competitive positioning.
+                                </p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Competitive Pricing</h4>
+                                <p class="text-light text-sm">
+                                    Price based on competitor analysis. Requires strong differentiation to avoid race to bottom.
+                                </p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Value-Based Pricing</h4>
+                                <p class="text-light text-sm">
+                                    Price based on perceived customer value. Highest profit potential but requires strong brand positioning.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Common Profitability Mistakes</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <span class="material-icons text-red-400 mt-1">error</span>
+                                <div>
+                                    <h4 class="font-semibold text-red-400 mb-1">Ignoring Opportunity Costs</h4>
+                                    <p class="text-light text-sm">
+                                        Not accounting for time investment, inventory carrying costs, and alternative investment returns when calculating true profitability.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="material-icons text-red-400 mt-1">error</span>
+                                <div>
+                                    <h4 class="font-semibold text-red-400 mb-1">Underestimating Returns Impact</h4>
+                                    <p class="text-light text-sm">
+                                        Returns don't just reduce revenue - they often incur additional processing, restocking, and disposal costs that compound losses.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="material-icons text-red-400 mt-1">error</span>
+                                <div>
+                                    <h4 class="font-semibold text-red-400 mb-1">Seasonal Cost Variations</h4>
+                                    <p class="text-light text-sm">
+                                        Advertising costs, storage fees, and shipping rates fluctuate seasonally. Use annual averages for accurate long-term planning.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="material-icons text-red-400 mt-1">error</span>
+                                <div>
+                                    <h4 class="font-semibold text-red-400 mb-1">Scale Assumptions</h4>
+                                    <p class="text-light text-sm">
+                                        Assuming current cost structure will remain constant at higher volumes. Many costs have breakpoints that affect profitability.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Profitability Improvement Action Plan</h3>
+                        <div class="space-y-4">
+                            <div class="border-l-4 border-green-400 pl-4">
+                                <h4 class="font-semibold text-green-400 mb-2">1. Audit All Costs Monthly</h4>
+                                <p class="text-light text-sm">
+                                    Track every expense category and identify trends. Small cost increases compound quickly at scale.
+                                </p>
+                            </div>
+                            <div class="border-l-4 border-green-400 pl-4">
+                                <h4 class="font-semibold text-green-400 mb-2">2. Test Price Elasticity</h4>
+                                <p class="text-light text-sm">
+                                    Systematically test price increases to find optimal pricing that maximizes total profit, not just volume.
+                                </p>
+                            </div>
+                            <div class="border-l-4 border-green-400 pl-4">
+                                <h4 class="font-semibold text-green-400 mb-2">3. Optimize Product Mix</h4>
+                                <p class="text-light text-sm">
+                                    Focus resources on highest-margin products and discontinue or improve low-profit items.
+                                </p>
+                            </div>
+                            <div class="border-l-4 border-green-400 pl-4">
+                                <h4 class="font-semibold text-green-400 mb-2">4. Implement Dynamic Pricing</h4>
+                                <p class="text-light text-sm">
+                                    Use repricing tools and market data to optimize prices based on competition, demand, and inventory levels.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer-container"></footer>
+
+    <script src="script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+</body>
+</html>

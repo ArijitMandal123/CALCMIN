@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Negotiation Calculator - Market Data & Negotiation Strategy Tool | CalcMin Pro</title>
+    <meta name="description" content="Calculate your market salary range and get negotiation tactics based on experience, location, and company data. Get recommended salary ask, talking points, and career earnings projections.">
+    <meta name="keywords" content="salary negotiation calculator, market salary range, salary negotiation tactics, compensation calculator, salary comparison tool, career earnings calculator, job market analysis">
+    <meta name="author" content="CalcMin Pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calcmin.pro/SalaryNegotiationCalculator/">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Salary Negotiation Calculator - Market Data & Negotiation Strategy Tool">
+    <meta property="og:description" content="Calculate your market salary range and get negotiation tactics based on experience, location, and company data.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calcmin.pro/SalaryNegotiationCalculator/">
+    <meta property="og:image" content="https://calcmin.pro/public/og-image.jpg">
+    <meta property="og:site_name" content="CalcMin Pro">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Salary Negotiation Calculator - Market Data & Strategy Tool">
+    <meta name="twitter:description" content="Calculate your market salary range and get negotiation tactics based on experience and location.">
+    <meta name="twitter:image" content="https://calcmin.pro/public/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../public/favicon.ico">
+    
+    <!-- External CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FE4E02",
+                        dark: "#00053D", 
+                        broder: "#182267",
+                        accent: "#FD803D",
+                        light: "#FECEB6",
+                        text: "#F7FBFC"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Salary Negotiation Calculator",
+        "description": "Calculate your market salary range and get negotiation tactics based on experience, location, and company data. Get recommended salary ask, talking points, and career earnings projections.",
+        "url": "https://calcmin.pro/SalaryNegotiationCalculator/",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "CalcMin Pro",
+            "url": "https://calcmin.pro"
+        }
+    }
+    </script>
+</head>
+<body class="bg-dark text-text">
+    <div id="navbar-container"></div>
+
+    <!-- Top Ad -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Top Ad Space (728x90 / 320x50)
+      </div>
+    </div>
+
+    <main
+      class="max-w-7xl mx-auto px-4 py-6 md:py-12 grid lg:grid-cols-[1fr_300px] gap-4 md:gap-8"
+    >
+      <div
+        class="bg-dark rounded-lg shadow-lg p-4 md:p-10 border border-accent"
+      >
+        <div class="mb-4 md:mb-6">
+          <h1
+            class="text-2xl md:text-3xl font-bold text-text flex items-center gap-2"
+          >
+            <span class="material-icons text-primary text-3xl">trending_up</span>
+            Salary Negotiation Calculator
+          </h1>
+          <p class="text-light mt-3 text-base leading-relaxed">
+            Calculate your market salary range and get data-driven negotiation tactics. Discover your worth and maximize earning potential.
+          </p>
+        </div>
+        <form id="salaryForm" class="flex flex-col gap-4 md:gap-6">
+                    <!-- Current Position -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-light mb-2">
+                                Current Annual Salary ($)
+                            </label>
+                            <input type="number" id="currentSalary" min="0" max="1000000" value="75000" 
+                                   class="w-full px-4 py-3 bg-dark border border-accent/30 rounded-lg text-text focus:border-primary focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-light mb-2">
+                                Job Title
+                            </label>
+                            <select id="jobTitle" 
+                                    class="w-full px-4 py-3 bg-dark border border-accent/30 rounded-lg text-text focus:border-primary focus:outline-none">
+                                <option value="software-engineer">Software Engineer</option>
+                                <option value="data-scientist">Data Scientist</option>
+                                <option value="product-manager">Product Manager</option>
+                                <option value="marketing-manager">Marketing Manager</option>
+                                <option value="sales-manager">Sales Manager</option>
+                                <option value="business-analyst">Business Analyst</option>
+                                <option value="project-manager">Project Manager</option>
+                                <option value="designer">UX/UI Designer</option>
+                                <option value="accountant">Accountant</option>
+                                <option value="hr-manager">HR Manager</option>
+                                <option value="consultant">Consultant</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Experience & Education -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-light mb-2">
+                                Years of Experience
+                            </label>
+                            <input type="number" id="experience" min="0" max="50" value="5" 
+                                   class="w-full px-4 py-3 bg-dark border border-accent/30 rounded-lg text-text focus:border-primary focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-light mb-2">
+                                Education Level
+                            </label>
+                            <select id="education" 
+                                    class="w-full px-4 py-3 bg-dark border border-accent/30 rounded-lg text-text focus:border-primary focus:outline-none">
+                                <option value="high-school">High School</option>
+                                <option value="associates">Associate's Degree</option>
+                                <option value="bachelors" selected>Bachelor's Degree</option>
+                                <option value="masters">Master's Degree</option>
+                                <option value="phd">PhD/Doctorate</option>
+                                <option value="bootcamp">Bootcamp/Certification</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Location & Company -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-light mb-2">
+                                Location
+                            </label>
+                            <select id="location" 
+                                    class="w-full px-4 py-3 bg-dark border border-accent/30 rounded-lg text-text focus:border-primary focus:outline-none">
+                                <option value="san-francisco">San Francisco, CA</option>
+                                <option value="new-york">New York, NY</option>
+                                <option value="seattle">Seattle, WA</option>
+                                <option value="los-angeles">Los Angeles, CA</option>
+                                <option value="chicago">Chicago, IL</option>
+                                <option value="boston">Boston, MA</option>
+                                <option value="austin">Austin, TX</option>
+                                <option value="denver">Denver, CO</option>
+                                <option value="atlanta">Atlanta, GA</option>
+                                <option value="remote" selected>Remote</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-light mb-2">
+                                Company Size
+                            </label>
+                            <select id="companySize" 
+                                    class="w-full px-4 py-3 bg-dark border border-accent/30 rounded-lg text-text focus:border-primary focus:outline-none">
+                                <option value="startup">Startup (1-50 employees)</option>
+                                <option value="small">Small (51-200 employees)</option>
+                                <option value="medium" selected>Medium (201-1000 employees)</option>
+                                <option value="large">Large (1001-5000 employees)</option>
+                                <option value="enterprise">Enterprise (5000+ employees)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Skills & Performance -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-light mb-2">
+                                Special Skills/Certifications
+                            </label>
+                            <select id="specialSkills" 
+                                    class="w-full px-4 py-3 bg-dark border border-accent/30 rounded-lg text-text focus:border-primary focus:outline-none">
+                                <option value="none">None</option>
+                                <option value="basic">Basic (1-2 relevant skills)</option>
+                                <option value="intermediate" selected>Intermediate (3-5 skills)</option>
+                                <option value="advanced">Advanced (6+ skills)</option>
+                                <option value="expert">Expert/Industry Leader</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-light mb-2">
+                                Performance Rating
+                            </label>
+                            <select id="performance" 
+                                    class="w-full px-4 py-3 bg-dark border border-accent/30 rounded-lg text-text focus:border-primary focus:outline-none">
+                                <option value="below">Below Expectations</option>
+                                <option value="meets">Meets Expectations</option>
+                                <option value="exceeds" selected>Exceeds Expectations</option>
+                                <option value="outstanding">Outstanding Performer</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Negotiation Context -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-light mb-2">
+                                Negotiation Type
+                            </label>
+                            <select id="negotiationType" 
+                                    class="w-full px-4 py-3 bg-dark border border-accent/30 rounded-lg text-text focus:border-primary focus:outline-none">
+                                <option value="raise">Annual Raise/Review</option>
+                                <option value="promotion">Promotion</option>
+                                <option value="new-job" selected>New Job Offer</option>
+                                <option value="counter-offer">Counter Offer</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-light mb-2">
+                                Market Demand for Your Role
+                            </label>
+                            <select id="marketDemand" 
+                                    class="w-full px-4 py-3 bg-dark border border-accent/30 rounded-lg text-text focus:border-primary focus:outline-none">
+                                <option value="low">Low Demand</option>
+                                <option value="moderate">Moderate Demand</option>
+                                <option value="high" selected>High Demand</option>
+                                <option value="very-high">Very High Demand</option>
+                            </select>
+                        </div>
+                    </div>
+
+          <button
+            type="submit"
+            class="w-full bg-primary text-white px-4 md:px-6 py-2.5 md:py-3 text-sm md:text-base rounded font-medium hover:bg-accent transition flex items-center justify-center gap-2"
+          >
+            <span class="material-icons">calculate</span> Calculate My Negotiation Strategy
+          </button>
+        </form>
+
+        <div id="results" class="mt-6 md:mt-8 hidden">
+          <div id="result-content"></div>
+        </div>
+
+        <!-- In-Content Ad After Calculator -->
+        <div
+          class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm mt-6"
+        >
+          In-Content Ad (300x250)
+        </div>
+
+        <!-- Mid Ad (Mobile) -->
+        <div
+          class="lg:hidden min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm mt-4"
+        >
+          Mid Ad Space (300x250)
+        </div>
+      </div>
+
+      <!-- Sidebar Ad (Desktop) -->
+      <div class="hidden lg:flex flex-col gap-4">
+        <div
+          class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm sticky top-4"
+        >
+          Sidebar Ad (300x250)
+        </div>
+        <div
+          class="min-h-[600px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+        >
+          Sidebar Ad (300x600)
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Ad -->
+    <div class="max-w-7xl mx-auto px-4 pb-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Bottom Ad Space (728x90 / 320x50)
+      </div>
+    </div>
+
+
+
+    <!-- Custom Popup Modal -->
+    <div id="customPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-broder rounded-lg p-6 max-w-md mx-4 border border-accent/20">
+            <div class="flex items-center mb-4">
+                <span class="material-icons text-primary mr-2">info</span>
+                <h3 class="text-lg font-semibold text-text">Information</h3>
+            </div>
+            <p id="popupMessage" class="text-light mb-4"></p>
+            <button onclick="closePopup()" class="w-full bg-primary text-white py-2 px-4 rounded hover:bg-accent transition-colors">
+                OK
+            </button>
+        </div>
+    </div>
+
+    <!-- SEO Blog Section -->
+    <section class="max-w-7xl mx-auto px-4 py-8 md:py-12">
+      <article
+        class="bg-dark rounded-lg shadow-lg p-6 md:p-10 border border-accent"
+      >
+        <header class="mb-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-primary mb-4">
+            The Complete Guide to Salary Negotiation
+          </h2>
+        </header>
+        <div class="prose prose-invert max-w-none">
+          <p class="text-light mb-6 leading-relaxed">
+            Master the art of salary negotiation with data-driven strategies and market insights.
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <!-- Final Bottom Ad -->
+    <div class="max-w-7xl mx-auto px-4 pb-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Final Bottom Ad (728x90 / 320x50)
+      </div>
+    </div>
+
+    <div id="footer-container"></div>
+
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

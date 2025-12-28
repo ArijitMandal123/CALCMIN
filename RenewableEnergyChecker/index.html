@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renewable Energy Feasibility Checker - Solar & Wind Analysis | CalcMin Pro</title>
+    <meta name="description" content="Determine if solar or wind energy is feasible for your home. Get system size recommendations, cost estimates, payback periods, and environmental impact analysis with local incentives.">
+    <meta name="keywords" content="solar energy calculator, wind energy feasibility, renewable energy checker, solar panel calculator, home energy analysis, green energy calculator">
+    <meta name="author" content="CalcMin Pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calcmin.pro/RenewableEnergyChecker/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Renewable Energy Feasibility Checker - Solar & Wind Analysis">
+    <meta property="og:description" content="Determine if solar or wind energy is feasible for your home with cost estimates, payback analysis, and environmental impact calculations.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calcmin.pro/RenewableEnergyChecker/">
+    <meta property="og:site_name" content="CalcMin Pro">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Renewable Energy Feasibility Checker">
+    <meta name="twitter:description" content="Determine if solar or wind energy is feasible for your home with comprehensive analysis and recommendations.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    
+    <!-- External CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FE4E02",
+                        dark: "#00053D", 
+                        broder: "#182267",
+                        accent: "#FD803D",
+                        light: "#FECEB6",
+                        text: "#F7FBFC"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Renewable Energy Feasibility Checker",
+        "description": "Determine if solar or wind energy is feasible for your home with cost estimates, payback analysis, and environmental impact calculations.",
+        "url": "https://calcmin.pro/RenewableEnergyChecker/",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "CalcMin Pro",
+            "url": "https://calcmin.pro"
+        }
+    }
+    </script>
+</head>
+<body class="bg-dark text-text min-h-screen">
+    <!-- Navigation -->
+    <div id="navbar-container"></div>
+
+    <!-- Top Ad Space -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+        <div class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm">
+            Top Ad Space (728x90 / 320x50)
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Calculator -->
+            <div class="lg:col-span-2">
+                <!-- Header -->
+                <div class="bg-broder p-6 rounded-lg border border-accent mb-6">
+                    <h1 class="text-3xl font-bold text-primary mb-4">
+                        <span class="material-icons text-4xl align-middle mr-2">solar_power</span>
+                        Renewable Energy Feasibility Checker
+                    </h1>
+                    <p class="text-light text-lg">Determine if solar or wind energy is feasible for your home. Get system size recommendations, cost estimates, and payback analysis.</p>
+                </div>
+
+                <!-- Calculator Form -->
+                <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
+                    <h2 class="text-xl font-semibold text-primary mb-4">Energy Feasibility Analysis</h2>
+                    
+                    <form id="renewableEnergyForm" class="space-y-6">
+                        <!-- Location Information -->
+                        <div class="bg-dark p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-primary mb-4">Location & Property</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-light mb-2">State/Region</label>
+                                    <select id="location" class="w-full p-3 bg-broder border border-accent rounded text-text" required>
+                                        <option value="">Select your state...</option>
+                                        <option value="california">California</option>
+                                        <option value="texas">Texas</option>
+                                        <option value="florida">Florida</option>
+                                        <option value="arizona">Arizona</option>
+                                        <option value="nevada">Nevada</option>
+                                        <option value="colorado">Colorado</option>
+                                        <option value="north_carolina">North Carolina</option>
+                                        <option value="new_york">New York</option>
+                                        <option value="massachusetts">Massachusetts</option>
+                                        <option value="other">Other State</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-light mb-2">Home Size (sq ft)</label>
+                                    <input type="number" id="homeSize" min="500" max="10000" value="2000" 
+                                           class="w-full p-3 bg-broder border border-accent rounded text-text" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Energy Usage -->
+                        <div class="bg-dark p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-primary mb-4">Current Energy Usage</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-light mb-2">Monthly Electric Bill ($)</label>
+                                    <input type="number" id="monthlyBill" min="50" max="1000" value="150" 
+                                           class="w-full p-3 bg-broder border border-accent rounded text-text" required>
+                                </div>
+                                <div>
+                                    <label class="block text-light mb-2">Monthly kWh Usage</label>
+                                    <input type="number" id="monthlyKwh" min="200" max="3000" value="1000" 
+                                           class="w-full p-3 bg-broder border border-accent rounded text-text" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Property Details -->
+                        <div class="bg-dark p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-primary mb-4">Property Details</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-light mb-2">Roof Condition</label>
+                                    <select id="roofCondition" class="w-full p-3 bg-broder border border-accent rounded text-text" required>
+                                        <option value="excellent">Excellent (new/recently replaced)</option>
+                                        <option value="good">Good (5-10 years old)</option>
+                                        <option value="fair">Fair (10-20 years old)</option>
+                                        <option value="poor">Poor (needs replacement soon)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-light mb-2">Roof Orientation</label>
+                                    <select id="roofOrientation" class="w-full p-3 bg-broder border border-accent rounded text-text" required>
+                                        <option value="south">South-facing (ideal)</option>
+                                        <option value="southwest">Southwest-facing</option>
+                                        <option value="southeast">Southeast-facing</option>
+                                        <option value="east_west">East/West-facing</option>
+                                        <option value="north">North-facing</option>
+                                        <option value="flat">Flat roof</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <label class="block text-light mb-2">Shading Level</label>
+                                <select id="shadingLevel" class="w-full p-3 bg-broder border border-accent rounded text-text" required>
+                                    <option value="none">No shading (full sun all day)</option>
+                                    <option value="minimal">Minimal shading (1-2 hours)</option>
+                                    <option value="moderate">Moderate shading (3-4 hours)</option>
+                                    <option value="heavy">Heavy shading (5+ hours)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Financial Information -->
+                        <div class="bg-dark p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-primary mb-4">Financial Considerations</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-light mb-2">Available Budget ($)</label>
+                                    <input type="number" id="budget" min="5000" max="100000" value="25000" 
+                                           class="w-full p-3 bg-broder border border-accent rounded text-text" required>
+                                </div>
+                                <div>
+                                    <label class="block text-light mb-2">Energy Independence Goal</label>
+                                    <select id="independenceGoal" class="w-full p-3 bg-broder border border-accent rounded text-text" required>
+                                        <option value="partial">Partial (25-50% offset)</option>
+                                        <option value="substantial">Substantial (50-75% offset)</option>
+                                        <option value="complete">Complete (100% offset)</option>
+                                        <option value="surplus">Surplus (sell back to grid)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- System Preferences -->
+                        <div class="bg-dark p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-primary mb-4">System Preferences</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-light mb-2">Preferred System Type</label>
+                                    <select id="systemType" class="w-full p-3 bg-broder border border-accent rounded text-text" required>
+                                        <option value="solar">Solar panels only</option>
+                                        <option value="wind">Small wind turbine only</option>
+                                        <option value="hybrid">Solar + wind hybrid</option>
+                                        <option value="best">Best option for my location</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-light mb-2">Installation Timeline</label>
+                                    <select id="timeline" class="w-full p-3 bg-broder border border-accent rounded text-text" required>
+                                        <option value="immediate">Within 6 months</option>
+                                        <option value="soon">6-12 months</option>
+                                        <option value="planning">1-2 years (planning phase)</option>
+                                        <option value="future">2+ years (future consideration)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-bold py-4 px-6 rounded-lg transition duration-300 flex items-center justify-center">
+                            <span class="material-icons mr-2">analytics</span>
+                            Analyze Renewable Energy Feasibility
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Column - Ads -->
+            <div class="lg:col-span-1">
+                <!-- Top Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+
+                <!-- Quick Benefits -->
+                <div class="bg-broder rounded-lg border border-accent p-6">
+                    <h3 class="text-xl font-bold text-primary mb-4">☀️ Renewable Energy Benefits</h3>
+                    <ul class="space-y-3 text-light text-sm">
+                        <li>• Reduce electricity bills by 50-90%</li>
+                        <li>• Increase home value by $15,000+</li>
+                        <li>• Federal tax credit up to 30%</li>
+                        <li>• State incentives and rebates</li>
+                        <li>• 25-year system warranties</li>
+                        <li>• Reduce carbon footprint significantly</li>
+                        <li>• Energy independence from grid</li>
+                        <li>• Protection from rising energy costs</li>
+                    </ul>
+                </div>
+
+                <!-- Middle Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results" class="hidden mt-12">
+            <div class="bg-broder rounded-lg border border-accent p-6">
+                <h2 class="text-2xl font-bold text-primary mb-6 flex items-center">
+                    <span class="material-icons mr-2">assessment</span>
+                    Your Renewable Energy Analysis
+                </h2>
+                <div id="resultsContent"></div>
+            </div>
+        </div>
+
+        <!-- Bottom Ad Space -->
+        <div class="mt-8 bg-broder p-4 rounded-lg border border-accent text-center">
+            <div class="text-light text-sm mb-2">Advertisement</div>
+            <div class="bg-dark h-24 flex items-center justify-center rounded">
+                <span class="text-accent">Ad Space 728x90</span>
+            </div>
+        </div>
+
+        <!-- Blog Content -->
+        <article class="mt-12 bg-broder p-8 rounded-lg border border-accent">
+            <h2 class="text-3xl font-bold text-primary mb-6">Complete Guide to Renewable Energy for Homes</h2>
+            
+            <div class="prose prose-invert max-w-none">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-primary mb-4">Solar Energy Fundamentals</h3>
+                        <p class="text-light mb-4">
+                            Solar panels convert sunlight into electricity through photovoltaic cells, typically generating 15-22% efficiency rates. A typical residential system ranges from 4-10 kW, producing 6,000-15,000 kWh annually depending on location and system size.
+                        </p>
+                        <p class="text-light mb-4">
+                            Modern solar panels last 25-30 years with minimal maintenance, losing only 0.5-0.8% efficiency annually. With current technology and incentives, most systems pay for themselves within 6-10 years while providing decades of free electricity.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-primary mb-4">Wind Energy Potential</h3>
+                        <p class="text-light mb-4">
+                            Small residential wind turbines work best with consistent winds of 10+ mph and minimal turbulence. They're most effective in rural areas with at least one acre of land and average wind speeds exceeding 12 mph.
+                        </p>
+                        <p class="text-light mb-4">
+                            While less common than solar, wind can complement solar systems perfectly, generating power during cloudy days and at night when winds are often stronger. Hybrid systems maximize energy production year-round.
+                        </p>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-primary mb-4">Financial Analysis & Incentives</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-dark p-4 rounded-lg">
+                        <h4 class="text-lg font-semibold text-primary mb-2">💰 Federal Incentives</h4>
+                        <ul class="text-light text-sm space-y-1">
+                            <li>• 30% Federal Tax Credit (through 2032)</li>
+                            <li>• No cap on credit amount</li>
+                            <li>• Applies to equipment and installation</li>
+                            <li>• Can carry forward unused credits</li>
+                            <li>• Includes battery storage systems</li>
+                        </ul>
+                    </div>
+                    <div class="bg-dark p-4 rounded-lg">
+                        <h4 class="text-lg font-semibold text-primary mb-2">🏛️ State & Local Benefits</h4>
+                        <ul class="text-light text-sm space-y-1">
+                            <li>• State tax credits (varies by state)</li>
+                            <li>• Cash rebates from utilities</li>
+                            <li>• Property tax exemptions</li>
+                            <li>• Net metering programs</li>
+                            <li>• Accelerated depreciation for businesses</li>
+                        </ul>
+                    </div>
+                    <div class="bg-dark p-4 rounded-lg">
+                        <h4 class="text-lg font-semibold text-primary mb-2">📈 Long-term Savings</h4>
+                        <ul class="text-light text-sm space-y-1">
+                            <li>• 25-year system warranties</li>
+                            <li>• Electricity bill reduction 50-100%</li>
+                            <li>• Protection from rate increases</li>
+                            <li>• Home value increase $15,000+</li>
+                            <li>• Potential income from excess generation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-primary mb-4">System Sizing & Requirements</h3>
+                
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-primary mb-3">Solar System Sizing</h4>
+                    <p class="text-light mb-4">
+                        System size depends on your energy usage, roof space, and budget. A typical home uses 10,000-12,000 kWh annually, requiring a 6-8 kW system. Each kW requires about 100 square feet of south-facing roof space with minimal shading.
+                    </p>
+                    <p class="text-light mb-4">
+                        Roof orientation significantly impacts production: south-facing roofs are ideal, while east/west-facing roofs produce 15-20% less energy. Shading from trees or buildings can reduce output by 25-50%, making site assessment crucial.
+                    </p>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-primary mb-3">Wind System Considerations</h4>
+                    <p class="text-light mb-4">
+                        Residential wind turbines range from 1-10 kW, requiring towers 30-100 feet tall for optimal wind capture. Local zoning laws often restrict tower height, making feasibility location-dependent.
+                    </p>
+                    <p class="text-light mb-4">
+                        Wind resources vary dramatically by location and season. Professional wind assessment is essential, as doubling wind speed increases power output eight-fold. Most residential installations require average wind speeds of 12+ mph for economic viability.
+                    </p>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-primary mb-4">Installation Process & Timeline</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <h4 class="text-xl font-semibold text-primary mb-3">Solar Installation Steps</h4>
+                        <p class="text-light mb-4">
+                            Solar installation typically takes 1-3 months from contract to activation. The process includes site assessment, permit applications, equipment procurement, installation (1-3 days), and utility interconnection approval.
+                        </p>
+                        <p class="text-light mb-4">
+                            Choose certified installers with proper licensing, insurance, and manufacturer certifications. Quality installation is crucial for system performance, warranty coverage, and safety compliance.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold text-primary mb-3">Maintenance Requirements</h4>
+                        <p class="text-light mb-4">
+                            Solar systems require minimal maintenance: annual inspections, occasional cleaning, and monitoring system performance. Most issues are covered under 10-25 year warranties from manufacturers and installers.
+                        </p>
+                        <p class="text-light mb-4">
+                            Wind systems require more maintenance due to moving parts, including annual inspections, lubrication, and potential component replacement every 5-10 years. Factor maintenance costs into long-term financial projections.
+                        </p>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-primary mb-4">Environmental Impact & Benefits</h3>
+                
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-primary mb-3">Carbon Footprint Reduction</h4>
+                    <p class="text-light mb-4">
+                        A typical 6 kW solar system prevents 7-10 tons of CO2 emissions annually, equivalent to planting 200+ trees or removing a car from the road for 18,000 miles. Over 25 years, one system prevents 175-250 tons of CO2 emissions.
+                    </p>
+                    <p class="text-light mb-4">
+                        Solar panels have an energy payback time of 1-4 years, meaning they generate more clean energy than was used in their manufacturing. Wind turbines typically pay back their energy investment within 6-12 months of operation.
+                    </p>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-primary mb-3">Grid Independence Benefits</h4>
+                    <p class="text-light mb-4">
+                        Renewable energy systems provide energy security during grid outages when paired with battery storage. They also protect against rising electricity rates, which have increased 2-3% annually over the past decade.
+                    </p>
+                    <p class="text-light mb-4">
+                        Net metering allows excess energy to be sold back to utilities, potentially creating monthly credits. Some homeowners achieve negative electricity bills, earning money from their renewable energy systems.
+                    </p>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-primary mb-4">Technology Trends & Future Outlook</h3>
+                
+                <div class="mb-6">
+                    <h4 class="text-xl font-semibold text-primary mb-3">Advancing Technologies</h4>
+                    <p class="text-light mb-4">
+                        Solar panel efficiency continues improving, with new technologies reaching 26%+ efficiency in residential applications. Perovskite tandem cells promise 30%+ efficiency within the next decade, further reducing system costs and space requirements.
+                    </p>
+                    <p class="text-light mb-4">
+                        Battery storage costs have dropped 85% since 2010 and continue declining. Smart inverters and energy management systems optimize consumption patterns, maximizing self-consumption and grid benefits.
+                    </p>
+                </div>
+
+                <div class="bg-dark p-6 rounded-lg mt-8">
+                    <h3 class="text-2xl font-semibold text-primary mb-4">Your Renewable Energy Action Plan</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="text-lg font-semibold text-primary mb-2">Immediate Steps</h4>
+                            <ul class="text-light space-y-2">
+                                <li>• Analyze your energy usage patterns</li>
+                                <li>• Research local incentives and rebates</li>
+                                <li>• Get multiple quotes from certified installers</li>
+                                <li>• Assess roof condition and orientation</li>
+                                <li>• Check local zoning and HOA restrictions</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-primary mb-2">Long-term Considerations</h4>
+                            <ul class="text-light space-y-2">
+                                <li>• Plan for battery storage integration</li>
+                                <li>• Consider electric vehicle charging needs</li>
+                                <li>• Monitor technology improvements</li>
+                                <li>• Evaluate financing vs. purchase options</li>
+                                <li>• Plan maintenance and monitoring systems</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <script src="script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+    <script>
+        // Load navbar and footer
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                const navbarResponse = await fetch('../src/components/Navbar.html');
+                const navbarHtml = await navbarResponse.text();
+                document.getElementById('navbar-container').innerHTML = navbarHtml;
+
+                const footerResponse = await fetch('../src/components/Footer.html');
+                const footerHtml = await footerResponse.text();
+                document.getElementById('footer-container').innerHTML = footerHtml;
+
+                // Initialize navbar functionality
+                if (typeof initializeNavbar === 'function') {
+                    initializeNavbar();
+                }
+            } catch (error) {
+                console.error('Error loading components:', error);
+            }
+        });
+    </script>
+</body>
+</html>

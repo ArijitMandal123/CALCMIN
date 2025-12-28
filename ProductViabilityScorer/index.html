@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Viability Scorer - MVP Validation Calculator | CalcMin.pro</title>
+    <meta name="description" content="Score your product idea's viability before building an MVP. Get objective analysis, risk assessment, and data-driven recommendations for startup success.">
+    <meta name="keywords" content="product viability, MVP validation, startup calculator, product idea scorer, business validation, market analysis, startup risk assessment">
+    <meta name="author" content="CalcMin.pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calcmin.pro/ProductViabilityScorer/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Product Viability Scorer - MVP Validation Calculator">
+    <meta property="og:description" content="Score your product idea's viability with our comprehensive validation calculator. Get risk assessment and data-driven recommendations.">
+    <meta property="og:url" content="https://calcmin.pro/ProductViabilityScorer/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CalcMin.pro">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Product Viability Scorer - MVP Validation">
+    <meta name="twitter:description" content="Validate your product idea with comprehensive viability scoring and risk assessment.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FE4E02",
+                        dark: "#00053D", 
+                        broder: "#182267",
+                        accent: "#FD803D",
+                        light: "#FECEB6",
+                        text: "#F7FBFC"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Product Viability Scorer",
+        "description": "Comprehensive product idea validation calculator that scores viability, assesses risks, and provides data-driven recommendations for MVP development.",
+        "url": "https://calcmin.pro/ProductViabilityScorer/",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "CalcMin.pro"
+        }
+    }
+    </script>
+</head>
+<body class="bg-dark text-text min-h-screen">
+    <!-- Navigation -->
+    <nav id="navbar-container"></nav>
+
+    <!-- Top Ad Space -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+        <div class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm">
+            Top Ad Space (728x90 / 320x50)
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Calculator -->
+            <div class="lg:col-span-2">
+                <!-- Header -->
+                <div class="bg-broder p-6 rounded-lg border border-accent mb-6">
+                    <h1 class="text-3xl font-bold text-primary mb-4">
+                        <span class="material-icons text-4xl align-middle mr-2">assessment</span>
+                        Product Viability Scorer
+                    </h1>
+                    <p class="text-light text-lg">Validate your product idea with comprehensive scoring before building an MVP. Get objective analysis, risk assessment, and data-driven recommendations for startup success.</p>
+                </div>
+
+                <!-- Calculator Form -->
+                <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
+                    <form id="viability-form" class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Product/Service Name</label>
+                            <input type="text" id="productName" placeholder="e.g., AI-powered fitness app" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Problem Description</label>
+                            <textarea id="problemDescription" placeholder="Describe the specific problem your product solves..." rows="3" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required></textarea>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Target Market Size</label>
+                                <select id="marketSize" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select market size</option>
+                                    <option value="niche">Niche Market (< 100K people)</option>
+                                    <option value="small">Small Market (100K - 1M people)</option>
+                                    <option value="medium">Medium Market (1M - 10M people)</option>
+                                    <option value="large">Large Market (10M - 100M people)</option>
+                                    <option value="massive">Massive Market (> 100M people)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Competition Level</label>
+                                <select id="competitionLevel" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select competition level</option>
+                                    <option value="none">No Direct Competition</option>
+                                    <option value="low">Low Competition (1-3 competitors)</option>
+                                    <option value="medium">Medium Competition (4-10 competitors)</option>
+                                    <option value="high">High Competition (10+ competitors)</option>
+                                    <option value="saturated">Saturated Market (Many established players)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Estimated Build Cost ($)</label>
+                                <input type="number" id="buildCost" placeholder="e.g., 50000" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Time to Build (months)</label>
+                                <input type="number" id="timeToBuild" placeholder="e.g., 6" min="1" max="60" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Your Expertise Level</label>
+                                <select id="expertiseLevel" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select expertise level</option>
+                                    <option value="beginner">Beginner (No prior experience)</option>
+                                    <option value="some">Some Experience (1-2 years)</option>
+                                    <option value="experienced">Experienced (3-5 years)</option>
+                                    <option value="expert">Expert (5+ years)</option>
+                                    <option value="domain">Domain Expert (Industry specialist)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Customer Acquisition Cost ($)</label>
+                                <input type="number" id="acquisitionCost" placeholder="e.g., 25" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Expected Revenue per Customer ($)</label>
+                                <input type="number" id="revenuePerCustomer" placeholder="e.g., 100" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Available Funding ($)</label>
+                                <input type="number" id="availableFunding" placeholder="e.g., 100000" min="0" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Unique Value Propositions</label>
+                            <div class="grid md:grid-cols-2 gap-3">
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="firstMover" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">First Mover Advantage</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="networkEffect" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Network Effects</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="proprietary" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Proprietary Technology</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="brandPower" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Strong Brand Potential</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Market Validation Evidence</label>
+                            <div class="grid md:grid-cols-2 gap-3">
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="customerInterviews" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Customer Interviews Conducted</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="preOrders" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Pre-orders/Letters of Intent</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="prototype" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Working Prototype</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="marketResearch" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Market Research Data</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-medium py-3 px-6 rounded transition duration-200">
+                            Calculate Viability Score
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results -->
+                <div id="results" class="hidden">
+                    <div id="result-content"></div>
+                </div>
+            </div>
+
+            <!-- Right Column - Ads -->
+            <div class="lg:col-span-1">
+                <!-- Top Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+
+                <!-- Middle Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Ad Space -->
+        <div class="mt-8 bg-broder p-4 rounded-lg border border-accent text-center">
+            <div class="text-light text-sm mb-2">Advertisement</div>
+            <div class="bg-dark h-24 flex items-center justify-center rounded">
+                <span class="text-accent">Ad Space 728x90</span>
+            </div>
+        </div>
+
+        <!-- Blog Content -->
+        <article class="mt-12 bg-broder p-8 rounded-lg border border-accent">
+            <h2 class="text-3xl font-bold text-primary mb-6">Complete Guide to Product Viability Assessment</h2>
+            
+            <div class="prose prose-invert max-w-none">
+                <p class="text-light text-lg leading-relaxed mb-6">
+                    Before investing time, money, and energy into building a product, entrepreneurs need objective validation that their idea has genuine market potential. Our Product Viability Scorer provides a comprehensive framework to evaluate product ideas using proven business metrics, market analysis, and risk assessment methodologies. This data-driven approach helps prevent costly mistakes and increases the likelihood of startup success.
+                </p>
+
+                <div class="space-y-8">
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Why Most Product Ideas Fail</h3>
+                        <p class="text-light mb-4">
+                            Statistics show that 90% of startups fail, with 42% failing due to no market need for their product. The primary reasons for product failure include:
+                        </p>
+                        <ul class="list-disc list-inside text-light space-y-2 mb-4">
+                            <li>Building solutions for problems that don't exist or aren't painful enough</li>
+                            <li>Overestimating market size and underestimating competition</li>
+                            <li>Insufficient market validation before development</li>
+                            <li>Poor product-market fit and timing</li>
+                            <li>Inadequate funding and unrealistic cost projections</li>
+                            <li>Lack of domain expertise and execution capability</li>
+                        </ul>
+                        <p class="text-light">
+                            Our viability scorer addresses these critical factors by providing objective analysis based on market data, financial projections, and proven startup success metrics.
+                        </p>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Comprehensive Scoring Framework</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-primary mb-2">Market Factors (40%)</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Market size and growth potential</li>
+                                    <li>• Competition analysis and positioning</li>
+                                    <li>• Customer acquisition feasibility</li>
+                                    <li>• Revenue model viability</li>
+                                    <li>• Market timing and trends</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-primary mb-2">Financial Factors (30%)</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Build cost vs. available funding</li>
+                                    <li>• Customer lifetime value analysis</li>
+                                    <li>• Break-even timeline projections</li>
+                                    <li>• Cash flow sustainability</li>
+                                    <li>• Return on investment potential</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-primary mb-2">Execution Factors (20%)</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Team expertise and experience</li>
+                                    <li>• Technical feasibility assessment</li>
+                                    <li>• Time to market considerations</li>
+                                    <li>• Resource availability</li>
+                                    <li>• Scalability potential</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-primary mb-2">Validation Factors (10%)</h4>
+                                <ul class="text-sm text-light space-y-1">
+                                    <li>• Customer interview insights</li>
+                                    <li>• Prototype testing results</li>
+                                    <li>• Pre-order validation</li>
+                                    <li>• Market research evidence</li>
+                                    <li>• Expert feedback incorporation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Market Size Analysis</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border border-accent rounded">
+                                <thead class="bg-broder">
+                                    <tr>
+                                        <th class="p-3 text-left text-primary">Market Size</th>
+                                        <th class="p-3 text-left text-primary">Target Audience</th>
+                                        <th class="p-3 text-left text-primary">Viability Score</th>
+                                        <th class="p-3 text-left text-primary">Considerations</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-light">
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Niche (< 100K)</td>
+                                        <td class="p-3">Specialized segments</td>
+                                        <td class="p-3">60-75</td>
+                                        <td class="p-3">High margins, limited growth</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Small (100K-1M)</td>
+                                        <td class="p-3">Focused demographics</td>
+                                        <td class="p-3">70-85</td>
+                                        <td class="p-3">Manageable competition</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Medium (1M-10M)</td>
+                                        <td class="p-3">Broad market segments</td>
+                                        <td class="p-3">80-90</td>
+                                        <td class="p-3">Optimal size for growth</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Large (10M-100M)</td>
+                                        <td class="p-3">Mass market appeal</td>
+                                        <td class="p-3">75-85</td>
+                                        <td class="p-3">High competition risk</td>
+                                    </tr>
+                                    <tr class="border-t border-accent">
+                                        <td class="p-3">Massive (> 100M)</td>
+                                        <td class="p-3">Global markets</td>
+                                        <td class="p-3">60-80</td>
+                                        <td class="p-3">Requires significant resources</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Competition Analysis Framework</h3>
+                        <div class="space-y-4">
+                            <div class="border-l-4 border-primary pl-4">
+                                <h4 class="font-semibold text-primary mb-2">No Direct Competition (Score: 85-95)</h4>
+                                <p class="text-light text-sm">
+                                    Blue ocean opportunity with first-mover advantage. High potential but requires market education and validation of genuine need.
+                                </p>
+                            </div>
+                            <div class="border-l-4 border-accent pl-4">
+                                <h4 class="font-semibold text-accent mb-2">Low Competition (Score: 80-90)</h4>
+                                <p class="text-light text-sm">
+                                    Emerging market with room for multiple players. Focus on differentiation and rapid market capture.
+                                </p>
+                            </div>
+                            <div class="border-l-4 border-primary pl-4">
+                                <h4 class="font-semibold text-primary mb-2">Medium Competition (Score: 70-85)</h4>
+                                <p class="text-light text-sm">
+                                    Validated market with established players. Success depends on unique value proposition and execution excellence.
+                                </p>
+                            </div>
+                            <div class="border-l-4 border-accent pl-4">
+                                <h4 class="font-semibold text-accent mb-2">High Competition (Score: 50-70)</h4>
+                                <p class="text-light text-sm">
+                                    Crowded market requiring significant differentiation, superior execution, or niche positioning.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Financial Viability Metrics</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-primary mb-3">Key Financial Ratios</h4>
+                                <ul class="text-light text-sm space-y-2">
+                                    <li><strong>LTV:CAC Ratio:</strong> Should be 3:1 or higher for sustainable growth</li>
+                                    <li><strong>Payback Period:</strong> Ideally under 12 months for B2C, 18 months for B2B</li>
+                                    <li><strong>Gross Margin:</strong> Minimum 70% for software, 40% for physical products</li>
+                                    <li><strong>Burn Rate:</strong> Monthly expenses vs. runway calculation</li>
+                                    <li><strong>Break-even Timeline:</strong> Path to profitability within 24-36 months</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-primary mb-3">Funding Requirements</h4>
+                                <ul class="text-light text-sm space-y-2">
+                                    <li><strong>MVP Development:</strong> 20-30% of total funding needed</li>
+                                    <li><strong>Market Validation:</strong> 15-25% for testing and iteration</li>
+                                    <li><strong>Customer Acquisition:</strong> 30-40% for marketing and sales</li>
+                                    <li><strong>Operations:</strong> 15-25% for team and infrastructure</li>
+                                    <li><strong>Buffer:</strong> 10-20% for unexpected costs and pivots</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Market Validation Strategies</h3>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Customer Discovery</h4>
+                                <p class="text-light text-sm">
+                                    Conduct 50+ customer interviews to validate problem-solution fit and willingness to pay.
+                                </p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Prototype Testing</h4>
+                                <p class="text-light text-sm">
+                                    Build minimum viable prototype to test core functionality and user experience.
+                                </p>
+                            </div>
+                            <div class="bg-broder p-4 rounded border border-accent">
+                                <h4 class="font-semibold text-accent mb-2">Pre-order Campaign</h4>
+                                <p class="text-light text-sm">
+                                    Launch crowdfunding or pre-order campaign to validate market demand and generate initial revenue.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Risk Assessment Categories</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <span class="material-icons text-red-400 mt-1">warning</span>
+                                <div>
+                                    <h4 class="font-semibold text-red-400 mb-1">High Risk (Score: 0-40)</h4>
+                                    <p class="text-light text-sm">
+                                        Significant concerns about market need, competition, or financial viability. Consider pivoting or extensive validation.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="material-icons text-yellow-400 mt-1">error</span>
+                                <div>
+                                    <h4 class="font-semibold text-yellow-400 mb-1">Medium Risk (Score: 41-70)</h4>
+                                    <p class="text-light text-sm">
+                                        Viable concept with areas for improvement. Focus on addressing weak points before full development.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="material-icons text-green-400 mt-1">check_circle</span>
+                                <div>
+                                    <h4 class="font-semibold text-green-400 mb-1">Low Risk (Score: 71-100)</h4>
+                                    <p class="text-light text-sm">
+                                        Strong viability indicators across multiple factors. Proceed with confidence while monitoring key metrics.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-dark rounded-lg p-6 border border-accent">
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Next Steps Based on Score</h3>
+                        <div class="space-y-4">
+                            <div class="border-l-4 border-green-400 pl-4">
+                                <h4 class="font-semibold text-green-400 mb-2">Score 80-100: Proceed with Development</h4>
+                                <p class="text-light text-sm mb-2">Strong viability indicators suggest high probability of success.</p>
+                                <ul class="text-light text-sm space-y-1">
+                                    <li>• Finalize MVP specifications and development timeline</li>
+                                    <li>• Secure funding and assemble core team</li>
+                                    <li>• Begin customer development and early user acquisition</li>
+                                    <li>• Establish key performance metrics and tracking systems</li>
+                                </ul>
+                            </div>
+                            <div class="border-l-4 border-yellow-400 pl-4">
+                                <h4 class="font-semibold text-yellow-400 mb-2">Score 60-79: Validate and Refine</h4>
+                                <p class="text-light text-sm mb-2">Good potential but requires additional validation and refinement.</p>
+                                <ul class="text-light text-sm space-y-1">
+                                    <li>• Conduct additional market research and customer interviews</li>
+                                    <li>• Refine value proposition and positioning strategy</li>
+                                    <li>• Build and test prototype with target users</li>
+                                    <li>• Reassess financial projections and funding requirements</li>
+                                </ul>
+                            </div>
+                            <div class="border-l-4 border-red-400 pl-4">
+                                <h4 class="font-semibold text-red-400 mb-2">Score Below 60: Pivot or Pause</h4>
+                                <p class="text-light text-sm mb-2">Significant concerns require major changes or alternative approaches.</p>
+                                <ul class="text-light text-sm space-y-1">
+                                    <li>• Identify and address fundamental weaknesses</li>
+                                    <li>• Consider pivoting to different market or solution</li>
+                                    <li>• Seek expert advice and mentorship</li>
+                                    <li>• Explore alternative business models or partnerships</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer-container"></footer>
+
+    <script src="script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+</body>
+</html>

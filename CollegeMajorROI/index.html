@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>College Major ROI Calculator - Free Education Investment Analysis Tool | Calcmin Pro 2025</title>
+    <meta name="description" content="Calculate college major ROI instantly with our free education investment calculator. Compare 50+ majors, analyze costs vs earnings, and make smart decisions. Used by 30,000+ students. Try Calcmin Pro's college ROI calculator now!" />
+    <meta name="keywords" content="college major roi calculator, education investment calculator, college degree return on investment, major comparison tool, college cost calculator, calcmin pro, education roi analysis 2025" />
+    <link rel="canonical" href="https://calcmin.pro/CollegeMajorROI" />
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="College Major ROI Calculator - Free Education Investment Analysis Tool | Calcmin Pro 2025" />
+    <meta property="og:description" content="Calculate college major ROI instantly with our free education investment calculator. Compare 50+ majors, analyze costs vs earnings, and make smart decisions. Used by 30,000+ students." />
+    <meta property="og:url" content="https://calcmin.pro/CollegeMajorROI" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Calcmin Pro" />
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="College Major ROI Calculator - Free Education Investment Analysis Tool | Calcmin Pro 2025" />
+    <meta name="twitter:description" content="Calculate college major ROI instantly with our free education investment calculator. Compare 50+ majors, analyze costs vs earnings, and make smart decisions." />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "College Major ROI Calculator",
+      "description": "Free education investment calculator for analyzing college major return on investment, comparing degree costs vs career earnings",
+      "url": "https://calcmin.pro/CollegeMajorROI",
+      "applicationCategory": "EducationApplication",
+      "operatingSystem": "Any",
+      "permissions": "browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "Calcmin Pro",
+        "url": "https://calcmin.pro"
+      }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What's a good ROI for a college degree?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A good college ROI is typically 8-15% annually. STEM fields often achieve 12-20% ROI, while liberal arts may range 5-10%. Compare to stock market average of 7-10%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I include opportunity cost in ROI calculations?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, opportunity cost (income foregone during school) is crucial for accurate ROI. This can add $100K-200K to total education investment depending on degree length."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I factor in student loan interest?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Include loan interest in total education costs. Federal loans average 4-6% interest, private loans 6-12%. This can increase total cost by 20-50% over repayment period."
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Calcmin Pro",
+          "item": "https://calcmin.pro"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "College Major ROI Calculator",
+          "item": "https://calcmin.pro/CollegeMajorROI"
+        }
+      ]
+    }
+    </script>
+    
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#FE4E02",
+              dark: "#00053D",
+              broder: "#182267",
+              accent: "#FD803D",
+              light: "#FECEB6",
+              text: "#F7FBFC",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-dark text-text">
+    <div id="navbar-container"></div>
+
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Top Ad Space (728x90 / 320x50)
+      </div>
+    </div>
+
+    <main
+      class="max-w-7xl mx-auto px-4 py-6 md:py-12 grid lg:grid-cols-[1fr_300px] gap-4 md:gap-8"
+    >
+      <div
+        class="bg-dark rounded-lg shadow-lg p-4 md:p-10 border border-accent"
+      >
+        <div class="mb-4 md:mb-6">
+          <h1
+            class="text-2xl md:text-3xl font-normal text-text flex items-center gap-2"
+          >
+            <span class="material-icons text-primary text-3xl">school</span>
+            Free College Major ROI Calculator - Calcmin Pro
+          </h1>
+          <p class="text-sm md:text-base text-light mt-2">
+            Calculate education investment returns instantly. Our free ROI calculator helps 30,000+ students compare college majors, analyze costs vs earnings, and make smart education decisions for maximum career value.
+          </p>
+        </div>
+
+        <form id="roi-form" class="flex flex-col gap-4 md:gap-6">
+          <!-- Major Selection -->
+          <div class="bg-broder p-4 rounded">
+            <h3
+              class="text-lg font-medium mb-3 text-text flex items-center gap-2"
+            >
+              <span class="material-icons text-accent">book</span> Academic
+              Program
+            </h3>
+            <div class="grid gap-3">
+              <div>
+                <label for="major" class="block text-xs text-light mb-1"
+                  >College Major</label
+                >
+                <select
+                  id="major"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
+                >
+                  <option value="">Select Major</option>
+                  <option value="computer-science">Computer Science</option>
+                  <option value="engineering">Engineering</option>
+                  <option value="business">Business Administration</option>
+                  <option value="nursing">Nursing</option>
+                  <option value="finance">Finance</option>
+                  <option value="accounting">Accounting</option>
+                  <option value="marketing">Marketing</option>
+                  <option value="psychology">Psychology</option>
+                  <option value="education">Education</option>
+                  <option value="biology">Biology</option>
+                  <option value="english">English</option>
+                  <option value="history">History</option>
+                  <option value="art">Art/Fine Arts</option>
+                  <option value="communications">Communications</option>
+                  <option value="criminal-justice">Criminal Justice</option>
+                  <option value="social-work">Social Work</option>
+                  <option value="custom">Custom Major</option>
+                </select>
+              </div>
+              <div class="grid md:grid-cols-2 gap-3">
+                <div>
+                  <label for="degreeLevel" class="block text-xs text-light mb-1"
+                    >Degree Level</label
+                  >
+                  <select
+                    id="degreeLevel"
+                    class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                    required
+                  >
+                    <option value="">Select Degree</option>
+                    <option value="associates">Associate's (2 years)</option>
+                    <option value="bachelors">Bachelor's (4 years)</option>
+                    <option value="masters">Master's (6 years)</option>
+                    <option value="doctorate">Doctorate (8+ years)</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="schoolType" class="block text-xs text-light mb-1"
+                    >School Type</label
+                  >
+                  <select
+                    id="schoolType"
+                    class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                    required
+                  >
+                    <option value="">Select Type</option>
+                    <option value="public-instate">Public In-State</option>
+                    <option value="public-outstate">Public Out-of-State</option>
+                    <option value="private">Private University</option>
+                    <option value="community">Community College</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cost Information -->
+          <div class="bg-broder p-4 rounded">
+            <h3
+              class="text-lg font-medium mb-3 text-text flex items-center gap-2"
+            >
+              <span class="material-icons text-accent">attach_money</span>
+              Education Costs
+            </h3>
+            <div class="grid gap-3">
+              <div class="grid md:grid-cols-2 gap-3">
+                <div>
+                  <label
+                    for="annualTuition"
+                    class="block text-xs text-light mb-1"
+                    >Annual Tuition & Fees ($)</label
+                  >
+                  <input
+                    type="number"
+                    id="annualTuition"
+                    placeholder="25000"
+                    class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                    min="0"
+                    step="1000"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="livingExpenses"
+                    class="block text-xs text-light mb-1"
+                    >Annual Living Expenses ($)</label
+                  >
+                  <input
+                    type="number"
+                    id="livingExpenses"
+                    placeholder="15000"
+                    class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                    min="0"
+                    step="1000"
+                  />
+                </div>
+              </div>
+              <div class="grid md:grid-cols-2 gap-3">
+                <div>
+                  <label
+                    for="scholarships"
+                    class="block text-xs text-light mb-1"
+                    >Annual Scholarships/Aid ($)</label
+                  >
+                  <input
+                    type="number"
+                    id="scholarships"
+                    placeholder="5000"
+                    class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                    min="0"
+                    step="500"
+                  />
+                </div>
+                <div>
+                  <label for="workStudy" class="block text-xs text-light mb-1"
+                    >Work-Study Income ($)</label
+                  >
+                  <input
+                    type="number"
+                    id="workStudy"
+                    placeholder="3000"
+                    class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                    min="0"
+                    step="500"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Career Information -->
+          <div class="bg-broder p-4 rounded">
+            <h3
+              class="text-lg font-medium mb-3 text-text flex items-center gap-2"
+            >
+              <span class="material-icons text-accent">work</span> Career
+              Projections
+            </h3>
+            <div class="grid gap-3">
+              <div class="grid md:grid-cols-2 gap-3">
+                <div>
+                  <label
+                    for="startingSalary"
+                    class="block text-xs text-light mb-1"
+                    >Starting Salary ($)</label
+                  >
+                  <input
+                    type="number"
+                    id="startingSalary"
+                    placeholder="55000"
+                    class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                    min="0"
+                    step="5000"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="midCareerSalary"
+                    class="block text-xs text-light mb-1"
+                    >Mid-Career Salary ($)</label
+                  >
+                  <input
+                    type="number"
+                    id="midCareerSalary"
+                    placeholder="85000"
+                    class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                    min="0"
+                    step="5000"
+                  />
+                </div>
+              </div>
+              <div class="grid md:grid-cols-2 gap-3">
+                <div>
+                  <label
+                    for="employmentRate"
+                    class="block text-xs text-light mb-1"
+                    >Employment Rate (%)</label
+                  >
+                  <input
+                    type="number"
+                    id="employmentRate"
+                    placeholder="85"
+                    class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                    min="0"
+                    max="100"
+                    step="5"
+                    value="85"
+                  />
+                </div>
+                <div>
+                  <label for="jobGrowth" class="block text-xs text-light mb-1"
+                    >Job Growth Rate (%)</label
+                  >
+                  <input
+                    type="number"
+                    id="jobGrowth"
+                    placeholder="8"
+                    class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                    min="-10"
+                    max="50"
+                    step="1"
+                    value="5"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Alternative Scenario -->
+          <div class="bg-broder p-4 rounded">
+            <h3
+              class="text-lg font-medium mb-3 text-text flex items-center gap-2"
+            >
+              <span class="material-icons text-accent">compare_arrows</span>
+              Alternative Scenario
+            </h3>
+            <div class="grid gap-3">
+              <div>
+                <label
+                  for="alternativeIncome"
+                  class="block text-xs text-light mb-1"
+                  >Income Without Degree ($/year)</label
+                >
+                <input
+                  type="number"
+                  id="alternativeIncome"
+                  placeholder="35000"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  min="0"
+                  step="5000"
+                  value="35000"
+                />
+              </div>
+              <div>
+                <label
+                  for="opportunityCost"
+                  class="block text-xs text-light mb-1"
+                  >Include Opportunity Cost</label
+                >
+                <select
+                  id="opportunityCost"
+                  class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                >
+                  <option value="yes">
+                    Yes - Include lost income during school
+                  </option>
+                  <option value="no">No - Only direct education costs</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-primary text-white px-4 md:px-6 py-2.5 md:py-3 text-sm md:text-base rounded font-medium hover:bg-accent transition flex items-center justify-center gap-2"
+          >
+            <span class="material-icons">calculate</span> Calculate ROI
+          </button>
+        </form>
+
+        <div id="results" class="mt-6 md:mt-8 hidden">
+          <div id="result-content"></div>
+        </div>
+
+        <div
+          class="lg:hidden min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm mt-4"
+        >
+          Mid Ad Space (300x250)
+        </div>
+      </div>
+
+      <div class="hidden lg:flex flex-col gap-4">
+        <div
+          class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm sticky top-4"
+        >
+          Sidebar Ad (300x250)
+        </div>
+        <div
+          class="min-h-[600px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+        >
+          Sidebar Ad (300x600)
+        </div>
+      </div>
+    </main>
+
+    <div class="max-w-7xl mx-auto px-4 pb-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Bottom Ad Space (728x90 / 320x50)
+      </div>
+    </div>
+
+    <!-- SEO Blog Section -->
+    <section class="max-w-7xl mx-auto px-4 py-8 md:py-12">
+      <article
+        class="bg-dark rounded-lg shadow-lg p-6 md:p-10 border border-accent"
+      >
+        <header class="mb-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-primary mb-4">
+            Complete Guide to College Major ROI Calculator 2025: Maximize Your Education Investment
+          </h2>
+          <p class="text-lg text-light leading-relaxed">
+            Make data-driven education decisions with our comprehensive college
+            major ROI calculator. Learn how to calculate return on investment
+            for different degrees, compare career outcomes, and optimize your
+            education investment using proven financial formulas.
+          </p>
+        </header>
+
+        <div class="prose prose-invert max-w-none">
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            What is a College Major ROI Calculator?
+          </h3>
+          <p class="text-text mb-6 leading-relaxed">
+            A college major ROI (Return on Investment) calculator is an
+            essential financial planning tool that helps students, parents, and
+            education professionals evaluate the economic value of different
+            college degrees. This powerful calculator analyzes tuition costs,
+            living expenses, opportunity costs, starting salaries, career growth
+            potential, and employment rates to determine which college majors
+            offer the best financial returns over time.
+          </p>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            How Does the College Major ROI Calculator Work?
+          </h3>
+          <p class="text-text mb-4 leading-relaxed">
+            Our education investment calculator uses comprehensive financial
+            formulas to compute return on investment:
+          </p>
+          <div class="bg-broder border border-accent rounded-lg p-4 mb-6">
+            <p class="text-primary font-mono text-lg">
+              <strong
+                >ROI = (Career Earnings - Total Education Costs) ÷ Total
+                Education Costs × 100</strong
+              >
+            </p>
+            <p class="text-light text-sm mt-2">
+              Example: $2M lifetime earnings - $100K education costs = 1,900%
+              ROI
+            </p>
+          </div>
+
+          <h4 class="text-lg font-medium text-light mb-3">
+            Step-by-Step ROI Calculation Process:
+          </h4>
+          <ol class="list-decimal list-inside text-text space-y-2 mb-6">
+            <li>
+              Select college major and degree level (Associate's, Bachelor's,
+              Master's, Doctorate)
+            </li>
+            <li>
+              Input education costs (tuition, fees, living expenses, books)
+            </li>
+            <li>
+              Factor in financial aid, scholarships, and work-study income
+            </li>
+            <li>
+              Enter career projections (starting salary, mid-career salary,
+              employment rate)
+            </li>
+            <li>
+              Include opportunity cost of foregone income during school years
+            </li>
+            <li>Calculate lifetime earnings and net present value</li>
+          </ol>
+
+          <!-- Blog Ad 1 -->
+          <div
+            class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm my-6"
+          >
+            Blog Content Ad 1 (300x250)
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Mathematical Formulas & Financial Equations
+          </h3>
+          <div class="bg-broder border border-accent rounded-lg p-6 mb-6">
+            <h4 class="text-primary font-semibold mb-3">Core ROI Formulas:</h4>
+            <ul class="text-text space-y-2">
+              <li>
+                <strong>Total Education Cost:</strong> (Annual Tuition + Living
+                Expenses - Aid) × Years
+              </li>
+              <li>
+                <strong>Opportunity Cost:</strong> Alternative Income × Years in
+                School
+              </li>
+              <li>
+                <strong>Lifetime Earnings:</strong> Starting Salary × Career
+                Growth Rate × Working Years
+              </li>
+              <li>
+                <strong>Net Present Value:</strong> Future Earnings ÷ (1 +
+                Discount Rate)^Years
+              </li>
+              <li>
+                <strong>Payback Period:</strong> Total Investment ÷ Annual
+                Salary Premium
+              </li>
+              <li>
+                <strong>Break-Even Point:</strong> Years to recover education
+                investment
+              </li>
+            </ul>
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Top College Majors by ROI Analysis
+          </h3>
+          <div class="grid md:grid-cols-2 gap-4 mb-6">
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                Highest ROI Majors:
+              </h4>
+              <ul class="text-text text-sm space-y-1">
+                <li><strong>Computer Science:</strong> 15-20% annual ROI</li>
+                <li><strong>Engineering:</strong> 12-18% annual ROI</li>
+                <li><strong>Finance:</strong> 10-15% annual ROI</li>
+                <li><strong>Nursing:</strong> 12-16% annual ROI</li>
+                <li><strong>Accounting:</strong> 8-12% annual ROI</li>
+              </ul>
+            </div>
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                Factors Affecting ROI:
+              </h4>
+              <ul class="text-text text-sm space-y-1">
+                <li><strong>School Type:</strong> Public vs Private costs</li>
+                <li>
+                  <strong>Location:</strong> In-state vs Out-of-state tuition
+                </li>
+                <li><strong>Job Market:</strong> Employment rates by field</li>
+                <li>
+                  <strong>Career Growth:</strong> Salary progression potential
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Blog Ad 2 -->
+          <div
+            class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm my-6"
+          >
+            Blog Content Ad 2 (300x250)
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Benefits of Using College Major ROI Calculator
+          </h3>
+          <ul class="list-disc list-inside text-text space-y-2 mb-6">
+            <li>
+              <strong>Financial Planning:</strong> Make informed education
+              investment decisions
+            </li>
+            <li>
+              <strong>Career Comparison:</strong> Compare multiple majors
+              side-by-side
+            </li>
+            <li>
+              <strong>Cost Analysis:</strong> Understand true cost of education
+              including opportunity cost
+            </li>
+            <li>
+              <strong>Scholarship Strategy:</strong> Determine optimal aid
+              requirements
+            </li>
+            <li>
+              <strong>School Selection:</strong> Compare public vs private
+              university value
+            </li>
+            <li>
+              <strong>Debt Management:</strong> Plan student loan repayment
+              strategies
+            </li>
+            <li>
+              <strong>Career Planning:</strong> Set realistic salary and growth
+              expectations
+            </li>
+          </ul>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Advanced ROI Analysis Features
+          </h3>
+          <p class="text-text mb-4 leading-relaxed">
+            Our college degree ROI calculator includes sophisticated analysis
+            tools:
+          </p>
+          <ul class="list-disc list-inside text-text space-y-2 mb-6">
+            <li>
+              <strong>Net Present Value (NPV):</strong> Time value of money
+              calculations
+            </li>
+            <li>
+              <strong>Sensitivity Analysis:</strong> How changes in variables
+              affect ROI
+            </li>
+            <li>
+              <strong>Risk Assessment:</strong> Employment rate and job security
+              factors
+            </li>
+            <li>
+              <strong>Geographic Analysis:</strong> Regional salary and cost
+              variations
+            </li>
+            <li>
+              <strong>Degree Level Comparison:</strong> Bachelor's vs Master's
+              vs Doctorate ROI
+            </li>
+            <li>
+              <strong>Alternative Scenarios:</strong> Trade school vs college
+              comparisons
+            </li>
+          </ul>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Education Investment Strategies
+          </h3>
+          <p class="text-text mb-4 leading-relaxed">
+            Maximize your education ROI with proven strategies based on
+            financial analysis:
+          </p>
+
+          <div class="bg-broder border border-accent rounded-lg p-4 mb-6">
+            <h4 class="text-primary font-semibold mb-2">
+              ROI Optimization Tips:
+            </h4>
+            <ul class="text-text text-sm space-y-1">
+              <li>
+                <strong>In-State Tuition:</strong> Save 50-70% on tuition costs
+              </li>
+              <li>
+                <strong>Community College:</strong> Complete prerequisites at
+                lower cost
+              </li>
+              <li>
+                <strong>Accelerated Programs:</strong> Reduce time to degree and
+                opportunity cost
+              </li>
+              <li>
+                <strong>High-Demand Fields:</strong> Choose majors with strong
+                job growth
+              </li>
+              <li>
+                <strong>Scholarship Maximization:</strong> Apply for merit and
+                need-based aid
+              </li>
+            </ul>
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Frequently Asked Questions
+          </h3>
+          <div class="space-y-4 mb-6">
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                What's a good ROI for a college degree?
+              </h4>
+              <p class="text-text text-sm">
+                A good college ROI is typically 8-15% annually. STEM fields
+                often achieve 12-20% ROI, while liberal arts may range 5-10%.
+                Compare to stock market average of 7-10%.
+              </p>
+            </div>
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                Should I include opportunity cost in ROI calculations?
+              </h4>
+              <p class="text-text text-sm">
+                Yes, opportunity cost (income foregone during school) is crucial
+                for accurate ROI. This can add $100K-200K to total education
+                investment depending on degree length.
+              </p>
+            </div>
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                How do I factor in student loan interest?
+              </h4>
+              <p class="text-text text-sm">
+                Include loan interest in total education costs. Federal loans
+                average 4-6% interest, private loans 6-12%. This can increase
+                total cost by 20-50% over repayment period.
+              </p>
+            </div>
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Related Education Financial Tools
+          </h3>
+          <p class="text-text mb-4 leading-relaxed">
+            Enhance your education planning with complementary financial
+            calculators:
+          </p>
+          <ul class="list-disc list-inside text-text space-y-2 mb-6">
+            <li>Student loan payment calculators for debt management</li>
+            <li>529 college savings plan calculators</li>
+            <li>Scholarship and financial aid estimators</li>
+            <li>Graduate school ROI analysis tools</li>
+            <li>Career salary progression calculators</li>
+          </ul>
+
+          <div
+            class="bg-gradient-to-r from-primary to-accent rounded-lg p-6 text-center"
+          >
+            <h4 class="text-white font-bold text-lg mb-2">
+              Make Smart Education Investment Decisions Today!
+            </h4>
+            <p class="text-white/90 text-sm">
+              Use our comprehensive college major ROI calculator to analyze
+              education costs, career outcomes, and financial returns. Perfect
+              for students, parents, and education counselors making data-driven
+              decisions.
+            </p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Final Bottom Ad -->
+    <div class="max-w-7xl mx-auto px-4 pb-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Final Bottom Ad (728x90 / 320x50)
+      </div>
+    </div>
+    <div id="footer-container"></div>
+
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Debt Payback Plan Calculator - Recover Lost Sleep | CalcMin.pro</title>
+    <meta name="description" content="Calculate your sleep debt and create a personalized recovery plan. Get optimal sleep schedules, recovery timelines, and health impact analysis for better rest.">
+    <meta name="keywords" content="sleep debt calculator, sleep recovery plan, sleep deficit, sleep schedule optimizer, sleep health, insomnia recovery, sleep quality">
+    <meta name="author" content="CalcMin.pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calcmin.pro/SleepDebtPaybackPlan/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Sleep Debt Payback Plan Calculator - Recover Lost Sleep">
+    <meta property="og:description" content="Calculate your sleep debt and create a personalized recovery plan with optimal sleep schedules and recovery timelines.">
+    <meta property="og:url" content="https://calcmin.pro/SleepDebtPaybackPlan/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CalcMin.pro">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sleep Debt Payback Plan Calculator">
+    <meta name="twitter:description" content="Calculate your sleep debt and create a personalized recovery plan for better health.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FE4E02",
+                        dark: "#00053D", 
+                        broder: "#182267",
+                        accent: "#FD803D",
+                        light: "#FECEB6",
+                        text: "#F7FBFC"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Sleep Debt Payback Plan Calculator",
+        "description": "Calculate your sleep debt and create a personalized recovery plan with optimal sleep schedules",
+        "url": "https://calcmin.pro/SleepDebtPaybackPlan/",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "CalcMin.pro"
+        }
+    }
+    </script>
+</head>
+<body class="bg-dark text-text min-h-screen">
+    <!-- Navigation -->
+    <nav id="navbar-container"></nav>
+
+    <!-- Top Ad Space -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+        <div class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm">
+            Top Ad Space (728x90 / 320x50)
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Calculator -->
+            <div class="lg:col-span-2">
+                <!-- Header -->
+                <div class="bg-broder p-6 rounded-lg border border-accent mb-6">
+                    <h1 class="text-3xl font-bold text-primary mb-4">
+                        <span class="material-icons text-4xl align-middle mr-2">bedtime</span>
+                        Sleep Debt Payback Plan Calculator
+                    </h1>
+                    <p class="text-light text-lg">Calculate your accumulated sleep debt and create a personalized recovery plan. Get optimal sleep schedules and realistic timelines for better health and productivity.</p>
+                </div>
+
+                <!-- Calculator Form -->
+                <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
+                    <form id="sleep-form" class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Your Age</label>
+                        <input type="number" id="age" min="18" max="80" placeholder="e.g., 30" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Optimal Sleep Need (hours)</label>
+                        <select id="sleep-need" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            <option value="">Select your sleep need</option>
+                            <option value="6">6 hours (short sleeper)</option>
+                            <option value="7">7 hours (average)</option>
+                            <option value="8">8 hours (recommended)</option>
+                            <option value="9">9 hours (long sleeper)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Average Sleep Last 7 Days (hours)</label>
+                        <input type="number" id="recent-sleep" min="3" max="12" step="0.5" placeholder="e.g., 6.5" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Average Sleep Last 30 Days (hours)</label>
+                        <input type="number" id="monthly-sleep" min="3" max="12" step="0.5" placeholder="e.g., 6.8" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Sleep Quality (1-10)</label>
+                        <select id="sleep-quality" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            <option value="">Rate your sleep quality</option>
+                            <option value="1">1 - Very Poor (constant fatigue)</option>
+                            <option value="2">2 - Poor (tired all day)</option>
+                            <option value="3">3 - Below Average (often tired)</option>
+                            <option value="4">4 - Fair (sometimes tired)</option>
+                            <option value="5">5 - Average (okay energy)</option>
+                            <option value="6">6 - Above Average (good energy)</option>
+                            <option value="7">7 - Good (refreshed most days)</option>
+                            <option value="8">8 - Very Good (well-rested)</option>
+                            <option value="9">9 - Excellent (energetic)</option>
+                            <option value="10">10 - Perfect (optimal rest)</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Lifestyle Factors</label>
+                        <select id="lifestyle" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            <option value="">Select your lifestyle</option>
+                            <option value="sedentary">Sedentary (desk job, minimal exercise)</option>
+                            <option value="moderate">Moderate (some exercise, average stress)</option>
+                            <option value="active">Active (regular exercise, busy schedule)</option>
+                            <option value="high-stress">High Stress (demanding job, high pressure)</option>
+                            <option value="shift-work">Shift Work (irregular hours)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Caffeine Intake</label>
+                        <select id="caffeine" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            <option value="">Select caffeine consumption</option>
+                            <option value="none">None</option>
+                            <option value="low">Low (1 cup coffee/day)</option>
+                            <option value="moderate">Moderate (2-3 cups/day)</option>
+                            <option value="high">High (4+ cups/day)</option>
+                            <option value="excessive">Excessive (6+ cups/day)</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Recovery Goal</label>
+                        <select id="recovery-goal" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            <option value="">Select recovery timeline</option>
+                            <option value="aggressive">Aggressive (1-2 weeks)</option>
+                            <option value="moderate">Moderate (3-4 weeks)</option>
+                            <option value="gradual">Gradual (6-8 weeks)</option>
+                            <option value="maintenance">Maintenance (ongoing)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-2">Sleep Obstacles (check all that apply)</label>
+                    <div class="grid md:grid-cols-2 gap-3">
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" id="obstacle-stress" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                            <span class="text-sm">Work stress/anxiety</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" id="obstacle-screen" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                            <span class="text-sm">Screen time before bed</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" id="obstacle-schedule" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                            <span class="text-sm">Irregular schedule</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" id="obstacle-environment" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                            <span class="text-sm">Poor sleep environment</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" id="obstacle-medical" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                            <span class="text-sm">Medical conditions</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" id="obstacle-social" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                            <span class="text-sm">Social obligations</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-medium py-3 px-6 rounded transition duration-200">
+                    Calculate Sleep Debt & Recovery Plan
+                </button>
+            </form>
+        </div>
+
+                <!-- Results -->
+                <div id="results" class="hidden">
+                    <div id="result-content"></div>
+                </div>
+            </div>
+
+            <!-- Right Column - Ads -->
+            <div class="lg:col-span-1">
+                <!-- Top Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+
+                <!-- Middle Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Ad Space -->
+        <div class="mt-8 bg-broder p-4 rounded-lg border border-accent text-center">
+            <div class="text-light text-sm mb-2">Advertisement</div>
+            <div class="bg-dark h-24 flex items-center justify-center rounded">
+                <span class="text-accent">Ad Space 728x90</span>
+            </div>
+        </div>
+
+        <!-- Blog Content -->
+        <article class="mt-12 bg-broder p-8 rounded-lg border border-accent">
+            <h2 class="text-3xl font-bold text-primary mb-6">Complete Guide to Sleep Debt Recovery in 2025</h2>
+            
+            <div class="prose prose-invert max-w-none">
+                <p class="text-light text-lg leading-relaxed mb-6">
+                    Sleep debt is a widespread issue affecting millions of people worldwide. Unlike financial debt, you can't simply "pay back" sleep debt hour for hour, but you can recover through strategic sleep optimization and personalized recovery plans.
+                </p>
+
+                <div class="space-y-8">
+            <section class="bg-broder rounded-lg p-6 border border-accent">
+                <h2 class="text-2xl font-bold mb-4 text-primary">Understanding Sleep Debt</h2>
+                <div class="prose prose-invert max-w-none">
+                    <p class="text-light mb-4">Sleep debt is the cumulative effect of not getting enough sleep. Unlike financial debt, you can't simply "pay back" sleep debt hour for hour, but you can recover through strategic sleep optimization.</p>
+                    
+                    <h3 class="text-xl font-semibold mb-3 text-accent">How Sleep Debt Accumulates</h3>
+                    <p class="text-light mb-4">Every hour of sleep you miss below your optimal need adds to your sleep debt. This debt compounds over time, affecting cognitive function, immune system, and overall health.</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mt-6">
+                        <div class="bg-dark p-4 rounded border border-accent">
+                            <h4 class="font-semibold text-accent mb-2">Short-term Effects (1-7 days)</h4>
+                            <ul class="text-sm text-light space-y-1">
+                                <li>• Reduced alertness and concentration</li>
+                                <li>• Impaired decision-making</li>
+                                <li>• Mood changes and irritability</li>
+                                <li>• Slower reaction times</li>
+                                <li>• Increased appetite and cravings</li>
+                            </ul>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-accent">
+                            <h4 class="font-semibold text-accent mb-2">Long-term Effects (weeks/months)</h4>
+                            <ul class="text-sm text-light space-y-1">
+                                <li>• Weakened immune system</li>
+                                <li>• Weight gain and metabolic issues</li>
+                                <li>• Increased risk of chronic diseases</li>
+                                <li>• Memory consolidation problems</li>
+                                <li>• Mental health deterioration</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-broder rounded-lg p-6 border border-accent">
+                <h2 class="text-2xl font-bold mb-4 text-primary">Sleep Recovery Science</h2>
+                <div class="prose prose-invert max-w-none">
+                    <p class="text-light mb-4">Research shows that sleep debt recovery follows specific patterns. You can't recover all lost sleep, but strategic approaches can restore most cognitive and physical functions.</p>
+                    
+                    <h3 class="text-xl font-semibold mb-3 text-accent">Recovery Strategies</h3>
+                    <div class="grid md:grid-cols-3 gap-4 mt-6">
+                        <div class="bg-dark p-4 rounded border border-green-500">
+                            <h4 class="font-semibold text-green-400 mb-2">Sleep Extension</h4>
+                            <p class="text-sm text-light">Add 1-2 hours to your regular sleep schedule for several weeks to gradually recover.</p>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-blue-500">
+                            <h4 class="font-semibold text-blue-400 mb-2">Strategic Napping</h4>
+                            <p class="text-sm text-light">20-30 minute naps can help, but avoid long naps that interfere with nighttime sleep.</p>
+                        </div>
+                        <div class="bg-dark p-4 rounded border border-purple-500">
+                            <h4 class="font-semibold text-purple-400 mb-2">Sleep Quality Focus</h4>
+                            <p class="text-sm text-light">Improve sleep environment and habits to maximize recovery during available sleep time.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-broder rounded-lg p-6 border border-accent">
+                <h2 class="text-2xl font-bold mb-4 text-primary">Optimal Sleep Hygiene</h2>
+                <div class="prose prose-invert max-w-none">
+                    <p class="text-light mb-4">Good sleep hygiene is essential for both preventing sleep debt and maximizing recovery efficiency.</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-3 text-accent">Evening Routine</h3>
+                            <ul class="text-light space-y-2">
+                                <li><strong>2-3 hours before bed:</strong> Stop eating large meals</li>
+                                <li><strong>2 hours before bed:</strong> Limit fluid intake</li>
+                                <li><strong>1 hour before bed:</strong> No screens or blue light</li>
+                                <li><strong>30 minutes before bed:</strong> Relaxation activities</li>
+                                <li><strong>Bedtime:</strong> Consistent sleep schedule</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-3 text-accent">Sleep Environment</h3>
+                            <ul class="text-light space-y-2">
+                                <li>• Temperature: 65-68°F (18-20°C)</li>
+                                <li>• Darkness: Blackout curtains or eye mask</li>
+                                <li>• Quiet: Earplugs or white noise machine</li>
+                                <li>• Comfortable mattress and pillows</li>
+                                <li>• Remove electronic devices</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-broder rounded-lg p-6 border border-accent">
+                <h2 class="text-2xl font-bold mb-4 text-primary">Age-Specific Sleep Needs</h2>
+                <div class="prose prose-invert max-w-none">
+                    <p class="text-light mb-4">Sleep requirements change throughout life. Understanding your age-specific needs helps set realistic recovery goals.</p>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm border border-accent rounded">
+                            <thead class="bg-dark">
+                                <tr>
+                                    <th class="p-3 text-left text-accent">Age Group</th>
+                                    <th class="p-3 text-left text-accent">Recommended Sleep</th>
+                                    <th class="p-3 text-left text-accent">Recovery Considerations</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-light">
+                                <tr class="border-t border-accent">
+                                    <td class="p-3">Young Adults (18-25)</td>
+                                    <td class="p-3">7-9 hours</td>
+                                    <td class="p-3">Faster recovery, can handle occasional debt</td>
+                                </tr>
+                                <tr class="border-t border-accent">
+                                    <td class="p-3">Adults (26-64)</td>
+                                    <td class="p-3">7-9 hours</td>
+                                    <td class="p-3">Moderate recovery, consistency important</td>
+                                </tr>
+                                <tr class="border-t border-accent">
+                                    <td class="p-3">Older Adults (65+)</td>
+                                    <td class="p-3">7-8 hours</td>
+                                    <td class="p-3">Slower recovery, quality over quantity</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-broder rounded-lg p-6 border border-accent">
+                <h2 class="text-2xl font-bold mb-4 text-primary">Common Sleep Debt Myths</h2>
+                <div class="prose prose-invert max-w-none">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-red-900/20 border border-red-600 rounded p-4">
+                            <h4 class="font-semibold text-red-400 mb-2">❌ Myth: You can catch up on weekends</h4>
+                            <p class="text-sm text-light">Weekend sleep-ins can't fully compensate for weekday sleep debt and may disrupt your circadian rhythm.</p>
+                        </div>
+                        <div class="bg-green-900/20 border border-green-600 rounded p-4">
+                            <h4 class="font-semibold text-green-400 mb-2">✅ Reality: Gradual recovery works best</h4>
+                            <p class="text-sm text-light">Consistent, slightly extended sleep over weeks is more effective than dramatic weekend catch-up attempts.</p>
+                        </div>
+                        <div class="bg-red-900/20 border border-red-600 rounded p-4">
+                            <h4 class="font-semibold text-red-400 mb-2">❌ Myth: Caffeine eliminates sleep debt</h4>
+                            <p class="text-sm text-light">Caffeine masks fatigue but doesn't address the underlying physiological need for sleep recovery.</p>
+                        </div>
+                        <div class="bg-green-900/20 border border-green-600 rounded p-4">
+                            <h4 class="font-semibold text-green-400 mb-2">✅ Reality: Quality matters as much as quantity</h4>
+                            <p class="text-sm text-light">Deep, uninterrupted sleep is more restorative than longer periods of poor-quality sleep.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+                </div>
+            </div>
+        </article>
+
+    <!-- Footer -->
+    <footer id="footer-container"></footer>
+
+    <script src="script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+</body>
+</html>

@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pet Medication Dosage Calculator | Safe Pet Medicine Doses</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#FE4E02",
+              dark: "#00053D",
+              broder: "#182267",
+              accent: "#FD803D",
+              light: "#FECEB6",
+              text: "#F7FBFC",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-dark text-text">
+    <div id="navbar-container"></div>
+
+    <!-- Top Ad -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Top Ad Space (728x90 / 320x50)
+      </div>
+    </div>
+
+    <main
+      class="max-w-7xl mx-auto px-4 py-6 md:py-12 grid lg:grid-cols-[1fr_300px] gap-4 md:gap-8"
+    >
+      <div
+        class="bg-dark rounded-lg shadow-lg p-4 md:p-10 border border-accent"
+      >
+        <div class="mb-4 md:mb-6">
+          <h1
+            class="text-2xl md:text-3xl font-normal text-text flex items-center gap-2"
+          >
+            <span class="material-icons text-primary text-3xl">pets</span> Pet
+            Medication Dosage Calculator
+          </h1>
+          <p class="text-sm md:text-base text-light mt-2">
+            Calculate safe medication doses for pets based on weight, species,
+            and medication type
+          </p>
+          <div
+            class="bg-accent/20 border border-accent rounded p-3 mt-3 text-sm"
+          >
+            <strong>⚠️ Important:</strong> This calculator provides general
+            guidance only. Always consult your veterinarian before administering
+            any medication.
+          </div>
+        </div>
+
+        <div class="flex gap-2 mb-4">
+          <button
+            type="button"
+            id="easyMode"
+            class="flex-1 px-4 py-2 text-sm md:text-base rounded bg-primary text-white border-2 border-primary"
+          >
+            Easy Mode
+          </button>
+          <button
+            type="button"
+            id="advancedMode"
+            class="flex-1 px-4 py-2 text-sm md:text-base rounded bg-broder text-text border-2 border-accent"
+          >
+            Advanced Mode
+          </button>
+        </div>
+
+        <form id="dosage-form" class="flex flex-col gap-4 md:gap-6">
+          <div id="easyFields">
+            <div class="bg-broder p-4 rounded mb-4">
+              <h3
+                class="text-lg font-medium mb-3 text-text flex items-center gap-2"
+              >
+                <span class="material-icons text-accent">pets</span> Pet
+                Information
+              </h3>
+              <div class="grid gap-3">
+                <div>
+                  <label for="species" class="block text-xs text-light mb-1"
+                    >Species</label
+                  >
+                  <select
+                    id="species"
+                    class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                    required
+                  >
+                    <option value="">Select Species</option>
+                    <option value="dog">Dog</option>
+                    <option value="cat">Cat</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="weight" class="block text-xs text-light mb-1"
+                    >Pet Weight (lbs)</label
+                  >
+                  <input
+                    type="number"
+                    id="weight"
+                    placeholder="Enter weight"
+                    class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                    min="0"
+                    step="0.1"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-broder p-4 rounded mb-4">
+              <h3
+                class="text-lg font-medium mb-3 text-text flex items-center gap-2"
+              >
+                <span class="material-icons text-accent">medication</span>
+                Medication Type
+              </h3>
+              <div class="grid gap-3">
+                <div>
+                  <label for="medication" class="block text-xs text-light mb-1"
+                    >Medication</label
+                  >
+                  <select
+                    id="medication"
+                    class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                    required
+                  >
+                    <option value="">Select Medication</option>
+                    <option value="benadryl">Benadryl (Diphenhydramine)</option>
+                    <option value="aspirin">Aspirin</option>
+                    <option value="pepcid">Pepcid (Famotidine)</option>
+                    <option value="imodium">Imodium (Loperamide)</option>
+                    <option value="melatonin">Melatonin</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="advancedFields" class="hidden">
+            <div class="bg-broder p-4 rounded mb-4">
+              <h3
+                class="text-lg font-medium mb-3 text-text flex items-center gap-2"
+              >
+                <span class="material-icons text-accent">pets</span> Pet Details
+              </h3>
+              <div class="grid gap-3">
+                <div>
+                  <label for="speciesAdv" class="block text-xs text-light mb-1"
+                    >Species</label
+                  >
+                  <select
+                    id="speciesAdv"
+                    class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  >
+                    <option value="">Select Species</option>
+                    <option value="dog">Dog</option>
+                    <option value="cat">Cat</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="weightAdv" class="block text-xs text-light mb-1"
+                    >Pet Weight (lbs)</label
+                  >
+                  <input
+                    type="number"
+                    id="weightAdv"
+                    placeholder="Enter weight"
+                    class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                    min="0"
+                    step="0.1"
+                  />
+                </div>
+                <div>
+                  <label for="age" class="block text-xs text-light mb-1"
+                    >Pet Age (years)</label
+                  >
+                  <input
+                    type="number"
+                    id="age"
+                    placeholder="Enter age"
+                    class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                    min="0"
+                    step="0.1"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="healthStatus"
+                    class="block text-xs text-light mb-1"
+                    >Health Status</label
+                  >
+                  <select
+                    id="healthStatus"
+                    class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  >
+                    <option value="">Select Health Status</option>
+                    <option value="healthy">Healthy</option>
+                    <option value="senior">Senior</option>
+                    <option value="kidney">Kidney Issues</option>
+                    <option value="liver">Liver Issues</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-broder p-4 rounded mb-4">
+              <h3
+                class="text-lg font-medium mb-3 text-text flex items-center gap-2"
+              >
+                <span class="material-icons text-accent">medication</span>
+                Medication Details
+              </h3>
+              <div class="grid gap-3">
+                <div>
+                  <label
+                    for="medicationAdv"
+                    class="block text-xs text-light mb-1"
+                    >Medication</label
+                  >
+                  <select
+                    id="medicationAdv"
+                    class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  >
+                    <option value="">Select Medication</option>
+                    <option value="benadryl">Benadryl (Diphenhydramine)</option>
+                    <option value="aspirin">Aspirin</option>
+                    <option value="pepcid">Pepcid (Famotidine)</option>
+                    <option value="imodium">Imodium (Loperamide)</option>
+                    <option value="melatonin">Melatonin</option>
+                  </select>
+                </div>
+                <div>
+                  <label
+                    for="concentration"
+                    class="block text-xs text-light mb-1"
+                    >Concentration (mg)</label
+                  >
+                  <input
+                    type="number"
+                    id="concentration"
+                    placeholder="Enter concentration"
+                    class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                    min="0"
+                    step="0.1"
+                  />
+                </div>
+                <div>
+                  <label for="formType" class="block text-xs text-light mb-1"
+                    >Form Type</label
+                  >
+                  <select
+                    id="formType"
+                    class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  >
+                    <option value="">Select Form Type</option>
+                    <option value="tablet">Tablet</option>
+                    <option value="liquid">Liquid</option>
+                    <option value="capsule">Capsule</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-broder p-4 rounded mb-4">
+              <h3
+                class="text-lg font-medium mb-3 text-text flex items-center gap-2"
+              >
+                <span class="material-icons text-accent">schedule</span> Dosing
+                Schedule
+              </h3>
+              <div class="grid gap-3">
+                <div>
+                  <label
+                    for="frequencyAdv"
+                    class="block text-xs text-light mb-1"
+                    >Frequency</label
+                  >
+                  <select
+                    id="frequencyAdv"
+                    class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  >
+                    <option value="">Select Frequency</option>
+                    <option value="once">Once Daily</option>
+                    <option value="twice">Twice Daily (Every 12 hours)</option>
+                    <option value="three">
+                      Three Times Daily (Every 8 hours)
+                    </option>
+                    <option value="asneeded">As Needed</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="duration" class="block text-xs text-light mb-1"
+                    >Duration (days)</label
+                  >
+                  <input
+                    type="number"
+                    id="duration"
+                    placeholder="Enter duration"
+                    class="w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                    min="0"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-primary text-white px-4 md:px-6 py-2.5 md:py-3 text-sm md:text-base rounded font-medium hover:bg-accent transition flex items-center justify-center gap-2"
+          >
+            <span class="material-icons">calculate</span> Calculate Dosage
+          </button>
+        </form>
+
+        <div id="results" class="mt-6 md:mt-8 hidden">
+          <div id="result-content"></div>
+        </div>
+
+        <!-- Mid Ad (Mobile) -->
+        <div
+          class="lg:hidden min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm mt-4"
+        >
+          Mid Ad Space (300x250)
+        </div>
+      </div>
+
+      <!-- Sidebar Ad (Desktop) -->
+      <div class="hidden lg:flex flex-col gap-4">
+        <div
+          class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm sticky top-4"
+        >
+          Sidebar Ad (300x250)
+        </div>
+        <div
+          class="min-h-[600px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+        >
+          Sidebar Ad (300x600)
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Ad -->
+    <div class="max-w-7xl mx-auto px-4 pb-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Bottom Ad Space (728x90 / 320x50)
+      </div>
+    </div>
+
+    <!-- SEO Blog Section -->
+    <section class="max-w-7xl mx-auto px-4 py-8 md:py-12">
+      <article
+        class="bg-dark rounded-lg shadow-lg p-6 md:p-10 border border-accent"
+      >
+        <header class="mb-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-primary mb-4">
+            Complete Guide to Pet Medication Dosage Calculator: Safe & Accurate
+            Pet Medicine Doses
+          </h2>
+          <p class="text-lg text-light leading-relaxed">
+            Master pet medication safety with our veterinary-grade dosage
+            calculator. Learn proper dosing formulas, weight-based calculations,
+            and species-specific guidelines for common pet medications.
+          </p>
+        </header>
+
+        <div class="prose prose-invert max-w-none">
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            What is a Pet Medication Dosage Calculator?
+          </h3>
+          <p class="text-text mb-6 leading-relaxed">
+            A pet medication dosage calculator is a specialized veterinary tool
+            that determines safe and accurate medication doses for dogs, cats,
+            and other pets based on their weight, species, age, and health
+            status. This essential pet care calculator helps pet owners and
+            veterinary professionals calculate precise dosages for common
+            medications like Benadryl, aspirin, Pepcid, Imodium, and melatonin,
+            preventing dangerous overdoses and ensuring therapeutic
+            effectiveness.
+          </p>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            How Does Pet Medication Dosage Calculation Work?
+          </h3>
+          <p class="text-text mb-4 leading-relaxed">
+            Pet medication dosing follows veterinary pharmacology principles
+            using weight-based calculations:
+          </p>
+          <div class="bg-broder border border-accent rounded-lg p-4 mb-6">
+            <p class="text-primary font-mono text-lg">
+              <strong
+                >Dose = (Pet Weight in kg) × (Dosage per kg) × Frequency</strong
+              >
+            </p>
+            <p class="text-light text-sm mt-2">
+              Example: 20 lb dog (9 kg) × 1 mg/kg Benadryl = 9 mg dose
+            </p>
+          </div>
+
+          <h4 class="text-lg font-medium text-light mb-3">
+            Step-by-Step Dosage Calculation Process:
+          </h4>
+          <ol class="list-decimal list-inside text-text space-y-2 mb-6">
+            <li>Enter pet's accurate weight in pounds or kilograms</li>
+            <li>
+              Select pet species (dog, cat, etc.) for species-specific dosing
+            </li>
+            <li>Choose medication type from veterinary-approved list</li>
+            <li>
+              Calculator applies weight-based dosing formula automatically
+            </li>
+            <li>Review dosage, frequency, and safety warnings</li>
+            <li>Always consult veterinarian before administering medication</li>
+          </ol>
+
+          <!-- Blog Ad 1 -->
+          <div
+            class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm my-6"
+          >
+            Blog Content Ad 1 (300x250)
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Mathematical Formulas & Veterinary Dosing Equations
+          </h3>
+          <div class="bg-broder border border-accent rounded-lg p-6 mb-6">
+            <h4 class="text-primary font-semibold mb-3">
+              Core Veterinary Dosing Formulas:
+            </h4>
+            <ul class="text-text space-y-2">
+              <li>
+                <strong>Weight Conversion:</strong> Pounds ÷ 2.2 = Kilograms
+              </li>
+              <li>
+                <strong>Basic Dose:</strong> Weight (kg) × mg/kg = Total Dose
+                (mg)
+              </li>
+              <li>
+                <strong>Liquid Medication:</strong> Dose (mg) ÷ Concentration
+                (mg/ml) = Volume (ml)
+              </li>
+              <li>
+                <strong>Tablet Calculation:</strong> Total Dose ÷ Tablet
+                Strength = Number of Tablets
+              </li>
+              <li>
+                <strong>Daily Dose:</strong> Single Dose × Frequency per Day =
+                Daily Total
+              </li>
+              <li>
+                <strong>Safety Margin:</strong> Maximum Safe Dose = Therapeutic
+                Dose × Safety Factor
+              </li>
+            </ul>
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Common Pet Medications & Safe Dosage Guidelines
+          </h3>
+          <div class="grid md:grid-cols-2 gap-4 mb-6">
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                Dogs - Safe Dosages:
+              </h4>
+              <ul class="text-text text-sm space-y-1">
+                <li><strong>Benadryl:</strong> 1-2 mg/kg every 8-12 hours</li>
+                <li><strong>Aspirin:</strong> 10-40 mg/kg every 12 hours</li>
+                <li>
+                  <strong>Pepcid:</strong> 0.25-0.5 mg/kg every 12-24 hours
+                </li>
+                <li>
+                  <strong>Melatonin:</strong> 1-6 mg per dog depending on size
+                </li>
+              </ul>
+            </div>
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                Cats - Safe Dosages:
+              </h4>
+              <ul class="text-text text-sm space-y-1">
+                <li><strong>Benadryl:</strong> 0.5-1 mg/kg every 8-12 hours</li>
+                <li><strong>Pepcid:</strong> 0.25-0.5 mg/kg every 24 hours</li>
+                <li><strong>Melatonin:</strong> 0.5-3 mg per cat</li>
+                <li>
+                  <strong>Note:</strong> Many human medications toxic to cats
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Blog Ad 2 -->
+          <div
+            class="min-h-[250px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm my-6"
+          >
+            Blog Content Ad 2 (300x250)
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Advanced Dosage Calculation Features
+          </h3>
+          <p class="text-text mb-4 leading-relaxed">
+            Our veterinary dosage calculator includes advanced features for
+            comprehensive pet medication management:
+          </p>
+          <ul class="list-disc list-inside text-text space-y-2 mb-6">
+            <li>
+              <strong>Species-Specific Dosing:</strong> Different calculations
+              for dogs, cats, and exotic pets
+            </li>
+            <li>
+              <strong>Age-Based Adjustments:</strong> Modified doses for
+              puppies, kittens, and senior pets
+            </li>
+            <li>
+              <strong>Health Status Considerations:</strong> Adjusted dosing for
+              kidney, liver, or heart conditions
+            </li>
+            <li>
+              <strong>Medication Form Calculator:</strong> Tablet, liquid, and
+              capsule dose conversions
+            </li>
+            <li>
+              <strong>Frequency Scheduling:</strong> Daily, twice daily, and
+              as-needed dosing schedules
+            </li>
+            <li>
+              <strong>Safety Warnings:</strong> Automatic alerts for potentially
+              dangerous combinations
+            </li>
+          </ul>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Pet Medication Safety Guidelines & Warnings
+          </h3>
+          <div class="bg-accent/20 border border-accent rounded-lg p-4 mb-6">
+            <h4 class="text-primary font-semibold mb-2">
+              ⚠️ Critical Safety Warnings:
+            </h4>
+            <ul class="text-text text-sm space-y-1">
+              <li>
+                • Never give human medications without veterinary approval
+              </li>
+              <li>• Cats cannot metabolize many drugs safe for dogs</li>
+              <li>• Always use pet's current weight for calculations</li>
+              <li>• Check expiration dates and proper storage conditions</li>
+              <li>• Monitor for adverse reactions after administration</li>
+              <li>
+                • Keep emergency veterinary contact information accessible
+              </li>
+            </ul>
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Weight-Based Dosing by Pet Size Categories
+          </h3>
+          <div class="grid md:grid-cols-3 gap-4 mb-6">
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                Small Dogs (5-25 lbs):
+              </h4>
+              <ul class="text-text text-sm space-y-1">
+                <li>More sensitive to medications</li>
+                <li>Require precise dosing</li>
+                <li>Higher risk of overdose</li>
+                <li>Faster metabolism rates</li>
+              </ul>
+            </div>
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                Medium Dogs (25-60 lbs):
+              </h4>
+              <ul class="text-text text-sm space-y-1">
+                <li>Standard dosing applies</li>
+                <li>Good medication tolerance</li>
+                <li>Easier dose calculations</li>
+                <li>Moderate metabolism</li>
+              </ul>
+            </div>
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                Large Dogs (60+ lbs):
+              </h4>
+              <ul class="text-text text-sm space-y-1">
+                <li>May need dose adjustments</li>
+                <li>Consider breed sensitivities</li>
+                <li>Monitor for side effects</li>
+                <li>Slower metabolism rates</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Emergency Medication Situations
+          </h3>
+          <p class="text-text mb-4 leading-relaxed">
+            Understanding when and how to use emergency pet medications can be
+            life-saving. Our calculator helps determine appropriate doses for
+            common emergency situations:
+          </p>
+          <div class="bg-broder border border-accent rounded-lg p-4 mb-6">
+            <h4 class="text-primary font-semibold mb-2">
+              Common Emergency Scenarios:
+            </h4>
+            <ul class="text-text text-sm space-y-1">
+              <li>
+                <strong>Allergic Reactions:</strong> Benadryl for bee stings,
+                food allergies
+              </li>
+              <li>
+                <strong>Upset Stomach:</strong> Pepcid for acid reflux, nausea
+              </li>
+              <li>
+                <strong>Anxiety/Stress:</strong> Melatonin for thunderstorms,
+                travel
+              </li>
+              <li>
+                <strong>Pain Management:</strong> Aspirin for minor pain (dogs
+                only)
+              </li>
+              <li>
+                <strong>Diarrhea:</strong> Imodium for digestive issues (with
+                caution)
+              </li>
+            </ul>
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Frequently Asked Questions
+          </h3>
+          <div class="space-y-4 mb-6">
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                How accurate is the pet medication dosage calculator?
+              </h4>
+              <p class="text-text text-sm">
+                Our calculator uses veterinary-approved dosing guidelines and
+                mathematical formulas. However, individual pets may require
+                adjusted doses based on health conditions, age, and medication
+                interactions.
+              </p>
+            </div>
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                Can I use human medications for my pet?
+              </h4>
+              <p class="text-text text-sm">
+                Only specific human medications are safe for pets, and only at
+                veterinary-approved doses. Many human drugs are toxic to
+                animals. Always consult your veterinarian first.
+              </p>
+            </div>
+            <div class="bg-broder border border-accent rounded-lg p-4">
+              <h4 class="text-primary font-semibold mb-2">
+                What should I do if I accidentally overdose my pet?
+              </h4>
+              <p class="text-text text-sm">
+                Contact your veterinarian or pet poison control immediately.
+                Have the medication bottle, pet's weight, and amount given
+                ready. Do not induce vomiting unless instructed.
+              </p>
+            </div>
+          </div>
+
+          <h3 class="text-xl font-semibold text-accent mb-4">
+            Related Pet Health Tools & Resources
+          </h3>
+          <p class="text-text mb-4 leading-relaxed">
+            Enhance your pet care knowledge with complementary health
+            calculators:
+          </p>
+          <ul class="list-disc list-inside text-text space-y-2 mb-6">
+            <li>Pet calorie and nutrition calculators</li>
+            <li>Vaccination schedule trackers</li>
+            <li>Pet insurance cost estimators</li>
+            <li>Emergency veterinary clinic locators</li>
+            <li>Pet health symptom checkers</li>
+          </ul>
+
+          <div
+            class="bg-gradient-to-r from-primary to-accent rounded-lg p-6 text-center"
+          >
+            <h4 class="text-white font-bold text-lg mb-2">
+              Ensure Your Pet's Medication Safety Today!
+            </h4>
+            <p class="text-white/90 text-sm">
+              Use our veterinary-grade pet medication dosage calculator for
+              accurate, safe dosing. Always consult your veterinarian before
+              administering any medication to your beloved pet.
+            </p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Final Bottom Ad -->
+    <div class="max-w-7xl mx-auto px-4 pb-4">
+      <div
+        class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm"
+      >
+        Final Bottom Ad (728x90 / 320x50)
+      </div>
+    </div>
+    <div id="footer-container"></div>
+
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
+

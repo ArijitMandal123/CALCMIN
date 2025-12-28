@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alcohol Tolerance Reset Planner - Safe Reduction Schedule | CalcMin.pro</title>
+    <meta name="description" content="Create a personalized alcohol tolerance reset plan with safe reduction schedules, withdrawal risk assessment, and health benefits timeline. Perfect for dry months and moderation goals.">
+    <meta name="keywords" content="alcohol tolerance reset, alcohol reduction plan, dry january calculator, alcohol moderation, sobriety planner, alcohol withdrawal timeline, drinking reduction schedule">
+    <meta name="author" content="CalcMin.pro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://calcmin.pro/AlcoholToleranceReset/">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Alcohol Tolerance Reset Planner - Safe Reduction Schedule">
+    <meta property="og:description" content="Create a personalized alcohol tolerance reset plan with safe reduction schedules and health benefits timeline.">
+    <meta property="og:url" content="https://calcmin.pro/AlcoholToleranceReset/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CalcMin.pro">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Alcohol Tolerance Reset Planner">
+    <meta name="twitter:description" content="Create a personalized alcohol tolerance reset plan with safe reduction schedules.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FE4E02",
+                        dark: "#00053D", 
+                        broder: "#182267",
+                        accent: "#FD803D",
+                        light: "#FECEB6",
+                        text: "#F7FBFC"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Alcohol Tolerance Reset Planner",
+        "description": "Create a personalized alcohol tolerance reset plan with safe reduction schedules, withdrawal risk assessment, and health benefits timeline",
+        "url": "https://calcmin.pro/AlcoholToleranceReset/",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Any",
+        "permissions": "browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "CalcMin.pro"
+        }
+    }
+    </script>
+</head>
+<body class="bg-dark text-text min-h-screen">
+    <!-- Navigation -->
+    <nav id="navbar-container"></nav>
+
+    <!-- Top Ad Space -->
+    <div class="max-w-7xl mx-auto px-4 pt-4">
+        <div class="min-h-[90px] md:min-h-[100px] flex items-center justify-center bg-broder border border-accent rounded-lg text-light text-sm">
+            Top Ad Space (728x90 / 320x50)
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column - Calculator -->
+            <div class="lg:col-span-2">
+                <!-- Header -->
+                <div class="bg-broder p-6 rounded-lg border border-accent mb-6">
+                    <h1 class="text-3xl font-bold text-primary mb-4">
+                        <span class="material-icons text-4xl align-middle mr-2">local_bar</span>
+                        Alcohol Tolerance Reset Planner
+                    </h1>
+                    <p class="text-light text-lg">Create a personalized alcohol reduction plan with safe schedules, withdrawal risk assessment, and health benefits timeline for moderation or sobriety goals.</p>
+                </div>
+
+                <!-- Calculator Form -->
+                <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
+                    <form id="alcohol-form" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Current Weekly Alcohol Consumption</label>
+                                <input type="number" id="weekly-drinks" min="0" max="100" placeholder="e.g., 14" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                <p class="text-xs text-light mt-1">Standard drinks per week (1 drink = 12oz beer, 5oz wine, 1.5oz spirits)</p>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Drinking Pattern</label>
+                                <select id="drinking-pattern" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select pattern</option>
+                                    <option value="daily">Daily drinking (every day)</option>
+                                    <option value="weekends">Weekend drinking (Fri-Sun)</option>
+                                    <option value="social">Social occasions (2-3 times/week)</option>
+                                    <option value="binge">Binge drinking (heavy sessions)</option>
+                                    <option value="irregular">Irregular pattern</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Primary Goal</label>
+                                <select id="goal" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select goal</option>
+                                    <option value="complete-abstinence">Complete abstinence (0 drinks)</option>
+                                    <option value="moderate-drinking">Moderate drinking (low-risk levels)</option>
+                                    <option value="tolerance-break">Tolerance break (temporary reset)</option>
+                                    <option value="dry-month">Dry month challenge</option>
+                                    <option value="health-improvement">Health improvement focus</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Timeline Preference</label>
+                                <select id="timeline" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select timeline</option>
+                                    <option value="gradual">Gradual (6-8 weeks)</option>
+                                    <option value="moderate">Moderate (4-6 weeks)</option>
+                                    <option value="aggressive">Aggressive (2-4 weeks)</option>
+                                    <option value="immediate">Immediate (cold turkey)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Age</label>
+                                <input type="number" id="age" min="18" max="80" placeholder="e.g., 35" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Years of Regular Drinking</label>
+                                <input type="number" id="drinking-years" min="0" max="60" placeholder="e.g., 10" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Health Status</label>
+                                <select id="health-status" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select health status</option>
+                                    <option value="excellent">Excellent (no health issues)</option>
+                                    <option value="good">Good (minor issues)</option>
+                                    <option value="fair">Fair (some health concerns)</option>
+                                    <option value="poor">Poor (multiple health issues)</option>
+                                    <option value="medical-supervision">Under medical supervision</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Support System</label>
+                                <select id="support-system" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    <option value="">Select support level</option>
+                                    <option value="strong">Strong (family/friends support)</option>
+                                    <option value="moderate">Moderate (some support)</option>
+                                    <option value="limited">Limited (minimal support)</option>
+                                    <option value="none">None (going alone)</option>
+                                    <option value="professional">Professional help available</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Previous Withdrawal Symptoms (check all that apply)</label>
+                            <div class="grid md:grid-cols-2 gap-3">
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="symptom-anxiety" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Anxiety/nervousness</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="symptom-insomnia" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Sleep problems</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="symptom-tremors" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Hand tremors/shaking</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="symptom-sweating" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Excessive sweating</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="symptom-nausea" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Nausea/vomiting</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="symptom-headaches" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Headaches</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="symptom-irritability" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">Irritability/mood swings</span>
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="checkbox" id="symptom-none" class="rounded border-accent bg-dark text-primary focus:ring-primary">
+                                    <span class="text-sm">No previous symptoms</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Average Cost per Drink ($)</label>
+                            <input type="number" id="cost-per-drink" min="0" max="50" step="0.50" placeholder="e.g., 8.00" class="w-full px-3 py-2 border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary">
+                            <p class="text-xs text-light mt-1">Optional: Include bar prices, home consumption, etc.</p>
+                        </div>
+
+                        <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-medium py-3 px-6 rounded transition duration-200">
+                            Create My Reset Plan
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results -->
+                <div id="results" class="hidden">
+                    <div id="result-content"></div>
+                </div>
+            </div>
+
+            <!-- Right Column - Ads -->
+            <div class="lg:col-span-1">
+                <!-- Top Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+
+                <!-- Middle Ad Space -->
+                <div class="bg-broder p-4 rounded-lg border border-accent mb-6 text-center">
+                    <div class="text-light text-sm mb-2">Advertisement</div>
+                    <div class="bg-dark h-64 flex items-center justify-center rounded">
+                        <span class="text-accent">Ad Space 300x250</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Ad Space -->
+        <div class="mt-8 bg-broder p-4 rounded-lg border border-accent text-center">
+            <div class="text-light text-sm mb-2">Advertisement</div>
+            <div class="bg-dark h-24 flex items-center justify-center rounded">
+                <span class="text-accent">Ad Space 728x90</span>
+            </div>
+        </div>
+
+        <!-- Blog Content -->
+        <article class="mt-12 bg-broder p-8 rounded-lg border border-accent">
+            <h2 class="text-3xl font-bold text-primary mb-6">Complete Guide to Alcohol Tolerance Reset in 2025</h2>
+            
+            <div class="prose prose-invert max-w-none">
+                <p class="text-light text-lg leading-relaxed mb-6">
+                    Alcohol tolerance reset has become increasingly popular as more people embrace mindful drinking, participate in dry months, and prioritize their health. This comprehensive guide provides evidence-based strategies for safely reducing alcohol consumption and resetting your tolerance.
+                </p>
+
+                <div class="space-y-8">
+                    <section class="bg-broder rounded-lg p-6 border border-accent">
+                        <h2 class="text-2xl font-bold mb-4 text-primary">Understanding Alcohol Tolerance</h2>
+                        <div class="prose prose-invert max-w-none">
+                            <p class="text-light mb-4">Alcohol tolerance develops when your body adapts to regular alcohol consumption, requiring increasingly larger amounts to achieve the same effects. This adaptation occurs through multiple physiological mechanisms.</p>
+                            
+                            <h3 class="text-xl font-semibold mb-3 text-accent">Types of Alcohol Tolerance</h3>
+                            <div class="grid md:grid-cols-2 gap-6 mt-6">
+                                <div class="bg-dark p-4 rounded border border-accent">
+                                    <h4 class="font-semibold text-accent mb-2">Metabolic Tolerance</h4>
+                                    <p class="text-sm text-light">Your liver becomes more efficient at processing alcohol, breaking it down faster and reducing its effects.</p>
+                                </div>
+                                <div class="bg-dark p-4 rounded border border-accent">
+                                    <h4 class="font-semibold text-accent mb-2">Functional Tolerance</h4>
+                                    <p class="text-sm text-light">Your brain adapts to alcohol's presence, requiring more to achieve the same level of impairment.</p>
+                                </div>
+                                <div class="bg-dark p-4 rounded border border-accent">
+                                    <h4 class="font-semibold text-accent mb-2">Behavioral Tolerance</h4>
+                                    <p class="text-sm text-light">You learn to function normally despite alcohol's effects through practice and adaptation.</p>
+                                </div>
+                                <div class="bg-dark p-4 rounded border border-accent">
+                                    <h4 class="font-semibold text-accent mb-2">Cross-Tolerance</h4>
+                                    <p class="text-sm text-light">Tolerance to alcohol can extend to other substances that affect similar brain pathways.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-broder rounded-lg p-6 border border-accent">
+                        <h2 class="text-2xl font-bold mb-4 text-primary">Safe Reduction Strategies</h2>
+                        <div class="prose prose-invert max-w-none">
+                            <p class="text-light mb-4">Reducing alcohol consumption safely requires a structured approach that minimizes withdrawal risks while maximizing success rates.</p>
+                            
+                            <h3 class="text-xl font-semibold mb-3 text-accent">Gradual Tapering Method</h3>
+                            <p class="text-light mb-4">The safest approach for most people involves gradually reducing consumption over several weeks:</p>
+                            
+                            <div class="bg-primary/10 border-l-4 border-primary p-6 mb-6">
+                                <h4 class="text-lg font-semibold text-primary mb-3">Weekly Reduction Schedule</h4>
+                                <ul class="text-light space-y-2">
+                                    <li>• <strong>Week 1-2:</strong> Reduce by 25% of current consumption</li>
+                                    <li>• <strong>Week 3-4:</strong> Reduce by another 25% (50% total reduction)</li>
+                                    <li>• <strong>Week 5-6:</strong> Reduce by another 25% (75% total reduction)</li>
+                                    <li>• <strong>Week 7-8:</strong> Achieve target consumption level</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-broder rounded-lg p-6 border border-accent">
+                        <h2 class="text-2xl font-bold mb-4 text-primary">Withdrawal Risk Assessment</h2>
+                        <div class="prose prose-invert max-w-none">
+                            <p class="text-light mb-4">Understanding withdrawal risks is crucial for planning a safe reduction strategy. Severity depends on consumption patterns, duration, and individual factors.</p>
+                            
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm border border-accent rounded">
+                                    <thead class="bg-dark">
+                                        <tr>
+                                            <th class="p-3 text-left text-accent">Risk Level</th>
+                                            <th class="p-3 text-left text-accent">Consumption Pattern</th>
+                                            <th class="p-3 text-left text-accent">Symptoms</th>
+                                            <th class="p-3 text-left text-accent">Recommendation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-light">
+                                        <tr class="border-t border-accent">
+                                            <td class="p-3 text-green-400">Low</td>
+                                            <td class="p-3">1-7 drinks/week</td>
+                                            <td class="p-3">Mild cravings, slight mood changes</td>
+                                            <td class="p-3">Self-managed reduction</td>
+                                        </tr>
+                                        <tr class="border-t border-accent">
+                                            <td class="p-3 text-yellow-400">Moderate</td>
+                                            <td class="p-3">8-14 drinks/week</td>
+                                            <td class="p-3">Anxiety, sleep issues, irritability</td>
+                                            <td class="p-3">Gradual tapering with support</td>
+                                        </tr>
+                                        <tr class="border-t border-accent">
+                                            <td class="p-3 text-orange-400">High</td>
+                                            <td class="p-3">15-28 drinks/week</td>
+                                            <td class="p-3">Tremors, sweating, nausea</td>
+                                            <td class="p-3">Medical consultation advised</td>
+                                        </tr>
+                                        <tr class="border-t border-accent">
+                                            <td class="p-3 text-red-400">Severe</td>
+                                            <td class="p-3">28+ drinks/week</td>
+                                            <td class="p-3">Severe symptoms, potential seizures</td>
+                                            <td class="p-3">Medical supervision required</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-broder rounded-lg p-6 border border-accent">
+                        <h2 class="text-2xl font-bold mb-4 text-primary">Health Benefits Timeline</h2>
+                        <div class="prose prose-invert max-w-none">
+                            <p class="text-light mb-4">Reducing alcohol consumption provides immediate and long-term health benefits that become apparent at different stages of your reset journey.</p>
+                            
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <h3 class="text-xl font-semibold mb-3 text-accent">Short-Term Benefits (1-4 weeks)</h3>
+                                    <ul class="text-light space-y-2">
+                                        <li>• Improved sleep quality and REM cycles</li>
+                                        <li>• Better hydration and skin appearance</li>
+                                        <li>• Increased energy and mental clarity</li>
+                                        <li>• Reduced inflammation markers</li>
+                                        <li>• Weight loss from reduced caloric intake</li>
+                                        <li>• Improved immune system function</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold mb-3 text-accent">Long-Term Benefits (1-12 months)</h3>
+                                    <ul class="text-light space-y-2">
+                                        <li>• Liver function improvement and repair</li>
+                                        <li>• Cardiovascular health enhancement</li>
+                                        <li>• Reduced cancer risk factors</li>
+                                        <li>• Improved cognitive function and memory</li>
+                                        <li>• Better emotional regulation</li>
+                                        <li>• Significant financial savings</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-broder rounded-lg p-6 border border-accent">
+                        <h2 class="text-2xl font-bold mb-4 text-primary">Alternative Activities and Coping Strategies</h2>
+                        <div class="prose prose-invert max-w-none">
+                            <p class="text-light mb-4">Successful alcohol reduction requires replacing drinking habits with healthier alternatives that address the underlying needs alcohol was meeting.</p>
+                            
+                            <div class="grid md:grid-cols-3 gap-4 mt-6">
+                                <div class="bg-dark p-4 rounded border border-green-500">
+                                    <h4 class="font-semibold text-green-400 mb-2">Social Alternatives</h4>
+                                    <ul class="text-sm text-light space-y-1">
+                                        <li>• Mocktail making classes</li>
+                                        <li>• Sober social groups</li>
+                                        <li>• Coffee shop meetups</li>
+                                        <li>• Fitness group activities</li>
+                                        <li>• Volunteer work</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-dark p-4 rounded border border-blue-500">
+                                    <h4 class="font-semibold text-blue-400 mb-2">Stress Management</h4>
+                                    <ul class="text-sm text-light space-y-1">
+                                        <li>• Meditation and mindfulness</li>
+                                        <li>• Regular exercise routine</li>
+                                        <li>• Breathing exercises</li>
+                                        <li>• Journaling practice</li>
+                                        <li>• Professional therapy</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-dark p-4 rounded border border-purple-500">
+                                    <h4 class="font-semibold text-purple-400 mb-2">Evening Routines</h4>
+                                    <ul class="text-sm text-light space-y-1">
+                                        <li>• Herbal tea rituals</li>
+                                        <li>• Reading or audiobooks</li>
+                                        <li>• Creative hobbies</li>
+                                        <li>• Bath and relaxation</li>
+                                        <li>• Early bedtime routine</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="bg-broder rounded-lg p-6 border border-accent">
+                        <h2 class="text-2xl font-bold mb-4 text-primary">Financial Impact of Alcohol Reduction</h2>
+                        <div class="prose prose-invert max-w-none">
+                            <p class="text-light mb-4">The financial benefits of reducing alcohol consumption can be substantial and provide additional motivation for maintaining your reset goals.</p>
+                            
+                            <div class="bg-primary/10 border-l-4 border-primary p-6 mb-6">
+                                <h4 class="text-lg font-semibold text-primary mb-3">Average Annual Savings by Consumption Level</h4>
+                                <ul class="text-light space-y-2">
+                                    <li>• <strong>Light drinker (7 drinks/week):</strong> $1,500 - $2,500 annually</li>
+                                    <li>• <strong>Moderate drinker (14 drinks/week):</strong> $3,000 - $5,000 annually</li>
+                                    <li>• <strong>Heavy drinker (21+ drinks/week):</strong> $5,000 - $10,000+ annually</li>
+                                </ul>
+                            </div>
+                            
+                            <p class="text-light mb-4">These savings can be redirected toward health improvements, hobbies, travel, or financial goals, creating positive reinforcement for your alcohol reduction journey.</p>
+                        </div>
+                    </section>
+
+                    <section class="bg-broder rounded-lg p-6 border border-accent">
+                        <h2 class="text-2xl font-bold mb-4 text-primary">Common Challenges and Solutions</h2>
+                        <div class="prose prose-invert max-w-none">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="bg-red-900/20 border border-red-600 rounded p-4">
+                                    <h4 class="font-semibold text-red-400 mb-2">Challenge: Social Pressure</h4>
+                                    <p class="text-sm text-light mb-2">Friends and family may not understand your goals or may pressure you to drink.</p>
+                                    <p class="text-sm text-green-400"><strong>Solution:</strong> Prepare responses in advance, suggest alternative activities, and find supportive social circles.</p>
+                                </div>
+                                <div class="bg-red-900/20 border border-red-600 rounded p-4">
+                                    <h4 class="font-semibold text-red-400 mb-2">Challenge: Stress and Anxiety</h4>
+                                    <p class="text-sm text-light mb-2">Alcohol may have been your primary stress management tool.</p>
+                                    <p class="text-sm text-green-400"><strong>Solution:</strong> Develop multiple coping strategies including exercise, meditation, and professional support.</p>
+                                </div>
+                                <div class="bg-red-900/20 border border-red-600 rounded p-4">
+                                    <h4 class="font-semibold text-red-400 mb-2">Challenge: Boredom and Routine</h4>
+                                    <p class="text-sm text-light mb-2">Evening and weekend routines may feel empty without alcohol.</p>
+                                    <p class="text-sm text-green-400"><strong>Solution:</strong> Plan engaging activities, develop new hobbies, and create structured routines.</p>
+                                </div>
+                                <div class="bg-red-900/20 border border-red-600 rounded p-4">
+                                    <h4 class="font-semibold text-red-400 mb-2">Challenge: Sleep Disruption</h4>
+                                    <p class="text-sm text-light mb-2">Initial sleep problems as your body adjusts to reduced alcohol.</p>
+                                    <p class="text-sm text-green-400"><strong>Solution:</strong> Establish sleep hygiene practices, consider natural sleep aids, and be patient with the adjustment period.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer-container"></footer>
+
+    <script src="script.js"></script>
+    <script src="../src/components/navbar.js"></script>
+    <script src="../src/components/footer.js"></script>
+</body>
+</html>
