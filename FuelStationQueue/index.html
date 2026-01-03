@@ -1,9 +1,13 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fuel Station Queue Calculator | Gas Station Wait Time Predictor Tool 2025</title>
+    <title>Fuel Station Queue Calculator | Gas Station Wait Time Predictor Tool 2025</title><link rel="icon" href="/src/favicon/favicon.svg" type="image/svg+xml" />
+    <title>Fuel Station Queue Calculator | Gas Station Wait Time Predictor Tool 2025</title><link rel="icon" href="/src/favicon/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="
+../src/favicon/favicon.svg
+" type="image/svg+xml" />
     <meta name="description" content="Calculate fuel station queue wait times with our free gas station predictor. Predict queue length, avoid peak hours, and optimize refueling schedule. Real-time wait time calculator for gas stations." />
     <meta name="keywords" content="fuel station queue calculator, gas station wait time predictor, fuel queue calculator, gas station line predictor, fuel station wait time, queue length calculator, gas pump wait time, fuel station traffic predictor, refueling queue calculator" />
     <meta name="author" content="CalcMin.pro" />
@@ -84,7 +88,7 @@
         "name": "How do you calculate fuel station queue wait times?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Fuel station wait time is calculated using queuing theory: Wait Time = (Queue Length Ã· Service Rate) Ã— Utilization Factor Ã— Time Multiplier. Factors include number of pumps, current queue, time of day, and station type."
+          "text": "Fuel station wait time is calculated using queuing theory: Wait Time = (Queue Length ÷ Service Rate) × Utilization Factor × Time Multiplier. Factors include number of pumps, current queue, time of day, and station type."
         }
       }
     }
@@ -409,12 +413,12 @@
           <div class="bg-broder border border-accent rounded-lg p-4 mb-6">
             <p class="text-primary font-mono text-lg">
               <strong
-                >Wait Time = (Queue Length Ã· Service Rate) Ã— Utilization Factor
-                Ã— Time Multiplier</strong
+                >Wait Time = (Queue Length ÷ Service Rate) × Utilization Factor
+                × Time Multiplier</strong
               >
             </p>
             <p class="text-light text-sm mt-2">
-              Example: 6 cars Ã· 4 pumps Ã— 3 min/car Ã— 1.2 peak factor = 5.4
+              Example: 6 cars ÷ 4 pumps × 3 min/car × 1.2 peak factor = 5.4
               minutes wait
             </p>
           </div>
@@ -447,17 +451,17 @@
             </h4>
             <ul class="text-text space-y-2">
               <li>
-                <strong>Service Rate (Î¼):</strong> Pumps Ã— (60 Ã· Average Service
+                <strong>Service Rate (μ):</strong> Pumps × (60 ÷ Average Service
                 Time)
               </li>
               <li>
-                <strong>Arrival Rate (Î»):</strong> Historical arrivals per hour
+                <strong>Arrival Rate (λ):</strong> Historical arrivals per hour
               </li>
               <li>
-                <strong>Utilization (Ï):</strong> Î» Ã· Î¼ (traffic intensity)
+                <strong>Utilization (ρ):</strong> λ ÷ μ (traffic intensity)
               </li>
-              <li><strong>Average Wait:</strong> (Ï Ã· (1-Ï)) Ã— (1 Ã· Î¼)</li>
-              <li><strong>Queue Length:</strong> ÏÂ² Ã· (1-Ï)</li>
+              <li><strong>Average Wait:</strong> (ρ ÷ (1-ρ)) × (1 ÷ μ)</li>
+              <li><strong>Queue Length:</strong> ρ² ÷ (1-ρ)</li>
             </ul>
           </div>
 
@@ -734,6 +738,8 @@
     <script src="script.js"></script>
   </body>
 </html>
+
+
 
 
 
