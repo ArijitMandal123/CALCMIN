@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('social-form');
   const platformSelect = document.getElementById('platform');
   const savesField = document.getElementById('savesField');
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
           
           <div class="bg-dark p-4 rounded">
             <div class="flex items-center gap-2 mb-2"><span class="material-icons text-accent">star</span><strong>Rating:</strong></div>
-            <p class="text-2xl text-accent font-bold ml-8">${rating}</p>
+            <p class="text-2xl text-accent font-bold ml-8">${sanitizeText(rating)}</p>
           </div>
           
           <div class="bg-dark p-4 rounded">
@@ -99,16 +99,16 @@ document.addEventListener('DOMContentLoaded', function() {
           
           <div class="bg-dark p-4 rounded">
             <div class="flex items-center gap-2 mb-2"><span class="material-icons text-accent">lightbulb</span><strong>Recommendation:</strong></div>
-            <p class="ml-8">${advice}</p>
+            <p class="ml-8">${sanitizeText(advice)}</p>
           </div>
           
           <div class="bg-dark p-4 rounded">
             <div class="flex items-center gap-2 mb-2"><span class="material-icons text-accent">bar_chart</span><strong>Platform Benchmarks:</strong></div>
             <ul class="ml-8 space-y-1 text-sm">
-              <li>Poor: < ${benchmark.poor}%</li>
-              <li>Average: ${benchmark.average}%</li>
-              <li>Good: ${benchmark.good}%</li>
-              <li>Excellent: ${benchmark.excellent}%+</li>
+              <li>Poor: < ${sanitizeText(benchmark.poor)}%</li>
+              <li>Average: ${sanitizeText(benchmark.average)}%</li>
+              <li>Good: ${sanitizeText(benchmark.good)}%</li>
+              <li>Excellent: ${sanitizeText(benchmark.excellent)}%+</li>
             </ul>
           </div>
         </div>
@@ -119,3 +119,4 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('result-content').innerHTML = resultHTML;
   });
 });
+

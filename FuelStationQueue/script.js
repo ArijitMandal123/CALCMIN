@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('queue-form');
   
   form.addEventListener('submit', (e) => {
@@ -55,21 +55,21 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="grid gap-4 text-text text-sm md:text-base">
           <div class="bg-dark p-4 rounded border-2 border-primary">
             <div class="flex items-center gap-2 mb-2"><span class="material-icons text-primary">schedule</span><strong>Estimated Wait Time:</strong></div>
-            <p class="text-3xl text-primary font-bold ml-8">${predictedWait} minutes</p>
-            <p class="text-sm text-light ml-8">Range: ${minWait}-${maxWait} minutes</p>
+            <p class="text-3xl text-primary font-bold ml-8">${sanitizeText(predictedWait)} minutes</p>
+            <p class="text-sm text-light ml-8">Range: ${sanitizeText(minWait)}-${sanitizeText(maxWait)} minutes</p>
           </div>
           
           <div class="bg-dark p-4 rounded">
             <div class="flex items-center gap-2 mb-2"><span class="material-icons text-accent">traffic</span><strong>Congestion Level:</strong></div>
-            <p class="text-2xl ${congestionColor} font-bold ml-8">${congestionLevel}</p>
+            <p class="text-2xl ${sanitizeText(congestionColor)} font-bold ml-8">${sanitizeText(congestionLevel)}</p>
           </div>
           
           <div class="bg-dark p-4 rounded">
             <div class="flex items-center gap-2 mb-2"><span class="material-icons text-accent">analytics</span><strong>Queue Analysis:</strong></div>
             <ul class="ml-8 space-y-1 text-sm">
-              <li>Cars in queue: ${carsInQueue}</li>
-              <li>Available pumps: ${numPumps}</li>
-              <li>Avg service time: ${avgServiceTime} min/car</li>
+              <li>Cars in queue: ${sanitizeText(carsInQueue)}</li>
+              <li>Available pumps: ${sanitizeText(numPumps)}</li>
+              <li>Avg service time: ${sanitizeText(avgServiceTime)} min/car</li>
               <li>Queue efficiency: ${((numPumps / Math.max(carsInQueue, 1)) * 100).toFixed(0)}%</li>
             </ul>
           </div>
@@ -99,3 +99,4 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('result-content').innerHTML = resultHTML;
   });
 });
+

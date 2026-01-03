@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('plastic-form');
     
     form.addEventListener('submit', function(e) {
@@ -257,6 +257,12 @@ function generateRecommendations(data, score) {
     return recommendations;
 }
 
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
 function displayResults(results) {
     const resultsDiv = document.getElementById('results');
     const contentDiv = document.getElementById('result-content');
@@ -288,7 +294,7 @@ function displayResults(results) {
                     <div class="text-light">Annual Plastic Waste</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-2xl font-bold ${getScoreColor(results.sustainabilityScore)}">${results.sustainabilityScore}/100</div>
+                    <div class="text-2xl font-bold ${getScoreColor(results.sustainabilityScore)}">${sanitizeText(results.sustainabilityScore)}/100</div>
                     <div class="text-light">${getScoreLevel(results.sustainabilityScore)}</div>
                 </div>
             </div>
@@ -322,23 +328,23 @@ function displayResults(results) {
                 <div class="space-y-2 text-sm">
                     <div class="flex justify-between">
                         <span class="text-light">Water Bottles:</span>
-                        <span class="text-accent">${results.data.waterBottles} (${(results.data.waterBottles * 0.082).toFixed(2)} kg CO2)</span>
+                        <span class="text-accent">${sanitizeText(results.data.waterBottles)} (${(results.data.waterBottles * 0.082).toFixed(2)} kg CO2)</span>
                     </div>
                     <div class="flex justify-between">
                         <span class="text-light">Shopping Bags:</span>
-                        <span class="text-accent">${results.data.shoppingBags} (${(results.data.shoppingBags * 0.040).toFixed(2)} kg CO2)</span>
+                        <span class="text-accent">${sanitizeText(results.data.shoppingBags)} (${(results.data.shoppingBags * 0.040).toFixed(2)} kg CO2)</span>
                     </div>
                     <div class="flex justify-between">
                         <span class="text-light">Food Packaging:</span>
-                        <span class="text-accent">${results.data.foodPackaging} (${(results.data.foodPackaging * 0.065).toFixed(2)} kg CO2)</span>
+                        <span class="text-accent">${sanitizeText(results.data.foodPackaging)} (${(results.data.foodPackaging * 0.065).toFixed(2)} kg CO2)</span>
                     </div>
                     <div class="flex justify-between">
                         <span class="text-light">Disposable Cups:</span>
-                        <span class="text-accent">${results.data.disposableCups} (${(results.data.disposableCups * 0.025).toFixed(2)} kg CO2)</span>
+                        <span class="text-accent">${sanitizeText(results.data.disposableCups)} (${(results.data.disposableCups * 0.025).toFixed(2)} kg CO2)</span>
                     </div>
                     <div class="flex justify-between">
                         <span class="text-light">Plastic Utensils:</span>
-                        <span class="text-accent">${results.data.plasticUtensils} (${(results.data.plasticUtensils * 0.015).toFixed(2)} kg CO2)</span>
+                        <span class="text-accent">${sanitizeText(results.data.plasticUtensils)} (${(results.data.plasticUtensils * 0.015).toFixed(2)} kg CO2)</span>
                     </div>
                     <div class="flex justify-between border-t border-accent pt-2">
                         <span class="text-light font-bold">Weekly Total:</span>
@@ -354,11 +360,11 @@ function displayResults(results) {
             <div class="grid md:grid-cols-3 gap-4">
                 ${results.alternativeSavings.map(alt => `
                     <div class="bg-dark p-4 rounded border border-accent">
-                        <h5 class="font-semibold text-accent mb-2">${alt.item}</h5>
+                        <h5 class="font-semibold text-accent mb-2">${escapeHtml(alt.item)}</h5>
                         <div class="text-sm space-y-1">
                             <div class="flex justify-between">
                                 <span class="text-light">Initial Cost:</span>
-                                <span class="text-accent">$${alt.cost}</span>
+                                <span class="text-accent">$${sanitizeText(alt.cost)}</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-light">Annual Savings:</span>
@@ -382,7 +388,7 @@ function displayResults(results) {
                 ${results.reductionPotential.map(reduction => `
                     <div class="flex justify-between items-center p-3 bg-dark rounded">
                         <div>
-                            <span class="text-light">${reduction.item}: ${reduction.current} → ${reduction.target} per week</span>
+                            <span class="text-light">${escapeHtml(reduction.item)}: ${sanitizeText(reduction.current)} â†’ ${sanitizeText(reduction.target)} per week</span>
                         </div>
                         <div class="text-right">
                             <div class="text-green-400 font-bold">${reduction.carbonSaved.toFixed(1)} kg CO2 saved</div>
@@ -403,8 +409,8 @@ function displayResults(results) {
                             ${rec.priority === 'high' ? 'priority_high' : rec.priority === 'medium' ? 'warning' : 'eco'}
                         </span>
                         <div>
-                            <div class="font-semibold ${rec.priority === 'high' ? 'text-red-400' : rec.priority === 'medium' ? 'text-yellow-400' : 'text-green-400'}">${rec.title}</div>
-                            <div class="text-light text-sm">${rec.description}</div>
+                            <div class="font-semibold ${rec.priority === 'high' ? 'text-red-400' : rec.priority === 'medium' ? 'text-yellow-400' : 'text-green-400'}">${escapeHtml(rec.title)}</div>
+                            <div class="text-light text-sm">${escapeHtml(rec.description)}</div>
                         </div>
                     </div>
                 `).join('')}

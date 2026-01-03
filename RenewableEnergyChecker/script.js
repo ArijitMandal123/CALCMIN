@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('renewableEnergyForm');
     const resultsDiv = document.getElementById('results');
     const resultsContent = document.getElementById('resultsContent');
@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         Feasibility Score
                     </h3>
                     <div class="text-3xl font-bold text-primary mb-2">${recommendation.score.toFixed(1)}/10</div>
-                    <div class="text-light">${recommendation.recommendation}</div>
+                    <div class="text-light">${sanitizeText(recommendation.recommendation)}</div>
                 </div>
                 
                 <div class="bg-dark p-6 rounded-lg border border-accent">
@@ -332,7 +332,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="space-y-4">
                         <div class="flex justify-between items-center">
                             <span class="text-light">Recommended System:</span>
-                            <span class="text-primary font-semibold capitalize">${recommendation.system}</span>
+                            <span class="text-primary font-semibold capitalize">${sanitizeText(recommendation.system)}</span>
                         </div>
                         ${generateSystemDetails(recommendation)}
                         <div class="flex justify-between items-center">
@@ -418,7 +418,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="space-y-3">
                         <div class="flex justify-between items-center">
                             <span class="text-light">Trees Planted Equivalent:</span>
-                            <span class="text-primary font-semibold">${environmental.treesEquivalent} trees/year</span>
+                            <span class="text-primary font-semibold">${sanitizeText(environmental.treesEquivalent)} trees/year</span>
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-light">Car Miles Offset:</span>
@@ -445,41 +445,41 @@ document.addEventListener('DOMContentLoaded', function() {
             return `
                 <div class="flex justify-between items-center">
                     <span class="text-light">System Size:</span>
-                    <span class="text-primary font-semibold">${recommendation.size.kw} kW</span>
+                    <span class="text-primary font-semibold">${sanitizeText(recommendation.size.kw)} kW</span>
                 </div>
                 <div class="flex justify-between items-center">
                     <span class="text-light">Number of Panels:</span>
-                    <span class="text-primary font-semibold">${recommendation.size.panels} panels</span>
+                    <span class="text-primary font-semibold">${sanitizeText(recommendation.size.panels)} panels</span>
                 </div>
                 <div class="flex justify-between items-center">
                     <span class="text-light">Roof Area Needed:</span>
-                    <span class="text-primary font-semibold">${recommendation.size.roofArea} sq ft</span>
+                    <span class="text-primary font-semibold">${sanitizeText(recommendation.size.roofArea)} sq ft</span>
                 </div>
             `;
         } else if (recommendation.system === 'wind') {
             return `
                 <div class="flex justify-between items-center">
                     <span class="text-light">Turbine Size:</span>
-                    <span class="text-primary font-semibold">${recommendation.size.kw} kW</span>
+                    <span class="text-primary font-semibold">${sanitizeText(recommendation.size.kw)} kW</span>
                 </div>
                 <div class="flex justify-between items-center">
                     <span class="text-light">Tower Height:</span>
-                    <span class="text-primary font-semibold">${recommendation.size.towerHeight} feet</span>
+                    <span class="text-primary font-semibold">${sanitizeText(recommendation.size.towerHeight)} feet</span>
                 </div>
             `;
         } else if (recommendation.system === 'hybrid') {
             return `
                 <div class="flex justify-between items-center">
                     <span class="text-light">Solar Component:</span>
-                    <span class="text-primary font-semibold">${recommendation.size.solarKw} kW</span>
+                    <span class="text-primary font-semibold">${sanitizeText(recommendation.size.solarKw)} kW</span>
                 </div>
                 <div class="flex justify-between items-center">
                     <span class="text-light">Wind Component:</span>
-                    <span class="text-primary font-semibold">${recommendation.size.windKw} kW</span>
+                    <span class="text-primary font-semibold">${sanitizeText(recommendation.size.windKw)} kW</span>
                 </div>
                 <div class="flex justify-between items-center">
                     <span class="text-light">Total System:</span>
-                    <span class="text-primary font-semibold">${recommendation.size.totalKw} kW</span>
+                    <span class="text-primary font-semibold">${sanitizeText(recommendation.size.totalKw)} kW</span>
                 </div>
             `;
         }

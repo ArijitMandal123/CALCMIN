@@ -1,4 +1,4 @@
-let roommates = [];
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`nlet roommates = [];
 let roommateCount = 0;
 
 const form = document.getElementById('coliving-form');
@@ -25,8 +25,8 @@ function addRoommate() {
   const div = document.createElement('div');
   div.className = 'flex gap-2 items-center';
   div.innerHTML = `
-    <input type="text" data-id="${id}" placeholder="Roommate ${id} Name" class="flex-1 px-2 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
-    <button type="button" onclick="removeRoommate(${id})" class="px-2 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition">
+    <input type="text" data-id="${sanitizeText(id)}" placeholder="Roommate ${sanitizeText(id)} Name" class="flex-1 px-2 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+    <button type="button" onclick="removeRoommate(${sanitizeText(id)})" class="px-2 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition">
       <span class="material-icons text-sm">delete</span>
     </button>
   `;
@@ -47,7 +47,7 @@ function removeRoommate(id) {
     return;
   }
   roommates = roommates.filter(r => r.id !== id);
-  const input = document.querySelector(`input[data-id="${id}"]`);
+  const input = document.querySelector(`input[data-id="${sanitizeText(id)}"]`);
   if (input) input.parentElement.remove();
   updateIndividualExpenses();
   if (unequalRentCheckbox.checked) updateRoomSizes();
@@ -65,12 +65,12 @@ unequalRentCheckbox.addEventListener('change', (e) => {
 function updateRoomSizes() {
   roomSizesDiv.innerHTML = '';
   roommates.forEach(r => {
-    const nameInput = document.querySelector(`input[data-id="${r.id}"]`);
-    const name = nameInput?.value || `Roommate ${r.id}`;
+    const nameInput = document.querySelector(`input[data-id="${sanitizeText(r.id)}"]`);
+    const name = nameInput?.value || `Roommate ${sanitizeText(r.id)}`;
     const div = document.createElement('div');
     div.innerHTML = `
-      <label class="block text-sm mb-1">${name}'s Room Size (sq ft)</label>
-      <input type="number" id="room-size-${r.id}" class="w-full px-2 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
+      <label class="block text-sm mb-1">${sanitizeText(name)}'s Room Size (sq ft)</label>
+      <input type="number" id="room-size-${sanitizeText(r.id)}" class="w-full px-2 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary" required>
     `;
     roomSizesDiv.appendChild(div);
   });
@@ -79,12 +79,12 @@ function updateRoomSizes() {
 function updateIndividualExpenses() {
   individualExpensesDiv.innerHTML = '';
   roommates.forEach(r => {
-    const nameInput = document.querySelector(`input[data-id="${r.id}"]`);
-    const name = nameInput?.value || `Roommate ${r.id}`;
+    const nameInput = document.querySelector(`input[data-id="${sanitizeText(r.id)}"]`);
+    const name = nameInput?.value || `Roommate ${sanitizeText(r.id)}`;
     const div = document.createElement('div');
     div.innerHTML = `
-      <label class="block text-sm mb-1">${name} paid for shared items ($)</label>
-      <input type="number" id="paid-${r.id}" step="0.01" class="w-full px-2 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary">
+      <label class="block text-sm mb-1">${sanitizeText(name)} paid for shared items ($)</label>
+      <input type="number" id="paid-${sanitizeText(r.id)}" step="0.01" class="w-full px-2 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary">
     `;
     individualExpensesDiv.appendChild(div);
   });
@@ -98,10 +98,10 @@ form.addEventListener('submit', (e) => {
 function calculateSplit() {
   // Get roommate names
   const roommateData = roommates.map(r => {
-    const nameInput = document.querySelector(`input[data-id="${r.id}"]`);
+    const nameInput = document.querySelector(`input[data-id="${sanitizeText(r.id)}"]`);
     return {
       id: r.id,
-      name: nameInput.value || `Roommate ${r.id}`
+      name: nameInput.value || `Roommate ${sanitizeText(r.id)}`
     };
   });
 
@@ -123,11 +123,11 @@ function calculateSplit() {
   if (unequalRentCheckbox.checked) {
     let totalRoomSize = 0;
     roommateData.forEach(r => {
-      const size = parseFloat(document.getElementById(`room-size-${r.id}`).value) || 0;
+      const size = parseFloat(document.getElementById(`room-size-${sanitizeText(r.id)}`).value) || 0;
       totalRoomSize += size;
     });
     roommateData.forEach(r => {
-      const size = parseFloat(document.getElementById(`room-size-${r.id}`).value) || 0;
+      const size = parseFloat(document.getElementById(`room-size-${sanitizeText(r.id)}`).value) || 0;
       rentSplit[r.id] = (size / totalRoomSize) * totalRent;
     });
   } else {
@@ -145,7 +145,7 @@ function calculateSplit() {
   let totalPaid = 0;
   const paidAmounts = {};
   roommateData.forEach(r => {
-    const paid = parseFloat(document.getElementById(`paid-${r.id}`).value) || 0;
+    const paid = parseFloat(document.getElementById(`paid-${sanitizeText(r.id)}`).value) || 0;
     paidAmounts[r.id] = paid;
     totalPaid += paid;
   });
@@ -214,9 +214,9 @@ function displayResults(results, totalRent, totalUtilities, totalShared, totalPa
     html += `
       <div class="bg-dark p-4 rounded border border-accent">
         <div class="flex justify-between items-start mb-2">
-          <h4 class="text-base font-medium text-text">${r.name}</h4>
+          <h4 class="text-base font-medium text-text">${sanitizeText(r.name)}</h4>
           <div class="text-right">
-            <div class="text-sm ${balanceColor} font-medium">${balanceText}</div>
+            <div class="text-sm ${sanitizeText(balanceColor)} font-medium">${sanitizeText(balanceText)}</div>
           </div>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
@@ -260,7 +260,7 @@ function displayResults(results, totalRent, totalUtilities, totalShared, totalPa
       getsBack.forEach(creditor => {
         if (Math.abs(debtor.balance) > 0.01 && creditor.balance > 0.01) {
           const amount = Math.min(Math.abs(debtor.balance), creditor.balance);
-          html += `<div>• ${debtor.name} pays ${creditor.name}: $${amount.toFixed(2)}</div>`;
+          html += `<div>â€¢ ${sanitizeText(debtor.name)} pays ${sanitizeText(creditor.name)}: $${amount.toFixed(2)}</div>`;
           debtor.balance += amount;
           creditor.balance -= amount;
         }
@@ -280,3 +280,4 @@ function displayResults(results, totalRent, totalUtilities, totalShared, totalPa
   resultsDiv.classList.remove('hidden');
   resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
+

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('linkedin-form');
   const resultsDiv = document.getElementById('results');
   const resultContent = document.getElementById('result-content');
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
             <div class="flex justify-between">
               <span class="text-light">Rating:</span>
-              <span class="font-bold ${ratingColor}">${rating}</span>
+              <span class="font-bold ${sanitizeText(ratingColor)}">${sanitizeText(rating)}</span>
             </div>
             <div class="flex justify-between">
               <span class="text-light">Predicted Reach:</span>
@@ -194,31 +194,31 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="space-y-2">
               <div class="flex justify-between">
                 <span class="text-light">Character Count:</span>
-                <span class="text-text ${charLength >= 150 && charLength <= 1300 ? 'text-green-400' : 'text-orange-400'}">${charLength}</span>
+                <span class="text-text ${charLength >= 150 && charLength <= 1300 ? 'text-green-400' : 'text-orange-400'}">${sanitizeText(charLength)}</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-light">Word Count:</span>
-                <span class="text-text">${wordLength}</span>
+                <span class="text-text">${sanitizeText(wordLength)}</span>
               </div>
             </div>
             <div class="space-y-2">
               <div class="flex justify-between">
                 <span class="text-light">Hashtags:</span>
-                <span class="text-text ${hashtagNum >= 3 && hashtagNum <= 5 ? 'text-green-400' : 'text-orange-400'}">${hashtagNum}</span>
+                <span class="text-text ${hashtagNum >= 3 && hashtagNum <= 5 ? 'text-green-400' : 'text-orange-400'}">${sanitizeText(hashtagNum)}</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-light">Content Type:</span>
-                <span class="text-text">${contentType}</span>
+                <span class="text-text">${sanitizeText(contentType)}</span>
               </div>
             </div>
             <div class="space-y-2">
               <div class="flex justify-between">
                 <span class="text-light">Post Day:</span>
-                <span class="text-text ${['tuesday', 'wednesday', 'thursday'].includes(postDay) ? 'text-green-400' : 'text-orange-400'}">${postDay}</span>
+                <span class="text-text ${['tuesday', 'wednesday', 'thursday'].includes(postDay) ? 'text-green-400' : 'text-orange-400'}">${sanitizeText(postDay)}</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-light">Post Time:</span>
-                <span class="text-text ${['morning', 'afternoon'].includes(postTime) ? 'text-green-400' : 'text-orange-400'}">${postTime}</span>
+                <span class="text-text ${['morning', 'afternoon'].includes(postTime) ? 'text-green-400' : 'text-orange-400'}">${sanitizeText(postTime)}</span>
               </div>
             </div>
           </div>

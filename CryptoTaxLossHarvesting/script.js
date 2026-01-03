@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     // Add holding functionality
     document.getElementById('addHolding').addEventListener('click', addHolding);
     
@@ -237,6 +237,12 @@ function calculateTaxLossHarvesting() {
     displayResults(analysis, data);
 }
 
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
 function displayResults(analysis, data) {
     const resultsDiv = document.getElementById('results');
     const resultsContent = document.getElementById('resultsContent');
@@ -297,7 +303,7 @@ function displayResults(analysis, data) {
                 </div>
                 <div>
                     <div class="text-light mb-2">Holdings Analyzed:</div>
-                    <div class="text-text font-semibold">${data.holdings.length} positions</div>
+                    <div class="text-text font-semibold">${sanitizeText(data.holdings.length)} positions</div>
                 </div>
             </div>
         </div>
@@ -309,21 +315,21 @@ function displayResults(analysis, data) {
                 analysis.recommendations.map(rec => `
                     <div class="bg-broder p-4 rounded border border-accent mb-3">
                         <div class="flex items-center justify-between mb-2">
-                            <span class="font-semibold text-accent">${rec.action}</span>
+                            <span class="font-semibold text-accent">${escapeHtml(rec.action)}</span>
                             ${rec.taxSavings ? `<span class="text-green-400">Save ${formatCurrency(rec.taxSavings)}</span>` : ''}
                         </div>
                         ${rec.crypto ? `
                             <div class="text-light mb-2">
-                                <strong>${rec.crypto}:</strong> ${rec.reason}
+                                <strong>${escapeHtml(rec.crypto)}:</strong> ${escapeHtml(rec.reason)}
                             </div>
                             <div class="text-sm text-light">
-                                Amount: ${rec.amount} ${rec.crypto} | 
+                                Amount: ${sanitizeText(rec.amount)} ${escapeHtml(rec.crypto)} | 
                                 Current Value: ${formatCurrency(rec.currentValue)} | 
                                 Loss: ${formatCurrency(rec.loss)}
                             </div>
                         ` : `
-                            <div class="text-light mb-2">${rec.suggestion}</div>
-                            <div class="text-sm text-accent">${rec.benefit}</div>
+                            <div class="text-light mb-2">${escapeHtml(rec.suggestion)}</div>
+                            <div class="text-sm text-accent">${escapeHtml(rec.benefit)}</div>
                         `}
                     </div>
                 `).join('') : 
@@ -349,8 +355,8 @@ function displayResults(analysis, data) {
                     <tbody>
                         ${data.holdings.map(holding => `
                             <tr class="border-b border-broder">
-                                <td class="text-text p-2">${holding.crypto}</td>
-                                <td class="text-right text-text p-2">${holding.amountHeld}</td>
+                                <td class="text-text p-2">${escapeHtml(holding.crypto)}</td>
+                                <td class="text-right text-text p-2">${sanitizeText(holding.amountHeld)}</td>
                                 <td class="text-right text-text p-2">${formatCurrency(holding.purchasePrice)}</td>
                                 <td class="text-right text-text p-2">${formatCurrency(holding.currentPrice)}</td>
                                 <td class="text-right p-2 ${holding.gainLoss >= 0 ? 'text-green-400' : 'text-red-400'}">
@@ -370,11 +376,11 @@ function displayResults(analysis, data) {
         <div class="bg-yellow-900 bg-opacity-20 border border-yellow-600 p-4 rounded mt-6">
             <h4 class="text-yellow-400 font-semibold mb-2">Important Considerations</h4>
             <ul class="text-yellow-200 text-sm space-y-1">
-                <li>• Tax laws vary by jurisdiction and change frequently</li>
-                <li>• Consider transaction costs when implementing recommendations</li>
-                <li>• Consult with a tax professional for personalized advice</li>
-                <li>• Keep detailed records of all transactions</li>
-                <li>• Be aware of potential wash sale rules in your jurisdiction</li>
+                <li>â€¢ Tax laws vary by jurisdiction and change frequently</li>
+                <li>â€¢ Consider transaction costs when implementing recommendations</li>
+                <li>â€¢ Consult with a tax professional for personalized advice</li>
+                <li>â€¢ Keep detailed records of all transactions</li>
+                <li>â€¢ Be aware of potential wash sale rules in your jurisdiction</li>
             </ul>
         </div>
     `;

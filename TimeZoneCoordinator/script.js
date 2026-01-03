@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('timezone-form');
   const resultsDiv = document.getElementById('results');
   const resultContent = document.getElementById('result-content');
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="grid md:grid-cols-3 gap-3">
         <div>
           <label class="block text-xs text-light mb-1">Name/Role</label>
-          <input type="text" class="member-name w-full px-3 py-2 text-sm border border-accent rounded bg-broder text-text focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Team Member ${memberCount}" required>
+          <input type="text" class="member-name w-full px-3 py-2 text-sm border border-accent rounded bg-broder text-text focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Team Member ${sanitizeText(memberCount)}" required>
         </div>
         <div>
           <label class="block text-xs text-light mb-1">Time Zone</label>
@@ -242,10 +242,10 @@ document.addEventListener('DOMContentLoaded', function() {
           </h3>
           <p class="text-light">No meeting times work for all team members with current constraints. Try:</p>
           <ul class="mt-3 space-y-1 text-sm text-light">
-            <li>• Expanding work hours for some members</li>
-            <li>• Including weekend days</li>
-            <li>• Reducing meeting duration</li>
-            <li>• Setting some members as lower priority</li>
+            <li>â€¢ Expanding work hours for some members</li>
+            <li>â€¢ Including weekend days</li>
+            <li>â€¢ Reducing meeting duration</li>
+            <li>â€¢ Setting some members as lower priority</li>
           </ul>
         </div>
       `;
@@ -267,7 +267,7 @@ document.addEventListener('DOMContentLoaded', function() {
               <div class="bg-dark p-4 rounded border border-accent">
                 <div class="flex justify-between items-center mb-3">
                   <h4 class="text-lg font-medium text-text">
-                    Option ${index + 1}: ${dayNames[slot.day]} ${slot.utcTime} UTC
+                    Option ${index + 1}: ${dayNames[slot.day]} ${sanitizeText(slot.utcTime)} UTC
                   </h4>
                   <span class="text-sm px-2 py-1 rounded ${
                     slot.score >= 90 ? 'bg-green-600 text-white' :
@@ -283,8 +283,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="flex justify-between items-center py-1">
                       <span class="text-light">${member.name}:</span>
                       <span class="text-text font-medium">
-                        ${member.localTime} (${member.timezone})
-                        ${member.score >= 90 ? '🟢' : member.score >= 70 ? '🟡' : '🟠'}
+                        ${sanitizeText(member.localTime)} (${sanitizeText(member.timezone)})
+                        ${member.score >= 90 ? 'ðŸŸ¢' : member.score >= 70 ? 'ðŸŸ¡' : 'ðŸŸ '}
                       </span>
                     </div>
                   `).join('')}
@@ -299,15 +299,15 @@ document.addEventListener('DOMContentLoaded', function() {
               ${members.map(member => `
                 <div class="flex justify-between">
                   <span class="text-light">${member.name}:</span>
-                  <span class="text-text">${member.startTime}-${member.endTime} ${member.timezone}</span>
+                  <span class="text-text">${sanitizeText(member.startTime)}-${sanitizeText(member.endTime)} ${sanitizeText(member.timezone)}</span>
                 </div>
               `).join('')}
             </div>
           </div>
 
           <div class="mt-4 text-xs text-light">
-            <p>🟢 Ideal time (10 AM - 4 PM local) | 🟡 Good time | 🟠 Acceptable time</p>
-            <p>Meeting duration: ${duration} minutes</p>
+            <p>ðŸŸ¢ Ideal time (10 AM - 4 PM local) | ðŸŸ¡ Good time | ðŸŸ  Acceptable time</p>
+            <p>Meeting duration: ${sanitizeText(duration)} minutes</p>
           </div>
         </div>
       `;

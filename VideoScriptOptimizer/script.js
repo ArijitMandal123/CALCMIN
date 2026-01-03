@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('script-form');
     const platformSelect = document.getElementById('platform');
     const categorySelect = document.getElementById('category');
@@ -280,14 +280,14 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Duration recommendations
         if (duration > platformData.recommendedDuration * 1.5) {
-            recommendations.push(`Consider shortening to ${platformData.optimalLength} for better retention on ${platform}`);
+            recommendations.push(`Consider shortening to ${sanitizeText(platformData.optimalLength)} for better retention on ${sanitizeText(platform)}`);
         } else if (duration < platformData.recommendedDuration * 0.5) {
-            recommendations.push(`Consider extending to ${platformData.optimalLength} for better algorithm performance`);
+            recommendations.push(`Consider extending to ${sanitizeText(platformData.optimalLength)} for better algorithm performance`);
         }
         
         // Completion rate recommendations
         if (completionRate && completionRate < platformData.retentionTarget) {
-            recommendations.push(`Improve your hook in the first ${platformData.hookDuration} seconds to boost retention`);
+            recommendations.push(`Improve your hook in the first ${sanitizeText(platformData.hookDuration)} seconds to boost retention`);
             recommendations.push('Consider faster pacing and more engaging visuals to maintain attention');
         }
         
@@ -376,6 +376,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // ===== RESULTS DISPLAY =====
+    function sanitizeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
     function displayResults(optimization) {
         const durationColor = optimization.recommendedDuration <= 1 ? 'text-green-400' : 
                              optimization.recommendedDuration <= 5 ? 'text-yellow-400' : 'text-orange-400';
@@ -383,11 +389,11 @@ document.addEventListener('DOMContentLoaded', function() {
         resultContent.innerHTML = `
             <div class="bg-broder border border-accent rounded-lg p-6">
                 <div class="text-center mb-6">
-                    <div class="text-4xl font-bold text-primary mb-2">${optimization.optimalWordCount}</div>
+                    <div class="text-4xl font-bold text-primary mb-2">${sanitizeHtml(optimization.optimalWordCount.toString())}</div>
                     <div class="text-lg text-light">Optimal Word Count</div>
                     <div class="text-sm text-accent mt-1">${optimization.recommendedDuration >= 1 ? 
-                        `${optimization.recommendedDuration.toFixed(1)} minutes` : 
-                        `${Math.round(optimization.recommendedDuration * 60)} seconds`} recommended duration</div>
+                        `${sanitizeHtml(optimization.recommendedDuration.toFixed(1))} minutes` : 
+                        `${sanitizeHtml(Math.round(optimization.recommendedDuration * 60).toString())} seconds`} recommended duration</div>
                 </div>
                 
                 <div class="grid md:grid-cols-2 gap-6 mb-6">
@@ -396,10 +402,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="space-y-2">
                             ${Object.entries(optimization.contentBreakdown).map(([section, data]) => `
                                 <div class="flex items-center justify-between bg-dark border border-accent rounded p-2">
-                                    <span class="text-text capitalize">${section.replace(/([A-Z])/g, ' $1')}</span>
+                                    <span class="text-text capitalize">${sanitizeHtml(section.replace(/([A-Z])/g, ' $1'))}</span>
                                     <div class="text-right">
-                                        <div class="text-accent font-medium">${data.words} words</div>
-                                        <div class="text-xs text-light">${data.percentage}%</div>
+                                        <div class="text-accent font-medium">${sanitizeHtml(data.words.toString())} words</div>
+                                        <div class="text-xs text-light">${sanitizeHtml(data.percentage.toString())}%</div>
                                     </div>
                                 </div>
                             `).join('')}
@@ -410,34 +416,34 @@ document.addEventListener('DOMContentLoaded', function() {
                         <h3 class="text-lg font-semibold text-primary mb-3">Platform Optimization</h3>
                         <div class="space-y-2 text-sm">
                             <div class="bg-dark border border-accent rounded p-3">
-                                <strong class="text-accent">Optimal Length:</strong> ${optimization.platformOptimization.optimalLength}
+                                <strong class="text-accent">Optimal Length:</strong> ${sanitizeHtml(optimization.platformOptimization.optimalLength)}
                             </div>
                             <div class="bg-dark border border-accent rounded p-3">
-                                <strong class="text-accent">Target Retention:</strong> ${optimization.platformOptimization.retentionTarget}%
+                                <strong class="text-accent">Target Retention:</strong> ${sanitizeHtml(optimization.platformOptimization.retentionTarget.toString())}%
                             </div>
                             <div class="bg-dark border border-accent rounded p-3">
-                                <strong class="text-accent">Hook Duration:</strong> ${optimization.platformOptimization.hookDuration} seconds
+                                <strong class="text-accent">Hook Duration:</strong> ${sanitizeHtml(optimization.platformOptimization.hookDuration.toString())} seconds
                             </div>
                             <div class="bg-dark border border-accent rounded p-3">
-                                <strong class="text-accent">Algorithm Focus:</strong> ${optimization.platformOptimization.algorithm}
+                                <strong class="text-accent">Algorithm Focus:</strong> ${sanitizeHtml(optimization.platformOptimization.algorithm)}
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="mb-6">
-                    <h3 class="text-lg font-semibold text-primary mb-3">📝 Pacing Guide</h3>
+                    <h3 class="text-lg font-semibold text-primary mb-3">ðŸ“ Pacing Guide</h3>
                     <div class="bg-dark border border-accent rounded p-4">
                         <div class="text-center mb-3">
-                            <span class="text-accent font-semibold">Average Pace: ${optimization.pacingGuide.averageWPM} WPM</span>
+                            <span class="text-accent font-semibold">Average Pace: ${sanitizeHtml(optimization.pacingGuide.averageWPM.toString())} WPM</span>
                         </div>
                         <div class="grid md:grid-cols-2 gap-4">
                             ${optimization.pacingGuide.sections.map(section => `
                                 <div class="flex items-center justify-between">
-                                    <span class="text-text capitalize">${section.name.replace(/([A-Z])/g, ' $1')}</span>
+                                    <span class="text-text capitalize">${sanitizeHtml(section.name.replace(/([A-Z])/g, ' $1'))}</span>
                                     <div class="text-right">
-                                        <div class="text-accent">${section.recommendedWPM} WPM</div>
-                                        <div class="text-xs text-light">${section.pacing} pace</div>
+                                        <div class="text-accent">${sanitizeHtml(section.recommendedWPM.toString())} WPM</div>
+                                        <div class="text-xs text-light">${sanitizeHtml(section.pacing)} pace</div>
                                     </div>
                                 </div>
                             `).join('')}
@@ -447,17 +453,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 ${optimization.retentionAnalysis.dropOffPoints.length > 0 ? `
                 <div class="mb-6">
-                    <h3 class="text-lg font-semibold text-primary mb-3">📊 Retention Analysis</h3>
+                    <h3 class="text-lg font-semibold text-primary mb-3">ðŸ“Š Retention Analysis</h3>
                     <div class="grid md:grid-cols-2 gap-4">
                         <div class="bg-dark border border-accent rounded p-3">
                             <h4 class="text-accent font-semibold mb-2">Expected Retention</h4>
-                            <div class="text-2xl font-bold text-primary">${optimization.retentionAnalysis.expectedRetention}%</div>
+                            <div class="text-2xl font-bold text-primary">${sanitizeHtml(optimization.retentionAnalysis.expectedRetention.toString())}%</div>
                         </div>
                         <div class="bg-dark border border-accent rounded p-3">
                             <h4 class="text-accent font-semibold mb-2">Common Drop-off Points</h4>
                             <ul class="text-xs text-text space-y-1">
                                 ${optimization.retentionAnalysis.dropOffPoints.map(point => `
-                                    <li>• ${point}</li>
+                                    <li>â€¢ ${sanitizeHtml(point)}</li>
                                 `).join('')}
                             </ul>
                         </div>
@@ -467,12 +473,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 ${optimization.recommendations.length > 0 ? `
                 <div class="mb-6">
-                    <h3 class="text-lg font-semibold text-primary mb-3">💡 Optimization Recommendations</h3>
+                    <h3 class="text-lg font-semibold text-primary mb-3">ðŸ’¡ Optimization Recommendations</h3>
                     <ul class="space-y-2">
                         ${optimization.recommendations.map(rec => `
                             <li class="flex items-start gap-2 text-text">
                                 <span class="material-icons text-yellow-400 text-sm mt-0.5">lightbulb</span>
-                                ${rec}
+                                ${sanitizeHtml(rec)}
                             </li>
                         `).join('')}
                     </ul>
@@ -481,29 +487,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 <div class="grid md:grid-cols-2 gap-4">
                     <div class="bg-dark border border-accent rounded p-4">
-                        <h4 class="text-primary font-semibold mb-2">🎯 Script Structure</h4>
+                        <h4 class="text-primary font-semibold mb-2">ðŸŽ¯ Script Structure</h4>
                         <div class="text-sm text-text">
-                            Hook (${optimization.contentBreakdown.hook?.percentage}%) → 
-                            Main Content (${optimization.contentBreakdown.mainContent?.percentage}%) → 
-                            CTA (${optimization.contentBreakdown.callToAction?.percentage}%)
+                            Hook (${sanitizeHtml((optimization.contentBreakdown.hook?.percentage || 0).toString())}%) â†’ 
+                            Main Content (${sanitizeHtml((optimization.contentBreakdown.mainContent?.percentage || 0).toString())}%) â†’ 
+                            CTA (${sanitizeHtml((optimization.contentBreakdown.callToAction?.percentage || 0).toString())}%)
                         </div>
                     </div>
                     <div class="bg-dark border border-accent rounded p-4">
-                        <h4 class="text-primary font-semibold mb-2">⏱️ Timing Breakdown</h4>
+                        <h4 class="text-primary font-semibold mb-2">â±ï¸ Timing Breakdown</h4>
                         <div class="text-sm text-text">
-                            ${optimization.pacingGuide.sections.length} sections with 
-                            ${optimization.pacingGuide.averageWPM} WPM average pace
+                            ${sanitizeHtml(optimization.pacingGuide.sections.length.toString())} sections with 
+                            ${sanitizeHtml(optimization.pacingGuide.averageWPM.toString())} WPM average pace
                         </div>
                     </div>
                 </div>
                 
                 <div class="mt-6 bg-gradient-to-r from-primary/20 to-accent/20 rounded-lg p-4 text-center">
-                    <div class="text-primary font-semibold mb-2">🚀 Script Optimization Complete</div>
+                    <div class="text-primary font-semibold mb-2">ðŸš€ Script Optimization Complete</div>
                     <div class="text-sm text-text">
-                        Optimal script: <strong>${optimization.optimalWordCount} words</strong> for 
+                        Optimal script: <strong>${sanitizeHtml(optimization.optimalWordCount.toString())} words</strong> for 
                         <strong>${optimization.recommendedDuration >= 1 ? 
-                            `${optimization.recommendedDuration.toFixed(1)} minutes` : 
-                            `${Math.round(optimization.recommendedDuration * 60)} seconds`}</strong> video
+                            `${sanitizeHtml(optimization.recommendedDuration.toFixed(1))} minutes` : 
+                            `${sanitizeHtml(Math.round(optimization.recommendedDuration * 60).toString())} seconds`}</strong> video
                     </div>
                 </div>
             </div>

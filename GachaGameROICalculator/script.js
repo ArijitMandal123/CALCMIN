@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('gacha-roi-form');
     const satisfactionInput = document.getElementById('satisfactionLevel');
     const satisfactionText = document.getElementById('satisfaction-text');
@@ -390,7 +390,7 @@ function displayResults(results) {
     const html = `
         <div class="bg-primary/10 border-l-4 border-primary p-6 mb-6">
             <h3 class="text-2xl font-bold text-primary mb-2">Your Gacha Game ROI Analysis</h3>
-            <p class="text-light">Classification: <span class="${results.whaleClass.color} font-semibold">${results.whaleClass.class}</span> (Top ${results.whaleClass.percentile}% of players)</p>
+            <p class="text-light">Classification: <span class="${sanitizeText(results.whaleClass.color)} font-semibold">${sanitizeText(results.whaleClass.class)}</span> (Top ${sanitizeText(results.whaleClass.percentile)}% of players)</p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-6 mb-6">
@@ -421,7 +421,7 @@ function displayResults(results) {
                 <div class="space-y-3">
                     <div class="flex justify-between items-center">
                         <span class="text-light">Value Rating</span>
-                        <span class="text-primary font-semibold">${results.entertainmentValue.valueRating}</span>
+                        <span class="text-primary font-semibold">${sanitizeText(results.entertainmentValue.valueRating)}</span>
                     </div>
                     <div class="text-sm text-light">
                         <div class="mb-2">Compared to other entertainment:</div>
@@ -441,10 +441,10 @@ function displayResults(results) {
                 <div class="mb-4">
                     <div class="flex justify-between items-center mb-2">
                         <span class="text-light">Efficiency Score</span>
-                        <span class="text-primary font-semibold">${results.spendingEfficiency}/100</span>
+                        <span class="text-primary font-semibold">${sanitizeText(results.spendingEfficiency)}/100</span>
                     </div>
                     <div class="w-full bg-dark rounded-full h-2">
-                        <div class="bg-primary h-2 rounded-full" style="width: ${results.spendingEfficiency}%"></div>
+                        <div class="bg-primary h-2 rounded-full" style="width: ${sanitizeText(results.spendingEfficiency)}%"></div>
                     </div>
                 </div>
                 <div class="text-sm text-light">
@@ -476,11 +476,11 @@ function displayResults(results) {
             <h4 class="text-xl font-bold text-accent mb-4">Should I Quit Analysis</h4>
             <div class="grid md:grid-cols-3 gap-4 mb-4">
                 <div class="bg-dark p-4 rounded border border-accent text-center">
-                    <div class="text-2xl font-bold text-primary mb-2">${results.quitAnalysis.score}/100</div>
+                    <div class="text-2xl font-bold text-primary mb-2">${sanitizeText(results.quitAnalysis.score)}/100</div>
                     <div class="text-sm text-light">Quit Score</div>
                 </div>
                 <div class="bg-dark p-4 rounded border border-accent text-center">
-                    <div class="text-lg font-bold text-accent mb-2">${results.quitAnalysis.recommendation}</div>
+                    <div class="text-lg font-bold text-accent mb-2">${sanitizeText(results.quitAnalysis.recommendation)}</div>
                     <div class="text-sm text-light">Recommendation</div>
                 </div>
                 <div class="bg-dark p-4 rounded border border-accent text-center">
@@ -511,8 +511,8 @@ function displayResults(results) {
                                 ${rec.type === 'warning' ? 'warning' : rec.type === 'positive' ? 'check_circle' : 'lightbulb'}
                             </span>
                             <div>
-                                <h5 class="font-semibold text-accent mb-1">${rec.title}</h5>
-                                <p class="text-sm text-light">${rec.message}</p>
+                                <h5 class="font-semibold text-accent mb-1">${sanitizeText(rec.title)}</h5>
+                                <p class="text-sm text-light">${sanitizeText(rec.message)}</p>
                             </div>
                         </div>
                     </div>

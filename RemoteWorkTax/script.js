@@ -1,4 +1,4 @@
-document.getElementById('tax-form').addEventListener('submit', function(e) {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.getElementById('tax-form').addEventListener('submit', function(e) {
   e.preventDefault();
   
   const employmentType = document.getElementById('employmentType').value;
@@ -70,12 +70,18 @@ document.getElementById('tax-form').addEventListener('submit', function(e) {
   );
 });
 
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
 function displayResults(method, total, direct, simplified, equipment, operating, savings, eligible, empType) {
   const resultsDiv = document.getElementById('results');
   const contentDiv = document.getElementById('result-content');
   
   const eligibilityNote = empType === 'employee' 
-    ? '<div class="bg-red-900/30 border border-red-500 rounded p-3 text-sm mb-4"><strong>⚠️ Note:</strong> W-2 employees generally cannot deduct home office expenses under current tax law (TCJA 2017-2025). These calculations are for informational purposes.</div>'
+    ? '<div class="bg-red-900/30 border border-red-500 rounded p-3 text-sm mb-4"><strong>âš ï¸ Note:</strong> W-2 employees generally cannot deduct home office expenses under current tax law (TCJA 2017-2025). These calculations are for informational purposes.</div>'
     : '';
   
   contentDiv.innerHTML = `
@@ -84,12 +90,12 @@ function displayResults(method, total, direct, simplified, equipment, operating,
         <span class="material-icons text-primary">receipt_long</span> Tax Deduction Results
       </h2>
       
-      ${eligibilityNote}
+      ${sanitizeText(eligibilityNote)}
       
       <div class="bg-dark p-4 rounded mb-4">
         <div class="text-center">
           <div class="text-primary text-4xl md:text-5xl font-bold mb-2">$${total.toFixed(2)}</div>
-          <div class="text-light text-sm">Total Annual Deductions (${method} Method)</div>
+          <div class="text-light text-sm">Total Annual Deductions (${escapeHtml(method)} Method)</div>
         </div>
       </div>
       
@@ -100,7 +106,7 @@ function displayResults(method, total, direct, simplified, equipment, operating,
         </div>
         <div class="bg-dark p-3 rounded">
           <div class="text-accent text-sm mb-1">Recommended Method</div>
-          <div class="text-text text-xl font-medium">${method}</div>
+          <div class="text-text text-xl font-medium">${escapeHtml(method)}</div>
         </div>
       </div>
       
@@ -115,13 +121,13 @@ function displayResults(method, total, direct, simplified, equipment, operating,
       </div>
       
       <div class="bg-accent/20 border border-accent rounded p-3 text-sm">
-        <strong>📋 Important Notes:</strong>
+        <strong>ðŸ“‹ Important Notes:</strong>
         <ul class="mt-2 space-y-1 text-light">
-          <li>• Keep detailed records and receipts for all expenses</li>
-          <li>• Home office must be used regularly and exclusively for business</li>
-          <li>• Equipment over $2,500 may need to be depreciated</li>
-          <li>• Consult a tax professional for personalized advice</li>
-          <li>• Tax laws vary by state and change frequently</li>
+          <li>â€¢ Keep detailed records and receipts for all expenses</li>
+          <li>â€¢ Home office must be used regularly and exclusively for business</li>
+          <li>â€¢ Equipment over $2,500 may need to be depreciated</li>
+          <li>â€¢ Consult a tax professional for personalized advice</li>
+          <li>â€¢ Tax laws vary by state and change frequently</li>
         </ul>
       </div>
     </div>
@@ -130,3 +136,4 @@ function displayResults(method, total, direct, simplified, equipment, operating,
   resultsDiv.classList.remove('hidden');
   resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
+

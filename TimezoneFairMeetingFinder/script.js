@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('timezone-form');
     const resultsDiv = document.getElementById('results');
     const resultContent = document.getElementById('result-content');
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const selectedDays = [];
         const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
         days.forEach(day => {
-            if (document.getElementById(`day-${day}`).checked) {
+            if (document.getElementById(`day-${sanitizeText(day)}`).checked) {
                 selectedDays.push(day);
             }
         });
@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const hour12 = time.hour === 0 ? 12 : time.hour > 12 ? time.hour - 12 : time.hour;
         const ampm = time.hour >= 12 ? 'PM' : 'AM';
         const minute = time.minute.toString().padStart(2, '0');
-        return `${hour12}:${minute} ${ampm}`;
+        return `${sanitizeText(hour12)}:${sanitizeText(minute)} ${sanitizeText(ampm)}`;
     }
 
     function getFairnessLevel(score) {
@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', function() {
             rotations.push({
                 week: i + 1,
                 priorityMember: priorityMember.name,
-                description: `Optimize for ${priorityMember.name}'s timezone (${priorityMember.timezone})`
+                description: `Optimize for ${sanitizeText(priorityMember.name)}'s timezone (${sanitizeText(priorityMember.timezone)})`
             });
         }
 
@@ -342,6 +342,12 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
 
+    function sanitizeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
     function displayResults(analysis) {
         resultContent.innerHTML = `
             <div class="bg-broder p-6 rounded-lg border border-accent">
@@ -353,19 +359,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="grid md:grid-cols-3 gap-6 mb-6">
                     <div class="bg-dark p-4 rounded border border-accent">
                         <h3 class="font-semibold text-text mb-2">Best Option</h3>
-                        <div class="text-2xl font-bold text-green-400 mb-2">${analysis.stats.bestScore}</div>
+                        <div class="text-2xl font-bold text-green-400 mb-2">${sanitizeHtml(analysis.stats.bestScore)}</div>
                         <p class="text-sm text-light">Unfairness Score</p>
                     </div>
                     
                     <div class="bg-dark p-4 rounded border border-accent">
                         <h3 class="font-semibold text-text mb-2">Team Size</h3>
-                        <div class="text-2xl font-bold text-primary mb-2">${analysis.totalMembers}</div>
-                        <p class="text-sm text-light">Members across ${analysis.stats.timezoneSpread} timezones</p>
+                        <div class="text-2xl font-bold text-primary mb-2">${sanitizeHtml(analysis.totalMembers.toString())}</div>
+                        <p class="text-sm text-light">Members across ${sanitizeHtml(analysis.stats.timezoneSpread.toString())} timezones</p>
                     </div>
                     
                     <div class="bg-dark p-4 rounded border border-accent">
                         <h3 class="font-semibold text-text mb-2">Meeting Duration</h3>
-                        <div class="text-2xl font-bold text-accent mb-2">${analysis.meetingDuration}min</div>
+                        <div class="text-2xl font-bold text-accent mb-2">${sanitizeHtml(analysis.meetingDuration.toString())}min</div>
                         <p class="text-sm text-light">Total meeting time</p>
                     </div>
                 </div>
@@ -378,18 +384,18 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <div class="flex justify-between items-start mb-3">
                                     <div>
                                         <h4 class="font-medium text-text">Option ${index + 1}: ${formatTime(option.utcTime)} UTC</h4>
-                                        <p class="text-sm ${option.fairnessLevel.color}">${option.fairnessLevel.level} Fairness (Score: ${option.unfairnessScore.toFixed(1)})</p>
+                                        <p class="text-sm ${sanitizeText(option.fairnessLevel.color)}">${sanitizeHtml(option.fairnessLevel.level)} Fairness (Score: ${sanitizeHtml(option.unfairnessScore.toFixed(1))})</p>
                                     </div>
                                 </div>
                                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
                                     ${option.memberTimes.map(member => `
                                         <div class="flex justify-between items-center p-2 bg-broder rounded">
                                             <div>
-                                                <span class="text-text font-medium">${member.name}</span>
-                                                <div class="text-xs text-light">${member.timezone}</div>
+                                                <span class="text-text font-medium">${sanitizeHtml(member.name)}</span>
+                                                <div class="text-xs text-light">${sanitizeHtml(member.timezone)}</div>
                                             </div>
                                             <div class="text-right">
-                                                <div class="text-sm ${member.isWorkingHours ? 'text-green-400' : 'text-orange-400'}">${member.time}</div>
+                                                <div class="text-sm ${member.isWorkingHours ? 'text-green-400' : 'text-orange-400'}">${sanitizeHtml(member.time)}</div>
                                                 <div class="text-xs ${member.isWorkingHours ? 'text-green-400' : 'text-red-400'}">
                                                     ${member.isWorkingHours ? 'Work Hours' : 'Outside Hours'}
                                                 </div>
@@ -410,8 +416,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="space-y-2">
                             ${analysis.rotationSchedule.map(rotation => `
                                 <div class="flex justify-between items-center p-2 bg-broder rounded">
-                                    <span class="text-text">Week ${rotation.week}</span>
-                                    <span class="text-primary">${rotation.description}</span>
+                                    <span class="text-text">Week ${sanitizeHtml(rotation.week.toString())}</span>
+                                    <span class="text-primary">${sanitizeHtml(rotation.description)}</span>
                                 </div>
                             `).join('')}
                         </div>
@@ -425,11 +431,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         Key Insights
                     </h3>
                     <ul class="text-sm text-light space-y-1">
-                        <li>• Best unfairness score: ${analysis.stats.bestScore} (lower is better)</li>
-                        <li>• Average unfairness across all options: ${analysis.stats.avgScore}</li>
-                        <li>• Team spans ${analysis.stats.timezoneSpread} different timezone${analysis.stats.timezoneSpread > 1 ? 's' : ''}</li>
-                        <li>• ${analysis.topOptions[0].memberTimes.filter(m => m.isWorkingHours).length} of ${analysis.totalMembers} members in working hours for best option</li>
-                        ${analysis.rotationSchedule ? '<li>• Use rotation schedule to distribute inconvenience fairly over time</li>' : ''}
+                        <li>â€¢ Best unfairness score: ${sanitizeHtml(analysis.stats.bestScore)} (lower is better)</li>
+                        <li>â€¢ Average unfairness across all options: ${sanitizeHtml(analysis.stats.avgScore)}</li>
+                        <li>â€¢ Team spans ${sanitizeHtml(analysis.stats.timezoneSpread.toString())} different timezone${analysis.stats.timezoneSpread > 1 ? 's' : ''}</li>
+                        <li>â€¢ ${analysis.topOptions[0].memberTimes.filter(m => m.isWorkingHours).length} of ${sanitizeHtml(analysis.totalMembers.toString())} members in working hours for best option</li>
+                        ${analysis.rotationSchedule ? '<li>â€¢ Use rotation schedule to distribute inconvenience fairly over time</li>' : ''}
                     </ul>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-document.getElementById('coworking-form').addEventListener('submit', function(e) {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.getElementById('coworking-form').addEventListener('submit', function(e) {
   e.preventDefault();
   
   const teamSize = parseInt(document.getElementById('teamSize').value);
@@ -51,6 +51,12 @@ document.getElementById('coworking-form').addEventListener('submit', function(e)
   displayResults(currentMonthlyCost, totalCoworkingCost, monthlySavings, annualSavings, roiPercentage, totalBenefits);
 });
 
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
 function displayResults(current, coworking, monthly, annual, roi, benefits) {
   const resultsDiv = document.getElementById('results');
   const contentDiv = document.getElementById('result-content');
@@ -74,7 +80,7 @@ function displayResults(current, coworking, monthly, annual, roi, benefits) {
           <div class="text-light text-sm">Coworking Monthly Cost</div>
         </div>
         <div class="bg-dark p-4 rounded text-center">
-          <div class="${recColor} text-2xl font-bold">${monthly >= 0 ? '+' : ''}$${monthly.toFixed(2)}</div>
+          <div class="${sanitizeText(recColor)} text-2xl font-bold">${monthly >= 0 ? '+' : ''}$${monthly.toFixed(2)}</div>
           <div class="text-light text-sm">Monthly Difference</div>
         </div>
       </div>
@@ -82,7 +88,7 @@ function displayResults(current, coworking, monthly, annual, roi, benefits) {
       <div class="bg-dark p-4 rounded mb-4 text-center">
         <div class="text-primary text-3xl font-bold">${roi.toFixed(1)}%</div>
         <div class="text-light text-sm mb-2">ROI</div>
-        <div class="${recColor} font-medium">${recommendation}</div>
+        <div class="${sanitizeText(recColor)} font-medium">${escapeHtml(recommendation)}</div>
       </div>
       
       <div class="bg-dark p-4 rounded mb-4">
@@ -94,13 +100,13 @@ function displayResults(current, coworking, monthly, annual, roi, benefits) {
       </div>
       
       <div class="bg-accent/20 border border-accent rounded p-3 text-sm">
-        <strong>💡 Coworking Benefits:</strong>
+        <strong>ðŸ’¡ Coworking Benefits:</strong>
         <ul class="mt-2 space-y-1 text-light">
-          <li>• Networking opportunities and community</li>
-          <li>• Flexible workspace without long-term commitment</li>
-          <li>• Professional environment boosts productivity</li>
-          <li>• Access to meeting rooms and amenities</li>
-          <li>• Reduced overhead and maintenance costs</li>
+          <li>â€¢ Networking opportunities and community</li>
+          <li>â€¢ Flexible workspace without long-term commitment</li>
+          <li>â€¢ Professional environment boosts productivity</li>
+          <li>â€¢ Access to meeting rooms and amenities</li>
+          <li>â€¢ Reduced overhead and maintenance costs</li>
         </ul>
       </div>
     </div>

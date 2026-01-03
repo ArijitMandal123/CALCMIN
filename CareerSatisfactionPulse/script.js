@@ -1,4 +1,4 @@
-// Career satisfaction factor weights
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Career satisfaction factor weights
 const satisfactionWeights = {
     compensation: {
         salary: 0.25,
@@ -374,6 +374,12 @@ function analyzeSatisfaction(score) {
     }
 }
 
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
 // Display results
 function displayResults(data) {
     const scores = calculateSatisfactionScore(data);
@@ -387,23 +393,23 @@ function displayResults(data) {
     resultsContent.innerHTML = `
         <!-- Overall Score Card -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div class="md:col-span-2 ${analysis.bgColor} p-6 rounded-lg border ${analysis.borderColor}">
+            <div class="md:col-span-2 ${sanitizeText(analysis.bgColor)} p-6 rounded-lg border ${sanitizeText(analysis.borderColor)}">
                 <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-2xl font-bold ${analysis.color}">Career Satisfaction: ${analysis.level}</h3>
+                    <h3 class="text-2xl font-bold ${sanitizeText(analysis.color)}">Career Satisfaction: ${sanitizeText(analysis.level)}</h3>
                     <div class="text-right">
-                        <div class="text-4xl font-bold ${analysis.color}">${scores.overall}/100</div>
-                        <div class="text-sm text-light">Retention Likelihood: ${retentionLikelihood}%</div>
+                        <div class="text-4xl font-bold ${sanitizeText(analysis.color)}">${sanitizeText(scores.overall)}/100</div>
+                        <div class="text-sm text-light">Retention Likelihood: ${sanitizeText(retentionLikelihood)}%</div>
                     </div>
                 </div>
-                <p class="text-light mb-4">${analysis.description}</p>
+                <p class="text-light mb-4">${sanitizeText(analysis.description)}</p>
                 <div class="grid grid-cols-2 gap-4 text-sm">
                     <div>
                         <span class="text-light">Years in Role:</span>
-                        <span class="text-primary font-semibold ml-2">${data.yearsInRole} years</span>
+                        <span class="text-primary font-semibold ml-2">${sanitizeText(data.yearsInRole)} years</span>
                     </div>
                     <div>
                         <span class="text-light">Industry:</span>
-                        <span class="text-primary font-semibold ml-2 capitalize">${data.industry}</span>
+                        <span class="text-primary font-semibold ml-2 capitalize">${sanitizeText(data.industry)}</span>
                     </div>
                 </div>
             </div>
@@ -412,7 +418,7 @@ function displayResults(data) {
                 <h4 class="text-lg font-semibold text-primary mb-4">Retention Prediction</h4>
                 <div class="text-center mb-4">
                     <div class="text-3xl font-bold ${retentionLikelihood >= 70 ? 'text-green-400' : retentionLikelihood >= 50 ? 'text-yellow-400' : 'text-red-400'} mb-2">
-                        ${retentionLikelihood}%
+                        ${sanitizeText(retentionLikelihood)}%
                     </div>
                     <div class="text-sm text-light">Likelihood to stay 2+ years</div>
                 </div>
@@ -434,7 +440,7 @@ function displayResults(data) {
         <!-- Category Breakdown -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
             <div class="bg-dark p-6 rounded-lg">
-                <h3 class="text-xl font-semibold text-primary mb-4">📊 Satisfaction by Category</h3>
+                <h3 class="text-xl font-semibold text-primary mb-4">ðŸ“Š Satisfaction by Category</h3>
                 <div class="space-y-4">
                     ${Object.entries(scores.categories).map(([category, score]) => {
                         const categoryNames = {
@@ -448,11 +454,11 @@ function displayResults(data) {
                         const bgColor = score >= 70 ? 'bg-green-400' : score >= 50 ? 'bg-yellow-400' : 'bg-red-400';
                         return `
                             <div class="flex justify-between items-center">
-                                <span class="text-light">${categoryNames[category]}</span>
+                                <span class="text-light">${escapeHtml(categoryNames[category])}</span>
                                 <div class="flex items-center">
-                                    <span class="${color} font-semibold mr-3">${score}/100</span>
+                                    <span class="${sanitizeText(color)} font-semibold mr-3">${sanitizeText(score)}/100</span>
                                     <div class="w-20 bg-broder rounded-full h-2">
-                                        <div class="${bgColor} h-2 rounded-full" style="width: ${score}%"></div>
+                                        <div class="${sanitizeText(bgColor)} h-2 rounded-full" style="width: ${sanitizeText(score)}%"></div>
                                     </div>
                                 </div>
                             </div>
@@ -462,42 +468,42 @@ function displayResults(data) {
             </div>
 
             <div class="bg-dark p-6 rounded-lg">
-                <h3 class="text-xl font-semibold text-primary mb-4">🎯 Key Metrics</h3>
+                <h3 class="text-xl font-semibold text-primary mb-4">ðŸŽ¯ Key Metrics</h3>
                 <div class="space-y-4">
                     <div class="flex justify-between">
                         <span class="text-light">Manager Quality:</span>
                         <span class="${data.managerQuality >= 7 ? 'text-green-400' : data.managerQuality >= 5 ? 'text-yellow-400' : 'text-red-400'} font-semibold">
-                            ${data.managerQuality}/10
+                            ${sanitizeText(data.managerQuality)}/10
                         </span>
                     </div>
                     <div class="flex justify-between">
                         <span class="text-light">Growth Opportunities:</span>
                         <span class="${data.growthOpportunities >= 7 ? 'text-green-400' : data.growthOpportunities >= 5 ? 'text-yellow-400' : 'text-red-400'} font-semibold">
-                            ${data.growthOpportunities}/10
+                            ${sanitizeText(data.growthOpportunities)}/10
                         </span>
                     </div>
                     <div class="flex justify-between">
                         <span class="text-light">Work-Life Balance:</span>
                         <span class="${data.workLifeBalance >= 7 ? 'text-green-400' : data.workLifeBalance >= 5 ? 'text-yellow-400' : 'text-red-400'} font-semibold">
-                            ${data.workLifeBalance}/10
+                            ${sanitizeText(data.workLifeBalance)}/10
                         </span>
                     </div>
                     <div class="flex justify-between">
                         <span class="text-light">Salary Satisfaction:</span>
                         <span class="${data.salarySatisfaction >= 7 ? 'text-green-400' : data.salarySatisfaction >= 5 ? 'text-yellow-400' : 'text-red-400'} font-semibold">
-                            ${data.salarySatisfaction}/10
+                            ${sanitizeText(data.salarySatisfaction)}/10
                         </span>
                     </div>
                     <div class="flex justify-between">
                         <span class="text-light">Hours per Week:</span>
                         <span class="${data.hoursPerWeek <= 45 ? 'text-green-400' : data.hoursPerWeek <= 50 ? 'text-yellow-400' : 'text-red-400'} font-semibold">
-                            ${data.hoursPerWeek}
+                            ${sanitizeText(data.hoursPerWeek)}
                         </span>
                     </div>
                     <div class="flex justify-between">
                         <span class="text-light">Stress Level:</span>
                         <span class="${data.stressLevel <= 4 ? 'text-green-400' : data.stressLevel <= 6 ? 'text-yellow-400' : 'text-red-400'} font-semibold">
-                            ${data.stressLevel}/10
+                            ${sanitizeText(data.stressLevel)}/10
                         </span>
                     </div>
                 </div>
@@ -506,22 +512,22 @@ function displayResults(data) {
 
         <!-- Recommendations -->
         <div class="mb-8">
-            <h3 class="text-xl font-semibold text-primary mb-4">💡 Personalized Recommendations</h3>
+            <h3 class="text-xl font-semibold text-primary mb-4">ðŸ’¡ Personalized Recommendations</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 ${recommendations.map(rec => `
                     <div class="bg-dark p-4 rounded-lg border border-accent">
                         <div class="flex items-start justify-between mb-2">
-                            <h4 class="font-semibold text-primary">${rec.category}</h4>
+                            <h4 class="font-semibold text-primary">${escapeHtml(rec.category)}</h4>
                             <span class="px-2 py-1 text-xs rounded ${
                                 rec.priority === 'Critical' ? 'bg-red-900/30 border border-red-600 text-red-200' :
                                 rec.priority === 'High' ? 'bg-orange-900/30 border border-orange-600 text-orange-200' :
                                 rec.priority === 'Medium' ? 'bg-yellow-900/30 border border-yellow-600 text-yellow-200' :
                                 'bg-blue-900/30 border border-blue-600 text-blue-200'
-                            }">${rec.priority}</span>
+                            }">${escapeHtml(rec.priority)}</span>
                         </div>
-                        <p class="text-light text-sm mb-2"><strong>Issue:</strong> ${rec.issue}</p>
-                        <p class="text-light text-sm mb-2"><strong>Action:</strong> ${rec.action}</p>
-                        <p class="text-accent text-xs">${rec.impact}</p>
+                        <p class="text-light text-sm mb-2"><strong>Issue:</strong> ${escapeHtml(rec.issue)}</p>
+                        <p class="text-light text-sm mb-2"><strong>Action:</strong> ${escapeHtml(rec.action)}</p>
+                        <p class="text-accent text-xs">${escapeHtml(rec.impact)}</p>
                     </div>
                 `).join('')}
             </div>
@@ -529,22 +535,22 @@ function displayResults(data) {
 
         <!-- Next Steps -->
         <div class="bg-dark p-6 rounded-lg border border-accent">
-            <h3 class="text-xl font-semibold text-primary mb-4">📋 Your Next Steps</h3>
+            <h3 class="text-xl font-semibold text-primary mb-4">ðŸ“‹ Your Next Steps</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                     <h4 class="text-lg font-semibold text-primary mb-2">Immediate Actions (This Week)</h4>
                     <ul class="text-light space-y-2 text-sm">
-                        ${analysis.nextSteps.slice(0, 2).map(step => `<li>• ${step}</li>`).join('')}
-                        <li>• ${recommendations.length > 0 ? `Address ${recommendations[0].category.toLowerCase()} concerns` : 'Focus on maintaining current satisfaction levels'}</li>
-                        <li>• Document specific examples of satisfaction drivers and detractors</li>
+                        ${analysis.nextSteps.slice(0, 2).map(step => `<li>â€¢ ${escapeHtml(step)}</li>`).join('')}
+                        <li>â€¢ ${recommendations.length > 0 ? `Address ${recommendations[0].category.toLowerCase()} concerns` : 'Focus on maintaining current satisfaction levels'}</li>
+                        <li>â€¢ Document specific examples of satisfaction drivers and detractors</li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold text-primary mb-2">Strategic Actions (This Month)</h4>
                     <ul class="text-light space-y-2 text-sm">
-                        ${analysis.nextSteps.slice(2).map(step => `<li>• ${step}</li>`).join('')}
-                        <li>• Re-assess satisfaction after implementing changes</li>
-                        <li>• ${retentionLikelihood < 50 ? 'Begin exploring alternative opportunities' : 'Continue building on positive momentum'}</li>
+                        ${analysis.nextSteps.slice(2).map(step => `<li>â€¢ ${escapeHtml(step)}</li>`).join('')}
+                        <li>â€¢ Re-assess satisfaction after implementing changes</li>
+                        <li>â€¢ ${retentionLikelihood < 50 ? 'Begin exploring alternative opportunities' : 'Continue building on positive momentum'}</li>
                     </ul>
                 </div>
             </div>

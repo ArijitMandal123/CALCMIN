@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('focus-form');
     const resultsDiv = document.getElementById('results');
     const resultContent = document.getElementById('result-content');
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const symptoms = [];
         const symptomIds = ['fatigue', 'concentration', 'procrastination', 'irritability', 'headaches', 'sleep'];
         symptomIds.forEach(id => {
-            if (document.getElementById(`symptom-${id}`).checked) {
+            if (document.getElementById(`symptom-${sanitizeText(id)}`).checked) {
                 symptoms.push(id);
             }
         });
@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const m = Math.round((hour - h) * 60);
         const period = h >= 12 ? 'PM' : 'AM';
         const displayHour = h > 12 ? h - 12 : h === 0 ? 12 : h;
-        return `${displayHour}:${m.toString().padStart(2, '0')} ${period}`;
+        return `${sanitizeText(displayHour)}:${m.toString().padStart(2, '0')} ${sanitizeText(period)}`;
     }
 
     function displayResults(analysis) {
@@ -285,20 +285,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="grid md:grid-cols-3 gap-6 mb-6">
                     <div class="bg-dark p-4 rounded border border-accent">
                         <h3 class="font-semibold text-text mb-2">Sustainability Score</h3>
-                        <div class="text-3xl font-bold ${sustainabilityColor} mb-2">${analysis.sustainabilityScore}/100</div>
+                        <div class="text-3xl font-bold ${sanitizeText(sustainabilityColor)} mb-2">${sanitizeText(analysis.sustainabilityScore)}/100</div>
                         <p class="text-sm text-light">${getSustainabilityDescription(analysis.sustainabilityScore)}</p>
                     </div>
                     
                     <div class="bg-dark p-4 rounded border border-accent">
                         <h3 class="font-semibold text-text mb-2">Daily Focus Capacity</h3>
-                        <div class="text-3xl font-bold text-primary mb-2">${analysis.maxDailyFocus}h</div>
+                        <div class="text-3xl font-bold text-primary mb-2">${sanitizeText(analysis.maxDailyFocus)}h</div>
                         <p class="text-sm text-light">Sustainable deep work hours</p>
                     </div>
                     
                     <div class="bg-dark p-4 rounded border border-accent">
                         <h3 class="font-semibold text-text mb-2">Burnout Risk</h3>
-                        <div class="text-2xl font-bold ${analysis.burnoutRisk.color} mb-2">${analysis.burnoutRisk.risk}</div>
-                        <p class="text-sm text-light">${analysis.burnoutRisk.description}</p>
+                        <div class="text-2xl font-bold ${sanitizeText(analysis.burnoutRisk.color)} mb-2">${sanitizeText(analysis.burnoutRisk.risk)}</div>
+                        <p class="text-sm text-light">${sanitizeText(analysis.burnoutRisk.description)}</p>
                     </div>
                 </div>
 
@@ -310,17 +310,17 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <div class="flex justify-between items-center p-3 bg-broder rounded">
                                     <div>
                                         <span class="text-text font-medium">Focus Block ${block.block}</span>
-                                        <div class="text-sm text-light">${block.duration} of deep work</div>
+                                        <div class="text-sm text-light">${sanitizeText(block.duration)} of deep work</div>
                                     </div>
                                     <div class="text-right">
-                                        <div class="text-sm text-primary">${block.startTime} - ${block.endTime}</div>
-                                        <div class="text-xs text-light">Break: ${block.breakAfter}</div>
+                                        <div class="text-sm text-primary">${sanitizeText(block.startTime)} - ${sanitizeText(block.endTime)}</div>
+                                        <div class="text-xs text-light">Break: ${sanitizeText(block.breakAfter)}</div>
                                     </div>
                                 </div>
                             `).join('')}
                         </div>
                         <p class="text-sm text-light">
-                            <strong>Break Type:</strong> ${analysis.breakSchedule.recommendedBreakType}
+                            <strong>Break Type:</strong> ${sanitizeText(analysis.breakSchedule.recommendedBreakType)}
                         </p>
                     </div>
                 </div>
@@ -329,15 +329,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h3 class="font-semibold text-text mb-3">Weekly Capacity Analysis</h3>
                     <div class="grid md:grid-cols-3 gap-4">
                         <div class="bg-dark p-4 rounded border border-accent text-center">
-                            <div class="text-2xl font-bold text-primary">${analysis.weeklyCapacity.totalHours}h</div>
+                            <div class="text-2xl font-bold text-primary">${sanitizeText(analysis.weeklyCapacity.totalHours)}h</div>
                             <p class="text-sm text-light">Total Focus Hours</p>
                         </div>
                         <div class="bg-dark p-4 rounded border border-accent text-center">
-                            <div class="text-2xl font-bold text-accent">${analysis.weeklyCapacity.effectiveHours}h</div>
+                            <div class="text-2xl font-bold text-accent">${sanitizeText(analysis.weeklyCapacity.effectiveHours)}h</div>
                             <p class="text-sm text-light">Effective Hours</p>
                         </div>
                         <div class="bg-dark p-4 rounded border border-accent text-center">
-                            <div class="text-2xl font-bold text-yellow-400">${analysis.weeklyCapacity.efficiency}%</div>
+                            <div class="text-2xl font-bold text-yellow-400">${sanitizeText(analysis.weeklyCapacity.efficiency)}%</div>
                             <p class="text-sm text-light">Efficiency Rate</p>
                         </div>
                     </div>
@@ -348,12 +348,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="bg-dark p-4 rounded border border-accent">
                         <div class="flex justify-between items-start mb-3">
                             <div>
-                                <div class="text-lg font-medium ${analysis.vacationRecommendation.color}">${analysis.vacationRecommendation.urgency} Priority</div>
-                                <p class="text-sm text-light">${analysis.vacationRecommendation.daysSince} days since last vacation</p>
+                                <div class="text-lg font-medium ${sanitizeText(analysis.vacationRecommendation.color)}">${sanitizeText(analysis.vacationRecommendation.urgency)} Priority</div>
+                                <p class="text-sm text-light">${sanitizeText(analysis.vacationRecommendation.daysSince)} days since last vacation</p>
                             </div>
                             <div class="text-right">
-                                <div class="text-primary font-semibold">${analysis.vacationRecommendation.timeframe}</div>
-                                <div class="text-sm text-light">${analysis.vacationRecommendation.duration} recommended</div>
+                                <div class="text-primary font-semibold">${sanitizeText(analysis.vacationRecommendation.timeframe)}</div>
+                                <div class="text-sm text-light">${sanitizeText(analysis.vacationRecommendation.duration)} recommended</div>
                             </div>
                         </div>
                     </div>
@@ -366,7 +366,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <p class="text-red-400 font-medium mb-2">You're experiencing ${analysis.symptoms.length} burnout symptoms:</p>
                         <ul class="text-sm text-light space-y-1">
                             ${analysis.symptoms.map(symptom => `
-                                <li>• ${getSymptomDescription(symptom)}</li>
+                                <li>â€¢ ${getSymptomDescription(symptom)}</li>
                             `).join('')}
                         </ul>
                     </div>
@@ -379,12 +379,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         Key Recommendations
                     </h3>
                     <ul class="text-sm text-light space-y-1">
-                        <li>• Limit deep focus work to ${analysis.maxDailyFocus} hours per day</li>
-                        <li>• Take ${analysis.breakSchedule.totalBreaks} breaks during focus sessions</li>
-                        <li>• Current capacity vs recommended: ${analysis.currentFocusHours.toFixed(1)}h vs ${analysis.maxDailyFocus}h</li>
-                        <li>• Weekly effective capacity: ${analysis.weeklyCapacity.effectiveHours}h at ${analysis.weeklyCapacity.efficiency}% efficiency</li>
+                        <li>â€¢ Limit deep focus work to ${sanitizeText(analysis.maxDailyFocus)} hours per day</li>
+                        <li>â€¢ Take ${sanitizeText(analysis.breakSchedule.totalBreaks)} breaks during focus sessions</li>
+                        <li>â€¢ Current capacity vs recommended: ${analysis.currentFocusHours.toFixed(1)}h vs ${sanitizeText(analysis.maxDailyFocus)}h</li>
+                        <li>â€¢ Weekly effective capacity: ${sanitizeText(analysis.weeklyCapacity.effectiveHours)}h at ${sanitizeText(analysis.weeklyCapacity.efficiency)}% efficiency</li>
                         ${analysis.vacationRecommendation.urgency !== 'Low' ? 
-                            `<li>• Schedule vacation ${analysis.vacationRecommendation.timeframe.toLowerCase()}</li>` : ''}
+                            `<li>â€¢ Schedule vacation ${analysis.vacationRecommendation.timeframe.toLowerCase()}</li>` : ''}
                     </ul>
                 </div>
             </div>

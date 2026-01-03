@@ -1,9 +1,15 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     generateSleepDays();
     
     document.getElementById('fill-average').addEventListener('click', fillAverageHours);
     document.getElementById('sleep-form').addEventListener('submit', calculateSleepDebt);
 });
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
 
 function generateSleepDays() {
     const container = document.getElementById('sleep-days');
@@ -13,8 +19,8 @@ function generateSleepDays() {
         const dayDiv = document.createElement('div');
         dayDiv.className = 'grid grid-cols-3 gap-2 items-center';
         dayDiv.innerHTML = `
-            <label class="text-xs text-light">${day}</label>
-            <input type="number" id="sleep-${index}" placeholder="7" 
+            <label class="text-xs text-light">${escapeHtml(day)}</label>
+            <input type="number" id="sleep-${sanitizeText(index)}" placeholder="7" 
                    class="px-2 py-1 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-1 focus:ring-primary" 
                    min="0" max="16" step="0.5" required>
             <span class="text-xs text-light">hours</span>
@@ -27,7 +33,7 @@ function fillAverageHours() {
     const averageHours = prompt('Enter average hours of sleep per night:');
     if (averageHours && !isNaN(averageHours)) {
         for (let i = 0; i < 7; i++) {
-            document.getElementById(`sleep-${i}`).value = averageHours;
+            document.getElementById(`sleep-${sanitizeText(i)}`).value = averageHours;
         }
     }
 }
@@ -43,7 +49,7 @@ function calculateSleepDebt(e) {
 function collectFormData() {
     const sleepHours = [];
     for (let i = 0; i < 7; i++) {
-        sleepHours.push(parseFloat(document.getElementById(`sleep-${i}`).value));
+        sleepHours.push(parseFloat(document.getElementById(`sleep-${sanitizeText(i)}`).value));
     }
     
     return {
@@ -124,7 +130,7 @@ function generateRecoveryRecommendations(data, weeklyCapacity) {
     // Base sleep schedule
     recommendations.push({
         type: 'Sleep Schedule',
-        action: `Aim for ${data.idealSleep} hours nightly`,
+        action: `Aim for ${sanitizeText(data.idealSleep)} hours nightly`,
         priority: 'High',
         timeline: 'Immediate'
     });
@@ -238,17 +244,17 @@ function displayResults(analysis) {
                         <div>Average Sleep: <span class="text-primary font-medium">${analysis.averageSleep.toFixed(1)} hours/night</span></div>
                         <div>Weekly Debt: <span class="text-primary font-medium">${analysis.weeklyDebt.toFixed(1)} hours</span></div>
                         <div>Total Accumulated: <span class="text-primary font-medium">${analysis.accumulatedDebt.toFixed(1)} hours</span></div>
-                        <div>Severity: <span class="${analysis.severity.color} font-medium">${analysis.severity.level}</span></div>
+                        <div>Severity: <span class="${sanitizeText(analysis.severity.color)} font-medium">${sanitizeText(analysis.severity.level)}</span></div>
                     </div>
                 </div>
                 
                 <div class="bg-dark p-4 rounded border border-accent">
                     <h3 class="font-medium text-accent mb-2">Recovery Timeline</h3>
                     <div class="space-y-2 text-sm">
-                        <div>Recovery Time: <span class="text-primary font-medium">${analysis.recoveryPlan.weeksToRecover} weeks</span></div>
+                        <div>Recovery Time: <span class="text-primary font-medium">${sanitizeText(analysis.recoveryPlan.weeksToRecover)} weeks</span></div>
                         <div>Weekly Recovery: <span class="text-primary font-medium">${analysis.recoveryPlan.weeklyRecoveryCapacity.toFixed(1)} hours</span></div>
-                        <div>Target Bedtime: <span class="text-primary font-medium">${analysis.recoveryPlan.targetBedtime}</span></div>
-                        <div>Weekend Strategy: <span class="text-light">${analysis.recoveryPlan.weekendStrategy}</span></div>
+                        <div>Target Bedtime: <span class="text-primary font-medium">${sanitizeText(analysis.recoveryPlan.targetBedtime)}</span></div>
+                        <div>Weekend Strategy: <span class="text-light">${sanitizeText(analysis.recoveryPlan.weekendStrategy)}</span></div>
                     </div>
                 </div>
             </div>
@@ -262,10 +268,10 @@ function displayResults(analysis) {
                         <div class="bg-dark p-3 rounded border-l-4 border-primary">
                             <div class="flex justify-between items-start mb-1">
                                 <span class="font-medium text-sm">${rec.type}</span>
-                                <span class="text-xs px-2 py-1 rounded ${rec.priority === 'High' ? 'bg-red-600' : rec.priority === 'Medium' ? 'bg-yellow-600' : 'bg-green-600'} text-white">${rec.priority}</span>
+                                <span class="text-xs px-2 py-1 rounded ${rec.priority === 'High' ? 'bg-red-600' : rec.priority === 'Medium' ? 'bg-yellow-600' : 'bg-green-600'} text-white">${sanitizeText(rec.priority)}</span>
                             </div>
-                            <div class="text-sm text-light">${rec.action}</div>
-                            <div class="text-xs text-accent mt-1">Timeline: ${rec.timeline}</div>
+                            <div class="text-sm text-light">${sanitizeText(rec.action)}</div>
+                            <div class="text-xs text-accent mt-1">Timeline: ${sanitizeText(rec.timeline)}</div>
                         </div>
                     `).join('')}
                 </div>
@@ -276,16 +282,16 @@ function displayResults(analysis) {
                     <span class="material-icons text-lg">health_and_safety</span> Health Impact Assessment
                 </h3>
                 <ul class="space-y-1 text-sm text-light">
-                    ${analysis.healthImpact.map(impact => `<li>• ${impact}</li>`).join('')}
+                    ${analysis.healthImpact.map(impact => `<li>â€¢ ${impact}</li>`).join('')}
                 </ul>
             </div>
             
             <div class="mt-6 p-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded border border-primary/30">
-                <h3 class="font-medium text-primary mb-2">💡 Key Insights</h3>
+                <h3 class="font-medium text-primary mb-2">ðŸ’¡ Key Insights</h3>
                 <div class="text-sm text-light space-y-1">
-                    <p>• Sleep debt recovery requires consistency rather than occasional long sleeps</p>
-                    <p>• Your ${analysis.severity.level.toLowerCase()} sleep debt level needs ${analysis.recoveryPlan.weeksToRecover} weeks of dedicated recovery</p>
-                    <p>• Focus on sleep hygiene improvements alongside debt repayment for lasting results</p>
+                    <p>â€¢ Sleep debt recovery requires consistency rather than occasional long sleeps</p>
+                    <p>â€¢ Your ${analysis.severity.level.toLowerCase()} sleep debt level needs ${sanitizeText(analysis.recoveryPlan.weeksToRecover)} weeks of dedicated recovery</p>
+                    <p>â€¢ Focus on sleep hygiene improvements alongside debt repayment for lasting results</p>
                 </div>
             </div>
         </div>

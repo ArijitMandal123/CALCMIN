@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     document.getElementById('rest-form').addEventListener('submit', calculateRestSchedule);
 });
 
@@ -311,15 +311,15 @@ function displayResults(analysis) {
                 <div class="bg-dark p-4 rounded border border-accent">
                     <h3 class="font-medium text-accent mb-2">Recovery Status</h3>
                     <div class="space-y-2 text-sm">
-                        <div>Recovery Score: <span class="text-primary font-medium">${analysis.recoveryScore}/100</span></div>
-                        <div>Optimal Rest Days: <span class="text-primary font-medium">${analysis.optimalRestDays} per week</span></div>
-                        <div>Overtraining Risk: <span class="${analysis.overtrainingRisk.color} font-medium">${analysis.overtrainingRisk.level}</span></div>
+                        <div>Recovery Score: <span class="text-primary font-medium">${sanitizeText(analysis.recoveryScore)}/100</span></div>
+                        <div>Optimal Rest Days: <span class="text-primary font-medium">${sanitizeText(analysis.optimalRestDays)} per week</span></div>
+                        <div>Overtraining Risk: <span class="${sanitizeText(analysis.overtrainingRisk.color)} font-medium">${sanitizeText(analysis.overtrainingRisk.level)}</span></div>
                     </div>
                 </div>
                 
                 <div class="bg-dark p-4 rounded border border-accent">
                     <h3 class="font-medium text-accent mb-2">Risk Assessment</h3>
-                    <div class="text-sm text-light">${analysis.overtrainingRisk.description}</div>
+                    <div class="text-sm text-light">${sanitizeText(analysis.overtrainingRisk.description)}</div>
                 </div>
             </div>
             
@@ -332,9 +332,9 @@ function displayResults(analysis) {
                         <div class="bg-dark p-3 rounded border border-accent flex justify-between items-center">
                             <div>
                                 <span class="font-medium text-sm">${day.day}</span>
-                                <span class="ml-2 text-xs px-2 py-1 rounded ${day.type === 'Training' ? 'bg-primary' : 'bg-green-600'} text-white">${day.type}</span>
+                                <span class="ml-2 text-xs px-2 py-1 rounded ${day.type === 'Training' ? 'bg-primary' : 'bg-green-600'} text-white">${sanitizeText(day.type)}</span>
                             </div>
-                            <div class="text-sm text-light">${day.focus}</div>
+                            <div class="text-sm text-light">${sanitizeText(day.focus)}</div>
                         </div>
                     `).join('')}
                 </div>
@@ -349,9 +349,9 @@ function displayResults(analysis) {
                         <div class="bg-dark p-3 rounded border-l-4 border-primary">
                             <div class="flex justify-between items-start mb-1">
                                 <span class="font-medium text-sm">${rec.category}</span>
-                                <span class="text-xs px-2 py-1 rounded ${rec.priority === 'High' ? 'bg-red-600' : rec.priority === 'Medium' ? 'bg-yellow-600' : 'bg-green-600'} text-white">${rec.priority}</span>
+                                <span class="text-xs px-2 py-1 rounded ${rec.priority === 'High' ? 'bg-red-600' : rec.priority === 'Medium' ? 'bg-yellow-600' : 'bg-green-600'} text-white">${sanitizeText(rec.priority)}</span>
                             </div>
-                            <div class="text-sm text-light">${rec.advice}</div>
+                            <div class="text-sm text-light">${sanitizeText(rec.advice)}</div>
                         </div>
                     `).join('')}
                 </div>
@@ -362,20 +362,20 @@ function displayResults(analysis) {
                     <span class="material-icons text-lg">tips_and_updates</span> Recovery Optimization Tips
                 </h3>
                 <ul class="space-y-1 text-sm text-light">
-                    <li>• Listen to your body - adjust rest days based on how you feel</li>
-                    <li>• Active recovery (light walking, yoga) can enhance blood flow</li>
-                    <li>• Prioritize sleep quality over training intensity</li>
-                    <li>• Hydration and nutrition significantly impact recovery speed</li>
-                    <li>• Consider deload weeks every 4-6 weeks for advanced trainees</li>
+                    <li>â€¢ Listen to your body - adjust rest days based on how you feel</li>
+                    <li>â€¢ Active recovery (light walking, yoga) can enhance blood flow</li>
+                    <li>â€¢ Prioritize sleep quality over training intensity</li>
+                    <li>â€¢ Hydration and nutrition significantly impact recovery speed</li>
+                    <li>â€¢ Consider deload weeks every 4-6 weeks for advanced trainees</li>
                 </ul>
             </div>
             
             <div class="mt-6 p-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded border border-primary/30">
-                <h3 class="font-medium text-primary mb-2">🎯 Recovery Strategy</h3>
+                <h3 class="font-medium text-primary mb-2">ðŸŽ¯ Recovery Strategy</h3>
                 <div class="text-sm text-light space-y-1">
-                    <p>• Your ${analysis.recoveryScore}/100 recovery score suggests ${analysis.optimalRestDays} rest days per week</p>
-                    <p>• ${analysis.overtrainingRisk.level} overtraining risk requires careful monitoring</p>
-                    <p>• Focus on sleep quality and stress management for optimal recovery</p>
+                    <p>â€¢ Your ${sanitizeText(analysis.recoveryScore)}/100 recovery score suggests ${sanitizeText(analysis.optimalRestDays)} rest days per week</p>
+                    <p>â€¢ ${sanitizeText(analysis.overtrainingRisk.level)} overtraining risk requires careful monitoring</p>
+                    <p>â€¢ Focus on sleep quality and stress management for optimal recovery</p>
                 </div>
             </div>
         </div>

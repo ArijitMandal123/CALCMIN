@@ -1,4 +1,4 @@
-// Certification ROI Calculator Logic
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Certification ROI Calculator Logic
 
 // Certification data with salary multipliers and market demand
 const certificationData = {
@@ -273,9 +273,15 @@ function displayResults(results) {
     const resultsDiv = document.getElementById('results');
     const contentDiv = document.getElementById('result-content');
     
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+    
     contentDiv.innerHTML = `
         <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
-            <h3 class="text-2xl font-bold text-primary mb-4">ROI Analysis: ${results.certificationName}</h3>
+            <h3 class="text-2xl font-bold text-primary mb-4">ROI Analysis: ${escapeHtml(results.certificationName)}</h3>
             
             <!-- Key Metrics -->
             <div class="grid md:grid-cols-3 gap-6 mb-6">
@@ -296,7 +302,7 @@ function displayResults(results) {
             <!-- Recommendation -->
             <div class="bg-primary/10 border-l-4 border-primary p-6 mb-6">
                 <h4 class="font-semibold text-primary mb-2">Investment Recommendation</h4>
-                <p class="text-lg ${results.recommendationClass}">${results.recommendation}</p>
+                <p class="text-lg ${sanitizeText(results.recommendationClass)}">${escapeHtml(results.recommendation)}</p>
             </div>
             
             <!-- Detailed Breakdown -->
@@ -340,7 +346,7 @@ function displayResults(results) {
                         </div>
                         <div class="flex justify-between">
                             <span class="text-light">Market Demand Score:</span>
-                            <span class="text-accent">${results.demandScore}/10</span>
+                            <span class="text-accent">${sanitizeText(results.demandScore)}/10</span>
                         </div>
                     </div>
                 </div>

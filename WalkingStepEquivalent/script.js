@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     document.getElementById('stepForm').addEventListener('submit', function(e) {
         e.preventDefault();
         calculateStepEquivalent();
@@ -120,7 +120,7 @@ function calculateSteps(data) {
     // Get MET value for activity and intensity
     const metValue = getActivityMET(data.activityType, data.intensity);
     
-    // Calculate calories burned: METs × weight (kg) × time (hours)
+    // Calculate calories burned: METs Ã— weight (kg) Ã— time (hours)
     const weightInKg = data.bodyWeight / 2.20462;
     const timeInHours = data.duration / 60;
     const caloriesBurned = metValue * weightInKg * timeInHours;
@@ -177,11 +177,11 @@ function displayResults(results, data) {
                 <div class="text-light text-sm">Equivalent Steps</div>
             </div>
             <div class="bg-dark p-4 rounded border border-accent text-center">
-                <div class="text-2xl font-bold text-green-400">${results.caloriesBurned}</div>
+                <div class="text-2xl font-bold text-green-400">${sanitizeText(results.caloriesBurned)}</div>
                 <div class="text-light text-sm">Calories Burned</div>
             </div>
             <div class="bg-dark p-4 rounded border border-accent text-center">
-                <div class="text-2xl font-bold text-accent">${results.walkingDistance}</div>
+                <div class="text-2xl font-bold text-accent">${sanitizeText(results.walkingDistance)}</div>
                 <div class="text-light text-sm">Miles Equivalent</div>
             </div>
         </div>
@@ -192,19 +192,19 @@ function displayResults(results, data) {
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <div class="text-light mb-2">Activity:</div>
-                    <div class="text-accent font-semibold">${activityName}</div>
+                    <div class="text-accent font-semibold">${sanitizeText(activityName)}</div>
                 </div>
                 <div>
                     <div class="text-light mb-2">Intensity:</div>
-                    <div class="text-accent font-semibold">${intensityText}</div>
+                    <div class="text-accent font-semibold">${sanitizeText(intensityText)}</div>
                 </div>
                 <div>
                     <div class="text-light mb-2">Duration:</div>
-                    <div class="text-accent font-semibold">${data.duration} minutes</div>
+                    <div class="text-accent font-semibold">${sanitizeText(data.duration)} minutes</div>
                 </div>
                 <div>
                     <div class="text-light mb-2">MET Value:</div>
-                    <div class="text-accent font-semibold">${results.metValue}</div>
+                    <div class="text-accent font-semibold">${sanitizeText(results.metValue)}</div>
                 </div>
             </div>
         </div>
@@ -215,11 +215,11 @@ function displayResults(results, data) {
             <div class="space-y-3">
                 <div class="flex justify-between items-center">
                     <span class="text-light">Equivalent Walking Time:</span>
-                    <span class="text-accent font-semibold">${results.walkingTimeMinutes} minutes</span>
+                    <span class="text-accent font-semibold">${sanitizeText(results.walkingTimeMinutes)} minutes</span>
                 </div>
                 <div class="flex justify-between items-center">
                     <span class="text-light">Equivalent Walking Distance:</span>
-                    <span class="text-accent font-semibold">${results.walkingDistance} miles</span>
+                    <span class="text-accent font-semibold">${sanitizeText(results.walkingDistance)} miles</span>
                 </div>
                 <div class="flex justify-between items-center">
                     <span class="text-light">Average Walking Pace:</span>
@@ -284,11 +284,11 @@ function displayResults(results, data) {
         <div class="bg-blue-900 bg-opacity-20 border border-blue-600 p-4 rounded mt-6">
             <h4 class="text-blue-400 font-semibold mb-2">Tracking Tips</h4>
             <ul class="text-blue-200 text-sm space-y-1">
-                <li>• Add these equivalent steps to your fitness tracker manually</li>
-                <li>• Track actual activity time, excluding rest periods</li>
-                <li>• Adjust intensity level based on your actual effort</li>
-                <li>• Combine with regular walking for comprehensive fitness</li>
-                <li>• Update your weight periodically for accurate calculations</li>
+                <li>â€¢ Add these equivalent steps to your fitness tracker manually</li>
+                <li>â€¢ Track actual activity time, excluding rest periods</li>
+                <li>â€¢ Adjust intensity level based on your actual effort</li>
+                <li>â€¢ Combine with regular walking for comprehensive fitness</li>
+                <li>â€¢ Update your weight periodically for accurate calculations</li>
             </ul>
         </div>
     `;
@@ -325,7 +325,7 @@ function generateIntensityComparison(data, results) {
                 </div>
                 <div class="text-right">
                     <div class="font-semibold ${isSelected ? 'text-primary' : 'text-accent'}">${steps.toLocaleString()} steps</div>
-                    <div class="text-sm text-light">${calories} calories</div>
+                    <div class="text-sm text-light">${sanitizeText(calories)} calories</div>
                 </div>
             </div>
         `;
@@ -376,6 +376,12 @@ function generateRecommendations(data, results) {
         });
     }
     
+    function sanitizeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+    
     return recommendations.map(rec => {
         const colors = {
             success: 'bg-green-900 bg-opacity-20 border-green-600 text-green-400',
@@ -386,8 +392,8 @@ function generateRecommendations(data, results) {
         
         return `
             <div class="${colors[rec.type]} border p-3 rounded">
-                <div class="font-semibold mb-1">${rec.title}</div>
-                <div class="text-sm opacity-90">${rec.message}</div>
+                <div class="font-semibold mb-1">${sanitizeHtml(rec.title)}</div>
+                <div class="text-sm opacity-90">${sanitizeHtml(rec.message)}</div>
             </div>
         `;
     }).join('');

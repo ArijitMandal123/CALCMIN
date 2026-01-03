@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     document.getElementById('dividendForm').addEventListener('submit', function(e) {
         e.preventDefault();
         calculateDividendProjection();
@@ -145,12 +145,12 @@ function displayResults(projection, data) {
             <div class="bg-dark p-4 rounded border border-accent text-center">
                 <div class="text-2xl font-bold text-primary">${formatCurrency(finalYear.netDividendIncome)}</div>
                 <div class="text-light text-sm">Annual Dividend Income</div>
-                <div class="text-accent text-xs">(Year ${data.projectionYears})</div>
+                <div class="text-accent text-xs">(Year ${sanitizeText(data.projectionYears)})</div>
             </div>
             <div class="bg-dark p-4 rounded border border-accent text-center">
                 <div class="text-2xl font-bold text-green-400">${formatCurrency(finalYear.portfolioValue)}</div>
                 <div class="text-light text-sm">Portfolio Value</div>
-                <div class="text-accent text-xs">(Year ${data.projectionYears})</div>
+                <div class="text-accent text-xs">(Year ${sanitizeText(data.projectionYears)})</div>
             </div>
             <div class="bg-dark p-4 rounded border border-accent text-center">
                 <div class="text-2xl font-bold text-accent">${finalYear.yieldOnCost.toFixed(1)}%</div>
@@ -218,7 +218,7 @@ function displayResults(projection, data) {
                 ${projection.milestones.map(milestone => `
                     <div class="bg-broder p-3 rounded border border-accent text-center">
                         <div class="text-lg font-bold text-primary">${formatCurrency(milestone.amount)}</div>
-                        <div class="text-light text-sm">Year ${milestone.year}</div>
+                        <div class="text-light text-sm">Year ${sanitizeText(milestone.year)}</div>
                     </div>
                 `).join('')}
             </div>
@@ -290,11 +290,11 @@ function displayResults(projection, data) {
         <div class="bg-yellow-900 bg-opacity-20 border border-yellow-600 p-4 rounded mt-6">
             <h4 class="text-yellow-400 font-semibold mb-2">Important Considerations</h4>
             <ul class="text-yellow-200 text-sm space-y-1">
-                <li>• Projections are based on assumptions and may not reflect actual results</li>
-                <li>• Dividend payments can be reduced or eliminated by companies</li>
-                <li>• Consider inflation impact on purchasing power over time</li>
-                <li>• Diversification across sectors and companies reduces risk</li>
-                <li>• Regular portfolio review and rebalancing is recommended</li>
+                <li>â€¢ Projections are based on assumptions and may not reflect actual results</li>
+                <li>â€¢ Dividend payments can be reduced or eliminated by companies</li>
+                <li>â€¢ Consider inflation impact on purchasing power over time</li>
+                <li>â€¢ Diversification across sectors and companies reduces risk</li>
+                <li>â€¢ Regular portfolio review and rebalancing is recommended</li>
             </ul>
         </div>
     `;

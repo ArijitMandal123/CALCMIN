@@ -1,4 +1,4 @@
-document.getElementById('pricing-form').addEventListener('submit', function(e) {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.getElementById('pricing-form').addEventListener('submit', function(e) {
   e.preventDefault();
   
   const courseLength = parseFloat(document.getElementById('courseLength').value);
@@ -67,6 +67,12 @@ document.getElementById('pricing-form').addEventListener('submit', function(e) {
   displayResults(basePrice, minPrice, maxPrice, revenueProjection, courseLength);
 });
 
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
 function displayResults(optimal, min, max, revenue, hours) {
   const resultsDiv = document.getElementById('results');
   const contentDiv = document.getElementById('result-content');
@@ -79,22 +85,22 @@ function displayResults(optimal, min, max, revenue, hours) {
       
       <div class="grid md:grid-cols-3 gap-4 mb-4">
         <div class="bg-dark p-4 rounded text-center">
-          <div class="text-red-400 text-2xl font-bold">$${min.toFixed(0)}</div>
+          <div class="text-red-400 text-2xl font-bold">$${Math.round(min)}</div>
           <div class="text-light text-sm">Minimum Price</div>
         </div>
         <div class="bg-dark p-4 rounded text-center">
-          <div class="text-primary text-3xl font-bold">$${optimal.toFixed(0)}</div>
+          <div class="text-primary text-3xl font-bold">$${Math.round(optimal)}</div>
           <div class="text-light text-sm">Optimal Price</div>
         </div>
         <div class="bg-dark p-4 rounded text-center">
-          <div class="text-green-400 text-2xl font-bold">$${max.toFixed(0)}</div>
+          <div class="text-green-400 text-2xl font-bold">$${Math.round(max)}</div>
           <div class="text-light text-sm">Premium Price</div>
         </div>
       </div>
 
       <div class="grid md:grid-cols-2 gap-4 mb-4">
         <div class="bg-dark p-4 rounded text-center">
-          <div class="text-accent text-2xl font-bold">$${(optimal/hours).toFixed(0)}</div>
+          <div class="text-accent text-2xl font-bold">$${Math.round(optimal/hours)}</div>
           <div class="text-light text-sm">Price per Hour</div>
         </div>
         <div class="bg-dark p-4 rounded text-center">
@@ -104,13 +110,13 @@ function displayResults(optimal, min, max, revenue, hours) {
       </div>
       
       <div class="bg-accent/20 border border-accent rounded p-3 text-sm">
-        <strong>💡 Pricing Strategy Tips:</strong>
+        <strong>ðŸ’¡ Pricing Strategy Tips:</strong>
         <ul class="mt-2 space-y-1 text-light">
-          <li>• Start with the optimal price and test market response</li>
-          <li>• Offer early-bird discounts to build initial momentum</li>
-          <li>• Consider payment plans for higher-priced courses</li>
-          <li>• Bundle with bonuses to justify premium pricing</li>
-          <li>• Monitor competitor pricing regularly</li>
+          <li>â€¢ Start with the optimal price and test market response</li>
+          <li>â€¢ Offer early-bird discounts to build initial momentum</li>
+          <li>â€¢ Consider payment plans for higher-priced courses</li>
+          <li>â€¢ Bundle with bonuses to justify premium pricing</li>
+          <li>â€¢ Monitor competitor pricing regularly</li>
         </ul>
       </div>
     </div>

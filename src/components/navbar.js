@@ -1,116 +1,116 @@
 // All calculator tools data
 const calculatorTools = [
-  { name: "AI Prompt Quality Scorer", url: "/AIPromptQualityScorer" },
+  { name: "AI Prompt Quality Scorer", url: "AIPromptQualityScorer" },
   {
     name: "Content Repurposing Calculator",
-    url: "/ContentRepurposingCalculator",
+    url: "ContentRepurposingCalculator",
   },
   {
     name: "LinkedIn Engagement Predictor",
-    url: "/LinkedInEngagementPredictor",
+    url: "LinkedInEngagementPredictor",
   },
-  { name: "Hashtag ROI Calculator", url: "/HashtagROICalculator" },
-  { name: "Video Script Length Optimizer", url: "/VideoScriptOptimizer" },
-  { name: "Deep Work Block Scheduler", url: "/DeepWorkScheduler" },
-  { name: "Meeting ROI Calculator", url: "/MeetingROICalculator" },
-  { name: "Timezone Fair Meeting Finder", url: "/TimezoneFairMeetingFinder" },
+  { name: "Hashtag ROI Calculator", url: "HashtagROICalculator" },
+  { name: "Video Script Length Optimizer", url: "VideoScriptOptimizer" },
+  { name: "Deep Work Block Scheduler", url: "DeepWorkScheduler" },
+  { name: "Meeting ROI Calculator", url: "MeetingROICalculator" },
+  { name: "Timezone Fair Meeting Finder", url: "TimezoneFairMeetingFinder" },
   {
     name: "Focus Session Sustainability Calculator",
-    url: "/FocusSessionSustainabilityCalculator",
+    url: "FocusSessionSustainabilityCalculator",
   },
   {
     name: "Asynchronous Communication Audit Tool",
-    url: "/AsynchronousCommunicationAudit",
+    url: "AsynchronousCommunicationAudit",
   },
-  { name: "Tax Bracket Optimization Calculator", url: "/TaxBracketOptimizer" },
+  { name: "Tax Bracket Optimization Calculator", url: "TaxBracketOptimizer" },
   {
     name: "Recurring Subscription Savings Tracker",
-    url: "/SubscriptionSavingsTracker",
+    url: "SubscriptionSavingsTracker",
   },
-  { name: "Salary Negotiation Calculator", url: "/SalaryNegotiationCalculator" },
-  { name: "Crypto Tax Loss Harvesting Calculator", url: "/CryptoTaxLossHarvesting" },
-  { name: "Dividend Growth Projection Calculator", url: "/DividendGrowthProjection" },
-  { name: "Walking Step Equivalent Calculator", url: "/WalkingStepEquivalent" },
-  { name: "Caffeine Dependency Recovery Timeline", url: "/CaffeineDependencyRecovery" },
-  { name: "Sunscreen SPF Effectiveness Calculator", url: "/SunscreenSPFCalculator" },
-  { name: "Sleep Debt Payback Plan Calculator", url: "/SleepDebtPaybackPlan" },
-  { name: "Alcohol Tolerance Reset Planner", url: "/AlcoholToleranceReset" },
-  { name: "Audiobook Speed Calculator", url: "/AudiobookSpeed" },
-  { name: "Twitch Earnings Calculator", url: "/TwitchEarnings" },
-  { name: "Podcast Revenue Calculator", url: "/PodcastRevenue" },
-  { name: "YouTube Optimizer", url: "/YouTubeOptimizer" },
-  { name: "Bid Optimizer Calculator", url: "/BidOptimizer" },
-  { name: "Business Insurance Calculator", url: "/BusinessInsurance" },
-  { name: "College Major ROI Calculator", url: "/CollegeMajorROI" },
-  { name: "Contractor vs Employee Calculator", url: "/ContractorVsEmployee" },
-  { name: "Coworking ROI Calculator", url: "/CoworkingROI" },
-  { name: "Emergency Fund Calculator", url: "/EmergencyFund" },
-  { name: "Financial Independence Calculator", url: "/FinancialIndependence" },
+  { name: "Salary Negotiation Calculator", url: "SalaryNegotiationCalculator" },
+  { name: "Crypto Tax Loss Harvesting Calculator", url: "CryptoTaxLossHarvesting" },
+  { name: "Dividend Growth Projection Calculator", url: "DividendGrowthProjection" },
+  { name: "Walking Step Equivalent Calculator", url: "WalkingStepEquivalent" },
+  { name: "Caffeine Dependency Recovery Timeline", url: "CaffeineDependencyRecovery" },
+  { name: "Sunscreen SPF Effectiveness Calculator", url: "SunscreenSPFCalculator" },
+  { name: "Sleep Debt Payback Plan Calculator", url: "SleepDebtPaybackPlan" },
+  { name: "Alcohol Tolerance Reset Planner", url: "AlcoholToleranceReset" },
+  { name: "Audiobook Speed Calculator", url: "AudiobookSpeed" },
+  { name: "Twitch Earnings Calculator", url: "TwitchEarnings" },
+  { name: "Podcast Revenue Calculator", url: "PodcastRevenue" },
+  { name: "YouTube Optimizer", url: "YouTubeOptimizer" },
+  { name: "Bid Optimizer Calculator", url: "BidOptimizer" },
+  { name: "Business Insurance Calculator", url: "BusinessInsurance" },
+  { name: "College Major ROI Calculator", url: "CollegeMajorROI" },
+  { name: "Contractor vs Employee Calculator", url: "ContractorVsEmployee" },
+  { name: "Coworking ROI Calculator", url: "CoworkingROI" },
+  { name: "Emergency Fund Calculator", url: "EmergencyFund" },
+  { name: "Financial Independence Calculator", url: "FinancialIndependence" },
   {
     name: "Freelance Profitability Calculator",
-    url: "/FreelanceProfitability",
+    url: "FreelanceProfitability",
   },
-  { name: "Freelancer Rate Calculator", url: "/FreelancerRate" },
-  { name: "Online Course Pricing Calculator", url: "/OnlineCoursePricing" },
-  { name: "Passive Income Timeline Calculator", url: "/PassiveIncomeTimeline" },
-  { name: "Remote Work Tax Calculator", url: "/RemoteWorkTax" },
-  { name: "Subscription Audit Calculator", url: "/SubscriptionAudit" },
-  { name: "Vacation Rental ROI Calculator", url: "/VacationRentalROI" },
-  { name: "Coliving Expense Calculator", url: "/ColivingExpense" },
-  { name: "Dorm Room Planner Calculator", url: "/DormRoomPlanner" },
-  { name: "Food Waste Cost Calculator", url: "/FoodWasteCost" },
-  { name: "House vs Apartment Calculator", url: "/HouseVsApartment" },
-  { name: "Moving Box Calculator", url: "/MovingBoxCalculator" },
-  { name: "Van Life Budget Calculator", url: "/VanLifeBudget" },
-  { name: "Home Renovation Priority Sequencer", url: "/HomeRenovationPrioritySequencer" },
-  { name: "Rent vs Buy Calculator", url: "/RentVsBuyCalculator" },
-  { name: "Pet Adoption Readiness Financial Test", url: "/PetAdoptionReadinessTest" },
-  { name: "Interior Design Concept Feasibility Checker", url: "/InteriorDesignFeasibilityChecker" },
-  { name: "Moving Cost Estimator & Company Comparison", url: "/MovingCostEstimator" },
-  { name: "Digital Nomad Visa Feasibility Checker", url: "/DigitalNomadVisa" },
-  { name: "Sustainable Travel Carbon Offset Calculator", url: "/SustainableTravelCarbon" },
-  { name: "Staycation vs Vacation Cost Comparison", url: "/StaycationVsVacation" },
-  { name: "Cruise Ship ROI Calculator", url: "/CruiseShipROI" },
-  { name: "Expat Cost of Living Advisor", url: "/ExpatCostOfLiving" },
-  { name: "Freelance Hourly Rate Calculator", url: "/FreelanceHourlyRate" },
-  { name: "Business Breakeven Analysis Tool", url: "/BusinessBreakeven" },
-  { name: "Service Business Pricing Optimizer", url: "/ServiceBusinessPricing" },
-  { name: "Product Viability Scorer", url: "/ProductViabilityScorer" },
-  { name: "E-Commerce Product Profitability Calculator", url: "/ECommerceProductProfitability" },
-  { name: "Plastic Usage Carbon Footprint Calculator", url: "/PlasticCarbonFootprint" },
-  { name: "Water Usage Cost & Environmental Calculator", url: "/WaterUsageCalculator" },
-  { name: "Organic vs. Conventional Food Environmental Impact Analyzer", url: "/OrganicFoodImpactAnalyzer" },
-  { name: "Renewable Energy Feasibility Checker", url: "/RenewableEnergyChecker" },
-  { name: "Sustainable Shopping Impact Tracker", url: "/SustainableShoppingTracker" },
-  { name: "Coffee Tolerance Reset Calculator", url: "/CoffeeToleranceReset" },
+  { name: "Freelancer Rate Calculator", url: "FreelancerRate" },
+  { name: "Online Course Pricing Calculator", url: "OnlineCoursePricing" },
+  { name: "Passive Income Timeline Calculator", url: "PassiveIncomeTimeline" },
+  { name: "Remote Work Tax Calculator", url: "RemoteWorkTax" },
+  { name: "Subscription Audit Calculator", url: "SubscriptionAudit" },
+  { name: "Vacation Rental ROI Calculator", url: "VacationRentalROI" },
+  { name: "Coliving Expense Calculator", url: "ColivingExpense" },
+  { name: "Dorm Room Planner Calculator", url: "DormRoomPlanner" },
+  { name: "Food Waste Cost Calculator", url: "FoodWasteCost" },
+  { name: "House vs Apartment Calculator", url: "HouseVsApartment" },
+  { name: "Moving Box Calculator", url: "MovingBoxCalculator" },
+  { name: "Van Life Budget Calculator", url: "VanLifeBudget" },
+  { name: "Home Renovation Priority Sequencer", url: "HomeRenovationPrioritySequencer" },
+  { name: "Rent vs Buy Calculator", url: "RentVsBuyCalculator" },
+  { name: "Pet Adoption Readiness Financial Test", url: "PetAdoptionReadinessTest" },
+  { name: "Interior Design Concept Feasibility Checker", url: "InteriorDesignFeasibilityChecker" },
+  { name: "Moving Cost Estimator & Company Comparison", url: "MovingCostEstimator" },
+  { name: "Digital Nomad Visa Feasibility Checker", url: "DigitalNomadVisa" },
+  { name: "Sustainable Travel Carbon Offset Calculator", url: "SustainableTravelCarbon" },
+  { name: "Staycation vs Vacation Cost Comparison", url: "StaycationVsVacation" },
+  { name: "Cruise Ship ROI Calculator", url: "CruiseShipROI" },
+  { name: "Expat Cost of Living Advisor", url: "ExpatCostOfLiving" },
+  { name: "Freelance Hourly Rate Calculator", url: "FreelanceHourlyRate" },
+  { name: "Business Breakeven Analysis Tool", url: "BusinessBreakeven" },
+  { name: "Service Business Pricing Optimizer", url: "ServiceBusinessPricing" },
+  { name: "Product Viability Scorer", url: "ProductViabilityScorer" },
+  { name: "E-Commerce Product Profitability Calculator", url: "ECommerceProductProfitability" },
+  { name: "Plastic Usage Carbon Footprint Calculator", url: "PlasticCarbonFootprint" },
+  { name: "Water Usage Cost & Environmental Calculator", url: "WaterUsageCalculator" },
+  { name: "Organic vs. Conventional Food Environmental Impact Analyzer", url: "OrganicFoodImpactAnalyzer" },
+  { name: "Renewable Energy Feasibility Checker", url: "RenewableEnergyChecker" },
+  { name: "Sustainable Shopping Impact Tracker", url: "SustainableShoppingTracker" },
+  { name: "Coffee Tolerance Reset Calculator", url: "CoffeeToleranceReset" },
   {
     name: "Habit Streak Probability Calculator",
-    url: "/HabitStreakProbability",
+    url: "HabitStreakProbability",
   },
-  { name: "Pet Adoption Readiness Calculator", url: "/PetAdoptionReadiness" },
-  { name: "Pet Medication Dosage Calculator", url: "/PetMedicationDosage" },
-  { name: "Plant Growth Light Calculator", url: "/PlantGrowthLight" },
-  { name: "Sleep Debt Recovery Calculator", url: "/SleepDebtRecovery" },
-  { name: "Workout Rest Day Calculator", url: "/WorkoutRestDay" },
-  { name: "EV Charging Cost Calculator", url: "/EVChargingCost" },
-  { name: "Event Carbon Footprint Calculator", url: "/EventCarbonFootprint" },
-  { name: "Fuel Station Queue Calculator", url: "/FuelStationQueue" },
-  { name: "Language Learning Time Calculator", url: "/LanguageLearningTime" },
-  { name: "LinkedIn Predictor Calculator", url: "/LinkedInPredictor" },
-  { name: "Social Engagement Calculator", url: "/SocialEngagement" },
-  { name: "Time Zone Coordinator Calculator", url: "/TimeZoneCoordinator" },
-  { name: "Study Material Format Optimizer", url: "/StudyMaterialOptimizer" },
-  { name: "Exam Score Predictor", url: "/ExamScorePredictor" },
-  { name: "Language Learning Timeline Calculator", url: "/LanguageLearningTimelineCalculator" },
-  { name: "Certification ROI Calculator", url: "/CertificationROICalculator" },
-  { name: "Micro-Credential Value Assessor", url: "/MicroCredentialValueAssessor" },
-  { name: "Gaming PC Budget Allocator", url: "/GamingPCBudgetAllocator" },
-  { name: "Gacha Game Spending ROI Calculator", url: "/GachaGameROICalculator" },
-  { name: "Game Completion Time Estimator", url: "/GameCompletionTimeEstimator" },
-  { name: "Speedrun Potential Analyzer", url: "/SpeedrunPotentialAnalyzer" },
-  { name: "Streaming Equipment Sufficiency Checker", url: "/StreamingEquipmentChecker" },
-  { name: "AI Anxiety Symptom Severity Predictor", url: "/AIAnxietyPredictor" },
-  { name: "Career Satisfaction Pulse Calculator", url: "/CareerSatisfactionPulse" },
+  { name: "Pet Adoption Readiness Calculator", url: "PetAdoptionReadiness" },
+  { name: "Pet Medication Dosage Calculator", url: "PetMedicationDosage" },
+  { name: "Plant Growth Light Calculator", url: "PlantGrowthLight" },
+  { name: "Sleep Debt Recovery Calculator", url: "SleepDebtRecovery" },
+  { name: "Workout Rest Day Calculator", url: "WorkoutRestDay" },
+  { name: "EV Charging Cost Calculator", url: "EVChargingCost" },
+  { name: "Event Carbon Footprint Calculator", url: "EventCarbonFootprint" },
+  { name: "Fuel Station Queue Calculator", url: "FuelStationQueue" },
+  { name: "Language Learning Time Calculator", url: "LanguageLearningTime" },
+  { name: "LinkedIn Predictor Calculator", url: "LinkedInPredictor" },
+  { name: "Social Engagement Calculator", url: "SocialEngagement" },
+  { name: "Time Zone Coordinator Calculator", url: "TimeZoneCoordinator" },
+  { name: "Study Material Format Optimizer", url: "StudyMaterialOptimizer" },
+  { name: "Exam Score Predictor", url: "ExamScorePredictor" },
+  { name: "Language Learning Timeline Calculator", url: "LanguageLearningTimelineCalculator" },
+  { name: "Certification ROI Calculator", url: "CertificationROICalculator" },
+  { name: "Micro-Credential Value Assessor", url: "MicroCredentialValueAssessor" },
+  { name: "Gaming PC Budget Allocator", url: "GamingPCBudgetAllocator" },
+  { name: "Gacha Game Spending ROI Calculator", url: "GachaGameROICalculator" },
+  { name: "Game Completion Time Estimator", url: "GameCompletionTimeEstimator" },
+  { name: "Speedrun Potential Analyzer", url: "SpeedrunPotentialAnalyzer" },
+  { name: "Streaming Equipment Sufficiency Checker", url: "StreamingEquipmentChecker" },
+  { name: "AI Anxiety Symptom Severity Predictor", url: "AIAnxietyPredictor" },
+  { name: "Career Satisfaction Pulse Calculator", url: "CareerSatisfactionPulse" },
 ];
 
 // Load navbar component
@@ -118,9 +118,9 @@ async function loadNavbar() {
   try {
     // Try multiple possible paths until one works
     const possiblePaths = [
-      "../src/components/Navbar.html", // For main index page
-      "../../components/Navbar.html", // For calculator pages
-      "../components/Navbar.html", // Alternative path
+      "src/components/Navbar.html", // For main index page
+      "../src/components/Navbar.html", // For calculator pages
+      "../../src/components/Navbar.html", // For nested pages
       "/src/components/Navbar.html", // Absolute path from root
     ];
 
@@ -337,7 +337,7 @@ function generateDesktopNav() {
           ${categoryData.tools
             .map(
               (tool) => `
-            <a href="${tool.url}" class="block px-2 py-1.5 text-xs text-text hover:bg-accent/20 rounded transition">${tool.name}</a>
+            <a href="/${tool.url}/" class="block px-2 py-1.5 text-xs text-text hover:bg-accent/20 rounded transition">${tool.name}</a>
           `
             )
             .join("")}
@@ -369,7 +369,7 @@ function generateMoreToolsDropdown() {
         ${categoryData.tools
           .map(
             (tool) => `
-          <a href="${tool.url}" class="block px-2 py-1 text-xs text-text hover:bg-accent/20 rounded transition">${tool.name}</a>
+          <a href="/${tool.url}/" class="block px-2 py-1 text-xs text-text hover:bg-accent/20 rounded transition">${tool.name}</a>
         `
           )
           .join("")}
@@ -397,7 +397,7 @@ function generateMobileNav() {
         ${categoryData.tools
           .map(
             (tool) => `
-          <a href="${tool.url}" class="block text-xs text-text hover:text-primary transition py-1">${tool.name}</a>
+          <a href="/${tool.url}/" class="block text-xs text-text hover:text-primary transition py-1">${tool.name}</a>
         `
           )
           .join("")}
@@ -428,7 +428,7 @@ function generateMobileMoreTools() {
         ${categoryData.tools
           .map(
             (tool) => `
-          <a href="${tool.url}" class="block text-xs text-text hover:text-primary transition py-1">${tool.name}</a>
+          <a href="/${tool.url}/" class="block text-xs text-text hover:text-primary transition py-1">${tool.name}</a>
         `
           )
           .join("")}
@@ -471,7 +471,7 @@ function initializeNavbar() {
         searchSuggestions.innerHTML = matches
           .map(
             (tool) =>
-              `<a href="${tool.url}" class="block px-3 py-2 text-text hover:bg-accent/20 text-sm">${tool.name}</a>`
+              `<a href="/${tool.url}/" class="block px-3 py-2 text-text hover:bg-accent/20 text-sm">${tool.name}</a>`
           )
           .join("");
         searchSuggestions.classList.remove("hidden");
@@ -545,7 +545,7 @@ function generateFooterCategories() {
           ${categoryData.tools
             .map(
               (tool) => `
-            <li><a href="${tool.url}" class="text-light hover:text-primary transition-colors duration-200">${tool.name}</a></li>
+            <li><a href="/${tool.url}/" class="text-light hover:text-primary transition-colors duration-200">${tool.name}</a></li>
           `
             )
             .join("")}
@@ -561,10 +561,10 @@ function generateFooterCategories() {
 async function loadFooter() {
   try {
     const possiblePaths = [
-      "../src/components/Footer.html",
-      "../../components/Footer.html",
-      "../components/Footer.html",
-      "/src/components/Footer.html",
+      "src/components/Footer.html", // For main index page
+      "../src/components/Footer.html", // For calculator pages
+      "../../src/components/Footer.html", // For nested pages
+      "/src/components/Footer.html", // Absolute path from root
     ];
 
     let footerHTML = "";

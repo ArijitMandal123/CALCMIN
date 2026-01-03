@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('fi-form');
   const resultsDiv = document.getElementById('results');
   const resultContent = document.getElementById('result-content');
@@ -183,6 +183,12 @@ document.addEventListener('DOMContentLoaded', function() {
     return 50;
   }
 
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
   function displayResults(analysis, formData) {
     const fiDate = new Date();
     fiDate.setFullYear(fiDate.getFullYear() + analysis.yearsToFI);
@@ -199,15 +205,15 @@ document.addEventListener('DOMContentLoaded', function() {
         
         <div class="grid md:grid-cols-3 gap-4 mb-6">
           <div class="bg-dark p-4 rounded border border-accent text-center">
-            <div class="text-2xl font-bold text-primary">${analysis.yearsToFI}</div>
+            <div class="text-2xl font-bold text-primary">${sanitizeText(analysis.yearsToFI)}</div>
             <div class="text-sm text-light">Years to FI</div>
           </div>
           <div class="bg-dark p-4 rounded border border-accent text-center">
-            <div class="text-2xl font-bold text-accent">${analysis.fiAge}</div>
+            <div class="text-2xl font-bold text-accent">${sanitizeText(analysis.fiAge)}</div>
             <div class="text-sm text-light">FI Age</div>
           </div>
           <div class="bg-dark p-4 rounded border border-accent text-center">
-            <div class="text-2xl font-bold ${savingsColor}">${analysis.savingsRate.toFixed(1)}%</div>
+            <div class="text-2xl font-bold ${sanitizeText(savingsColor)}">${analysis.savingsRate.toFixed(1)}%</div>
             <div class="text-sm text-light">Savings Rate</div>
           </div>
         </div>
@@ -226,7 +232,7 @@ document.addEventListener('DOMContentLoaded', function() {
               </div>
               <div class="flex justify-between">
                 <span class="text-light">Withdrawal Rate:</span>
-                <span class="text-text">${formData.withdrawalRate}%</span>
+                <span class="text-text">${sanitizeText(formData.withdrawalRate)}%</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-light">Expected FI Date:</span>
@@ -265,11 +271,11 @@ document.addEventListener('DOMContentLoaded', function() {
               <div class="p-3 bg-dark rounded border border-accent">
                 <div class="flex justify-between items-center">
                   <div>
-                    <div class="font-medium text-text">${scenario.name}</div>
+                    <div class="font-medium text-text">${escapeHtml(scenario.name)}</div>
                     <div class="text-xs text-light">$${scenario.expenses.toLocaleString()}/year expenses</div>
                   </div>
                   <div class="text-right">
-                    <div class="font-bold text-primary">${scenario.yearsToFI} years</div>
+                    <div class="font-bold text-primary">${sanitizeText(scenario.yearsToFI)} years</div>
                     <div class="text-xs text-light">$${(scenario.fiNumber/1000).toFixed(0)}K needed</div>
                   </div>
                 </div>
@@ -294,7 +300,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 ${analysis.yearlyData.slice(0, 10).map(data => `
                   <tr class="border-b border-accent/30">
                     <td class="py-1 text-text">${data.year}</td>
-                    <td class="py-1 text-text">${data.age}</td>
+                    <td class="py-1 text-text">${sanitizeText(data.age)}</td>
                     <td class="py-1 text-text">$${(data.netWorth/1000).toFixed(0)}K</td>
                     <td class="py-1 text-text">${data.savingsRate.toFixed(1)}%</td>
                   </tr>
@@ -310,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ${generateOptimizationTips(analysis, formData).map(tip => `
               <li class="flex items-start gap-2">
                 <span class="material-icons text-xs text-accent mt-0.5">lightbulb</span>
-                ${tip}
+                ${escapeHtml(tip)}
               </li>
             `).join('')}
           </ul>

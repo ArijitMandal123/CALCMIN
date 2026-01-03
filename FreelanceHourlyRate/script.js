@@ -1,4 +1,4 @@
-// Freelance Hourly Rate Calculator
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Freelance Hourly Rate Calculator
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('freelance-rate-form');
     const resultsDiv = document.getElementById('results');
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 <div class="bg-primary/10 border-l-4 border-primary p-6 mb-6">
                     <div class="text-center">
-                        <div class="text-4xl font-bold ${rateClass} mb-2">$${data.minimumHourlyRate.toFixed(0)}/hour</div>
+                        <div class="text-4xl font-bold ${sanitizeText(rateClass)} mb-2">$${data.minimumHourlyRate.toFixed(0)}/hour</div>
                         <div class="text-lg text-light">Minimum Sustainable Rate</div>
                     </div>
                 </div>
@@ -218,11 +218,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-light">Billable Hours/Week:</span>
-                                <span class="text-text">${data.billableHours}</span>
+                                <span class="text-text">${sanitizeText(data.billableHours)}</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-light">Non-Billable Hours/Week:</span>
-                                <span class="text-text">${data.nonBillableHours}</span>
+                                <span class="text-text">${sanitizeText(data.nonBillableHours)}</span>
                             </div>
                             <div class="flex justify-between border-t border-accent pt-2">
                                 <span class="text-light font-semibold">Total Billable Hours:</span>
@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="bg-dark p-6 rounded border border-accent">
                     <h4 class="text-lg font-semibold text-accent mb-3">Recommendations</h4>
                     <ul class="text-sm text-light space-y-2">
-                        ${data.recommendations.map(rec => `<li>• ${rec}</li>`).join('')}
+                        ${data.recommendations.map(rec => `<li>â€¢ ${rec}</li>`).join('')}
                     </ul>
                     
                     <div class="mt-4 p-4 bg-broder rounded border border-accent">

@@ -1,4 +1,4 @@
-document.getElementById('ev-form').addEventListener('submit', function(e) {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.getElementById('ev-form').addEventListener('submit', function(e) {
   e.preventDefault();
   
   const evEfficiency = parseFloat(document.getElementById('evEfficiency').value);
@@ -56,17 +56,17 @@ function displayResults(evCost, gasCost, monthly, annual, perMile, kwh, gallons)
       </div>
 
       <div class="bg-dark p-4 rounded mb-4 text-center">
-        <div class="${winnerColor} text-2xl font-bold">${winner} Wins!</div>
+        <div class="${sanitizeText(winnerColor)} text-2xl font-bold">${sanitizeText(winner)} Wins!</div>
         <div class="text-light text-sm">More Cost Effective</div>
       </div>
 
       <div class="grid md:grid-cols-2 gap-4 mb-4">
         <div class="bg-dark p-4 rounded text-center">
-          <div class="${savingsColor} text-2xl font-bold">${monthly >= 0 ? '+' : ''}$${monthly.toFixed(2)}</div>
+          <div class="${sanitizeText(savingsColor)} text-2xl font-bold">${monthly >= 0 ? '+' : ''}$${monthly.toFixed(2)}</div>
           <div class="text-light text-sm">Monthly Savings (EV)</div>
         </div>
         <div class="bg-dark p-4 rounded text-center">
-          <div class="${savingsColor} text-2xl font-bold">${annual >= 0 ? '+' : ''}$${annual.toFixed(2)}</div>
+          <div class="${sanitizeText(savingsColor)} text-2xl font-bold">${annual >= 0 ? '+' : ''}$${annual.toFixed(2)}</div>
           <div class="text-light text-sm">Annual Savings (EV)</div>
         </div>
       </div>
@@ -82,13 +82,13 @@ function displayResults(evCost, gasCost, monthly, annual, perMile, kwh, gallons)
       </div>
       
       <div class="bg-accent/20 border border-accent rounded p-3 text-sm">
-        <strong>💡 Additional EV Benefits:</strong>
+        <strong>ðŸ’¡ Additional EV Benefits:</strong>
         <ul class="mt-2 space-y-1 text-light">
-          <li>• Lower maintenance costs (no oil changes)</li>
-          <li>• Potential tax incentives and rebates</li>
-          <li>• Reduced environmental impact</li>
-          <li>• Quieter operation</li>
-          <li>• Home charging convenience</li>
+          <li>â€¢ Lower maintenance costs (no oil changes)</li>
+          <li>â€¢ Potential tax incentives and rebates</li>
+          <li>â€¢ Reduced environmental impact</li>
+          <li>â€¢ Quieter operation</li>
+          <li>â€¢ Home charging convenience</li>
         </ul>
       </div>
     </div>

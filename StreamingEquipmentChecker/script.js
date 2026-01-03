@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('streaming-form');
     
     form.addEventListener('submit', function(e) {
@@ -407,21 +407,21 @@ function displayResults(results) {
     const html = `
         <div class="bg-primary/10 border-l-4 border-primary p-6 mb-6">
             <h3 class="text-2xl font-bold text-primary mb-2">Streaming Setup Analysis</h3>
-            <p class="text-light">Overall Score: <span class="${results.setupRating.color} font-semibold">${results.overallScore}/100 (${results.setupRating.level})</span></p>
+            <p class="text-light">Overall Score: <span class="${sanitizeText(results.setupRating.color)} font-semibold">${sanitizeText(results.overallScore)}/100 (${sanitizeText(results.setupRating.level)})</span></p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-6 mb-6">
             <div class="bg-broder p-6 rounded-lg border border-accent text-center">
-                <div class="text-3xl font-bold text-primary mb-2">${results.overallScore}</div>
+                <div class="text-3xl font-bold text-primary mb-2">${sanitizeText(results.overallScore)}</div>
                 <div class="text-sm text-light mb-1">Setup Score</div>
-                <div class="text-xs ${results.setupRating.color}">${results.setupRating.level}</div>
+                <div class="text-xs ${sanitizeText(results.setupRating.color)}">${sanitizeText(results.setupRating.level)}</div>
             </div>
             <div class="bg-broder p-6 rounded-lg border border-accent text-center">
-                <div class="text-2xl font-bold text-accent mb-2">${results.performance.streamQuality}</div>
+                <div class="text-2xl font-bold text-accent mb-2">${sanitizeText(results.performance.streamQuality)}</div>
                 <div class="text-sm text-light">Expected Quality</div>
             </div>
             <div class="bg-broder p-6 rounded-lg border border-accent text-center">
-                <div class="text-2xl font-bold text-yellow-400 mb-2">${results.performance.reliability}</div>
+                <div class="text-2xl font-bold text-yellow-400 mb-2">${sanitizeText(results.performance.reliability)}</div>
                 <div class="text-sm text-light">Reliability</div>
             </div>
         </div>
@@ -434,54 +434,54 @@ function displayResults(results) {
                         <span class="text-light">CPU</span>
                         <div class="flex items-center gap-2">
                             <div class="w-20 bg-dark rounded-full h-2">
-                                <div class="bg-primary h-2 rounded-full" style="width: ${results.scores.cpu}%"></div>
+                                <div class="bg-primary h-2 rounded-full" style="width: ${sanitizeText(results.scores.cpu)}%"></div>
                             </div>
-                            <span class="text-primary font-semibold w-8">${results.scores.cpu}</span>
+                            <span class="text-primary font-semibold w-8">${sanitizeText(results.scores.cpu)}</span>
                         </div>
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-light">GPU</span>
                         <div class="flex items-center gap-2">
                             <div class="w-20 bg-dark rounded-full h-2">
-                                <div class="bg-primary h-2 rounded-full" style="width: ${results.scores.gpu}%"></div>
+                                <div class="bg-primary h-2 rounded-full" style="width: ${sanitizeText(results.scores.gpu)}%"></div>
                             </div>
-                            <span class="text-primary font-semibold w-8">${results.scores.gpu}</span>
+                            <span class="text-primary font-semibold w-8">${sanitizeText(results.scores.gpu)}</span>
                         </div>
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-light">RAM</span>
                         <div class="flex items-center gap-2">
                             <div class="w-20 bg-dark rounded-full h-2">
-                                <div class="bg-primary h-2 rounded-full" style="width: ${results.scores.ram}%"></div>
+                                <div class="bg-primary h-2 rounded-full" style="width: ${sanitizeText(results.scores.ram)}%"></div>
                             </div>
-                            <span class="text-primary font-semibold w-8">${results.scores.ram}</span>
+                            <span class="text-primary font-semibold w-8">${sanitizeText(results.scores.ram)}</span>
                         </div>
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-light">Internet</span>
                         <div class="flex items-center gap-2">
                             <div class="w-20 bg-dark rounded-full h-2">
-                                <div class="bg-primary h-2 rounded-full" style="width: ${results.scores.internet}%"></div>
+                                <div class="bg-primary h-2 rounded-full" style="width: ${sanitizeText(results.scores.internet)}%"></div>
                             </div>
-                            <span class="text-primary font-semibold w-8">${results.scores.internet}</span>
+                            <span class="text-primary font-semibold w-8">${sanitizeText(results.scores.internet)}</span>
                         </div>
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-light">Camera</span>
                         <div class="flex items-center gap-2">
                             <div class="w-20 bg-dark rounded-full h-2">
-                                <div class="bg-primary h-2 rounded-full" style="width: ${results.scores.camera}%"></div>
+                                <div class="bg-primary h-2 rounded-full" style="width: ${sanitizeText(results.scores.camera)}%"></div>
                             </div>
-                            <span class="text-primary font-semibold w-8">${results.scores.camera}</span>
+                            <span class="text-primary font-semibold w-8">${sanitizeText(results.scores.camera)}</span>
                         </div>
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-light">Microphone</span>
                         <div class="flex items-center gap-2">
                             <div class="w-20 bg-dark rounded-full h-2">
-                                <div class="bg-primary h-2 rounded-full" style="width: ${results.scores.microphone}%"></div>
+                                <div class="bg-primary h-2 rounded-full" style="width: ${sanitizeText(results.scores.microphone)}%"></div>
                             </div>
-                            <span class="text-primary font-semibold w-8">${results.scores.microphone}</span>
+                            <span class="text-primary font-semibold w-8">${sanitizeText(results.scores.microphone)}</span>
                         </div>
                     </div>
                 </div>
@@ -492,15 +492,15 @@ function displayResults(results) {
                 <div class="space-y-3">
                     <div>
                         <span class="text-light block text-sm">Stream Quality:</span>
-                        <span class="text-primary font-semibold">${results.performance.streamQuality}</span>
+                        <span class="text-primary font-semibold">${sanitizeText(results.performance.streamQuality)}</span>
                     </div>
                     <div>
                         <span class="text-light block text-sm">Reliability:</span>
-                        <span class="text-primary font-semibold">${results.performance.reliability}</span>
+                        <span class="text-primary font-semibold">${sanitizeText(results.performance.reliability)}</span>
                     </div>
                     <div>
                         <span class="text-light block text-sm">Viewer Experience:</span>
-                        <span class="text-primary font-semibold">${results.performance.viewerExperience}</span>
+                        <span class="text-primary font-semibold">${sanitizeText(results.performance.viewerExperience)}</span>
                     </div>
                 </div>
             </div>
@@ -514,10 +514,10 @@ function displayResults(results) {
                     <div class="bg-dark p-4 rounded border border-accent">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-primary font-semibold">${bottleneck.component}</span>
-                            <span class="text-xs px-2 py-1 rounded ${bottleneck.impact === 'Critical' ? 'bg-red-900 text-red-300' : bottleneck.impact === 'High' ? 'bg-orange-900 text-orange-300' : 'bg-yellow-900 text-yellow-300'}">${bottleneck.impact} Impact</span>
+                            <span class="text-xs px-2 py-1 rounded ${bottleneck.impact === 'Critical' ? 'bg-red-900 text-red-300' : bottleneck.impact === 'High' ? 'bg-orange-900 text-orange-300' : 'bg-yellow-900 text-yellow-300'}">${sanitizeText(bottleneck.impact)} Impact</span>
                         </div>
-                        <div class="text-sm text-light">${bottleneck.description}</div>
-                        <div class="text-xs text-accent mt-1">Score: ${bottleneck.score}/100</div>
+                        <div class="text-sm text-light">${sanitizeText(bottleneck.description)}</div>
+                        <div class="text-xs text-accent mt-1">Score: ${sanitizeText(bottleneck.score)}/100</div>
                     </div>
                 `).join('')}
             </div>
@@ -533,12 +533,12 @@ function displayResults(results) {
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-primary font-semibold">${rec.component}</span>
                             <div class="text-right">
-                                <div class="text-xs px-2 py-1 rounded ${rec.priority === 'Critical' ? 'bg-red-900 text-red-300' : rec.priority === 'High' ? 'bg-orange-900 text-orange-300' : 'bg-yellow-900 text-yellow-300'}">${rec.priority} Priority</div>
-                                <div class="text-xs text-accent mt-1">${rec.cost}</div>
+                                <div class="text-xs px-2 py-1 rounded ${rec.priority === 'Critical' ? 'bg-red-900 text-red-300' : rec.priority === 'High' ? 'bg-orange-900 text-orange-300' : 'bg-yellow-900 text-yellow-300'}">${sanitizeText(rec.priority)} Priority</div>
+                                <div class="text-xs text-accent mt-1">${sanitizeText(rec.cost)}</div>
                             </div>
                         </div>
-                        <div class="text-sm text-light mb-2">${rec.suggestion}</div>
-                        <div class="text-xs text-accent">${rec.impact}</div>
+                        <div class="text-sm text-light mb-2">${sanitizeText(rec.suggestion)}</div>
+                        <div class="text-xs text-accent">${sanitizeText(rec.impact)}</div>
                     </div>
                 `).join('')}
             </div>
@@ -552,11 +552,11 @@ function displayResults(results) {
                 ${results.upgradeTimeline.map(phase => `
                     <div class="bg-dark p-4 rounded border border-accent">
                         <div class="flex justify-between items-start mb-2">
-                            <span class="text-primary font-semibold">${phase.phase}: ${phase.component}</span>
-                            <span class="text-accent text-sm">${phase.timeframe}</span>
+                            <span class="text-primary font-semibold">${phase.phase}: ${sanitizeText(phase.component)}</span>
+                            <span class="text-accent text-sm">${sanitizeText(phase.timeframe)}</span>
                         </div>
-                        <div class="text-sm text-light mb-1">${phase.suggestion}</div>
-                        <div class="text-xs text-accent">Estimated cost: ${phase.cost}</div>
+                        <div class="text-sm text-light mb-1">${sanitizeText(phase.suggestion)}</div>
+                        <div class="text-xs text-accent">Estimated cost: ${sanitizeText(phase.cost)}</div>
                     </div>
                 `).join('')}
             </div>

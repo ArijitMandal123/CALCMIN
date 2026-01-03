@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('alcohol-form');
     const resultsDiv = document.getElementById('results');
     const resultContent = document.getElementById('result-content');
@@ -337,6 +337,12 @@ document.addEventListener('DOMContentLoaded', function() {
         return recommendations;
     }
 
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
     function displayResults(results) {
         const html = `
             <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
@@ -345,12 +351,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 <!-- Risk Assessment -->
                 <div class="mb-6">
                     <h4 class="text-lg font-semibold text-accent mb-3">Withdrawal Risk Assessment</h4>
-                    <div class="bg-${results.riskLevel.color}-900/20 border border-${results.riskLevel.color}-600 rounded p-4">
+                    <div class="bg-${results.riskLevel.color === 'red' ? 'red' : results.riskLevel.color === 'yellow' ? 'yellow' : results.riskLevel.color === 'orange' ? 'orange' : 'green'}-900/20 border border-${results.riskLevel.color === 'red' ? 'red' : results.riskLevel.color === 'yellow' ? 'yellow' : results.riskLevel.color === 'orange' ? 'orange' : 'green'}-600 rounded p-4">
                         <div class="flex items-center gap-3">
-                            <span class="material-icons text-${results.riskLevel.color}-400">health_and_safety</span>
+                            <span class="material-icons text-${results.riskLevel.color === 'red' ? 'red' : results.riskLevel.color === 'yellow' ? 'yellow' : results.riskLevel.color === 'orange' ? 'orange' : 'green'}-400">health_and_safety</span>
                             <div>
-                                <p class="font-semibold text-${results.riskLevel.color}-400">${results.riskLevel.level} Risk Level</p>
-                                <p class="text-sm text-light">Risk Score: ${results.riskLevel.score}/16</p>
+                                <p class="font-semibold text-${results.riskLevel.color === 'red' ? 'red' : results.riskLevel.color === 'yellow' ? 'yellow' : results.riskLevel.color === 'orange' ? 'orange' : 'green'}-400">${escapeHtml(results.riskLevel.level)} Risk Level</p>
+                                <p class="text-sm text-light">Risk Score: ${sanitizeText(results.riskLevel.score)}/16</p>
                             </div>
                         </div>
                     </div>
@@ -363,18 +369,18 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="grid gap-3">
                             ${results.reductionSchedule.schedule.slice(0, 6).map(week => `
                                 <div class="flex justify-between items-center py-2 border-b border-accent/30 last:border-b-0">
-                                    <span class="font-medium">Week ${week.week === 0 ? 'Current' : week.week}</span>
+                                    <span class="font-medium">Week ${week.week === 0 ? 'Current' : escapeHtml(week.week.toString())}</span>
                                     <div class="text-right">
-                                        <span class="text-primary font-semibold">${week.weeklyDrinks} drinks/week</span>
-                                        <span class="text-sm text-light ml-2">(${week.dailyDrinks}/day)</span>
-                                        ${week.percentage > 0 ? `<span class="text-xs text-green-400 ml-2">-${week.percentage}%</span>` : ''}
+                                        <span class="text-primary font-semibold">${escapeHtml(week.weeklyDrinks.toString())} drinks/week</span>
+                                        <span class="text-sm text-light ml-2">(${escapeHtml(week.dailyDrinks.toString())}/day)</span>
+                                        ${week.percentage > 0 ? `<span class="text-xs text-green-400 ml-2">-${escapeHtml(week.percentage.toString())}%</span>` : ''}
                                     </div>
                                 </div>
                             `).join('')}
                         </div>
                         <div class="mt-4 p-3 bg-primary/10 rounded border-l-4 border-primary">
                             <p class="text-sm text-light">
-                                <strong>Target:</strong> ${results.reductionSchedule.targetDrinks} drinks/week 
+                                <strong>Target:</strong> ${sanitizeText(results.reductionSchedule.targetDrinks)} drinks/week 
                                 (${Math.round(results.reductionSchedule.targetDrinks/7 * 10)/10} drinks/day)
                             </p>
                         </div>
@@ -387,9 +393,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="space-y-4">
                         ${results.healthBenefits.map(period => `
                             <div class="bg-dark rounded p-4 border border-accent">
-                                <h5 class="font-semibold text-primary mb-2">${period.timeframe}</h5>
+                                <h5 class="font-semibold text-primary mb-2">${escapeHtml(period.timeframe)}</h5>
                                 <ul class="text-sm text-light space-y-1">
-                                    ${period.benefits.map(benefit => `<li>• ${benefit}</li>`).join('')}
+                                    ${period.benefits.map(benefit => `<li>â€¢ ${escapeHtml(benefit)}</li>`).join('')}
                                 </ul>
                             </div>
                         `).join('')}
@@ -407,11 +413,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             </div>
                             <div class="bg-dark rounded p-4 border border-accent text-center">
                                 <p class="text-sm text-light">Annual Savings</p>
-                                <p class="text-2xl font-bold text-green-400">$${results.financialSavings.savings.annual}</p>
+                                <p class="text-2xl font-bold text-green-400">$${sanitizeText(results.financialSavings.savings.annual)}</p>
                             </div>
                             <div class="bg-dark rounded p-4 border border-accent text-center">
                                 <p class="text-sm text-light">Current Annual Cost</p>
-                                <p class="text-xl font-semibold text-red-400">$${results.financialSavings.current.annual}</p>
+                                <p class="text-xl font-semibold text-red-400">$${sanitizeText(results.financialSavings.current.annual)}</p>
                             </div>
                         </div>
                     </div>
@@ -424,25 +430,25 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="bg-dark rounded p-4 border border-accent">
                             <h5 class="font-semibold text-primary mb-2">Social Alternatives</h5>
                             <ul class="text-sm text-light space-y-1">
-                                ${results.alternatives.social.slice(0, 3).map(alt => `<li>• ${alt}</li>`).join('')}
+                                ${results.alternatives.social.slice(0, 3).map(alt => `<li>â€¢ ${escapeHtml(alt)}</li>`).join('')}
                             </ul>
                         </div>
                         <div class="bg-dark rounded p-4 border border-accent">
                             <h5 class="font-semibold text-primary mb-2">Stress Management</h5>
                             <ul class="text-sm text-light space-y-1">
-                                ${results.alternatives.stress.slice(0, 3).map(alt => `<li>• ${alt}</li>`).join('')}
+                                ${results.alternatives.stress.slice(0, 3).map(alt => `<li>â€¢ ${escapeHtml(alt)}</li>`).join('')}
                             </ul>
                         </div>
                         <div class="bg-dark rounded p-4 border border-accent">
                             <h5 class="font-semibold text-primary mb-2">Evening Routines</h5>
                             <ul class="text-sm text-light space-y-1">
-                                ${results.alternatives.evening.slice(0, 3).map(alt => `<li>• ${alt}</li>`).join('')}
+                                ${results.alternatives.evening.slice(0, 3).map(alt => `<li>â€¢ ${escapeHtml(alt)}</li>`).join('')}
                             </ul>
                         </div>
                         <div class="bg-dark rounded p-4 border border-accent">
                             <h5 class="font-semibold text-primary mb-2">Weekend Activities</h5>
                             <ul class="text-sm text-light space-y-1">
-                                ${results.alternatives.weekend.slice(0, 3).map(alt => `<li>• ${alt}</li>`).join('')}
+                                ${results.alternatives.weekend.slice(0, 3).map(alt => `<li>â€¢ ${escapeHtml(alt)}</li>`).join('')}
                             </ul>
                         </div>
                     </div>
@@ -459,7 +465,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <span class="material-icons text-${rec.priority === 'high' ? 'red' : 'yellow'}-400 mt-0.5">
                                             ${rec.priority === 'high' ? 'warning' : 'info'}
                                         </span>
-                                        <p class="text-sm text-light">${rec.text}</p>
+                                        <p class="text-sm text-light">${escapeHtml(rec.text)}</p>
                                     </div>
                                 </div>
                             `).join('')}
@@ -481,6 +487,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function showNotification(message, type = 'info') {
+        // Sanitize message to prevent XSS
+        const sanitizedMessage = document.createElement('div');
+        sanitizedMessage.textContent = message;
+        const safeMessage = sanitizedMessage.innerHTML;
+        
         // Create notification element
         const notification = document.createElement('div');
         notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg border max-w-md ${
@@ -489,17 +500,25 @@ document.addEventListener('DOMContentLoaded', function() {
             'bg-blue-900/90 border-blue-600 text-blue-100'
         }`;
         
+        const iconType = type === 'error' ? 'error' : type === 'success' ? 'check_circle' : 'info';
+        
         notification.innerHTML = `
             <div class="flex items-center gap-3">
                 <span class="material-icons">
-                    ${type === 'error' ? 'error' : type === 'success' ? 'check_circle' : 'info'}
+                    ${sanitizeText(iconType)}
                 </span>
-                <p class="text-sm">${message}</p>
-                <button onclick="this.parentElement.parentElement.remove()" class="ml-auto">
+                <p class="text-sm">${sanitizeText(safeMessage)}</p>
+                <button class="ml-auto close-btn">
                     <span class="material-icons text-sm">close</span>
                 </button>
             </div>
         `;
+        
+        // Add event listener safely
+        const closeBtn = notification.querySelector('.close-btn');
+        closeBtn.addEventListener('click', () => {
+            notification.remove();
+        });
         
         document.body.appendChild(notification);
         

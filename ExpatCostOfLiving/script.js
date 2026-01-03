@@ -1,4 +1,4 @@
-// Expat Cost of Living Advisor
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Expat Cost of Living Advisor
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('expat-form');
     const resultsDiv = document.getElementById('results');
@@ -214,6 +214,12 @@ document.addEventListener('DOMContentLoaded', function() {
         return recommendation;
     }
 
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
     function displayResults(data) {
         const costDifferenceClass = data.costDifference > 0 ? 'text-red-400' : 'text-green-400';
         const scoreClass = data.affordabilityScore >= 70 ? 'text-green-400' : 
@@ -221,23 +227,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
         resultContent.innerHTML = `
             <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
-                <h3 class="text-2xl font-bold text-primary mb-4">Expat Cost Analysis: ${data.targetCountry}</h3>
+                <h3 class="text-2xl font-bold text-primary mb-4">Expat Cost Analysis: ${sanitizeText(data.targetCountry)}</h3>
                 
                 <div class="grid md:grid-cols-2 gap-6 mb-6">
                     <div class="bg-dark p-4 rounded border border-accent">
                         <h4 class="text-lg font-semibold text-accent mb-3">Monthly Costs</h4>
                         <div class="space-y-2 text-sm">
                             <div class="flex justify-between">
-                                <span class="text-light">Current (${data.currentCountry}):</span>
+                                <span class="text-light">Current (${sanitizeText(data.currentCountry)}):</span>
                                 <span class="text-text font-medium">$${data.currentExpenses.toLocaleString()}</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-light">Target (${data.targetCountry}):</span>
+                                <span class="text-light">Target (${sanitizeText(data.targetCountry)}):</span>
                                 <span class="text-text font-medium">$${Math.round(data.totalMonthlyCost).toLocaleString()}</span>
                             </div>
                             <div class="flex justify-between border-t border-accent pt-2">
                                 <span class="text-light">Monthly Difference:</span>
-                                <span class="${costDifferenceClass} font-medium">
+                                <span class="${sanitizeText(costDifferenceClass)} font-medium">
                                     ${data.costDifference > 0 ? '+' : ''}$${Math.round(data.costDifference/12).toLocaleString()}
                                 </span>
                             </div>
@@ -266,18 +272,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="bg-primary/10 border-l-4 border-primary p-6 mb-6">
                     <div class="flex items-center justify-between mb-4">
                         <h4 class="text-xl font-bold text-primary">Affordability Score</h4>
-                        <div class="text-3xl font-bold ${scoreClass}">${data.affordabilityScore}/100</div>
+                        <div class="text-3xl font-bold ${sanitizeText(scoreClass)}">${sanitizeText(data.affordabilityScore)}/100</div>
                     </div>
                     <div class="mb-4">
                         <div class="w-full bg-dark rounded-full h-3">
                             <div class="h-3 rounded-full transition-all duration-500 ${
                                 data.affordabilityScore >= 70 ? 'bg-green-400' : 
                                 data.affordabilityScore >= 50 ? 'bg-yellow-400' : 'bg-red-400'
-                            }" style="width: ${data.affordabilityScore}%"></div>
+                            }" style="width: ${sanitizeText(data.affordabilityScore)}%"></div>
                         </div>
                     </div>
                     <div class="text-center">
-                        <span class="text-lg font-semibold ${scoreClass}">${data.recommendation.verdict}</span>
+                        <span class="text-lg font-semibold ${sanitizeText(scoreClass)}">${sanitizeText(data.recommendation.verdict)}</span>
                     </div>
                 </div>
 
@@ -298,13 +304,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 <div class="bg-dark p-6 rounded border border-accent">
                     <h4 class="text-lg font-semibold text-accent mb-3">Recommendation</h4>
-                    <p class="text-light mb-4">${data.recommendation.reasoning}</p>
+                    <p class="text-light mb-4">${escapeHtml(data.recommendation.reasoning)}</p>
                     
                     ${data.recommendation.tips.length > 0 ? `
                         <div class="mt-4">
                             <h5 class="font-semibold text-primary mb-2">Financial Tips:</h5>
                             <ul class="text-sm text-light space-y-1">
-                                ${data.recommendation.tips.map(tip => `<li>• ${tip}</li>`).join('')}
+                                ${data.recommendation.tips.map(tip => `<li>â€¢ ${escapeHtml(tip)}</li>`).join('')}
                             </ul>
                         </div>
                     ` : ''}

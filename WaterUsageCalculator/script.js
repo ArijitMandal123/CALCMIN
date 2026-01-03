@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('waterUsageForm');
     const resultsDiv = document.getElementById('results');
     const resultsContent = document.getElementById('resultsContent');
@@ -317,10 +317,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-light">Ecosystem Impact:</span>
-                            <span class="text-primary font-semibold">${results.environmental.ecosystemImpact.score}/10</span>
+                            <span class="text-primary font-semibold">${sanitizeText(results.environmental.ecosystemImpact.score)}/10</span>
                         </div>
                         <div class="text-light text-sm mt-2">
-                            ${results.environmental.ecosystemImpact.description}
+                            ${sanitizeText(results.environmental.ecosystemImpact.description)}
                         </div>
                     </div>
                 </div>
@@ -342,7 +342,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="text-light">Annual savings</div>
                     </div>
                     <div class="text-center">
-                        <div class="text-2xl font-bold text-primary">${results.savings.percentage}%</div>
+                        <div class="text-2xl font-bold text-primary">${sanitizeText(results.savings.percentage)}%</div>
                         <div class="text-light">Usage reduction</div>
                     </div>
                 </div>
@@ -361,14 +361,14 @@ document.addEventListener('DOMContentLoaded', function() {
                             <div class="flex justify-between items-start mb-2">
                                 <h4 class="font-semibold text-primary">${rec.category}</h4>
                                 <span class="px-2 py-1 text-xs rounded ${rec.priority === 'High' ? 'bg-red-600' : 'bg-yellow-600'} text-white">
-                                    ${rec.priority} Priority
+                                    ${sanitizeText(rec.priority)} Priority
                                 </span>
                             </div>
-                            <p class="text-light mb-2">${rec.issue}</p>
-                            <p class="text-primary mb-2">${rec.solution}</p>
+                            <p class="text-light mb-2">${sanitizeText(rec.issue)}</p>
+                            <p class="text-primary mb-2">${sanitizeText(rec.solution)}</p>
                             <div class="flex justify-between text-sm">
                                 <span class="text-light">Potential savings: ${rec.savings.toLocaleString()} gallons/year</span>
-                                <span class="text-light">Investment: ${rec.cost}</span>
+                                <span class="text-light">Investment: ${sanitizeText(rec.cost)}</span>
                             </div>
                         </div>
                     `).join('')}
@@ -398,12 +398,12 @@ document.addEventListener('DOMContentLoaded', function() {
             return `
                 <div class="flex items-center justify-between">
                     <div class="flex items-center">
-                        <span class="material-icons text-primary mr-2">${cat.icon}</span>
-                        <span class="text-light">${cat.name}</span>
+                        <span class="material-icons text-primary mr-2">${sanitizeText(cat.icon)}</span>
+                        <span class="text-light">${sanitizeText(cat.name)}</span>
                     </div>
                     <div class="text-right">
                         <div class="text-primary font-semibold">${Math.round(cat.value)} gal/day</div>
-                        <div class="text-light text-sm">${percentage}%</div>
+                        <div class="text-light text-sm">${sanitizeText(percentage)}%</div>
                     </div>
                 </div>
             `;

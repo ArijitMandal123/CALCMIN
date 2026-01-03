@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('emergency-form');
   const resultsDiv = document.getElementById('results');
   const resultContent = document.getElementById('result-content');
@@ -217,6 +217,12 @@ document.addEventListener('DOMContentLoaded', function() {
     return recommendations;
   }
 
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
   function displayResults(analysis, formData) {
     resultContent.innerHTML = `
       <div class="bg-broder p-6 rounded-lg border border-accent">
@@ -227,15 +233,15 @@ document.addEventListener('DOMContentLoaded', function() {
         
         <div class="grid md:grid-cols-3 gap-4 mb-6">
           <div class="bg-dark p-4 rounded border border-accent text-center">
-            <div class="text-2xl font-bold ${analysis.statusColor}">${analysis.status}</div>
+            <div class="text-2xl font-bold ${sanitizeText(analysis.statusColor)}">${sanitizeText(analysis.status)}</div>
             <div class="text-sm text-light">Fund Status</div>
           </div>
           <div class="bg-dark p-4 rounded border border-accent text-center">
-            <div class="text-2xl font-bold text-primary">${analysis.recommendedMonths}</div>
+            <div class="text-2xl font-bold text-primary">${sanitizeText(analysis.recommendedMonths)}</div>
             <div class="text-sm text-light">Recommended Months</div>
           </div>
           <div class="bg-dark p-4 rounded border border-accent text-center">
-            <div class="text-2xl font-bold text-accent">${analysis.currentMonths}</div>
+            <div class="text-2xl font-bold text-accent">${sanitizeText(analysis.currentMonths)}</div>
             <div class="text-sm text-light">Current Months</div>
           </div>
         </div>
@@ -262,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function() {
               </div>
               <div class="flex justify-between">
                 <span class="text-light">Total Coverage:</span>
-                <span class="text-text">${analysis.totalMonths} months</span>
+                <span class="text-text">${sanitizeText(analysis.totalMonths)} months</span>
               </div>
             </div>
           </div>
@@ -300,7 +306,7 @@ document.addEventListener('DOMContentLoaded', function() {
               <div class="p-3 bg-dark rounded border border-orange-600 text-sm">
                 <div class="flex items-start gap-2">
                   <span class="material-icons text-xs text-orange-400 mt-0.5">warning</span>
-                  <span class="text-light">${factor}</span>
+                  <span class="text-light">${escapeHtml(factor)}</span>
                 </div>
               </div>
             `).join('')}
@@ -314,7 +320,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ${analysis.recommendations.map(rec => `
               <li class="flex items-start gap-2">
                 <span class="material-icons text-xs text-accent mt-0.5">check_circle</span>
-                ${rec}
+                ${escapeHtml(rec)}
               </li>
             `).join('')}
           </ul>

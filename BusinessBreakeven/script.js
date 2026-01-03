@@ -1,4 +1,4 @@
-// Business Breakeven Analysis Tool
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Business Breakeven Analysis Tool
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('breakeven-form');
     const resultsDiv = document.getElementById('results');
@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <div class="text-sm text-light">Units to Break Even</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-3xl font-bold ${monthsClass} mb-2">${data.monthsToBreakeven === Infinity ? '∞' : data.monthsToBreakeven}</div>
+                            <div class="text-3xl font-bold ${sanitizeText(monthsClass)} mb-2">${data.monthsToBreakeven === Infinity ? 'âˆž' : data.monthsToBreakeven}</div>
                             <div class="text-sm text-light">Months to Break Even</div>
                         </div>
                     </div>
@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-light">Cash Runway:</span>
-                                <span class="text-text font-medium">${data.cashFlowAnalysis.cashRunway} months</span>
+                                <span class="text-text font-medium">${sanitizeText(data.cashFlowAnalysis.cashRunway)} months</span>
                             </div>
                         </div>
                     </div>
@@ -264,18 +264,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="bg-primary/10 border-l-4 border-primary p-6 mb-6">
                     <div class="flex items-center justify-between mb-4">
                         <h4 class="text-xl font-bold text-primary">Business Feasibility Score</h4>
-                        <div class="text-3xl font-bold ${feasibilityClass}">${data.feasibilityScore}/100</div>
+                        <div class="text-3xl font-bold ${sanitizeText(feasibilityClass)}">${sanitizeText(data.feasibilityScore)}/100</div>
                     </div>
                     <div class="mb-4">
                         <div class="w-full bg-dark rounded-full h-3">
                             <div class="h-3 rounded-full transition-all duration-500 ${
                                 data.feasibilityScore >= 70 ? 'bg-green-400' : 
                                 data.feasibilityScore >= 50 ? 'bg-yellow-400' : 'bg-red-400'
-                            }" style="width: ${data.feasibilityScore}%"></div>
+                            }" style="width: ${sanitizeText(data.feasibilityScore)}%"></div>
                         </div>
                     </div>
                     <div class="text-center">
-                        <span class="text-lg font-semibold ${feasibilityClass}">
+                        <span class="text-lg font-semibold ${sanitizeText(feasibilityClass)}">
                             ${data.feasibilityScore >= 80 ? 'Highly Viable' :
                               data.feasibilityScore >= 65 ? 'Viable' :
                               data.feasibilityScore >= 50 ? 'Moderately Viable' :
@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="text-sm text-light">Monthly Burn Rate</div>
                     </div>
                     <div class="bg-dark p-4 rounded border border-accent text-center">
-                        <div class="text-2xl font-bold text-accent">${data.cashFlowAnalysis.cashRunway}</div>
+                        <div class="text-2xl font-bold text-accent">${sanitizeText(data.cashFlowAnalysis.cashRunway)}</div>
                         <div class="text-sm text-light">Cash Runway (Months)</div>
                     </div>
                 </div>
@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="bg-dark p-6 rounded border border-accent">
                     <h4 class="text-lg font-semibold text-accent mb-3">Recommendations & Next Steps</h4>
                     <ul class="text-sm text-light space-y-2 mb-4">
-                        ${data.recommendations.map(rec => `<li>• ${rec}</li>`).join('')}
+                        ${data.recommendations.map(rec => `<li>â€¢ ${rec}</li>`).join('')}
                     </ul>
                     
                     <div class="mt-4 p-4 bg-broder rounded border border-accent">

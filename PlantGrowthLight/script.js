@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('light-form');
   
   const lightRequirements = {
@@ -54,34 +54,34 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="grid gap-4 text-text text-sm md:text-base">
           <div class="bg-dark p-4 rounded border-2 border-primary">
             <div class="flex items-center gap-2 mb-2"><span class="material-icons text-primary">power</span><strong>Total Wattage Needed:</strong></div>
-            <p class="text-3xl text-primary font-bold ml-8">${totalWatts}W</p>
+            <p class="text-3xl text-primary font-bold ml-8">${sanitizeText(totalWatts)}W</p>
             <p class="text-sm text-light ml-8">${wattsPerSqFt.toFixed(1)}W per sq ft for ${area.toFixed(1)} sq ft</p>
           </div>
           
           <div class="bg-dark p-4 rounded">
             <div class="flex items-center gap-2 mb-2"><span class="material-icons text-accent">straighten</span><strong>Light Distance:</strong></div>
-            <p class="text-2xl text-accent font-bold ml-8">${minDistance}-${maxDistance} inches</p>
+            <p class="text-2xl text-accent font-bold ml-8">${sanitizeText(minDistance)}-${sanitizeText(maxDistance)} inches</p>
             <p class="text-sm text-light ml-8">From canopy to light source</p>
           </div>
           
           <div class="bg-dark p-4 rounded">
             <div class="flex items-center gap-2 mb-2"><span class="material-icons text-accent">schedule</span><strong>Daily Light Schedule:</strong></div>
-            <p class="text-2xl text-accent ml-8">${dailyHours} hours/day</p>
+            <p class="text-2xl text-accent ml-8">${sanitizeText(dailyHours)} hours/day</p>
             <p class="text-sm text-light ml-8">${growthStage === 'flowering' ? '12/12 light/dark cycle' : '18/6 light/dark cycle'}</p>
           </div>
           
           <div class="bg-dark p-4 rounded">
             <div class="flex items-center gap-2 mb-2"><span class="material-icons text-accent">palette</span><strong>Spectrum Recommendation:</strong></div>
             <ul class="ml-8 space-y-1 text-sm">
-              <li><strong>Blue (400-500nm):</strong> ${spectrum.blue}</li>
-              <li><strong>Red (600-700nm):</strong> ${spectrum.red}</li>
-              <li><strong>White/Full Spectrum:</strong> ${spectrum.white}</li>
+              <li><strong>Blue (400-500nm):</strong> ${sanitizeText(spectrum.blue)}</li>
+              <li><strong>Red (600-700nm):</strong> ${sanitizeText(spectrum.red)}</li>
+              <li><strong>White/Full Spectrum:</strong> ${sanitizeText(spectrum.white)}</li>
             </ul>
           </div>
           
           <div class="bg-dark p-4 rounded">
             <div class="flex items-center gap-2 mb-2"><span class="material-icons text-accent">science</span><strong>PPFD Target:</strong></div>
-            <p class="text-xl text-accent ml-8">${ppfdRequired} μmol/m²/s</p>
+            <p class="text-xl text-accent ml-8">${sanitizeText(ppfdRequired)} Î¼mol/mÂ²/s</p>
             <p class="text-sm text-light ml-8">Photosynthetic Photon Flux Density</p>
           </div>
           
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="flex items-center gap-2 mb-2"><span class="material-icons text-accent">attach_money</span><strong>Energy Cost:</strong></div>
             <ul class="ml-8 space-y-1 text-sm">
               <li><strong>Monthly usage:</strong> ${monthlyKwh.toFixed(1)} kWh</li>
-              <li><strong>Estimated monthly cost:</strong> $${monthlyCost}</li>
+              <li><strong>Estimated monthly cost:</strong> $${sanitizeText(monthlyCost)}</li>
               <li class="text-light">(Based on $0.13/kWh average)</li>
             </ul>
           </div>
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <ul class="ml-8 space-y-2 list-disc list-inside text-sm">
               <li>Use adjustable hangers to maintain proper distance as plants grow</li>
               <li>Install reflective material on walls to maximize light efficiency</li>
-              <li>Monitor leaf temperature - should be 75-85°F under lights</li>
+              <li>Monitor leaf temperature - should be 75-85Â°F under lights</li>
               <li>Ensure adequate ventilation to prevent heat buildup</li>
               <li>Use a timer for consistent light cycles</li>
               ${lightType === 'led' ? '<li class="text-green-400">LED lights are most energy-efficient and produce less heat</li>' : ''}
@@ -114,3 +114,4 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('result-content').innerHTML = resultHTML;
   });
 });
+

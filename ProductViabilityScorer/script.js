@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('viability-form');
     
     form.addEventListener('submit', function(e) {
@@ -290,6 +290,12 @@ function generateRecommendations(score, data) {
     return recommendations;
 }
 
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
 function displayResults(results) {
     const resultsDiv = document.getElementById('results');
     const contentDiv = document.getElementById('result-content');
@@ -302,18 +308,18 @@ function displayResults(results) {
     
     contentDiv.innerHTML = `
         <div class="bg-primary/10 border-l-4 border-primary p-6 mb-6">
-            <h3 class="text-2xl font-bold text-primary mb-4">Viability Assessment for "${results.data.productName}"</h3>
+            <h3 class="text-2xl font-bold text-primary mb-4">Viability Assessment for "${escapeHtml(results.data.productName)}"</h3>
             <div class="grid md:grid-cols-3 gap-4">
                 <div class="text-center">
-                    <div class="text-4xl font-bold ${getScoreColor(results.overallScore)}">${results.overallScore}/100</div>
+                    <div class="text-4xl font-bold ${getScoreColor(results.overallScore)}">${sanitizeText(results.overallScore)}/100</div>
                     <div class="text-light">Overall Viability Score</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-2xl font-bold ${results.riskLevel.color}">${results.riskLevel.level}</div>
+                    <div class="text-2xl font-bold ${sanitizeText(results.riskLevel.color)}">${sanitizeText(results.riskLevel.level)}</div>
                     <div class="text-light">Risk Assessment</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-lg font-bold text-accent">${results.financialProjections.monthsToBreakEven} months</div>
+                    <div class="text-lg font-bold text-accent">${sanitizeText(results.financialProjections.monthsToBreakEven)} months</div>
                     <div class="text-light">Est. Break-even Time</div>
                 </div>
             </div>
@@ -325,19 +331,19 @@ function displayResults(results) {
                 <div class="space-y-3">
                     <div class="flex justify-between items-center">
                         <span class="text-light">Market Factors (40%)</span>
-                        <span class="${getScoreColor(results.marketScore)} font-bold">${results.marketScore}/100</span>
+                        <span class="${getScoreColor(results.marketScore)} font-bold">${sanitizeText(results.marketScore)}/100</span>
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-light">Financial Factors (30%)</span>
-                        <span class="${getScoreColor(results.financialScore)} font-bold">${results.financialScore}/100</span>
+                        <span class="${getScoreColor(results.financialScore)} font-bold">${sanitizeText(results.financialScore)}/100</span>
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-light">Execution Factors (20%)</span>
-                        <span class="${getScoreColor(results.executionScore)} font-bold">${results.executionScore}/100</span>
+                        <span class="${getScoreColor(results.executionScore)} font-bold">${sanitizeText(results.executionScore)}/100</span>
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-light">Validation Factors (10%)</span>
-                        <span class="${getScoreColor(results.validationScore)} font-bold">${results.validationScore}/100</span>
+                        <span class="${getScoreColor(results.validationScore)} font-bold">${sanitizeText(results.validationScore)}/100</span>
                     </div>
                 </div>
             </div>
@@ -355,11 +361,11 @@ function displayResults(results) {
                     </div>
                     <div class="flex justify-between">
                         <span class="text-light">Projected ROI:</span>
-                        <span class="text-accent">${results.financialProjections.roi}%</span>
+                        <span class="text-accent">${sanitizeText(results.financialProjections.roi)}%</span>
                     </div>
                     <div class="flex justify-between">
                         <span class="text-light">Funding Runway:</span>
-                        <span class="text-accent">${results.financialProjections.fundingRunway} months</span>
+                        <span class="text-accent">${sanitizeText(results.financialProjections.fundingRunway)} months</span>
                     </div>
                 </div>
             </div>
@@ -368,12 +374,12 @@ function displayResults(results) {
         <div class="bg-broder p-6 rounded border border-accent mb-6">
             <h4 class="text-xl font-bold text-primary mb-4">Risk Assessment</h4>
             <div class="flex items-center space-x-4 mb-4">
-                <div class="text-2xl font-bold ${results.riskLevel.color}">${results.riskLevel.level}</div>
-                <div class="text-light">${results.riskLevel.description}</div>
+                <div class="text-2xl font-bold ${sanitizeText(results.riskLevel.color)}">${sanitizeText(results.riskLevel.level)}</div>
+                <div class="text-light">${sanitizeText(results.riskLevel.description)}</div>
             </div>
             <div class="bg-dark p-4 rounded border border-accent">
                 <div class="font-semibold text-accent mb-2">Recommendation:</div>
-                <div class="text-light">${results.riskLevel.recommendation}</div>
+                <div class="text-light">${sanitizeText(results.riskLevel.recommendation)}</div>
             </div>
         </div>
 
@@ -383,7 +389,7 @@ function displayResults(results) {
                 ${results.recommendations.map(rec => `
                     <div class="flex items-start space-x-3">
                         <span class="material-icons text-primary mt-1">arrow_forward</span>
-                        <div class="text-light">${rec}</div>
+                        <div class="text-light">${escapeHtml(rec)}</div>
                     </div>
                 `).join('')}
             </div>

@@ -1,4 +1,4 @@
-// Salary Negotiation Calculator Script
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Salary Negotiation Calculator Script
 
 // Popup functionality
 function showPopup(message) {
@@ -265,7 +265,7 @@ function generateTalkingPoints(data, range) {
     
     // Experience-based points
     if (data.experience >= 5) {
-        points.push(`${data.experience} years of proven experience in the field`);
+        points.push(`${sanitizeText(data.experience)} years of proven experience in the field`);
     }
     
     // Performance-based points
@@ -374,15 +374,15 @@ function displayResults(results) {
             <div class="grid md:grid-cols-3 gap-6">
                 <div>
                     <h4 class="font-semibold text-accent mb-2">Approach</h4>
-                    <p class="text-light capitalize">${results.strategy.approach}</p>
+                    <p class="text-light capitalize">${sanitizeText(results.strategy.approach)}</p>
                 </div>
                 <div>
                     <h4 class="font-semibold text-accent mb-2">Confidence Level</h4>
-                    <p class="text-light capitalize">${results.strategy.confidence}</p>
+                    <p class="text-light capitalize">${sanitizeText(results.strategy.confidence)}</p>
                 </div>
                 <div>
                     <h4 class="font-semibold text-accent mb-2">Leverage Score</h4>
-                    <p class="text-light">${results.strategy.negotiationLeverage}/100</p>
+                    <p class="text-light">${sanitizeText(results.strategy.negotiationLeverage)}/100</p>
                 </div>
             </div>
         </div>
@@ -394,7 +394,7 @@ function displayResults(results) {
                 <div class="space-y-3">
                     <div>
                         <span class="text-light">Market Position:</span>
-                        <span class="text-primary font-semibold ml-2">${results.analysis.marketPosition}</span>
+                        <span class="text-primary font-semibold ml-2">${sanitizeText(results.analysis.marketPosition)}</span>
                     </div>
                     <div>
                         <span class="text-light">vs Market Average:</span>
@@ -531,4 +531,5 @@ document.getElementById('salaryForm').addEventListener('submit', function(e) {
     const results = calculateSalaryRange(data);
     displayResults(results);
 });
+
 

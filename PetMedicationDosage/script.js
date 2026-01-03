@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('dosage-form');
   const easyModeBtn = document.getElementById('easyMode');
   const advancedModeBtn = document.getElementById('advancedMode');
@@ -83,10 +83,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (medData.max === 0) {
       const resultHTML = `
         <div class="bg-red-900/30 p-4 md:p-6 rounded-lg border-l-4 border-red-500">
-          <h3 class="text-xl text-red-400 mb-4 flex items-center gap-2"><span class="material-icons">warning</span> ⚠️ NOT SAFE</h3>
+          <h3 class="text-xl text-red-400 mb-4 flex items-center gap-2"><span class="material-icons">warning</span> âš ï¸ NOT SAFE</h3>
           <div class="text-text text-sm md:text-base">
-            <p class="text-lg font-bold mb-3">${medData.name} is NOT RECOMMENDED for ${species}s</p>
-            <p class="mb-3">${medData.notes}</p>
+            <p class="text-lg font-bold mb-3">${sanitizeText(medData.name)} is NOT RECOMMENDED for ${sanitizeText(species)}s</p>
+            <p class="mb-3">${sanitizeText(medData.notes)}</p>
             <p class="text-red-400 font-bold">DO NOT administer this medication. Contact your veterinarian immediately for safe alternatives.</p>
           </div>
         </div>
@@ -109,8 +109,8 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="grid gap-4 text-text text-sm md:text-base">
           <div class="bg-dark p-4 rounded border-2 border-primary">
             <div class="flex items-center gap-2 mb-2"><span class="material-icons text-primary">science</span><strong>Recommended Dose:</strong></div>
-            <p class="text-3xl text-primary font-bold ml-8">${adjustedMinDose} - ${adjustedMaxDose} ${medData.unit}</p>
-            <p class="text-sm text-light ml-8">Per dose for ${weight} lbs ${species}</p>
+            <p class="text-3xl text-primary font-bold ml-8">${sanitizeText(adjustedMinDose)} - ${sanitizeText(adjustedMaxDose)} ${sanitizeText(medData.unit)}</p>
+            <p class="text-sm text-light ml-8">Per dose for ${sanitizeText(weight)} lbs ${sanitizeText(species)}</p>
             ${!isEasyMode && healthStatus !== 'healthy' ? `<p class="text-sm text-yellow-400 ml-8">Adjusted for ${healthStatus} condition</p>` : ''}
           </div>
           
@@ -122,8 +122,8 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="bg-dark p-4 rounded">
             <div class="flex items-center gap-2 mb-2"><span class="material-icons text-accent">info</span><strong>Medication Info:</strong></div>
             <ul class="ml-8 space-y-1 text-sm">
-              <li><strong>Medication:</strong> ${medData.name}</li>
-              <li><strong>Purpose:</strong> ${medData.notes}</li>
+              <li><strong>Medication:</strong> ${sanitizeText(medData.name)}</li>
+              <li><strong>Purpose:</strong> ${sanitizeText(medData.notes)}</li>
               <li><strong>Species:</strong> ${species.charAt(0).toUpperCase() + species.slice(1)}</li>
               ${!isEasyMode && age > 0 ? `<li><strong>Age:</strong> ${age} years</li>` : ''}
               ${!isEasyMode && formType ? `<li><strong>Form:</strong> ${formType.charAt(0).toUpperCase() + formType.slice(1)}</li>` : ''}
@@ -134,13 +134,13 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="flex items-center gap-2 mb-2"><span class="material-icons text-accent">calculate</span><strong>Dosing Calculation:</strong></div>
             <ul class="ml-8 space-y-1 text-sm">
               <li><strong>Tablet/Capsule strength:</strong> ${concentration} mg</li>
-              <li><strong>Tablets needed per dose:</strong> ${tabletsNeeded}</li>
-              ${totalDoses !== 'N/A' ? `<li><strong>Total doses for ${duration} days:</strong> ${totalDoses}</li>` : ''}
+              <li><strong>Tablets needed per dose:</strong> ${sanitizeText(tabletsNeeded)}</li>
+              ${totalDoses !== 'N/A' ? `<li><strong>Total doses for ${duration} days:</strong> ${sanitizeText(totalDoses)}</li>` : ''}
             </ul>
           </div>` : ''}
           
           <div class="bg-accent/20 border border-accent rounded p-4">
-            <div class="flex items-center gap-2 mb-2"><span class="material-icons text-accent">warning</span><strong>⚠️ Important Safety Information:</strong></div>
+            <div class="flex items-center gap-2 mb-2"><span class="material-icons text-accent">warning</span><strong>âš ï¸ Important Safety Information:</strong></div>
             <ul class="ml-8 space-y-2 list-disc list-inside text-sm">
               <li><strong>Always consult your veterinarian</strong> before giving any medication</li>
               <li>Start with the lower dose and monitor your pet</li>
@@ -169,3 +169,4 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('result-content').innerHTML = resultHTML;
   });
 });
+

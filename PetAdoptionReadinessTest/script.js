@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('pet-adoption-form');
     const petTypeSelect = document.getElementById('petType');
     const petSizeSelect = document.getElementById('petSize');
@@ -244,6 +244,12 @@ function calculatePetReadiness(data) {
     };
 }
 
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
 function displayResults(results) {
     const resultsDiv = document.getElementById('results');
     const contentDiv = document.getElementById('result-content');
@@ -256,12 +262,12 @@ function displayResults(results) {
         <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
             <h3 class="text-2xl font-bold text-primary mb-4">Pet Adoption Readiness Assessment</h3>
             
-            <div class="bg-${readiness.color}-900/20 border border-${readiness.color}-600 rounded p-6 mb-6">
+            <div class="bg-${sanitizeText(readiness.color)}-900/20 border border-${sanitizeText(readiness.color)}-600 rounded p-6 mb-6">
                 <div class="flex items-center mb-4">
-                    <div class="text-6xl font-bold text-${readiness.color}-400 mr-4">${readiness.score}</div>
+                    <div class="text-6xl font-bold text-${sanitizeText(readiness.color)}-400 mr-4">${sanitizeText(readiness.score)}</div>
                     <div>
-                        <h4 class="text-2xl font-bold text-${readiness.color}-400">${readiness.level} Readiness</h4>
-                        <p class="text-light">${readiness.message}</p>
+                        <h4 class="text-2xl font-bold text-${sanitizeText(readiness.color)}-400">${sanitizeText(readiness.level)} Readiness</h4>
+                        <p class="text-light">${sanitizeText(readiness.message)}</p>
                     </div>
                 </div>
             </div>
@@ -288,7 +294,7 @@ function displayResults(results) {
                         </div>
                         <hr class="border-accent">
                         <div class="flex justify-between text-lg font-bold">
-                            <span>Lifetime Cost (${costs.lifespan} years):</span>
+                            <span>Lifetime Cost (${sanitizeText(costs.lifespan)} years):</span>
                             <span class="text-primary">$${costs.lifetime.toLocaleString()}</span>
                         </div>
                     </div>
@@ -321,7 +327,7 @@ function displayResults(results) {
             <div class="bg-red-900/20 border border-red-600 rounded p-4 mb-6">
                 <h5 class="font-semibold text-red-400 mb-2">Areas of Concern</h5>
                 <ul class="text-sm text-light space-y-1">
-                    ${readiness.issues.map(issue => `<li>• ${issue}</li>`).join('')}
+                    ${readiness.issues.map(issue => `<li>â€¢ ${escapeHtml(issue)}</li>`).join('')}
                 </ul>
             </div>
             ` : ''}
@@ -330,7 +336,7 @@ function displayResults(results) {
             <div class="bg-blue-900/20 border border-blue-600 rounded p-4 mb-6">
                 <h5 class="font-semibold text-blue-400 mb-2">Recommendations</h5>
                 <ul class="text-sm text-light space-y-1">
-                    ${readiness.recommendations.map(rec => `<li>• ${rec}</li>`).join('')}
+                    ${readiness.recommendations.map(rec => `<li>â€¢ ${escapeHtml(rec)}</li>`).join('')}
                 </ul>
             </div>
             ` : ''}
@@ -338,11 +344,11 @@ function displayResults(results) {
             <div class="bg-yellow-900/20 border border-yellow-600 rounded p-4">
                 <h5 class="font-semibold text-yellow-400 mb-2">Important Notes</h5>
                 <ul class="text-sm text-light space-y-1">
-                    <li>• These estimates are based on average costs and may vary by location</li>
-                    <li>• Consider pet insurance to help manage unexpected veterinary costs</li>
-                    <li>• Senior pets may have higher medical expenses</li>
-                    <li>• Factor in potential lifestyle changes and their financial impact</li>
-                    <li>• Consult with local veterinarians for more accurate cost estimates</li>
+                    <li>â€¢ These estimates are based on average costs and may vary by location</li>
+                    <li>â€¢ Consider pet insurance to help manage unexpected veterinary costs</li>
+                    <li>â€¢ Senior pets may have higher medical expenses</li>
+                    <li>â€¢ Factor in potential lifestyle changes and their financial impact</li>
+                    <li>â€¢ Consult with local veterinarians for more accurate cost estimates</li>
                 </ul>
             </div>
         </div>
@@ -363,15 +369,20 @@ function showPopup(message) {
             <span class="material-icons text-primary mr-2">info</span>
             <h3 class="text-lg font-semibold text-primary">Input Validation</h3>
         </div>
-        <p class="text-light mb-4">${message}</p>
-        <button onclick="this.closest('.fixed').remove()" 
-                class="w-full bg-primary hover:bg-accent text-white font-medium py-2 px-4 rounded transition duration-200">
+        <p class="text-light mb-4">${escapeHtml(message)}</p>
+        <button class="w-full bg-primary hover:bg-accent text-white font-medium py-2 px-4 rounded transition duration-200 close-popup-btn">
             OK
         </button>
     `;
     
     overlay.appendChild(popup);
     document.body.appendChild(overlay);
+    
+    // Add event listener safely
+    const closeBtn = popup.querySelector('.close-popup-btn');
+    closeBtn.addEventListener('click', () => {
+        overlay.remove();
+    });
     
     setTimeout(() => {
         if (overlay.parentNode) {

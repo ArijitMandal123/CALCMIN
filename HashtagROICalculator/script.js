@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('hashtag-form');
     const avgImpressionsInput = document.getElementById('avg-impressions');
     const conversionRateInput = document.getElementById('conversion-rate');
@@ -311,10 +311,16 @@ document.addEventListener('DOMContentLoaded', function() {
     function displayResults(analysis) {
         const roiColor = getROIColor(analysis.totalROI);
         
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
         resultContent.innerHTML = `
             <div class="bg-broder border border-accent rounded-lg p-6">
                 <div class="text-center mb-6">
-                    <div class="text-4xl font-bold ${roiColor} mb-2">${analysis.totalROI.toFixed(1)}%</div>
+                    <div class="text-4xl font-bold ${sanitizeText(roiColor)} mb-2">${analysis.totalROI.toFixed(1)}%</div>
                     <div class="text-lg text-light">Total Hashtag ROI</div>
                     <div class="text-sm text-accent mt-1">$${analysis.totalRevenue.toFixed(2)} revenue from $${analysis.totalCost.toFixed(2)} investment</div>
                 </div>
@@ -326,11 +332,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             ${analysis.hashtagResults.slice(0, 5).map(hashtag => `
                                 <div class="bg-dark border border-accent rounded p-3">
                                     <div class="flex items-center justify-between mb-1">
-                                        <span class="text-text font-medium">${hashtag.name}</span>
+                                        <span class="text-text font-medium">${escapeHtml(hashtag.name)}</span>
                                         <span class="${getROIColor(hashtag.roi)} font-bold">${hashtag.roi.toFixed(0)}%</span>
                                     </div>
                                     <div class="text-xs text-light">
-                                        ${hashtag.conversions} conversions • $${hashtag.revenue.toFixed(2)} revenue • ${hashtag.conversionRate.toFixed(2)}% rate
+                                        ${sanitizeText(hashtag.conversions)} conversions â€¢ $${hashtag.revenue.toFixed(2)} revenue â€¢ ${hashtag.conversionRate.toFixed(2)}% rate
                                     </div>
                                 </div>
                             `).join('')}
@@ -341,24 +347,24 @@ document.addEventListener('DOMContentLoaded', function() {
                         <h3 class="text-lg font-semibold text-primary mb-3">Performance Summary</h3>
                         <div class="space-y-2 text-sm">
                             <div class="bg-dark border border-accent rounded p-3">
-                                <strong class="text-accent">Best Hashtag:</strong> ${analysis.summary.bestHashtag?.name || 'N/A'} 
+                                <strong class="text-accent">Best Hashtag:</strong> ${escapeHtml(analysis.summary.bestHashtag?.name || 'N/A')} 
                                 (${analysis.summary.bestHashtag?.roi.toFixed(0) || 0}% ROI)
                             </div>
                             <div class="bg-dark border border-accent rounded p-3">
                                 <strong class="text-accent">Average ROI:</strong> ${analysis.summary.avgROI.toFixed(1)}%
                             </div>
                             <div class="bg-dark border border-accent rounded p-3">
-                                <strong class="text-accent">Total Conversions:</strong> ${analysis.summary.totalConversions}
+                                <strong class="text-accent">Total Conversions:</strong> ${sanitizeText(analysis.summary.totalConversions)}
                             </div>
                             <div class="bg-dark border border-accent rounded p-3">
-                                <strong class="text-accent">High Performers:</strong> ${analysis.summary.highPerformers} hashtags (200%+ ROI)
+                                <strong class="text-accent">High Performers:</strong> ${sanitizeText(analysis.summary.highPerformers)} hashtags (200%+ ROI)
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="mb-6">
-                    <h3 class="text-lg font-semibold text-primary mb-3">📊 Detailed Hashtag Analysis</h3>
+                    <h3 class="text-lg font-semibold text-primary mb-3">ðŸ“Š Detailed Hashtag Analysis</h3>
                     <div class="overflow-x-auto">
                         <table class="w-full text-sm">
                             <thead>
@@ -374,14 +380,14 @@ document.addEventListener('DOMContentLoaded', function() {
                             <tbody>
                                 ${analysis.hashtagResults.map(hashtag => `
                                     <tr class="border-b border-accent/30">
-                                        <td class="py-2 text-text">${hashtag.name}</td>
+                                        <td class="py-2 text-text">${escapeHtml(hashtag.name)}</td>
                                         <td class="py-2 text-right ${getROIColor(hashtag.roi)} font-medium">${hashtag.roi.toFixed(0)}%</td>
                                         <td class="py-2 text-right text-text">$${hashtag.revenue.toFixed(2)}</td>
-                                        <td class="py-2 text-right text-text">${hashtag.conversions}</td>
+                                        <td class="py-2 text-right text-text">${sanitizeText(hashtag.conversions)}</td>
                                         <td class="py-2 text-right text-text">${hashtag.conversionRate.toFixed(2)}%</td>
                                         <td class="py-2 text-center">
                                             <span class="px-2 py-1 rounded text-xs ${getPerformanceBadgeColor(hashtag.performance)}">
-                                                ${hashtag.performance}
+                                                ${escapeHtml(hashtag.performance)}
                                             </span>
                                         </td>
                                     </tr>
@@ -393,12 +399,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 ${analysis.recommendations.length > 0 ? `
                 <div class="mb-6">
-                    <h3 class="text-lg font-semibold text-primary mb-3">💡 ROI Optimization Recommendations</h3>
+                    <h3 class="text-lg font-semibold text-primary mb-3">ðŸ’¡ ROI Optimization Recommendations</h3>
                     <ul class="space-y-2">
                         ${analysis.recommendations.map(rec => `
                             <li class="flex items-start gap-2 text-text">
                                 <span class="material-icons text-yellow-400 text-sm mt-0.5">lightbulb</span>
-                                ${rec}
+                                ${escapeHtml(rec)}
                             </li>
                         `).join('')}
                     </ul>
@@ -407,7 +413,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 <div class="grid md:grid-cols-2 gap-4">
                     <div class="bg-dark border border-accent rounded p-4">
-                        <h4 class="text-primary font-semibold mb-2">📈 ROI Insights</h4>
+                        <h4 class="text-primary font-semibold mb-2">ðŸ“ˆ ROI Insights</h4>
                         <div class="text-sm text-text">
                             ${analysis.totalROI > 200 ? 
                                 `<span class="text-green-400">Excellent performance!</span> Your hashtags are generating strong returns.` :
@@ -418,7 +424,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                     </div>
                     <div class="bg-dark border border-accent rounded p-4">
-                        <h4 class="text-primary font-semibold mb-2">🎯 Next Steps</h4>
+                        <h4 class="text-primary font-semibold mb-2">ðŸŽ¯ Next Steps</h4>
                         <div class="text-sm text-text">
                             ${analysis.summary.highPerformers > 0 ?
                                 `Double down on your ${analysis.summary.highPerformers} high-performing hashtags and find similar ones.` :
@@ -429,11 +435,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 
                 <div class="mt-6 bg-gradient-to-r from-primary/20 to-accent/20 rounded-lg p-4 text-center">
-                    <div class="text-primary font-semibold mb-2">🚀 Hashtag ROI Analysis Complete</div>
+                    <div class="text-primary font-semibold mb-2">ðŸš€ Hashtag ROI Analysis Complete</div>
                     <div class="text-sm text-text">
-                        Total ROI: <strong>${analysis.totalROI.toFixed(1)}%</strong> • 
-                        Revenue: <strong>$${analysis.totalRevenue.toFixed(2)}</strong> • 
-                        Best Hashtag: <strong>${analysis.summary.bestHashtag?.name || 'N/A'}</strong>
+                        Total ROI: <strong>${analysis.totalROI.toFixed(1)}%</strong> â€¢ 
+                        Revenue: <strong>$${analysis.totalRevenue.toFixed(2)}</strong> â€¢ 
+                        Best Hashtag: <strong>${escapeHtml(analysis.summary.bestHashtag?.name || 'N/A')}</strong>
                     </div>
                 </div>
             </div>

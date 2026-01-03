@@ -1,3 +1,12 @@
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('profitability-form');
   const resultsDiv = document.getElementById('results');
@@ -112,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
             <div class="flex justify-between border-t border-accent pt-2">
               <span class="text-light font-medium">Status:</span>
-              <span class="font-bold ${statusColor}">${profitabilityStatus}</span>
+              <span class="font-bold ${sanitizeText(statusColor)}">${sanitizeText(profitabilityStatus)}</span>
             </div>
           </div>
         </div>
@@ -149,21 +158,21 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="space-y-2">
               <div class="flex justify-between">
                 <span class="text-light">Actual Work:</span>
-                <span class="text-text">${actualWorkHours}h (${((actualWorkHours/totalHours)*100).toFixed(1)}%)</span>
+                <span class="text-text">${sanitizeText(actualWorkHours)}h (${((actualWorkHours/totalHours)*100).toFixed(1)}%)</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-light">Communication:</span>
-                <span class="text-text">${communicationHours}h (${((communicationHours/totalHours)*100).toFixed(1)}%)</span>
+                <span class="text-text">${sanitizeText(communicationHours)}h (${((communicationHours/totalHours)*100).toFixed(1)}%)</span>
               </div>
             </div>
             <div class="space-y-2">
               <div class="flex justify-between">
                 <span class="text-light">Revisions:</span>
-                <span class="text-text">${revisionHours}h (${((revisionHours/totalHours)*100).toFixed(1)}%)</span>
+                <span class="text-text">${sanitizeText(revisionHours)}h (${((revisionHours/totalHours)*100).toFixed(1)}%)</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-light">Admin:</span>
-                <span class="text-text">${adminHours}h (${((adminHours/totalHours)*100).toFixed(1)}%)</span>
+                <span class="text-text">${sanitizeText(adminHours)}h (${((adminHours/totalHours)*100).toFixed(1)}%)</span>
               </div>
             </div>
           </div>

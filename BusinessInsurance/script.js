@@ -1,4 +1,4 @@
-document.getElementById('insurance-form').addEventListener('submit', function(e) {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.getElementById('insurance-form').addEventListener('submit', function(e) {
   e.preventDefault();
   
   const businessType = document.getElementById('businessType').value;
@@ -96,6 +96,12 @@ document.getElementById('insurance-form').addEventListener('submit', function(e)
   displayResults(generalLiability, workersComp, propertyInsurance, professionalLiability, totalAnnual, totalMonthly);
 });
 
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
 function displayResults(gl, wc, prop, prof, totalAnnual, totalMonthly) {
   const resultsDiv = document.getElementById('results');
   const contentDiv = document.getElementById('result-content');
@@ -108,11 +114,11 @@ function displayResults(gl, wc, prop, prof, totalAnnual, totalMonthly) {
       
       <div class="grid md:grid-cols-2 gap-4 mb-4">
         <div class="bg-dark p-4 rounded text-center">
-          <div class="text-primary text-3xl font-bold">$${totalMonthly.toFixed(2)}</div>
+          <div class="text-primary text-3xl font-bold">$${Math.round(totalMonthly * 100) / 100}</div>
           <div class="text-light text-sm">Monthly Premium</div>
         </div>
         <div class="bg-dark p-4 rounded text-center">
-          <div class="text-accent text-3xl font-bold">$${totalAnnual.toFixed(2)}</div>
+          <div class="text-accent text-3xl font-bold">$${Math.round(totalAnnual * 100) / 100}</div>
           <div class="text-light text-sm">Annual Premium</div>
         </div>
       </div>
@@ -120,22 +126,22 @@ function displayResults(gl, wc, prop, prof, totalAnnual, totalMonthly) {
       <div class="bg-dark p-4 rounded mb-4">
         <h3 class="text-text font-medium mb-3">Coverage Breakdown (Annual)</h3>
         <div class="space-y-2 text-sm">
-          <div class="flex justify-between"><span class="text-light">General Liability:</span><span class="text-text font-medium">$${gl.toFixed(2)}</span></div>
-          ${wc > 0 ? `<div class="flex justify-between"><span class="text-light">Workers' Compensation:</span><span class="text-text font-medium">$${wc.toFixed(2)}</span></div>` : ''}
-          ${prop > 0 ? `<div class="flex justify-between"><span class="text-light">Property Insurance:</span><span class="text-text font-medium">$${prop.toFixed(2)}</span></div>` : ''}
-          ${prof > 0 ? `<div class="flex justify-between"><span class="text-light">Professional Liability:</span><span class="text-text font-medium">$${prof.toFixed(2)}</span></div>` : ''}
-          <div class="flex justify-between border-t border-accent pt-2 mt-2"><span class="text-light font-medium">Total:</span><span class="text-text font-bold">$${totalAnnual.toFixed(2)}</span></div>
+          <div class="flex justify-between"><span class="text-light">General Liability:</span><span class="text-text font-medium">$${Math.round(gl * 100) / 100}</span></div>
+          ${wc > 0 ? `<div class="flex justify-between"><span class="text-light">Workers' Compensation:</span><span class="text-text font-medium">$${Math.round(wc * 100) / 100}</span></div>` : ''}
+          ${prop > 0 ? `<div class="flex justify-between"><span class="text-light">Property Insurance:</span><span class="text-text font-medium">$${Math.round(prop * 100) / 100}</span></div>` : ''}
+          ${prof > 0 ? `<div class="flex justify-between"><span class="text-light">Professional Liability:</span><span class="text-text font-medium">$${Math.round(prof * 100) / 100}</span></div>` : ''}
+          <div class="flex justify-between border-t border-accent pt-2 mt-2"><span class="text-light font-medium">Total:</span><span class="text-text font-bold">$${Math.round(totalAnnual * 100) / 100}</span></div>
         </div>
       </div>
       
       <div class="bg-accent/20 border border-accent rounded p-3 text-sm">
-        <strong>📋 Important Notes:</strong>
+        <strong>ðŸ“‹ Important Notes:</strong>
         <ul class="mt-2 space-y-1 text-light">
-          <li>• These are estimates - actual costs may vary</li>
-          <li>• Consider additional coverage like cyber liability</li>
-          <li>• Shop around with multiple insurance providers</li>
-          <li>• Bundle policies for potential discounts</li>
-          <li>• Review coverage annually as your business grows</li>
+          <li>â€¢ These are estimates - actual costs may vary</li>
+          <li>â€¢ Consider additional coverage like cyber liability</li>
+          <li>â€¢ Shop around with multiple insurance providers</li>
+          <li>â€¢ Bundle policies for potential discounts</li>
+          <li>â€¢ Review coverage annually as your business grows</li>
         </ul>
       </div>
     </div>

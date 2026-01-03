@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('speedrun-form');
     const gameSelect = document.getElementById('gameTitle');
     const customSection = document.getElementById('custom-game-section');
@@ -57,8 +57,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         reactionResult.innerHTML = `
             <div class="text-sm">
-                <div>Last: ${reactionTime}ms</div>
-                <div>Average: ${Math.round(avgReaction)}ms (${reactionAttempts.length} attempts)</div>
+                <div>Last: ${sanitizeText(reactionTime)}ms</div>
+                <div>Average: ${Math.round(avgReaction)}ms (${sanitizeText(reactionAttempts.length)} attempts)</div>
             </div>
         `;
     }
@@ -359,9 +359,9 @@ function formatTime(seconds) {
     const secs = seconds % 60;
     
     if (hours > 0) {
-        return `${hours}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        return `${sanitizeText(hours)}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
     } else {
-        return `${minutes}:${secs.toString().padStart(2, '0')}`;
+        return `${sanitizeText(minutes)}:${secs.toString().padStart(2, '0')}`;
     }
 }
 
@@ -371,19 +371,19 @@ function displayResults(results) {
 
     const html = `
         <div class="bg-primary/10 border-l-4 border-primary p-6 mb-6">
-            <h3 class="text-2xl font-bold text-primary mb-2">Speedrun Analysis for ${results.gameInfo.name}</h3>
-            <p class="text-light">Potential Score: <span class="text-accent font-semibold">${results.potentialScore}/100</span></p>
+            <h3 class="text-2xl font-bold text-primary mb-2">Speedrun Analysis for ${sanitizeText(results.gameInfo.name)}</h3>
+            <p class="text-light">Potential Score: <span class="text-accent font-semibold">${sanitizeText(results.potentialScore)}/100</span></p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-6 mb-6">
             <div class="bg-broder p-6 rounded-lg border border-accent text-center">
-                <div class="text-3xl font-bold text-primary mb-2">${results.feasibility.level}</div>
+                <div class="text-3xl font-bold text-primary mb-2">${sanitizeText(results.feasibility.level)}</div>
                 <div class="text-sm text-light">Feasibility Rating</div>
             </div>
             <div class="bg-broder p-6 rounded-lg border border-accent text-center">
-                <div class="text-3xl font-bold text-accent mb-2">${results.reactionAnalysis.time}ms</div>
+                <div class="text-3xl font-bold text-accent mb-2">${sanitizeText(results.reactionAnalysis.time)}ms</div>
                 <div class="text-sm text-light">Reaction Time</div>
-                <div class="text-xs text-accent">${results.reactionAnalysis.rating}</div>
+                <div class="text-xs text-accent">${sanitizeText(results.reactionAnalysis.rating)}</div>
             </div>
             <div class="bg-broder p-6 rounded-lg border border-accent text-center">
                 <div class="text-3xl font-bold text-yellow-400 mb-2">${formatTime(results.timeEstimates.beginner.time)}</div>
@@ -396,10 +396,10 @@ function displayResults(results) {
             <div class="bg-broder p-6 rounded-lg border border-accent">
                 <h4 class="text-xl font-bold text-accent mb-4">Feasibility Assessment</h4>
                 <div class="space-y-3">
-                    <div class="text-primary font-semibold">${results.feasibility.level}</div>
-                    <div class="text-sm text-light">${results.feasibility.description}</div>
+                    <div class="text-primary font-semibold">${sanitizeText(results.feasibility.level)}</div>
+                    <div class="text-sm text-light">${sanitizeText(results.feasibility.description)}</div>
                     <div class="text-sm text-accent mt-3">
-                        <strong>Recommendation:</strong> ${results.feasibility.recommendation}
+                        <strong>Recommendation:</strong> ${sanitizeText(results.feasibility.recommendation)}
                     </div>
                 </div>
             </div>
@@ -409,15 +409,15 @@ function displayResults(results) {
                 <div class="space-y-3">
                     <div class="flex justify-between items-center">
                         <span class="text-light">Beginner Goal</span>
-                        <span class="text-primary font-semibold">${formatTime(results.timeEstimates.beginner.time)} (${results.timeEstimates.beginner.weeks} weeks)</span>
+                        <span class="text-primary font-semibold">${formatTime(results.timeEstimates.beginner.time)} (${sanitizeText(results.timeEstimates.beginner.weeks)} weeks)</span>
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-light">Intermediate</span>
-                        <span class="text-primary font-semibold">${formatTime(results.timeEstimates.intermediate.time)} (${results.timeEstimates.intermediate.weeks} weeks)</span>
+                        <span class="text-primary font-semibold">${formatTime(results.timeEstimates.intermediate.time)} (${sanitizeText(results.timeEstimates.intermediate.weeks)} weeks)</span>
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-light">Competitive</span>
-                        <span class="text-primary font-semibold">${formatTime(results.timeEstimates.competitive.time)} (${results.timeEstimates.competitive.weeks} weeks)</span>
+                        <span class="text-primary font-semibold">${formatTime(results.timeEstimates.competitive.time)} (${sanitizeText(results.timeEstimates.competitive.weeks)} weeks)</span>
                     </div>
                 </div>
             </div>
@@ -430,9 +430,9 @@ function displayResults(results) {
                     <div class="bg-dark p-4 rounded border border-accent">
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-primary font-semibold">${cat.category}</span>
-                            <span class="text-xs px-2 py-1 rounded ${cat.difficulty === 'High' || cat.difficulty === 'Very High' ? 'bg-red-900 text-red-300' : 'bg-yellow-900 text-yellow-300'}">${cat.difficulty}</span>
+                            <span class="text-xs px-2 py-1 rounded ${cat.difficulty === 'High' || cat.difficulty === 'Very High' ? 'bg-red-900 text-red-300' : 'bg-yellow-900 text-yellow-300'}">${sanitizeText(cat.difficulty)}</span>
                         </div>
-                        <div class="text-sm text-light">${cat.suitability}</div>
+                        <div class="text-sm text-light">${sanitizeText(cat.suitability)}</div>
                     </div>
                 `).join('')}
             </div>
@@ -444,7 +444,7 @@ function displayResults(results) {
                 ${results.practicePlan.map(phase => `
                     <div class="bg-dark p-4 rounded border border-accent">
                         <h5 class="font-semibold text-primary mb-2">${phase.phase}</h5>
-                        <div class="text-sm text-light mb-3">${phase.focus}</div>
+                        <div class="text-sm text-light mb-3">${sanitizeText(phase.focus)}</div>
                         <div class="text-sm text-light">
                             <strong>Goals:</strong>
                             <ul class="list-disc list-inside mt-1 space-y-1">

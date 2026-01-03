@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('comparison-form');
   const resultsDiv = document.getElementById('results');
   const resultContent = document.getElementById('result-content');
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="space-y-2 text-sm">
               <div class="flex justify-between">
                 <span class="text-light">Hourly Rate:</span>
-                <span class="text-text">$${contractorRate}/hour</span>
+                <span class="text-text">$${sanitizeText(contractorRate)}/hour</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-light">Annual Hours:</span>
@@ -162,8 +162,8 @@ document.addEventListener('DOMContentLoaded', function() {
               <div class="text-xs text-light">Cost Difference</div>
             </div>
             <div>
-              <div class="text-sm font-medium ${recommendationColor}">
-                ${recommendation}
+              <div class="text-sm font-medium ${sanitizeText(recommendationColor)}">
+                ${sanitizeText(recommendation)}
               </div>
             </div>
           </div>

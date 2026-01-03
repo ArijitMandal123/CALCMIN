@@ -1,4 +1,4 @@
-// Shopping items storage
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Shopping items storage
 let shoppingItems = [];
 
 // Material impact factors (CO2 kg per dollar spent)
@@ -170,7 +170,7 @@ function generateRecommendations(analysis, budgetGoal) {
         recommendations.push({
             type: 'budget',
             title: 'Budget Optimization',
-            description: `You're projected to spend $${analysis.projectedCost.toFixed(0)} vs your $${budgetGoal} goal. Consider the 24-hour rule for non-essential purchases.`,
+            description: `You're projected to spend $${analysis.projectedCost.toFixed(0)} vs your $${sanitizeText(budgetGoal)} goal. Consider the 24-hour rule for non-essential purchases.`,
             impact: 'high'
         });
     }
@@ -190,7 +190,7 @@ function generateRecommendations(analysis, budgetGoal) {
         recommendations.push({
             type: 'carbon',
             title: 'Reduce Carbon Footprint',
-            description: `Your projected ${analysis.period} carbon footprint is ${analysis.projectedCO2.toFixed(1)} kg CO2. Consider buying less or choosing lower-impact materials.`,
+            description: `Your projected ${sanitizeText(analysis.period)} carbon footprint is ${analysis.projectedCO2.toFixed(1)} kg CO2. Consider buying less or choosing lower-impact materials.`,
             impact: 'medium'
         });
     }
@@ -236,7 +236,7 @@ function displayResults(data) {
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-light text-sm">Total Items</p>
-                        <p class="text-2xl font-bold text-primary">${analysis.totalItems}</p>
+                        <p class="text-2xl font-bold text-primary">${sanitizeText(analysis.totalItems)}</p>
                     </div>
                     <span class="material-icons text-primary text-3xl">shopping_cart</span>
                 </div>
@@ -247,7 +247,7 @@ function displayResults(data) {
                     <div>
                         <p class="text-light text-sm">${analysis.period.charAt(0).toUpperCase() + analysis.period.slice(1)} Spending</p>
                         <p class="text-2xl font-bold text-primary">$${analysis.projectedCost.toFixed(0)}</p>
-                        <p class="text-xs text-light">Goal: $${data.budgetGoal}</p>
+                        <p class="text-xs text-light">Goal: $${sanitizeText(data.budgetGoal)}</p>
                     </div>
                     <span class="material-icons text-primary text-3xl">attach_money</span>
                 </div>
@@ -258,7 +258,7 @@ function displayResults(data) {
                     <div>
                         <p class="text-light text-sm">Carbon Footprint</p>
                         <p class="text-2xl font-bold text-primary">${analysis.projectedCO2.toFixed(1)}</p>
-                        <p class="text-xs text-light">kg CO2 ${analysis.period}</p>
+                        <p class="text-xs text-light">kg CO2 ${sanitizeText(analysis.period)}</p>
                     </div>
                     <span class="material-icons text-primary text-3xl">co2</span>
                 </div>
@@ -278,7 +278,7 @@ function displayResults(data) {
 
         <!-- Recommendations -->
         <div class="mb-8">
-            <h3 class="text-xl font-semibold text-primary mb-4">🎯 Personalized Recommendations</h3>
+            <h3 class="text-xl font-semibold text-primary mb-4">ðŸŽ¯ Personalized Recommendations</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 ${recommendations.map(rec => `
                     <div class="bg-dark p-4 rounded-lg border border-accent">
@@ -290,8 +290,8 @@ function displayResults(data) {
                                   rec.type === 'category' ? 'category' : 'delete'}
                             </span>
                             <div>
-                                <h4 class="font-semibold text-primary mb-1">${rec.title}</h4>
-                                <p class="text-light text-sm">${rec.description}</p>
+                                <h4 class="font-semibold text-primary mb-1">${sanitizeText(rec.title)}</h4>
+                                <p class="text-light text-sm">${sanitizeText(rec.description)}</p>
                             </div>
                         </div>
                     </div>
@@ -302,7 +302,7 @@ function displayResults(data) {
         <!-- Category Breakdown -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
             <div class="bg-dark p-6 rounded-lg">
-                <h3 class="text-xl font-semibold text-primary mb-4">📊 Spending by Category</h3>
+                <h3 class="text-xl font-semibold text-primary mb-4">ðŸ“Š Spending by Category</h3>
                 <div class="space-y-3">
                     ${Object.entries(analysis.categoryBreakdown)
                         .sort((a, b) => b[1].cost - a[1].cost)
@@ -311,7 +311,7 @@ function displayResults(data) {
                                 <span class="text-light capitalize">${category}</span>
                                 <div class="text-right">
                                     <span class="text-primary font-semibold">$${data.cost.toFixed(0)}</span>
-                                    <span class="text-light text-sm ml-2">(${data.count} items)</span>
+                                    <span class="text-light text-sm ml-2">(${sanitizeText(data.count)} items)</span>
                                 </div>
                             </div>
                             <div class="w-full bg-broder rounded-full h-2">
@@ -322,7 +322,7 @@ function displayResults(data) {
             </div>
 
             <div class="bg-dark p-6 rounded-lg">
-                <h3 class="text-xl font-semibold text-primary mb-4">🌍 Environmental Impact</h3>
+                <h3 class="text-xl font-semibold text-primary mb-4">ðŸŒ Environmental Impact</h3>
                 <div class="space-y-4">
                     <div class="flex justify-between">
                         <span class="text-light">Waste Generated:</span>
@@ -346,7 +346,7 @@ function displayResults(data) {
 
         <!-- Progress Tracking -->
         <div class="bg-dark p-6 rounded-lg">
-            <h3 class="text-xl font-semibold text-primary mb-4">📈 Progress Tracking</h3>
+            <h3 class="text-xl font-semibold text-primary mb-4">ðŸ“ˆ Progress Tracking</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="text-center">
                     <div class="text-3xl font-bold text-primary mb-2">${analysis.avgSustainabilityScore.toFixed(0)}%</div>

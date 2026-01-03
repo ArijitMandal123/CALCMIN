@@ -1,4 +1,4 @@
-// Tax Bracket Optimization Calculator Script
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Tax Bracket Optimization Calculator Script
 
 // Popup functionality
 function showPopup(message) {
@@ -392,7 +392,7 @@ function displayResults(results) {
                                 ${scenario.savings > 0 ? '+' : ''}$${Math.round(scenario.savings).toLocaleString()} savings
                             </span>
                         </div>
-                        <p class="text-light text-sm mb-3">${scenario.description}</p>
+                        <p class="text-light text-sm mb-3">${sanitizeText(scenario.description)}</p>
                         <div class="grid md:grid-cols-3 gap-4 text-sm">
                             ${scenario.salary ? `<div><span class="text-light">Salary:</span> <span class="text-primary">$${Math.round(scenario.salary).toLocaleString()}</span></div>` : ''}
                             ${scenario.distributions ? `<div><span class="text-light">Distributions:</span> <span class="text-primary">$${Math.round(scenario.distributions).toLocaleString()}</span></div>` : ''}
@@ -436,10 +436,10 @@ function displayResults(results) {
                     <div class="bg-dark/50 rounded-lg p-6 border border-accent/20">
                         <div class="flex justify-between items-start mb-3">
                             <h4 class="font-semibold text-accent">${rec.category}</h4>
-                            <span class="px-2 py-1 text-xs rounded ${rec.priority === 'High' ? 'bg-red-500/20 text-red-400' : 'bg-yellow-500/20 text-yellow-400'}">${rec.priority}</span>
+                            <span class="px-2 py-1 text-xs rounded ${rec.priority === 'High' ? 'bg-red-500/20 text-red-400' : 'bg-yellow-500/20 text-yellow-400'}">${sanitizeText(rec.priority)}</span>
                         </div>
-                        <p class="text-light mb-2">${rec.action}</p>
-                        <p class="text-sm text-primary font-medium">Expected Impact: ${rec.impact}</p>
+                        <p class="text-light mb-2">${sanitizeText(rec.action)}</p>
+                        <p class="text-sm text-primary font-medium">Expected Impact: ${sanitizeText(rec.impact)}</p>
                     </div>
                 `).join('')}
             </div>
@@ -493,4 +493,5 @@ document.getElementById('totalIncome').addEventListener('input', function() {
         currentSalary.value = totalIncome;
     }
 });
+
 

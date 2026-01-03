@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('rental-form');
   
   form.addEventListener('submit', (e) => {
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="bg-dark p-4 rounded">
             <div class="flex items-center gap-2 mb-2"><span class="material-icons text-accent">trending_up</span><strong>Annual Revenue:</strong></div>
             <p class="text-2xl text-primary font-bold ml-8">$${annualRevenue.toLocaleString('en-US', {maximumFractionDigits: 0})}</p>
-            <p class="text-sm text-light ml-8">${occupiedNights.toFixed(0)} nights occupied @ $${nightlyRate}/night</p>
+            <p class="text-sm text-light ml-8">${occupiedNights.toFixed(0)} nights occupied @ $${sanitizeText(nightlyRate)}/night</p>
           </div>
           
           <div class="bg-dark p-4 rounded">
@@ -96,3 +96,4 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('result-content').innerHTML = resultHTML;
   });
 });
+

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -125,6 +125,12 @@
       ]
     }
   </script>
+  <!-- Security Headers -->
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:;">
+  
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -347,8 +353,8 @@
         <h3 class="text-xl font-semibold text-accent mb-4">How Does the Freelance Bid Calculator Work?</h3>
         <p class="text-text mb-4 leading-relaxed">Our bid optimization calculator uses sophisticated market analysis formulas to determine winning bid strategies:</p>
         <div class="bg-broder border border-accent rounded-lg p-4 mb-6">
-          <p class="text-primary font-mono text-lg"><strong>Optimal Bid = Base Rate × Competition Factor × Experience Multiplier × Urgency Premium</strong></p>
-          <p class="text-light text-sm mt-2">Example: $25/hr × 0.85 competition × 1.2 experience × 1.1 urgency = $28.05/hr optimal bid</p>
+          <p class="text-primary font-mono text-lg"><strong>Optimal Bid = Base Rate Ã— Competition Factor Ã— Experience Multiplier Ã— Urgency Premium</strong></p>
+          <p class="text-light text-sm mt-2">Example: $25/hr Ã— 0.85 competition Ã— 1.2 experience Ã— 1.1 urgency = $28.05/hr optimal bid</p>
         </div>
 
         <h4 class="text-lg font-medium text-light mb-3">Advanced Optimization Process:</h4>
@@ -368,11 +374,11 @@
         <div class="bg-broder border border-accent rounded-lg p-6 mb-6">
           <h4 class="text-primary font-semibold mb-3">Core Bidding Calculation Formulas:</h4>
           <ul class="text-text space-y-2">
-            <li><strong>Win Probability:</strong> Base Rate × (1 - Competition Density) × Profile Score</li>
-            <li><strong>Competition Adjustment:</strong> 1 - (Proposal Count ÷ 100)</li>
-            <li><strong>Experience Premium:</strong> 1 + (Years Experience × 0.05)</li>
-            <li><strong>Urgency Multiplier:</strong> 1 + (Rush Factor × 0.2)</li>
-            <li><strong>ROI Calculation:</strong> (Project Value - Costs) ÷ Time Investment</li>
+            <li><strong>Win Probability:</strong> Base Rate Ã— (1 - Competition Density) Ã— Profile Score</li>
+            <li><strong>Competition Adjustment:</strong> 1 - (Proposal Count Ã· 100)</li>
+            <li><strong>Experience Premium:</strong> 1 + (Years Experience Ã— 0.05)</li>
+            <li><strong>Urgency Multiplier:</strong> 1 + (Rush Factor Ã— 0.2)</li>
+            <li><strong>ROI Calculation:</strong> (Project Value - Costs) Ã· Time Investment</li>
           </ul>
         </div>
 
@@ -511,8 +517,10 @@
 
   <script src="../src/components/navbar.js"></script>
   <script src="../src/components/footer.js"></script>
+  <script src="../src/utils/security.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
+
 
 

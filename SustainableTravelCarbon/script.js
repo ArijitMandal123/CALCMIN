@@ -1,4 +1,4 @@
-// Sustainable Travel Carbon Offset Calculator
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Sustainable Travel Carbon Offset Calculator
 
 // Emission factors (kg CO2 per passenger-mile)
 const emissionFactors = {
@@ -192,7 +192,7 @@ function displayResults(results, data) {
                     <div class="text-sm text-light">CO2 Equivalent</div>
                 </div>
                 <div class="bg-dark p-4 rounded border border-accent text-center">
-                    <div class="text-2xl font-bold text-light">${data.passengers}</div>
+                    <div class="text-2xl font-bold text-light">${sanitizeText(data.passengers)}</div>
                     <div class="text-sm text-light">Passenger${data.passengers > 1 ? 's' : ''}</div>
                 </div>
             </div>
@@ -205,7 +205,7 @@ function displayResults(results, data) {
             <h4 class="text-xl font-semibold text-primary mb-4">Emissions Breakdown</h4>
             <div class="space-y-3">
                 <div class="flex justify-between items-center">
-                    <span class="text-light">Transportation (${data.transportMode})</span>
+                    <span class="text-light">Transportation (${sanitizeText(data.transportMode)})</span>
                     <span class="text-text font-medium">${results.transportEmissions.toFixed(1)} kg CO2</span>
                 </div>
                 ${results.accommodationEmissions > 0 ? `
@@ -228,19 +228,19 @@ function displayResults(results, data) {
             <h4 class="text-xl font-semibold text-primary mb-4">Environmental Impact Equivalents</h4>
             <div class="grid md:grid-cols-2 gap-4">
                 <div class="bg-dark p-3 rounded border border-accent">
-                    <div class="text-accent font-medium">🚗 ${results.equivalents.carMiles.toLocaleString()} miles</div>
+                    <div class="text-accent font-medium">ðŸš— ${results.equivalents.carMiles.toLocaleString()} miles</div>
                     <div class="text-sm text-light">Driving an average car</div>
                 </div>
                 <div class="bg-dark p-3 rounded border border-accent">
-                    <div class="text-accent font-medium">⛽ ${results.equivalents.gasoline} gallons</div>
+                    <div class="text-accent font-medium">â›½ ${sanitizeText(results.equivalents.gasoline)} gallons</div>
                     <div class="text-sm text-light">Gasoline consumed</div>
                 </div>
                 <div class="bg-dark p-3 rounded border border-accent">
-                    <div class="text-accent font-medium">🌳 ${results.equivalents.treesNeeded} trees</div>
+                    <div class="text-accent font-medium">ðŸŒ³ ${sanitizeText(results.equivalents.treesNeeded)} trees</div>
                     <div class="text-sm text-light">Needed to absorb this CO2</div>
                 </div>
                 <div class="bg-dark p-3 rounded border border-accent">
-                    <div class="text-accent font-medium">🏠 ${results.equivalents.homeEnergyDays} days</div>
+                    <div class="text-accent font-medium">ðŸ  ${sanitizeText(results.equivalents.homeEnergyDays)} days</div>
                     <div class="text-sm text-light">Average home energy use</div>
                 </div>
             </div>
@@ -260,15 +260,15 @@ function displayResults(results, data) {
                         <div class="flex justify-between items-start mb-2">
                             <div>
                                 <h5 class="font-semibold text-accent">${offset.name}</h5>
-                                <div class="text-sm text-light">${offset.timeframe} to maturity</div>
+                                <div class="text-sm text-light">${sanitizeText(offset.timeframe)} to maturity</div>
                             </div>
                             <div class="text-right">
                                 <div class="text-lg font-bold text-primary">$${offset.totalCost.toFixed(2)}</div>
-                                <div class="text-sm text-light">${offset.treesNeeded} trees</div>
+                                <div class="text-sm text-light">${sanitizeText(offset.treesNeeded)} trees</div>
                             </div>
                         </div>
                         <div class="text-sm text-light">
-                            ${offset.co2PerTree} kg CO2 absorbed per tree annually • $${offset.costPerTree.toFixed(2)} per tree
+                            ${sanitizeText(offset.co2PerTree)} kg CO2 absorbed per tree annually â€¢ $${offset.costPerTree.toFixed(2)} per tree
                         </div>
                     </div>
                 `).join('')}
@@ -289,7 +289,7 @@ function displayResults(results, data) {
                         <div class="flex justify-between items-start mb-2">
                             <div>
                                 <h5 class="font-semibold text-accent">${offset.name}</h5>
-                                <div class="text-sm text-light">${offset.type} • ${offset.verification}</div>
+                                <div class="text-sm text-light">${sanitizeText(offset.type)} â€¢ ${sanitizeText(offset.verification)}</div>
                             </div>
                             <div class="text-right">
                                 <div class="text-lg font-bold text-primary">$${offset.totalCost.toFixed(2)}</div>
@@ -297,7 +297,7 @@ function displayResults(results, data) {
                             </div>
                         </div>
                         <div class="text-sm text-light">
-                            $${offset.costPerTon}/ton CO2 • Immediate offset effect
+                            $${sanitizeText(offset.costPerTon)}/ton CO2 â€¢ Immediate offset effect
                         </div>
                     </div>
                 `).join('')}
@@ -306,6 +306,12 @@ function displayResults(results, data) {
     `;
     
     // Recommendations
+    function sanitizeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+    
     html += `
         <div class="bg-primary/10 border-l-4 border-primary p-6 mb-6">
             <h4 class="text-xl font-semibold text-primary mb-4">Sustainability Recommendations</h4>
@@ -314,8 +320,8 @@ function displayResults(results, data) {
                     <div class="flex items-start gap-3">
                         <span class="material-icons text-primary mt-1">lightbulb</span>
                         <div>
-                            <div class="font-medium text-text">${rec.title}</div>
-                            <div class="text-sm text-light">${rec.description}</div>
+                            <div class="font-medium text-text">${sanitizeHtml(rec.title)}</div>
+                            <div class="text-sm text-light">${sanitizeHtml(rec.description)}</div>
                         </div>
                     </div>
                 `).join('')}
@@ -368,12 +374,18 @@ function generateRecommendations(data, results) {
 }
 
 function showModal(title, message) {
+    function sanitizeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+    
     const modal = document.createElement('div');
     modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
     modal.innerHTML = `
         <div class="bg-broder p-6 rounded-lg border border-accent max-w-md mx-4">
-            <h3 class="text-xl font-bold text-primary mb-4">${title}</h3>
-            <p class="text-light mb-6">${message}</p>
+            <h3 class="text-xl font-bold text-primary mb-4">${sanitizeHtml(title)}</h3>
+            <p class="text-light mb-6">${sanitizeHtml(message)}</p>
             <button onclick="this.closest('.fixed').remove()" class="bg-primary hover:bg-accent text-white px-4 py-2 rounded">
                 OK
             </button>

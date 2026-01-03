@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     document.getElementById('pet-form').addEventListener('submit', assessPetReadiness);
 });
 
@@ -170,7 +170,7 @@ function assessFinancialReadiness(data, petReq) {
     } else if (data.monthlyBudget >= petReq.monthlyCost.min) {
         score += 20;
     } else {
-        issues.push(`Budget too low: need $${petReq.monthlyCost.min}-${petReq.monthlyCost.max}/month`);
+        issues.push(`Budget too low: need $${sanitizeText(petReq.monthlyCost.min)}-${sanitizeText(petReq.monthlyCost.max)}/month`);
         score += 10;
     }
     
@@ -200,7 +200,7 @@ function assessFinancialReadiness(data, petReq) {
     if (data.emergencyFund >= petReq.initialCost) {
         score += 20;
     } else {
-        issues.push(`Need $${petReq.initialCost} for initial setup costs`);
+        issues.push(`Need $${sanitizeText(petReq.initialCost)} for initial setup costs`);
         score += 10;
     }
     
@@ -208,7 +208,7 @@ function assessFinancialReadiness(data, petReq) {
         score: Math.min(100, score),
         level: getScoreLevel(score),
         issues,
-        monthlyRange: `$${petReq.monthlyCost.min}-${petReq.monthlyCost.max}`,
+        monthlyRange: `$${sanitizeText(petReq.monthlyCost.min)}-${sanitizeText(petReq.monthlyCost.max)}`,
         initialCost: petReq.initialCost
     };
 }
@@ -294,7 +294,7 @@ function assessTimeAvailability(data, petReq) {
     } else if (data.dailyFreeTime >= petReq.dailyTime) {
         score += 30;
     } else {
-        issues.push(`Need ${petReq.dailyTime} hours daily, you have ${data.dailyFreeTime}`);
+        issues.push(`Need ${sanitizeText(petReq.dailyTime)} hours daily, you have ${sanitizeText(data.dailyFreeTime)}`);
         score += 15;
     }
     
@@ -353,14 +353,14 @@ function assessExperienceLevel(data, petReq) {
     score += penalty;
     
     if (penalty < 0) {
-        issues.push(`${petReq.name} may be challenging for your experience level`);
+        issues.push(`${sanitizeText(petReq.name)} may be challenging for your experience level`);
     }
     
     // Commitment assessment
     if (data.commitmentYears >= petReq.lifespan) {
         score += 30;
     } else {
-        issues.push(`Pet lifespan (${petReq.lifespan} years) exceeds commitment (${data.commitmentYears} years)`);
+        issues.push(`Pet lifespan (${sanitizeText(petReq.lifespan)} years) exceeds commitment (${sanitizeText(data.commitmentYears)} years)`);
         score += 15;
     }
     
@@ -470,6 +470,12 @@ function getPetSpecificAdvice(petType, petAge) {
     return advice;
 }
 
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
 function displayResults(analysis) {
     const resultsDiv = document.getElementById('results');
     
@@ -483,19 +489,19 @@ function displayResults(analysis) {
                 <div class="bg-dark p-4 rounded border border-accent">
                     <h3 class="font-medium text-accent mb-2">Overall Readiness</h3>
                     <div class="space-y-2 text-sm">
-                        <div>Readiness Score: <span class="text-primary font-medium">${analysis.overallScore.score}/100</span></div>
-                        <div>Level: <span class="${analysis.overallScore.level.color} font-medium">${analysis.overallScore.level.level}</span></div>
-                        <div class="text-light text-xs">${analysis.overallScore.level.description}</div>
+                        <div>Readiness Score: <span class="text-primary font-medium">${sanitizeText(analysis.overallScore.score)}/100</span></div>
+                        <div>Level: <span class="${sanitizeText(analysis.overallScore.level.color)} font-medium">${sanitizeText(analysis.overallScore.level.level)}</span></div>
+                        <div class="text-light text-xs">${sanitizeText(analysis.overallScore.level.description)}</div>
                     </div>
                 </div>
                 
                 <div class="bg-dark p-4 rounded border border-accent">
                     <h3 class="font-medium text-accent mb-2">Pet Requirements</h3>
                     <div class="space-y-2 text-sm">
-                        <div>Pet: <span class="text-primary font-medium">${analysis.petRequirements.name}</span></div>
-                        <div>Monthly Cost: <span class="text-primary font-medium">${analysis.financialReadiness.monthlyRange}</span></div>
-                        <div>Daily Time: <span class="text-primary font-medium">${analysis.timeAvailability.requiredTime} hours</span></div>
-                        <div>Lifespan: <span class="text-primary font-medium">${analysis.experienceLevel.petLifespan} years</span></div>
+                        <div>Pet: <span class="text-primary font-medium">${sanitizeText(analysis.petRequirements.name)}</span></div>
+                        <div>Monthly Cost: <span class="text-primary font-medium">${sanitizeText(analysis.financialReadiness.monthlyRange)}</span></div>
+                        <div>Daily Time: <span class="text-primary font-medium">${sanitizeText(analysis.timeAvailability.requiredTime)} hours</span></div>
+                        <div>Lifespan: <span class="text-primary font-medium">${sanitizeText(analysis.experienceLevel.petLifespan)} years</span></div>
                     </div>
                 </div>
             </div>
@@ -508,49 +514,49 @@ function displayResults(analysis) {
                     <div class="bg-dark p-3 rounded border border-accent">
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-sm font-medium">Financial Readiness</span>
-                            <span class="${analysis.financialReadiness.level.color} text-sm">${analysis.financialReadiness.score}/100</span>
+                            <span class="${sanitizeText(analysis.financialReadiness.level.color)} text-sm">${sanitizeText(analysis.financialReadiness.score)}/100</span>
                         </div>
                         ${analysis.financialReadiness.issues.length > 0 ? `
                             <div class="text-xs text-red-300">
-                                ${analysis.financialReadiness.issues.map(issue => `• ${issue}`).join('<br>')}
+                                ${analysis.financialReadiness.issues.map(issue => `â€¢ ${escapeHtml(issue)}`).join('<br>')}
                             </div>
-                        ` : '<div class="text-xs text-green-300">✓ Financially prepared</div>'}
+                        ` : '<div class="text-xs text-green-300">âœ“ Financially prepared</div>'}
                     </div>
                     
                     <div class="bg-dark p-3 rounded border border-accent">
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-sm font-medium">Lifestyle Compatibility</span>
-                            <span class="${analysis.lifestyleCompatibility.level.color} text-sm">${analysis.lifestyleCompatibility.score}/100</span>
+                            <span class="${sanitizeText(analysis.lifestyleCompatibility.level.color)} text-sm">${sanitizeText(analysis.lifestyleCompatibility.score)}/100</span>
                         </div>
                         ${analysis.lifestyleCompatibility.issues.length > 0 ? `
                             <div class="text-xs text-red-300">
-                                ${analysis.lifestyleCompatibility.issues.map(issue => `• ${issue}`).join('<br>')}
+                                ${analysis.lifestyleCompatibility.issues.map(issue => `â€¢ ${escapeHtml(issue)}`).join('<br>')}
                             </div>
-                        ` : '<div class="text-xs text-green-300">✓ Lifestyle compatible</div>'}
+                        ` : '<div class="text-xs text-green-300">âœ“ Lifestyle compatible</div>'}
                     </div>
                     
                     <div class="bg-dark p-3 rounded border border-accent">
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-sm font-medium">Time Availability</span>
-                            <span class="${analysis.timeAvailability.level.color} text-sm">${analysis.timeAvailability.score}/100</span>
+                            <span class="${sanitizeText(analysis.timeAvailability.level.color)} text-sm">${sanitizeText(analysis.timeAvailability.score)}/100</span>
                         </div>
                         ${analysis.timeAvailability.issues.length > 0 ? `
                             <div class="text-xs text-red-300">
-                                ${analysis.timeAvailability.issues.map(issue => `• ${issue}`).join('<br>')}
+                                ${analysis.timeAvailability.issues.map(issue => `â€¢ ${escapeHtml(issue)}`).join('<br>')}
                             </div>
-                        ` : '<div class="text-xs text-green-300">✓ Sufficient time available</div>'}
+                        ` : '<div class="text-xs text-green-300">âœ“ Sufficient time available</div>'}
                     </div>
                     
                     <div class="bg-dark p-3 rounded border border-accent">
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-sm font-medium">Experience Level</span>
-                            <span class="${analysis.experienceLevel.level.color} text-sm">${analysis.experienceLevel.score}/100</span>
+                            <span class="${sanitizeText(analysis.experienceLevel.level.color)} text-sm">${sanitizeText(analysis.experienceLevel.score)}/100</span>
                         </div>
                         ${analysis.experienceLevel.issues.length > 0 ? `
                             <div class="text-xs text-red-300">
-                                ${analysis.experienceLevel.issues.map(issue => `• ${issue}`).join('<br>')}
+                                ${analysis.experienceLevel.issues.map(issue => `â€¢ ${escapeHtml(issue)}`).join('<br>')}
                             </div>
-                        ` : '<div class="text-xs text-green-300">✓ Appropriate experience level</div>'}
+                        ` : '<div class="text-xs text-green-300">âœ“ Appropriate experience level</div>'}
                     </div>
                 </div>
             </div>
@@ -563,10 +569,10 @@ function displayResults(analysis) {
                     ${analysis.recommendations.map(rec => `
                         <div class="bg-dark p-3 rounded border-l-4 border-primary">
                             <div class="flex justify-between items-start mb-1">
-                                <span class="font-medium text-sm">${rec.category}</span>
-                                <span class="text-xs px-2 py-1 rounded ${rec.priority === 'High' ? 'bg-red-600' : rec.priority === 'Medium' ? 'bg-yellow-600' : 'bg-green-600'} text-white">${rec.priority}</span>
+                                <span class="font-medium text-sm">${escapeHtml(rec.category)}</span>
+                                <span class="text-xs px-2 py-1 rounded ${rec.priority === 'High' ? 'bg-red-600' : rec.priority === 'Medium' ? 'bg-yellow-600' : 'bg-green-600'} text-white">${escapeHtml(rec.priority)}</span>
                             </div>
-                            <div class="text-sm text-light">${rec.advice}</div>
+                            <div class="text-sm text-light">${escapeHtml(rec.advice)}</div>
                         </div>
                     `).join('')}
                 </div>
@@ -578,25 +584,25 @@ function displayResults(analysis) {
                 </h3>
                 <div class="text-sm text-light space-y-2">
                     ${analysis.overallScore.score >= 70 ? `
-                        <p>✅ You appear ready for pet adoption! Consider visiting local shelters.</p>
-                        <p>• Research reputable shelters and rescue organizations</p>
-                        <p>• Prepare your home with necessary supplies</p>
-                        <p>• Schedule a meet-and-greet with potential pets</p>
+                        <p>âœ… You appear ready for pet adoption! Consider visiting local shelters.</p>
+                        <p>â€¢ Research reputable shelters and rescue organizations</p>
+                        <p>â€¢ Prepare your home with necessary supplies</p>
+                        <p>â€¢ Schedule a meet-and-greet with potential pets</p>
                     ` : `
-                        <p>⚠️ Address the identified issues before adopting.</p>
-                        <p>• Work on improving your readiness score</p>
-                        <p>• Consider fostering to gain experience</p>
-                        <p>• Volunteer at shelters to learn more about pet care</p>
+                        <p>âš ï¸ Address the identified issues before adopting.</p>
+                        <p>â€¢ Work on improving your readiness score</p>
+                        <p>â€¢ Consider fostering to gain experience</p>
+                        <p>â€¢ Volunteer at shelters to learn more about pet care</p>
                     `}
                 </div>
             </div>
             
             <div class="mt-6 p-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded border border-primary/30">
-                <h3 class="font-medium text-primary mb-2">🐾 Adoption Success Tips</h3>
+                <h3 class="font-medium text-primary mb-2">ðŸ¾ Adoption Success Tips</h3>
                 <div class="text-sm text-light space-y-1">
-                    <p>• Your ${analysis.overallScore.level.level.toLowerCase()} readiness score suggests ${analysis.overallScore.score >= 70 ? 'you\'re prepared' : 'more preparation is needed'}</p>
-                    <p>• ${analysis.petRequirements.name} requires ${analysis.petRequirements.dailyTime} hours daily and $${analysis.petRequirements.monthlyCost.min}-${analysis.petRequirements.monthlyCost.max}/month</p>
-                    <p>• Proper preparation reduces the chance of pet returns and ensures a happy relationship</p>
+                    <p>â€¢ Your ${analysis.overallScore.level.level.toLowerCase()} readiness score suggests ${analysis.overallScore.score >= 70 ? 'you\'re prepared' : 'more preparation is needed'}</p>
+                    <p>â€¢ ${sanitizeText(analysis.petRequirements.name)} requires ${sanitizeText(analysis.petRequirements.dailyTime)} hours daily and $${sanitizeText(analysis.petRequirements.monthlyCost.min)}-${sanitizeText(analysis.petRequirements.monthlyCost.max)}/month</p>
+                    <p>â€¢ Proper preparation reduces the chance of pet returns and ensures a happy relationship</p>
                 </div>
             </div>
         </div>

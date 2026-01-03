@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('moving-form');
   
   form.addEventListener('submit', (e) => {
@@ -33,36 +33,36 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="grid gap-4 text-text text-sm md:text-base">
           <div class="bg-dark p-4 rounded">
             <div class="flex items-center gap-2 mb-2"><span class="material-icons text-accent">inventory_2</span><strong>Small Boxes (16x12x12"):</strong></div>
-            <p class="text-2xl text-primary font-bold ml-8">${smallBoxes} boxes</p>
+            <p class="text-2xl text-primary font-bold ml-8">${sanitizeText(smallBoxes)} boxes</p>
             <p class="text-sm text-light ml-8">Books, dishes, glassware, toiletries</p>
           </div>
           
           <div class="bg-dark p-4 rounded">
             <div class="flex items-center gap-2 mb-2"><span class="material-icons text-accent">inventory_2</span><strong>Medium Boxes (18x18x16"):</strong></div>
-            <p class="text-2xl text-primary font-bold ml-8">${mediumBoxes} boxes</p>
+            <p class="text-2xl text-primary font-bold ml-8">${sanitizeText(mediumBoxes)} boxes</p>
             <p class="text-sm text-light ml-8">Electronics, decor, pots, appliances</p>
           </div>
           
           <div class="bg-dark p-4 rounded">
             <div class="flex items-center gap-2 mb-2"><span class="material-icons text-accent">inventory_2</span><strong>Large Boxes (20x20x20"):</strong></div>
-            <p class="text-2xl text-primary font-bold ml-8">${largeBoxes} boxes</p>
+            <p class="text-2xl text-primary font-bold ml-8">${sanitizeText(largeBoxes)} boxes</p>
             <p class="text-sm text-light ml-8">Clothes, cushions, bedding, towels</p>
           </div>
           
           <div class="bg-dark p-4 rounded">
             <div class="flex items-center gap-2 mb-2"><span class="material-icons text-accent">checkroom</span><strong>Wardrobe Boxes:</strong></div>
-            <p class="text-2xl text-primary font-bold ml-8">${wardrobeBoxes} boxes</p>
+            <p class="text-2xl text-primary font-bold ml-8">${sanitizeText(wardrobeBoxes)} boxes</p>
             <p class="text-sm text-light ml-8">Shoes and hanging clothes</p>
           </div>
           
           <div class="bg-dark p-4 rounded border-2 border-primary">
             <div class="flex items-center gap-2 mb-2"><span class="material-icons text-primary">shopping_cart</span><strong>Total Boxes Needed:</strong></div>
-            <p class="text-3xl text-primary font-bold ml-8">${totalBoxes} boxes</p>
+            <p class="text-3xl text-primary font-bold ml-8">${sanitizeText(totalBoxes)} boxes</p>
           </div>
           
           <div class="bg-dark p-4 rounded">
             <div class="flex items-center gap-2 mb-2"><span class="material-icons text-accent">attach_money</span><strong>Estimated Box Cost:</strong></div>
-            <p class="text-2xl text-accent font-bold ml-8">$${estimatedCost}</p>
+            <p class="text-2xl text-accent font-bold ml-8">$${sanitizeText(estimatedCost)}</p>
           </div>
           
           <div class="bg-dark p-4 rounded">
@@ -83,3 +83,4 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('result-content').innerHTML = resultHTML;
   });
 });
+

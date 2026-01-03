@@ -264,6 +264,23 @@ function generateRecommendations(data, severity) {
     return recommendations;
 }
 
+// Sanitize user input to prevent XSS
+function sanitizeText(text) {
+    if (typeof text !== 'string') {
+        text = String(text);
+    }
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+// Sanitize HTML content to prevent code injection
+function sanitizeHTML(html) {
+    const div = document.createElement('div');
+    div.textContent = html;
+    return div.innerHTML;
+}
+
 // Display results
 function displayResults(data) {
     const severityResult = calculateAnxietySeverity(data);
@@ -276,38 +293,38 @@ function displayResults(data) {
     resultsContent.innerHTML = `
         <!-- Severity Score Card -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div class="md:col-span-2 ${analysis.bgColor} p-6 rounded-lg border ${analysis.borderColor}">
+            <div class="md:col-span-2 ${sanitizeText(analysis.bgColor)} p-6 rounded-lg border ${sanitizeText(analysis.borderColor)}">
                 <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-2xl font-bold ${analysis.color}">Anxiety Severity: ${analysis.level}</h3>
+                    <h3 class="text-2xl font-bold ${sanitizeText(analysis.color)}">Anxiety Severity: ${sanitizeText(analysis.level)}</h3>
                     <div class="text-right">
-                        <div class="text-4xl font-bold ${analysis.color}">${severityResult.score}/100</div>
-                        <div class="text-sm text-light">Risk Level: ${analysis.riskLevel}</div>
+                        <div class="text-4xl font-bold ${sanitizeHTML(analysis.color)}">${sanitizeText(severityResult.score)}/100</div>
+                        <div class="text-sm text-light">Risk Level: ${sanitizeText(analysis.riskLevel)}</div>
                     </div>
                 </div>
-                <p class="text-light mb-4">${analysis.description}</p>
+                <p class="text-light mb-4">${sanitizeText(analysis.description)}</p>
                 <div class="grid grid-cols-2 gap-4 text-sm">
                     <div>
                         <span class="text-light">Base Symptom Score:</span>
-                        <span class="text-primary font-semibold ml-2">${severityResult.baseScore}/${severityResult.maxPossible}</span>
+                        <span class="text-primary font-semibold ml-2">${sanitizeText(severityResult.baseScore)}/${sanitizeText(severityResult.maxPossible)}</span>
                     </div>
                     <div>
                         <span class="text-light">Sleep Impact:</span>
-                        <span class="text-primary font-semibold ml-2">${severityResult.adjustments.sleep > 0 ? '+' : ''}${severityResult.adjustments.sleep.toFixed(1)}</span>
+                        <span class="text-primary font-semibold ml-2">${sanitizeText(severityResult.adjustments.sleep > 0 ? '+' : '')}${sanitizeText(severityResult.adjustments.sleep.toFixed(1))}</span>
                     </div>
                 </div>
             </div>
             
             <div class="bg-dark p-6 rounded-lg border border-accent">
                 <h4 class="text-lg font-semibold text-primary mb-4">Professional Help Guidance</h4>
-                <p class="text-light text-sm mb-4">${analysis.professionalHelp}</p>
+                <p class="text-light text-sm mb-4">${sanitizeText(analysis.professionalHelp)}</p>
                 <div class="space-y-2">
                     <div class="flex items-center text-sm">
                         <span class="material-icons text-primary mr-2 text-lg">schedule</span>
-                        <span class="text-light">Urgency: ${analysis.riskLevel}</span>
+                        <span class="text-light">Urgency: ${sanitizeText(analysis.riskLevel)}</span>
                     </div>
                     <div class="flex items-center text-sm">
                         <span class="material-icons text-primary mr-2 text-lg">local_hospital</span>
-                        <span class="text-light">${severityResult.score > 75 ? 'Immediate' : severityResult.score > 50 ? 'Within 2 weeks' : 'Within 1 month'}</span>
+                        <span class="text-light">${sanitizeText(severityResult.score > 75 ? 'Immediate' : severityResult.score > 50 ? 'Within 2 weeks' : 'Within 1 month')}</span>
                     </div>
                 </div>
             </div>
@@ -326,9 +343,9 @@ function displayResults(data) {
                             const color = rating >= 3 ? 'text-red-400' : rating === 2 ? 'text-yellow-400' : 'text-green-400';
                             return `
                                 <div class="flex justify-between items-center">
-                                    <span class="text-light capitalize">${symptom.replace(/([A-Z])/g, ' $1').toLowerCase()}</span>
+                                    <span class="text-light capitalize">${sanitizeText(symptom.replace(/([A-Z])/g, ' $1').toLowerCase())}</span>
                                     <div class="text-right">
-                                        <span class="${color} font-semibold">${intensity}</span>
+                                        <span class="${sanitizeText(color)} font-semibold">${sanitizeText(intensity)}</span>
                                         <div class="w-20 bg-broder rounded-full h-2 ml-2">
                                             <div class="bg-primary h-2 rounded-full" style="width: ${(rating/4)*100}%"></div>
                                         </div>
@@ -347,7 +364,7 @@ function displayResults(data) {
                         <div class="flex flex-wrap gap-2">
                             ${data.triggers.map(trigger => `
                                 <span class="px-2 py-1 bg-red-900/30 border border-red-600 rounded text-red-200 text-xs capitalize">
-                                    ${trigger}
+                                    ${sanitizeText(trigger)}
                                 </span>
                             `).join('')}
                             ${data.triggers.length === 0 ? '<span class="text-light text-sm">None identified</span>' : ''}
@@ -358,7 +375,7 @@ function displayResults(data) {
                         <div class="flex flex-wrap gap-2">
                             ${data.copingMethods.map(method => `
                                 <span class="px-2 py-1 bg-green-900/30 border border-green-600 rounded text-green-200 text-xs capitalize">
-                                    ${method}
+                                    ${sanitizeText(method)}
                                 </span>
                             `).join('')}
                             ${data.copingMethods.length === 0 ? '<span class="text-light text-sm">None selected</span>' : ''}
@@ -367,11 +384,11 @@ function displayResults(data) {
                     <div class="grid grid-cols-2 gap-4 text-sm">
                         <div>
                             <span class="text-light">Sleep Quality:</span>
-                            <span class="text-primary font-semibold ml-2">${data.sleepQuality}/10</span>
+                            <span class="text-primary font-semibold ml-2">${sanitizeText(data.sleepQuality)}/10</span>
                         </div>
                         <div>
                             <span class="text-light">Daily Caffeine:</span>
-                            <span class="text-primary font-semibold ml-2">${data.caffeineIntake}mg</span>
+                            <span class="text-primary font-semibold ml-2">${sanitizeText(data.caffeineIntake)}mg</span>
                         </div>
                     </div>
                 </div>
@@ -390,9 +407,9 @@ function displayResults(data) {
                             </span>
                             <div>
                                 <h4 class="font-semibold text-primary mb-1">
-                                    ${index < 2 ? 'High Priority' : index < 4 ? 'Medium Priority' : 'Additional Support'}
+                                    ${sanitizeText(index < 2 ? 'High Priority' : index < 4 ? 'Medium Priority' : 'Additional Support')}
                                 </h4>
-                                <p class="text-light text-sm">${intervention}</p>
+                                <p class="text-light text-sm">${sanitizeText(intervention)}</p>
                             </div>
                         </div>
                     </div>
@@ -409,15 +426,15 @@ function displayResults(data) {
                         <div class="flex items-start justify-between">
                             <div class="flex-1">
                                 <div class="flex items-center mb-2">
-                                    <h4 class="font-semibold text-primary mr-3">${rec.category}</h4>
+                                    <h4 class="font-semibold text-primary mr-3">${sanitizeText(rec.category)}</h4>
                                     <span class="px-2 py-1 text-xs rounded ${
                                         rec.priority === 'High' ? 'bg-red-900/30 border border-red-600 text-red-200' :
                                         rec.priority === 'Medium' ? 'bg-yellow-900/30 border border-yellow-600 text-yellow-200' :
                                         'bg-blue-900/30 border border-blue-600 text-blue-200'
-                                    }">${rec.priority} Priority</span>
+                                    }">${sanitizeText(rec.priority)} Priority</span>
                                 </div>
-                                <p class="text-light text-sm mb-2">${rec.suggestion}</p>
-                                <p class="text-accent text-xs">${rec.impact}</p>
+                                <p class="text-light text-sm mb-2">${sanitizeText(rec.suggestion)}</p>
+                                <p class="text-accent text-xs">${sanitizeText(rec.impact)}</p>
                             </div>
                         </div>
                     </div>
@@ -432,21 +449,21 @@ function displayResults(data) {
                 <div>
                     <h4 class="text-lg font-semibold text-primary mb-2">This Week</h4>
                     <ul class="text-light space-y-2 text-sm">
-                        <li>• ${severityResult.score > 50 ? 'Contact a mental health professional' : 'Implement sleep hygiene improvements'}</li>
-                        <li>• Start daily breathing exercises (4-7-8 technique)</li>
-                        <li>• ${data.sleepQuality < 6 ? 'Establish consistent sleep schedule' : 'Begin regular exercise routine'}</li>
-                        <li>• ${data.caffeineIntake > 300 ? 'Reduce caffeine intake gradually' : 'Practice mindfulness meditation'}</li>
-                        <li>• Track symptoms daily to monitor progress</li>
+                        <li>• ${sanitizeText(severityResult.score > 50 ? 'Contact a mental health professional' : 'Implement sleep hygiene improvements')}</li>
+                        <li>• ${sanitizeText('Start daily breathing exercises (4-7-8 technique)')}</li>
+                        <li>• ${sanitizeText(data.sleepQuality < 6 ? 'Establish consistent sleep schedule' : 'Begin regular exercise routine')}</li>
+                        <li>• ${sanitizeText(data.caffeineIntake > 300 ? 'Reduce caffeine intake gradually' : 'Practice mindfulness meditation')}</li>
+                        <li>• ${sanitizeText('Track symptoms daily to monitor progress')}</li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold text-primary mb-2">This Month</h4>
                     <ul class="text-light space-y-2 text-sm">
-                        <li>• ${severityResult.score > 75 ? 'Begin intensive treatment program' : severityResult.score > 50 ? 'Start therapy sessions' : 'Consider therapy consultation'}</li>
-                        <li>• Build support network and communicate needs</li>
-                        <li>• Implement stress management techniques</li>
-                        <li>• ${data.triggers.includes('work') ? 'Address workplace stress factors' : 'Focus on trigger management'}</li>
-                        <li>• Re-assess symptoms and adjust strategies</li>
+                        <li>• ${sanitizeText(severityResult.score > 75 ? 'Begin intensive treatment program' : severityResult.score > 50 ? 'Start therapy sessions' : 'Consider therapy consultation')}</li>
+                        <li>• ${sanitizeText('Build support network and communicate needs')}</li>
+                        <li>• ${sanitizeText('Implement stress management techniques')}</li>
+                        <li>• ${sanitizeText(data.triggers.includes('work') ? 'Address workplace stress factors' : 'Focus on trigger management')}</li>
+                        <li>• ${sanitizeText('Re-assess symptoms and adjust strategies')}</li>
                     </ul>
                 </div>
             </div>

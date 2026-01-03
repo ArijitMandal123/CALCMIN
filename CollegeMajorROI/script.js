@@ -1,3 +1,12 @@
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('roi-form');
   const resultsDiv = document.getElementById('results');
@@ -162,16 +171,16 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="bg-broder p-6 rounded-lg border border-accent">
         <h3 class="text-xl font-medium mb-4 text-text flex items-center gap-2">
           <span class="material-icons text-primary">school</span> 
-          ${majorName} ROI Analysis
+          ${sanitizeText(majorName)} ROI Analysis
         </h3>
         
         <div class="grid md:grid-cols-3 gap-4 mb-6">
           <div class="bg-dark p-4 rounded border border-accent text-center">
-            <div class="text-2xl font-bold ${roiColor}">${analysis.roi.toFixed(0)}%</div>
+            <div class="text-2xl font-bold ${sanitizeText(roiColor)}">${analysis.roi.toFixed(0)}%</div>
             <div class="text-sm text-light">30-Year ROI</div>
           </div>
           <div class="bg-dark p-4 rounded border border-accent text-center">
-            <div class="text-2xl font-bold ${paybackColor}">${analysis.paybackYears.toFixed(1)}</div>
+            <div class="text-2xl font-bold ${sanitizeText(paybackColor)}">${analysis.paybackYears.toFixed(1)}</div>
             <div class="text-sm text-light">Payback Years</div>
           </div>
           <div class="bg-dark p-4 rounded border border-accent text-center">
@@ -198,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
               </div>
               <div class="flex justify-between">
                 <span class="text-light">Years in School:</span>
-                <span class="text-text">${analysis.yearsInSchool} years</span>
+                <span class="text-text">${sanitizeText(analysis.yearsInSchool)} years</span>
               </div>
             </div>
           </div>
@@ -220,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
               </div>
               <div class="flex justify-between">
                 <span class="text-light">Employment Rate:</span>
-                <span class="text-text">${formData.employmentRate}%</span>
+                <span class="text-text">${sanitizeText(formData.employmentRate)}%</span>
               </div>
             </div>
           </div>
@@ -230,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <h4 class="text-lg font-medium mb-3 text-text">Lifetime Earnings Comparison</h4>
           <div class="grid md:grid-cols-2 gap-4 text-sm">
             <div class="p-3 bg-dark rounded border border-accent">
-              <div class="font-medium text-green-400 mb-1">With ${majorName} Degree</div>
+              <div class="font-medium text-green-400 mb-1">With ${sanitizeText(majorName)} Degree</div>
               <div class="text-xl font-bold text-text">$${(analysis.totalEarningsWithDegree/1000000).toFixed(1)}M</div>
               <div class="text-xs text-light">30-year career earnings</div>
             </div>

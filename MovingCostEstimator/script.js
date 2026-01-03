@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('moving-cost-form');
     
     form.addEventListener('submit', function(e) {
@@ -336,9 +336,9 @@ function displayResults(results) {
                         <div class="bg-broder p-3 rounded">
                             <div class="flex justify-between items-center mb-1">
                                 <span class="font-semibold text-red-400">${fee.name}</span>
-                                <span class="text-sm font-bold">$${fee.cost}</span>
+                                <span class="text-sm font-bold">$${sanitizeText(fee.cost)}</span>
                             </div>
-                            <p class="text-xs text-light">${fee.description}</p>
+                            <p class="text-xs text-light">${sanitizeText(fee.description)}</p>
                         </div>
                     `).join('')}
                 </div>
@@ -362,19 +362,19 @@ function displayResults(results) {
             <div class="bg-green-900/20 border border-green-600 rounded p-4 mb-6">
                 <h5 class="font-semibold text-green-400 mb-2">Negotiation Tips</h5>
                 <ul class="text-sm text-light space-y-1">
-                    ${results.negotiationTips.map(tip => `<li>• ${tip}</li>`).join('')}
+                    ${results.negotiationTips.map(tip => `<li>â€¢ ${tip}</li>`).join('')}
                 </ul>
             </div>
             
             <div class="bg-yellow-900/20 border border-yellow-600 rounded p-4">
                 <h5 class="font-semibold text-yellow-400 mb-2">Important Reminders</h5>
                 <ul class="text-sm text-light space-y-1">
-                    <li>• Get at least 3 written estimates from licensed companies</li>
-                    <li>• Verify insurance coverage and understand your liability</li>
-                    <li>• Read all contracts carefully before signing</li>
-                    <li>• Take inventory and photos of valuable items</li>
-                    <li>• Keep important documents with you during the move</li>
-                    <li>• Confirm pickup and delivery dates in writing</li>
+                    <li>â€¢ Get at least 3 written estimates from licensed companies</li>
+                    <li>â€¢ Verify insurance coverage and understand your liability</li>
+                    <li>â€¢ Read all contracts carefully before signing</li>
+                    <li>â€¢ Take inventory and photos of valuable items</li>
+                    <li>â€¢ Keep important documents with you during the move</li>
+                    <li>â€¢ Confirm pickup and delivery dates in writing</li>
                 </ul>
             </div>
         </div>
@@ -395,7 +395,7 @@ function showPopup(message) {
             <span class="material-icons text-primary mr-2">info</span>
             <h3 class="text-lg font-semibold text-primary">Input Validation</h3>
         </div>
-        <p class="text-light mb-4">${message}</p>
+        <p class="text-light mb-4">${sanitizeText(message)}</p>
         <button onclick="this.closest('.fixed').remove()" 
                 class="w-full bg-primary hover:bg-accent text-white font-medium py-2 px-4 rounded transition duration-200">
             OK

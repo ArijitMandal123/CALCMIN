@@ -1,4 +1,4 @@
-// Home Renovation Priority Sequencer Logic
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Home Renovation Priority Sequencer Logic
 
 let projects = [];
 let projectIdCounter = 0;
@@ -103,13 +103,20 @@ function validateProject(project) {
     return true;
 }
 
+// Escape HTML to prevent code injection
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
 // Show popup modal
 function showPopup(message) {
     const popup = document.createElement('div');
     popup.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
     popup.innerHTML = `
         <div class="bg-broder p-6 rounded-lg border border-accent max-w-md mx-4">
-            <p class="text-light mb-4">${message}</p>
+            <p class="text-light mb-4">${escapeHtml(message)}</p>
             <button onclick="this.parentElement.parentElement.remove()" class="bg-primary hover:bg-accent text-white px-4 py-2 rounded">
                 OK
             </button>
@@ -130,12 +137,12 @@ function updateProjectsList() {
         <div class="bg-dark p-4 rounded border border-accent mb-3">
             <div class="flex justify-between items-start">
                 <div class="flex-1">
-                    <h4 class="font-semibold text-primary">${project.name}</h4>
-                    <p class="text-sm text-light">Type: ${project.type} | Budget: $${project.budget.toLocaleString()} | ROI: ${project.roi}%</p>
-                    <p class="text-xs text-light">Urgency: ${project.urgency}/10 | Comfort Impact: ${project.comfortImpact}/10</p>
-                    ${project.dependencies ? `<p class="text-xs text-accent">Depends on: ${project.dependencies}</p>` : ''}
+                    <h4 class="font-semibold text-primary">${escapeHtml(project.name)}</h4>
+                    <p class="text-sm text-light">Type: ${escapeHtml(project.type)} | Budget: $${project.budget.toLocaleString()} | ROI: ${sanitizeText(project.roi)}%</p>
+                    <p class="text-xs text-light">Urgency: ${sanitizeText(project.urgency)}/10 | Comfort Impact: ${sanitizeText(project.comfortImpact)}/10</p>
+                    ${project.dependencies ? `<p class="text-xs text-accent">Depends on: ${escapeHtml(project.dependencies)}</p>` : ''}
                 </div>
-                <button onclick="removeProject(${project.id})" class="text-red-400 hover:text-red-300 ml-4">
+                <button onclick="removeProject(${sanitizeText(project.id)})" class="text-red-400 hover:text-red-300 ml-4">
                     <span class="material-icons text-sm">delete</span>
                 </button>
             </div>
@@ -267,6 +274,13 @@ function createBudgetAnalysis(projects) {
     return yearlyBudgets;
 }
 
+// Escape HTML to prevent code injection
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
 // Display results
 function displayResults(sequence) {
     const contentDiv = document.getElementById('result-content');
@@ -286,7 +300,7 @@ function displayResults(sequence) {
                     <div class="text-sm text-light">Expected Return Value</div>
                 </div>
                 <div class="bg-dark p-4 rounded border border-accent text-center">
-                    <div class="text-2xl font-bold text-accent">${sequence.projects.length}</div>
+                    <div class="text-2xl font-bold text-accent">${sanitizeText(sequence.projects.length)}</div>
                     <div class="text-sm text-light">Total Projects</div>
                 </div>
             </div>
@@ -303,18 +317,18 @@ function displayResults(sequence) {
                                         ${index + 1}
                                     </div>
                                     <div>
-                                        <h5 class="font-semibold text-primary">${project.name}</h5>
+                                        <h5 class="font-semibold text-primary">${escapeHtml(project.name)}</h5>
                                         <p class="text-sm text-light">Priority Score: ${project.priorityScore.toFixed(1)}</p>
                                     </div>
                                 </div>
                                 <div class="text-right">
                                     <div class="text-lg font-bold text-accent">$${project.budget.toLocaleString()}</div>
-                                    <div class="text-sm text-green-400">${project.roi}% ROI</div>
+                                    <div class="text-sm text-green-400">${sanitizeText(project.roi)}% ROI</div>
                                 </div>
                             </div>
                             ${project.dependencies ? `
                                 <div class="mt-2 text-xs text-yellow-400">
-                                    ⚠ Requires ${project.dependencies} work first
+                                    âš  Requires ${escapeHtml(project.dependencies)} work first
                                 </div>
                             ` : ''}
                         </div>
@@ -338,7 +352,7 @@ function displayResults(sequence) {
                             <div class="grid md:grid-cols-2 gap-4">
                                 ${data.projects.map(project => `
                                     <div class="text-sm text-light">
-                                        • ${project.name} - $${project.budget.toLocaleString()}
+                                        â€¢ ${escapeHtml(project.name)} - $${project.budget.toLocaleString()}
                                     </div>
                                 `).join('')}
                             </div>
@@ -351,11 +365,11 @@ function displayResults(sequence) {
             <div class="bg-primary/10 border-l-4 border-primary p-6">
                 <h4 class="font-semibold text-primary mb-2">Key Recommendations</h4>
                 <ul class="text-sm text-light space-y-1">
-                    <li>• Start with highest urgency projects (roofing, HVAC, electrical)</li>
-                    <li>• Complete infrastructure work before cosmetic improvements</li>
-                    <li>• Budget 20% extra for unexpected costs and delays</li>
-                    <li>• Consider seasonal timing for exterior projects</li>
-                    <li>• Plan temporary living arrangements for major kitchen/bathroom work</li>
+                    <li>â€¢ Start with highest urgency projects (roofing, HVAC, electrical)</li>
+                    <li>â€¢ Complete infrastructure work before cosmetic improvements</li>
+                    <li>â€¢ Budget 20% extra for unexpected costs and delays</li>
+                    <li>â€¢ Consider seasonal timing for exterior projects</li>
+                    <li>â€¢ Plan temporary living arrangements for major kitchen/bathroom work</li>
                 </ul>
             </div>
         </div>
@@ -369,6 +383,8 @@ function displayResults(sequence) {
 fetch('../src/components/Footer.html')
     .then(response => response.text())
     .then(data => {
-        document.getElementById('footer-container').innerHTML = data;
+        const footerContainer = document.getElementById('footer-container');
+        footerContainer.textContent = ''; // Clear existing content
+        footerContainer.insertAdjacentHTML('beforeend', data); // Safer than innerHTML
     })
     .catch(error => console.log('Footer loading failed:', error));

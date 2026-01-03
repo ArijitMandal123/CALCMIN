@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('timeline-form');
   const resultsDiv = document.getElementById('results');
   const resultContent = document.getElementById('result-content');
@@ -281,21 +281,27 @@ document.addEventListener('DOMContentLoaded', function() {
     return recommendations;
   }
 
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
   function displayTimeline(timeline, streamData, incomeGoal) {
     const years = Math.floor(timeline.timeToGoal / 12);
     const months = timeline.timeToGoal % 12;
-    const timeString = years > 0 ? `${years} year${years > 1 ? 's' : ''} ${months > 0 ? `${months} month${months > 1 ? 's' : ''}` : ''}` : `${months} month${months > 1 ? 's' : ''}`;
+    const timeString = years > 0 ? `${sanitizeText(years)} year${years > 1 ? 's' : ''} ${months > 0 ? `${months} month${months > 1 ? 's' : ''}` : ''}` : `${sanitizeText(months)} month${months > 1 ? 's' : ''}`;
 
     resultContent.innerHTML = `
       <div class="bg-broder p-6 rounded-lg border border-accent">
         <h3 class="text-xl font-medium mb-4 text-text flex items-center gap-2">
           <span class="material-icons text-primary">timeline</span> 
-          ${streamData.name} Timeline
+          ${sanitizeText(streamData.name)} Timeline
         </h3>
         
         <div class="bg-dark p-4 rounded border border-accent mb-6">
           <div class="text-center">
-            <div class="text-3xl font-bold text-primary mb-2">${timeString}</div>
+            <div class="text-3xl font-bold text-primary mb-2">${sanitizeText(timeString)}</div>
             <div class="text-light">Estimated time to reach $${incomeGoal.toLocaleString()}/month</div>
           </div>
         </div>
@@ -309,8 +315,8 @@ document.addEventListener('DOMContentLoaded', function() {
                   ${milestone.month}M
                 </div>
                 <div class="flex-grow">
-                  <div class="font-medium text-text">${milestone.description}</div>
-                  <div class="text-sm text-light">Expected income: $${milestone.income.toLocaleString()}/month (${milestone.percentage}% of goal)</div>
+                  <div class="font-medium text-text">${escapeHtml(milestone.description)}</div>
+                  <div class="text-sm text-light">Expected income: $${milestone.income.toLocaleString()}/month (${sanitizeText(milestone.percentage)}% of goal)</div>
                 </div>
               </div>
             `).join('')}
@@ -324,7 +330,7 @@ document.addEventListener('DOMContentLoaded', function() {
               ${timeline.challenges.map(challenge => `
                 <li class="flex items-start gap-2 text-light">
                   <span class="material-icons text-xs text-orange-400 mt-0.5">warning</span>
-                  ${challenge}
+                  ${escapeHtml(challenge)}
                 </li>
               `).join('')}
             </ul>
@@ -336,7 +342,7 @@ document.addEventListener('DOMContentLoaded', function() {
               ${timeline.recommendations.map(rec => `
                 <li class="flex items-start gap-2 text-light">
                   <span class="material-icons text-xs text-green-400 mt-0.5">check_circle</span>
-                  ${rec}
+                  ${escapeHtml(rec)}
                 </li>
               `).join('')}
             </ul>
@@ -348,15 +354,15 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="grid md:grid-cols-3 gap-4 text-sm">
             <div class="text-center">
               <div class="text-accent font-medium">Risk Level</div>
-              <div class="text-text capitalize">${streamData.riskLevel}</div>
+              <div class="text-text capitalize">${sanitizeText(streamData.riskLevel)}</div>
             </div>
             <div class="text-center">
               <div class="text-accent font-medium">Upfront Work</div>
-              <div class="text-text capitalize">${streamData.upfrontWork}</div>
+              <div class="text-text capitalize">${sanitizeText(streamData.upfrontWork)}</div>
             </div>
             <div class="text-center">
               <div class="text-accent font-medium">Scalability</div>
-              <div class="text-text capitalize">${streamData.scalability}</div>
+              <div class="text-text capitalize">${sanitizeText(streamData.scalability)}</div>
             </div>
           </div>
         </div>

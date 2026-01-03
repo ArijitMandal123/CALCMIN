@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('meeting-form');
     const resultsDiv = document.getElementById('results');
     const resultContent = document.getElementById('result-content');
@@ -361,20 +361,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="grid md:grid-cols-3 gap-6 mb-6">
                     <div class="bg-dark p-4 rounded border border-accent">
                         <h3 class="font-semibold text-text mb-2">Total Cost</h3>
-                        <div class="text-3xl font-bold ${costColor} mb-2">$${analysis.totalCost.toFixed(0)}</div>
-                        <p class="text-sm text-light">${analysis.totalMinutes} minutes • ${analysis.totalAttendees} attendees</p>
+                        <div class="text-3xl font-bold ${sanitizeText(costColor)} mb-2">$${analysis.totalCost.toFixed(0)}</div>
+                        <p class="text-sm text-light">${sanitizeText(analysis.totalMinutes)} minutes â€¢ ${sanitizeText(analysis.totalAttendees)} attendees</p>
                     </div>
                     
                     <div class="bg-dark p-4 rounded border border-accent">
                         <h3 class="font-semibold text-text mb-2">Efficiency Score</h3>
-                        <div class="text-3xl font-bold ${efficiencyColor} mb-2">${analysis.efficiencyScore}/100</div>
+                        <div class="text-3xl font-bold ${sanitizeText(efficiencyColor)} mb-2">${sanitizeText(analysis.efficiencyScore)}/100</div>
                         <p class="text-sm text-light">${getEfficiencyDescription(analysis.efficiencyScore)}</p>
                     </div>
                     
                     <div class="bg-dark p-4 rounded border border-accent">
                         <h3 class="font-semibold text-text mb-2">Annual Impact</h3>
                         <div class="text-3xl font-bold text-primary mb-2">$${analysis.frequencyAnalysis.annualCost.toLocaleString()}</div>
-                        <p class="text-sm text-light">${analysis.frequencyAnalysis.frequency} meetings</p>
+                        <p class="text-sm text-light">${sanitizeText(analysis.frequencyAnalysis.frequency)} meetings</p>
                     </div>
                 </div>
 
@@ -414,9 +414,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                         <div class="flex justify-between items-center mb-3">
                             <span class="text-text">Savings Percentage</span>
-                            <span class="font-semibold text-green-400">${analysis.emailAlternativeAnalysis.savingsPercentage}%</span>
+                            <span class="font-semibold text-green-400">${sanitizeText(analysis.emailAlternativeAnalysis.savingsPercentage)}%</span>
                         </div>
-                        <p class="text-sm text-light">${analysis.emailAlternativeAnalysis.recommendation}</p>
+                        <p class="text-sm text-light">${sanitizeText(analysis.emailAlternativeAnalysis.recommendation)}</p>
                     </div>
                 </div>
                 ` : ''}
@@ -427,8 +427,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="space-y-3">
                         ${analysis.recommendations.map(rec => `
                             <div class="p-4 rounded border ${getRecommendationStyle(rec.type)}">
-                                <h4 class="font-medium text-text mb-1">${rec.title}</h4>
-                                <p class="text-sm text-light">${rec.description}</p>
+                                <h4 class="font-medium text-text mb-1">${sanitizeText(rec.title)}</h4>
+                                <p class="text-sm text-light">${sanitizeText(rec.description)}</p>
                             </div>
                         `).join('')}
                     </div>
@@ -441,11 +441,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         Key Insights
                     </h3>
                     <ul class="text-sm text-light space-y-1">
-                        <li>• Cost per attendee per hour: $${(analysis.avgHourlyRate).toFixed(0)}</li>
-                        <li>• This meeting costs $${(analysis.totalCost / analysis.totalMinutes).toFixed(2)} per minute</li>
-                        <li>• Context switching adds ${((analysis.contextSwitchingCost / analysis.totalCost) * 100).toFixed(0)}% to total cost</li>
+                        <li>â€¢ Cost per attendee per hour: $${(analysis.avgHourlyRate).toFixed(0)}</li>
+                        <li>â€¢ This meeting costs $${(analysis.totalCost / analysis.totalMinutes).toFixed(2)} per minute</li>
+                        <li>â€¢ Context switching adds ${((analysis.contextSwitchingCost / analysis.totalCost) * 100).toFixed(0)}% to total cost</li>
                         ${analysis.frequencyAnalysis.frequency !== 'one-time' ? 
-                            `<li>• Annual cost: $${analysis.frequencyAnalysis.annualCost.toLocaleString()} for ${analysis.frequencyAnalysis.frequency} meetings</li>` : ''}
+                            `<li>â€¢ Annual cost: $${analysis.frequencyAnalysis.annualCost.toLocaleString()} for ${sanitizeText(analysis.frequencyAnalysis.frequency)} meetings</li>` : ''}
                     </ul>
                 </div>
             </div>

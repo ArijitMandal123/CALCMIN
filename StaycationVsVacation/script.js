@@ -1,4 +1,4 @@
-// Staycation vs Vacation Cost Comparison Calculator
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Staycation vs Vacation Cost Comparison Calculator
 
 // Cost data and multipliers
 const costData = {
@@ -281,11 +281,11 @@ function displayResults(results, data) {
             <h4 class="text-xl font-semibold text-primary mb-4">Savings Analysis</h4>
             <div class="grid md:grid-cols-3 gap-4">
                 <div class="text-center">
-                    <div class="text-2xl font-bold ${savingsColor}">$${Math.abs(results.comparison.totalSavings).toFixed(0)}</div>
+                    <div class="text-2xl font-bold ${sanitizeText(savingsColor)}">$${Math.abs(results.comparison.totalSavings).toFixed(0)}</div>
                     <div class="text-sm text-light">${results.comparison.totalSavings > 0 ? 'Savings' : 'Extra Cost'} with Staycation</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-2xl font-bold ${savingsColor}">${Math.abs(results.comparison.savingsPercentage).toFixed(1)}%</div>
+                    <div class="text-2xl font-bold ${sanitizeText(savingsColor)}">${Math.abs(results.comparison.savingsPercentage).toFixed(1)}%</div>
                     <div class="text-sm text-light">${results.comparison.totalSavings > 0 ? 'Cost Reduction' : 'Cost Increase'}</div>
                 </div>
                 <div class="text-center">
@@ -321,7 +321,7 @@ function displayResults(results, data) {
                                     <td class="p-2 capitalize">${category}</td>
                                     <td class="p-2 text-right">$${vacationCost.toFixed(0)}</td>
                                     <td class="p-2 text-right">$${staycationCost.toFixed(0)}</td>
-                                    <td class="p-2 text-right ${diffColor}">${difference > 0 ? '+' : ''}$${difference.toFixed(0)}</td>
+                                    <td class="p-2 text-right ${sanitizeText(diffColor)}">${difference > 0 ? '+' : ''}$${difference.toFixed(0)}</td>
                                 </tr>
                             `;
                         }).join('')}
@@ -329,7 +329,7 @@ function displayResults(results, data) {
                             <td class="p-2 text-primary">Total</td>
                             <td class="p-2 text-right text-primary">$${results.vacation.costs.total.toFixed(0)}</td>
                             <td class="p-2 text-right text-primary">$${results.staycation.costs.total.toFixed(0)}</td>
-                            <td class="p-2 text-right ${savingsColor}">${results.comparison.totalSavings > 0 ? '+' : ''}$${results.comparison.totalSavings.toFixed(0)}</td>
+                            <td class="p-2 text-right ${sanitizeText(savingsColor)}">${results.comparison.totalSavings > 0 ? '+' : ''}$${results.comparison.totalSavings.toFixed(0)}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -352,7 +352,7 @@ function displayResults(results, data) {
                                     <div class="w-20 bg-dark rounded-full h-2">
                                         <div class="bg-primary h-2 rounded-full" style="width: ${score * 10}%"></div>
                                     </div>
-                                    <span class="text-text w-8">${score}/10</span>
+                                    <span class="text-text w-8">${sanitizeText(score)}/10</span>
                                 </div>
                             </div>
                         `).join('')}
@@ -372,7 +372,7 @@ function displayResults(results, data) {
                                     <div class="w-20 bg-dark rounded-full h-2">
                                         <div class="bg-accent h-2 rounded-full" style="width: ${score * 10}%"></div>
                                     </div>
-                                    <span class="text-text w-8">${score}/10</span>
+                                    <span class="text-text w-8">${sanitizeText(score)}/10</span>
                                 </div>
                             </div>
                         `).join('')}
@@ -397,10 +397,10 @@ function displayResults(results, data) {
             </h4>
             <div class="bg-dark p-4 rounded border border-accent">
                 <div class="flex items-center gap-3 mb-3">
-                    <div class="text-2xl font-bold ${recColor} capitalize">${results.comparison.recommendation.choice}</div>
-                    <div class="text-sm text-light">Confidence: ${results.comparison.recommendation.confidence}</div>
+                    <div class="text-2xl font-bold ${sanitizeText(recColor)} capitalize">${sanitizeText(results.comparison.recommendation.choice)}</div>
+                    <div class="text-sm text-light">Confidence: ${sanitizeText(results.comparison.recommendation.confidence)}</div>
                 </div>
-                <p class="text-light">${results.comparison.recommendation.reason}</p>
+                <p class="text-light">${sanitizeText(results.comparison.recommendation.reason)}</p>
             </div>
         </div>
     `;
@@ -415,8 +415,8 @@ function showModal(title, message) {
     modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
     modal.innerHTML = `
         <div class="bg-broder p-6 rounded-lg border border-accent max-w-md mx-4">
-            <h3 class="text-xl font-bold text-primary mb-4">${title}</h3>
-            <p class="text-light mb-6">${message}</p>
+            <h3 class="text-xl font-bold text-primary mb-4">${sanitizeText(title)}</h3>
+            <p class="text-light mb-6">${sanitizeText(message)}</p>
             <button onclick="this.closest('.fixed').remove()" class="bg-primary hover:bg-accent text-white px-4 py-2 rounded">
                 OK
             </button>

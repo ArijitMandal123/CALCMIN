@@ -1,4 +1,4 @@
-// Language Learning Timeline Calculator
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Language Learning Timeline Calculator
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('language-timeline-form');
     
@@ -284,23 +284,29 @@ function displayResults(timeline) {
     const resultsDiv = document.getElementById('results');
     const contentDiv = document.getElementById('result-content');
     
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+    
     contentDiv.innerHTML = `
         <div class="bg-primary/10 border-l-4 border-primary p-6 mb-6">
-            <h3 class="text-2xl font-bold text-primary mb-2">Your ${timeline.targetLanguage} Learning Timeline</h3>
-            <p class="text-light">Estimated time to fluency: <span class="text-accent font-bold">${timeline.months} months</span></p>
+            <h3 class="text-2xl font-bold text-primary mb-2">Your ${escapeHtml(timeline.targetLanguage)} Learning Timeline</h3>
+            <p class="text-light">Estimated time to fluency: <span class="text-accent font-bold">${sanitizeText(timeline.months)} months</span></p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-6 mb-6">
             <div class="bg-dark p-6 rounded border border-accent text-center">
-                <div class="text-3xl font-bold text-primary mb-2">${timeline.totalHours}</div>
+                <div class="text-3xl font-bold text-primary mb-2">${sanitizeText(timeline.totalHours)}</div>
                 <div class="text-sm text-light">Total Study Hours</div>
             </div>
             <div class="bg-dark p-6 rounded border border-accent text-center">
-                <div class="text-3xl font-bold text-accent mb-2">${timeline.months}</div>
+                <div class="text-3xl font-bold text-accent mb-2">${sanitizeText(timeline.months)}</div>
                 <div class="text-sm text-light">Months to Fluency</div>
             </div>
             <div class="bg-dark p-6 rounded border border-accent text-center">
-                <div class="text-3xl font-bold text-green-400 mb-2">${timeline.methodEffectiveness}%</div>
+                <div class="text-3xl font-bold text-green-400 mb-2">${sanitizeText(timeline.methodEffectiveness)}%</div>
                 <div class="text-sm text-light">Method Effectiveness</div>
             </div>
         </div>
@@ -312,11 +318,11 @@ function displayResults(timeline) {
                     <div class="flex items-center justify-between p-3 bg-broder rounded border border-accent">
                         <div class="flex items-center">
                             <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-4">
-                                ${milestone.level}
+                                ${escapeHtml(milestone.level)}
                             </div>
                             <div>
-                                <div class="font-semibold text-light">${milestone.description}</div>
-                                <div class="text-sm text-accent">Month ${milestone.month}</div>
+                                <div class="font-semibold text-light">${escapeHtml(milestone.description)}</div>
+                                <div class="text-sm text-accent">Month ${sanitizeText(milestone.month)}</div>
                             </div>
                         </div>
                     </div>
@@ -330,15 +336,15 @@ function displayResults(timeline) {
                 <div class="space-y-3">
                     <div class="flex justify-between">
                         <span>Monthly Budget:</span>
-                        <span class="font-bold text-primary">$${timeline.costs.monthly}</span>
+                        <span class="font-bold text-primary">$${sanitizeText(timeline.costs.monthly)}</span>
                     </div>
                     <div class="flex justify-between">
                         <span>Total Investment:</span>
-                        <span class="font-bold text-accent">$${timeline.costs.total}</span>
+                        <span class="font-bold text-accent">$${sanitizeText(timeline.costs.total)}</span>
                     </div>
                     <div class="text-sm text-light mt-3">
                         <strong>Recommended Resources:</strong><br>
-                        ${timeline.costs.resources}
+                        ${escapeHtml(timeline.costs.resources)}
                     </div>
                 </div>
             </div>
@@ -348,7 +354,7 @@ function displayResults(timeline) {
                 <div class="space-y-3">
                     <div class="flex justify-between">
                         <span>FSI Category:</span>
-                        <span class="font-bold text-primary">Category ${timeline.difficulty}</span>
+                        <span class="font-bold text-primary">Category ${sanitizeText(timeline.difficulty)}</span>
                     </div>
                     <div class="flex justify-between">
                         <span>Difficulty Level:</span>
@@ -363,7 +369,7 @@ function displayResults(timeline) {
                     <div class="w-full bg-broder rounded-full h-3">
                         <div class="bg-primary h-3 rounded-full" style="width: ${Math.min(timeline.efficiency, 100)}%"></div>
                     </div>
-                    <div class="text-sm text-light">Learning Efficiency: ${timeline.efficiency}%</div>
+                    <div class="text-sm text-light">Learning Efficiency: ${sanitizeText(timeline.efficiency)}%</div>
                 </div>
             </div>
         </div>
@@ -374,7 +380,7 @@ function displayResults(timeline) {
                 ${timeline.recommendations.map(rec => `
                     <li class="flex items-start">
                         <span class="material-icons text-primary mr-3 mt-1">lightbulb</span>
-                        <span class="text-light">${rec}</span>
+                        <span class="text-light">${escapeHtml(rec)}</span>
                     </li>
                 `).join('')}
             </ul>

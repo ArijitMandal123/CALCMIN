@@ -1,4 +1,4 @@
-// Digital Nomad Visa Feasibility Checker Calculator
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Digital Nomad Visa Feasibility Checker Calculator
 
 // Visa data for different countries
 const visaData = {
@@ -165,7 +165,7 @@ function generateRecommendations(data, eligibleVisas) {
         const bestOption = eligibleVisas[0];
         recommendations.push({
             type: "best",
-            title: `${bestOption.name} - Top Recommendation`,
+            title: `${sanitizeText(bestOption.name)} - Top Recommendation`,
             description: `Best financial fit with ${(bestOption.financialBuffer * 100).toFixed(0)}% income buffer above living costs.`
         });
     }
@@ -193,11 +193,11 @@ function displayResults(results, data) {
             </h3>
             <div class="grid md:grid-cols-3 gap-4 mb-6">
                 <div class="bg-dark p-4 rounded border border-accent text-center">
-                    <div class="text-2xl font-bold text-primary">${results.eligible.length}</div>
+                    <div class="text-2xl font-bold text-primary">${sanitizeText(results.eligible.length)}</div>
                     <div class="text-sm text-light">Eligible Visas</div>
                 </div>
                 <div class="bg-dark p-4 rounded border border-accent text-center">
-                    <div class="text-2xl font-bold text-accent">${results.totalAnalyzed}</div>
+                    <div class="text-2xl font-bold text-accent">${sanitizeText(results.totalAnalyzed)}</div>
                     <div class="text-sm text-light">Total Analyzed</div>
                 </div>
                 <div class="bg-dark p-4 rounded border border-accent text-center">
@@ -219,7 +219,7 @@ function displayResults(results, data) {
                             <span class="material-icons text-primary mt-1">lightbulb</span>
                             <div>
                                 <div class="font-medium text-text">${rec.title}</div>
-                                <div class="text-sm text-light">${rec.description}</div>
+                                <div class="text-sm text-light">${sanitizeText(rec.description)}</div>
                             </div>
                         </div>
                     `).join('')}
@@ -242,11 +242,11 @@ function displayResults(results, data) {
                             <div class="flex justify-between items-start mb-3">
                                 <div>
                                     <h5 class="font-semibold text-accent text-lg">${visa.name}</h5>
-                                    <div class="text-sm text-light">${visa.duration} month visa • ${visa.region}</div>
+                                    <div class="text-sm text-light">${sanitizeText(visa.duration)} month visa â€¢ ${sanitizeText(visa.region)}</div>
                                 </div>
                                 <div class="text-right">
-                                    <div class="text-sm ${visa.riskLevel.color}">${visa.riskLevel.level} Risk</div>
-                                    <div class="text-xs text-light">${visa.riskLevel.description}</div>
+                                    <div class="text-sm ${sanitizeText(visa.riskLevel.color)}">${sanitizeText(visa.riskLevel.level)} Risk</div>
+                                    <div class="text-xs text-light">${sanitizeText(visa.riskLevel.description)}</div>
                                 </div>
                             </div>
                             <div class="grid md:grid-cols-2 gap-4 text-sm">
@@ -256,7 +256,7 @@ function displayResults(results, data) {
                                 </div>
                                 <div>
                                     <div class="text-light">Financial Buffer: <span class="text-green-400">${(visa.financialBuffer * 100).toFixed(0)}%</span></div>
-                                    <div class="text-light">Tax Info: <span class="text-text">${visa.taxImplications}</span></div>
+                                    <div class="text-light">Tax Info: <span class="text-text">${sanitizeText(visa.taxImplications)}</span></div>
                                 </div>
                             </div>
                         </div>
@@ -280,7 +280,7 @@ function displayResults(results, data) {
                             <div class="flex justify-between items-start mb-3">
                                 <div>
                                     <h5 class="font-semibold text-light text-lg">${visa.name}</h5>
-                                    <div class="text-sm text-light">${visa.duration} month visa • ${visa.region}</div>
+                                    <div class="text-sm text-light">${sanitizeText(visa.duration)} month visa â€¢ ${sanitizeText(visa.region)}</div>
                                 </div>
                                 <div class="text-right">
                                     <div class="text-sm text-red-400">Need +$${(visa.requiredIncome - data.monthlyIncome).toLocaleString()}</div>
@@ -294,7 +294,7 @@ function displayResults(results, data) {
                                 </div>
                                 <div>
                                     <div class="text-light">Your Income: <span class="text-red-400">$${data.monthlyIncome.toLocaleString()}/month</span></div>
-                                    <div class="text-light">Tax Info: <span class="text-text">${visa.taxImplications}</span></div>
+                                    <div class="text-light">Tax Info: <span class="text-text">${sanitizeText(visa.taxImplications)}</span></div>
                                 </div>
                             </div>
                         </div>
@@ -358,12 +358,19 @@ function showModal(title, message) {
     modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
     modal.innerHTML = `
         <div class="bg-broder p-6 rounded-lg border border-accent max-w-md mx-4">
-            <h3 class="text-xl font-bold text-primary mb-4">${title}</h3>
-            <p class="text-light mb-6">${message}</p>
-            <button onclick="this.closest('.fixed').remove()" class="bg-primary hover:bg-accent text-white px-4 py-2 rounded">
+            <h3 class="text-xl font-bold text-primary mb-4">${sanitizeText(title)}</h3>
+            <p class="text-light mb-6">${sanitizeText(message)}</p>
+            <button class="bg-primary hover:bg-accent text-white px-4 py-2 rounded close-modal-btn">
                 OK
             </button>
         </div>
     `;
+    
+    // Add event listener safely
+    const closeBtn = modal.querySelector('.close-modal-btn');
+    closeBtn.addEventListener('click', () => {
+        modal.remove();
+    });
+    
     document.body.appendChild(modal);
 }

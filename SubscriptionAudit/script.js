@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
   const addSubscriptionBtn = document.getElementById('add-subscription');
   const subscriptionsList = document.getElementById('subscriptions-list');
   const analyzeBtn = document.getElementById('analyze-subscriptions');
@@ -211,8 +211,8 @@ document.addEventListener('DOMContentLoaded', function() {
       recommendations.push({
         type: 'seasonal',
         subscription: sub.name,
-        action: `Pause during off-season (${monthsToCancel} months)`,
-        reason: `Only used during ${sub.seasonal}`,
+        action: `Pause during off-season (${sanitizeText(monthsToCancel)} months)`,
+        reason: `Only used during ${sanitizeText(sub.seasonal)}`,
         savings: seasonalSavings,
         priority: 'medium'
       });
@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function() {
           recommendations.push({
             type: 'downgrade',
             subscription: sub.name,
-            action: `Downgrade to ${downgrade.plan}`,
+            action: `Downgrade to ${sanitizeText(downgrade.plan)}`,
             reason: downgrade.reason,
             savings: sub.cost - downgrade.cost,
             priority: 'low'
@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
         recommendations.push({
           type: 'replace',
           subscription: sub.name,
-          action: `Replace with ${alternative.name}`,
+          action: `Replace with ${sanitizeText(alternative.name)}`,
           reason: alternative.reason,
           savings: sub.cost,
           priority: sub.usage === 'monthly' || sub.usage === 'rarely' ? 'medium' : 'low'
@@ -366,15 +366,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="flex justify-between items-start mb-2">
                   <div class="flex-grow">
                     <div class="font-medium text-text">${rec.subscription}</div>
-                    <div class="text-sm text-light">${rec.action}</div>
-                    <div class="text-xs text-light mt-1">${rec.reason}</div>
+                    <div class="text-sm text-light">${sanitizeText(rec.action)}</div>
+                    <div class="text-xs text-light mt-1">${sanitizeText(rec.reason)}</div>
                   </div>
                   <div class="text-right">
                     <div class="font-bold text-green-400">$${rec.savings.toFixed(2)}/mo</div>
                     <div class="text-xs px-2 py-1 rounded ${
                       rec.priority === 'high' ? 'bg-red-600' : 
                       rec.priority === 'medium' ? 'bg-yellow-600' : 'bg-blue-600'
-                    } text-white">${rec.priority}</div>
+                    } text-white">${sanitizeText(rec.priority)}</div>
                   </div>
                 </div>
               </div>
@@ -421,7 +421,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ${analysis.bundleOpportunities.map(opp => `
               <div class="p-3 bg-dark rounded border border-accent text-sm">
                 <div class="font-medium text-text">${opp.services}</div>
-                <div class="text-light">${opp.suggestion}</div>
+                <div class="text-light">${sanitizeText(opp.suggestion)}</div>
                 <div class="text-green-400 mt-1">Potential savings: $${opp.potentialSavings.toFixed(2)}/month</div>
               </div>
             `).join('')}

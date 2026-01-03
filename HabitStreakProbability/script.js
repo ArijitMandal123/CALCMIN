@@ -1,4 +1,4 @@
-document.getElementById('habit-form').addEventListener('submit', function(e) {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.getElementById('habit-form').addEventListener('submit', function(e) {
   e.preventDefault();
   
   const habitType = document.getElementById('habitType').value;
@@ -71,6 +71,12 @@ function displayResults(probability, daysToTarget, day7, day21, day66, day100) {
   const resultsDiv = document.getElementById('results');
   const contentDiv = document.getElementById('result-content');
   
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+  
   const level = probability >= 70 ? 'High' : probability >= 50 ? 'Moderate' : probability >= 30 ? 'Fair' : 'Low';
   const color = probability >= 70 ? 'text-green-400' : probability >= 50 ? 'text-yellow-400' : probability >= 30 ? 'text-orange-400' : 'text-red-400';
   
@@ -82,19 +88,19 @@ function displayResults(probability, daysToTarget, day7, day21, day66, day100) {
       
       <div class="bg-dark p-4 rounded mb-4">
         <div class="text-center">
-          <div class="${color} text-4xl md:text-5xl font-bold mb-2">${probability.toFixed(1)}%</div>
-          <div class="text-light text-sm">Success Probability (${level})</div>
+          <div class="${sanitizeText(color)} text-4xl md:text-5xl font-bold mb-2">${probability.toFixed(1)}%</div>
+          <div class="text-light text-sm">Success Probability (${escapeHtml(level)})</div>
         </div>
       </div>
       
       <div class="grid md:grid-cols-2 gap-4 mb-4">
         <div class="bg-dark p-3 rounded">
           <div class="text-accent text-sm mb-1">Days to Target</div>
-          <div class="text-text text-xl font-medium">${daysToTarget} days</div>
+          <div class="text-text text-xl font-medium">${sanitizeText(daysToTarget)} days</div>
         </div>
         <div class="bg-dark p-3 rounded">
           <div class="text-accent text-sm mb-1">Estimated Success Rate</div>
-          <div class="text-text text-xl font-medium">${level}</div>
+          <div class="text-text text-xl font-medium">${escapeHtml(level)}</div>
         </div>
       </div>
       
@@ -109,13 +115,13 @@ function displayResults(probability, daysToTarget, day7, day21, day66, day100) {
       </div>
       
       <div class="bg-accent/20 border border-accent rounded p-3 text-sm">
-        <strong>💡 Tips to Improve:</strong>
+        <strong>ðŸ’¡ Tips to Improve:</strong>
         <ul class="mt-2 space-y-1 text-light">
-          ${probability < 50 ? '<li>• Consider starting with a smaller target streak</li>' : ''}
-          ${probability < 60 ? '<li>• Add an accountability partner or join a community</li>' : ''}
-          ${probability < 70 ? '<li>• Optimize your environment to reduce friction</li>' : ''}
-          <li>• Track your progress daily to maintain momentum</li>
-          <li>• Prepare for obstacles and have backup plans</li>
+          ${probability < 50 ? '<li>â€¢ Consider starting with a smaller target streak</li>' : ''}
+          ${probability < 60 ? '<li>â€¢ Add an accountability partner or join a community</li>' : ''}
+          ${probability < 70 ? '<li>â€¢ Optimize your environment to reduce friction</li>' : ''}
+          <li>â€¢ Track your progress daily to maintain momentum</li>
+          <li>â€¢ Prepare for obstacles and have backup plans</li>
         </ul>
       </div>
     </div>
@@ -124,3 +130,4 @@ function displayResults(probability, daysToTarget, day7, day21, day66, day100) {
   resultsDiv.classList.remove('hidden');
   resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
+

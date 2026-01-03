@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('youtube-form');
   
   const recommendations = {
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="grid gap-4 text-text text-sm md:text-base">
           <div class="bg-dark p-4 rounded">
             <div class="flex items-center gap-2 mb-2"><span class="material-icons text-accent">schedule</span><strong>Optimal Video Length:</strong></div>
-            <p class="text-2xl text-primary font-bold ml-8">${optimalLength} minutes</p>
+            <p class="text-2xl text-primary font-bold ml-8">${sanitizeText(optimalLength)} minutes</p>
           </div>
           
           ${avgRetention > 0 ? `<div class="bg-dark p-4 rounded">
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
           
           <div class="bg-dark p-4 rounded">
             <div class="flex items-center gap-2 mb-2"><span class="material-icons text-accent">flag</span><strong>Goal-Based Advice:</strong></div>
-            <p class="ml-8">${goalAdvice}</p>
+            <p class="ml-8">${sanitizeText(goalAdvice)}</p>
           </div>
           
           <div class="bg-dark p-4 rounded">
@@ -75,3 +75,4 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('result-content').innerHTML = resultHTML;
   });
 });
+

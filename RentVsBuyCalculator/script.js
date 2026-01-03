@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('rent-buy-form');
     
     form.addEventListener('submit', function(e) {
@@ -229,7 +229,8 @@ function displayResults(results) {
     const resultsDiv = document.getElementById('results');
     const contentDiv = document.getElementById('result-content');
     
-    const recommendation = results.comparison.recommendation;
+    // Sanitize recommendation to prevent code injection
+    const recommendation = results.comparison.recommendation === 'buying' ? 'buying' : 'renting';
     const savingsAmount = Math.abs(results.comparison.difference);
     const monthlySavings = Math.abs(results.comparison.monthlyDifference);
     
@@ -244,7 +245,7 @@ function displayResults(results) {
                 <p class="text-light">
                     ${recommendation === 'buying' ? 'Buying' : 'Renting'} will save you approximately 
                     <span class="font-bold text-${recommendation === 'buying' ? 'green' : 'blue'}-400">$${savingsAmount.toLocaleString()}</span> 
-                    over ${results.comparison.yearsAnalyzed} years 
+                    over ${sanitizeText(results.comparison.yearsAnalyzed)} years 
                     (about $${monthlySavings.toLocaleString()}/month).
                 </p>
             </div>
@@ -321,7 +322,7 @@ function displayResults(results) {
                 <div class="bg-dark p-4 rounded border border-accent text-center">
                     <h5 class="font-semibold text-accent mb-2">Future Home Value</h5>
                     <p class="text-2xl font-bold text-primary">$${results.buyingCosts.futureHomeValue.toLocaleString()}</p>
-                    <p class="text-sm text-light">Estimated value after ${results.comparison.yearsAnalyzed} years</p>
+                    <p class="text-sm text-light">Estimated value after ${sanitizeText(results.comparison.yearsAnalyzed)} years</p>
                 </div>
                 
                 <div class="bg-dark p-4 rounded border border-accent text-center">
@@ -334,10 +335,10 @@ function displayResults(results) {
             <div class="bg-yellow-900/20 border border-yellow-600 rounded p-4">
                 <h5 class="font-semibold text-yellow-400 mb-2">Important Considerations</h5>
                 <ul class="text-sm text-light space-y-1">
-                    <li>• This analysis assumes you invest the down payment difference when renting</li>
-                    <li>• Actual costs may vary based on market conditions and personal circumstances</li>
-                    <li>• Consider non-financial factors like stability, flexibility, and lifestyle preferences</li>
-                    <li>• Consult with financial and real estate professionals for personalized advice</li>
+                    <li>â€¢ This analysis assumes you invest the down payment difference when renting</li>
+                    <li>â€¢ Actual costs may vary based on market conditions and personal circumstances</li>
+                    <li>â€¢ Consider non-financial factors like stability, flexibility, and lifestyle preferences</li>
+                    <li>â€¢ Consult with financial and real estate professionals for personalized advice</li>
                 </ul>
             </div>
         </div>
@@ -345,6 +346,12 @@ function displayResults(results) {
     
     resultsDiv.classList.remove('hidden');
     resultsDiv.scrollIntoView({ behavior: 'smooth' });
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
 }
 
 function showPopup(message) {
@@ -360,15 +367,20 @@ function showPopup(message) {
             <span class="material-icons text-primary mr-2">info</span>
             <h3 class="text-lg font-semibold text-primary">Input Validation</h3>
         </div>
-        <p class="text-light mb-4">${message}</p>
-        <button onclick="this.closest('.fixed').remove()" 
-                class="w-full bg-primary hover:bg-accent text-white font-medium py-2 px-4 rounded transition duration-200">
+        <p class="text-light mb-4">${escapeHtml(message)}</p>
+        <button class="w-full bg-primary hover:bg-accent text-white font-medium py-2 px-4 rounded transition duration-200 close-popup-btn">
             OK
         </button>
     `;
     
     overlay.appendChild(popup);
     document.body.appendChild(overlay);
+    
+    // Add event listener safely
+    const closeBtn = popup.querySelector('.close-popup-btn');
+    closeBtn.addEventListener('click', () => {
+        overlay.remove();
+    });
     
     // Auto-remove after 5 seconds
     setTimeout(() => {

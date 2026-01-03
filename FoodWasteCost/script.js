@@ -1,4 +1,4 @@
-document.getElementById('waste-form').addEventListener('submit', function(e) {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.getElementById('waste-form').addEventListener('submit', function(e) {
   e.preventDefault();
   
   const monthlyGroceries = parseFloat(document.getElementById('monthlyGroceries').value);
@@ -81,7 +81,7 @@ function displayResults(monthly, annual, perPerson, savings, reason) {
           <div class="text-light text-sm">Annual Waste</div>
         </div>
         <div class="bg-dark p-4 rounded text-center">
-          <div class="${wasteColor} text-2xl font-bold">${wasteLevel}</div>
+          <div class="${sanitizeText(wasteColor)} text-2xl font-bold">${sanitizeText(wasteLevel)}</div>
           <div class="text-light text-sm">Waste Level</div>
         </div>
       </div>
@@ -98,11 +98,11 @@ function displayResults(monthly, annual, perPerson, savings, reason) {
       </div>
       
       <div class="bg-accent/20 border border-accent rounded p-3 text-sm">
-        <strong>💡 Reduction Tips for Your Main Issue:</strong>
+        <strong>ðŸ’¡ Reduction Tips for Your Main Issue:</strong>
         <ul class="mt-2 space-y-1 text-light">
-          ${tips[reason].map(tip => `<li>• ${tip}</li>`).join('')}
-          <li>• Track waste for a week to identify patterns</li>
-          <li>• Use apps to manage expiration dates</li>
+          ${tips[reason].map(tip => `<li>â€¢ ${tip}</li>`).join('')}
+          <li>â€¢ Track waste for a week to identify patterns</li>
+          <li>â€¢ Use apps to manage expiration dates</li>
         </ul>
       </div>
     </div>

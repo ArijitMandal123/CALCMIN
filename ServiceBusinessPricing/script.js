@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('pricing-form');
     
     form.addEventListener('submit', function(e) {
@@ -189,6 +189,12 @@ function calculatePricingConfidence(data, marketRate, costRate) {
     return Math.min(Math.max(confidence, 30), 95);
 }
 
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
 function displayResults(results) {
     const resultsDiv = document.getElementById('results');
     const contentDiv = document.getElementById('result-content');
@@ -208,15 +214,15 @@ function displayResults(results) {
             <h3 class="text-2xl font-bold text-primary mb-4">Your Optimal Pricing Strategy</h3>
             <div class="grid md:grid-cols-3 gap-4">
                 <div class="text-center">
-                    <div class="text-3xl font-bold text-accent">$${results.recommendedRate}</div>
+                    <div class="text-3xl font-bold text-accent">$${sanitizeText(results.recommendedRate)}</div>
                     <div class="text-light">Recommended Hourly Rate</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-2xl font-bold ${getConfidenceColor(results.pricingConfidence)}">${results.pricingConfidence}%</div>
+                    <div class="text-2xl font-bold ${getConfidenceColor(results.pricingConfidence)}">${sanitizeText(results.pricingConfidence)}%</div>
                     <div class="text-light">Pricing Confidence</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-lg font-bold ${getPositionColor(results.competitivePosition)} capitalize">${results.competitivePosition}</div>
+                    <div class="text-lg font-bold ${getPositionColor(results.competitivePosition)} capitalize">${escapeHtml(results.competitivePosition)}</div>
                     <div class="text-light">Market Position</div>
                 </div>
             </div>
@@ -228,15 +234,15 @@ function displayResults(results) {
                 <div class="space-y-3">
                     <div class="flex justify-between items-center p-3 bg-dark rounded">
                         <span class="text-light">Budget Tier</span>
-                        <span class="text-accent font-bold">$${results.budgetRate}/hr</span>
+                        <span class="text-accent font-bold">$${sanitizeText(results.budgetRate)}/hr</span>
                     </div>
                     <div class="flex justify-between items-center p-3 bg-primary/20 rounded border border-primary">
                         <span class="text-light">Standard Tier (Recommended)</span>
-                        <span class="text-primary font-bold">$${results.standardRate}/hr</span>
+                        <span class="text-primary font-bold">$${sanitizeText(results.standardRate)}/hr</span>
                     </div>
                     <div class="flex justify-between items-center p-3 bg-dark rounded">
                         <span class="text-light">Premium Tier</span>
-                        <span class="text-accent font-bold">$${results.premiumRate}/hr</span>
+                        <span class="text-accent font-bold">$${sanitizeText(results.premiumRate)}/hr</span>
                     </div>
                 </div>
             </div>
@@ -246,15 +252,15 @@ function displayResults(results) {
                 <div class="space-y-3">
                     <div class="flex justify-between">
                         <span class="text-light">Cost-Based Rate:</span>
-                        <span class="text-accent">$${results.costBasedRate}/hr</span>
+                        <span class="text-accent">$${sanitizeText(results.costBasedRate)}/hr</span>
                     </div>
                     <div class="flex justify-between">
                         <span class="text-light">Market-Based Rate:</span>
-                        <span class="text-accent">$${results.marketBasedRate}/hr</span>
+                        <span class="text-accent">$${sanitizeText(results.marketBasedRate)}/hr</span>
                     </div>
                     <div class="flex justify-between border-t border-accent pt-2">
                         <span class="text-light font-bold">Optimal Rate:</span>
-                        <span class="text-primary font-bold">$${results.recommendedRate}/hr</span>
+                        <span class="text-primary font-bold">$${sanitizeText(results.recommendedRate)}/hr</span>
                     </div>
                 </div>
             </div>
@@ -291,7 +297,7 @@ function displayResults(results) {
                         <span class="text-accent">$${results.fullTimeRetainer.toLocaleString()}/mo</span>
                     </div>
                     <div class="text-sm text-light mt-2">
-                        Based on ${results.data.billableHours} hours/week capacity
+                        Based on ${escapeHtml(results.data.billableHours.toString())} hours/week capacity
                     </div>
                 </div>
             </div>
@@ -317,7 +323,7 @@ function displayResults(results) {
                 </div>
             </div>
             <div class="text-sm text-light mt-4 text-center">
-                Based on ${results.annualBillableHours} billable hours annually
+                Based on ${escapeHtml(results.annualBillableHours.toString())} billable hours annually
             </div>
         </div>
 

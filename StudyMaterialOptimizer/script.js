@@ -1,4 +1,4 @@
-// Study Material Format Optimizer Calculator
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Study Material Format Optimizer Calculator
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('study-optimizer-form');
     
@@ -223,7 +223,7 @@ function generateMilestones(weeks, target) {
     
     milestones.push({
         week: weeks,
-        goal: `${target} level mastery achieved`,
+        goal: `${sanitizeText(target)} level mastery achieved`,
         completion: "100%"
     });
     
@@ -272,6 +272,12 @@ function calculateEfficiencyScore(data, format) {
     return Math.min(100, Math.max(40, score));
 }
 
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
 function displayResults(optimization) {
     const resultsDiv = document.getElementById('results');
     const contentDiv = document.getElementById('result-content');
@@ -279,7 +285,7 @@ function displayResults(optimization) {
     contentDiv.innerHTML = `
         <div class="bg-primary/10 border-l-4 border-primary p-6 mb-6">
             <h3 class="text-2xl font-bold text-primary mb-2">Your Optimized Study Plan</h3>
-            <p class="text-light">Efficiency Score: <span class="text-accent font-bold">${optimization.efficiency}/100</span></p>
+            <p class="text-light">Efficiency Score: <span class="text-accent font-bold">${sanitizeText(optimization.efficiency)}/100</span></p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-6 mb-6">
@@ -288,34 +294,34 @@ function displayResults(optimization) {
                 <div class="space-y-3">
                     <div class="flex justify-between items-center">
                         <span>Practice Problems:</span>
-                        <span class="font-bold text-primary">${optimization.format.practice}%</span>
+                        <span class="font-bold text-primary">${sanitizeText(optimization.format.practice)}%</span>
                     </div>
                     <div class="w-full bg-broder rounded-full h-2">
-                        <div class="bg-primary h-2 rounded-full" style="width: ${optimization.format.practice}%"></div>
+                        <div class="bg-primary h-2 rounded-full" style="width: ${sanitizeText(optimization.format.practice)}%"></div>
                     </div>
                     
                     <div class="flex justify-between items-center">
                         <span>Video Learning:</span>
-                        <span class="font-bold text-accent">${optimization.format.video}%</span>
+                        <span class="font-bold text-accent">${sanitizeText(optimization.format.video)}%</span>
                     </div>
                     <div class="w-full bg-broder rounded-full h-2">
-                        <div class="bg-accent h-2 rounded-full" style="width: ${optimization.format.video}%"></div>
+                        <div class="bg-accent h-2 rounded-full" style="width: ${sanitizeText(optimization.format.video)}%"></div>
                     </div>
                     
                     <div class="flex justify-between items-center">
                         <span>Reading/Theory:</span>
-                        <span class="font-bold text-light">${optimization.format.reading}%</span>
+                        <span class="font-bold text-light">${sanitizeText(optimization.format.reading)}%</span>
                     </div>
                     <div class="w-full bg-broder rounded-full h-2">
-                        <div class="bg-light h-2 rounded-full" style="width: ${optimization.format.reading}%"></div>
+                        <div class="bg-light h-2 rounded-full" style="width: ${sanitizeText(optimization.format.reading)}%"></div>
                     </div>
                     
                     <div class="flex justify-between items-center">
                         <span>Interactive Tools:</span>
-                        <span class="font-bold text-green-400">${optimization.format.interactive}%</span>
+                        <span class="font-bold text-green-400">${sanitizeText(optimization.format.interactive)}%</span>
                     </div>
                     <div class="w-full bg-broder rounded-full h-2">
-                        <div class="bg-green-400 h-2 rounded-full" style="width: ${optimization.format.interactive}%"></div>
+                        <div class="bg-green-400 h-2 rounded-full" style="width: ${sanitizeText(optimization.format.interactive)}%"></div>
                     </div>
                 </div>
             </div>
@@ -325,28 +331,28 @@ function displayResults(optimization) {
                 <div class="space-y-3">
                     <div class="flex justify-between">
                         <span>Practice Time:</span>
-                        <span class="font-bold text-primary">${optimization.schedule.practice} hours</span>
+                        <span class="font-bold text-primary">${sanitizeText(optimization.schedule.practice)} hours</span>
                     </div>
                     <div class="flex justify-between">
                         <span>Video Learning:</span>
-                        <span class="font-bold text-accent">${optimization.schedule.video} hours</span>
+                        <span class="font-bold text-accent">${sanitizeText(optimization.schedule.video)} hours</span>
                     </div>
                     <div class="flex justify-between">
                         <span>Reading Time:</span>
-                        <span class="font-bold text-light">${optimization.schedule.reading} hours</span>
+                        <span class="font-bold text-light">${sanitizeText(optimization.schedule.reading)} hours</span>
                     </div>
                     <div class="flex justify-between">
                         <span>Interactive Study:</span>
-                        <span class="font-bold text-green-400">${optimization.schedule.interactive} hours</span>
+                        <span class="font-bold text-green-400">${sanitizeText(optimization.schedule.interactive)} hours</span>
                     </div>
                     <hr class="border-accent">
                     <div class="flex justify-between">
                         <span>Sessions per Week:</span>
-                        <span class="font-bold">${optimization.schedule.sessionsPerWeek}</span>
+                        <span class="font-bold">${sanitizeText(optimization.schedule.sessionsPerWeek)}</span>
                     </div>
                     <div class="flex justify-between">
                         <span>Session Length:</span>
-                        <span class="font-bold">${optimization.schedule.sessionLength} hours</span>
+                        <span class="font-bold">${sanitizeText(optimization.schedule.sessionLength)} hours</span>
                     </div>
                 </div>
             </div>
@@ -354,15 +360,15 @@ function displayResults(optimization) {
 
         <div class="bg-dark p-6 rounded border border-accent mb-6">
             <h4 class="text-xl font-semibold mb-4 text-accent">Learning Timeline & Milestones</h4>
-            <p class="text-light mb-4">Estimated completion: <span class="font-bold text-primary">${optimization.timeline.totalWeeks} weeks</span></p>
+            <p class="text-light mb-4">Estimated completion: <span class="font-bold text-primary">${sanitizeText(optimization.timeline.totalWeeks)} weeks</span></p>
             <div class="space-y-3">
                 ${optimization.timeline.milestones.map(milestone => `
                     <div class="flex items-center justify-between p-3 bg-broder rounded border border-accent">
                         <div>
                             <span class="font-semibold">Week ${milestone.week}:</span>
-                            <span class="text-light">${milestone.goal}</span>
+                            <span class="text-light">${escapeHtml(milestone.goal)}</span>
                         </div>
-                        <span class="text-primary font-bold">${milestone.completion}</span>
+                        <span class="text-primary font-bold">${escapeHtml(milestone.completion)}</span>
                     </div>
                 `).join('')}
             </div>
@@ -374,7 +380,7 @@ function displayResults(optimization) {
                 ${optimization.recommendations.map(rec => `
                     <li class="flex items-start">
                         <span class="material-icons text-primary mr-2 mt-1">check_circle</span>
-                        <span class="text-light">${rec}</span>
+                        <span class="text-light">${escapeHtml(rec)}</span>
                     </li>
                 `).join('')}
             </ul>
@@ -386,7 +392,7 @@ function displayResults(optimization) {
                 ${optimization.timeline.weeklyGoals.map(goal => `
                     <li class="flex items-start">
                         <span class="material-icons text-accent mr-2 mt-1">star</span>
-                        <span class="text-light">${goal}</span>
+                        <span class="text-light">${escapeHtml(goal)}</span>
                     </li>
                 `).join('')}
             </ul>

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('sunscreen-form');
     const resultsDiv = document.getElementById('results');
     const resultContent = document.getElementById('result-content');
@@ -270,6 +270,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const riskColor = analysis.riskReduction >= 40 ? 'text-green-400' : 
                          analysis.riskReduction >= 30 ? 'text-yellow-400' : 'text-red-400';
 
+        function sanitizeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
         resultContent.innerHTML = `
             <div class="bg-broder p-6 rounded-lg border border-accent">
                 <h3 class="text-xl font-medium mb-4 text-text flex items-center gap-2">
@@ -279,17 +285,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 <div class="grid md:grid-cols-3 gap-4 mb-6">
                     <div class="bg-dark p-4 rounded border border-accent text-center">
-                        <div class="text-2xl font-bold text-primary">${analysis.effectiveSPF}</div>
+                        <div class="text-2xl font-bold text-primary">${sanitizeHtml(analysis.effectiveSPF.toString())}</div>
                         <div class="text-sm text-light">Effective SPF</div>
-                        <div class="text-xs text-light mt-1">(vs ${data.spfRating} labeled)</div>
+                        <div class="text-xs text-light mt-1">(vs ${sanitizeHtml(data.spfRating.toString())} labeled)</div>
                     </div>
                     <div class="bg-dark p-4 rounded border border-accent text-center">
-                        <div class="text-2xl font-bold ${protectionColor}">${analysis.realProtectionTime}min</div>
+                        <div class="text-2xl font-bold ${sanitizeText(protectionColor)}">${sanitizeHtml(analysis.realProtectionTime.toString())}min</div>
                         <div class="text-sm text-light">Real Protection Time</div>
-                        <div class="text-xs text-light mt-1">(vs ${analysis.theoreticalProtectionTime}min theoretical)</div>
+                        <div class="text-xs text-light mt-1">(vs ${sanitizeHtml(analysis.theoreticalProtectionTime.toString())}min theoretical)</div>
                     </div>
                     <div class="bg-dark p-4 rounded border border-accent text-center">
-                        <div class="text-2xl font-bold ${riskColor}">${analysis.riskReduction}%</div>
+                        <div class="text-2xl font-bold ${sanitizeText(riskColor)}">${sanitizeHtml(analysis.riskReduction.toString())}%</div>
                         <div class="text-sm text-light">Cancer Risk Reduction</div>
                     </div>
                 </div>
@@ -303,7 +309,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <span class="material-icons text-sm ${period.protected ? 'text-green-400' : 'text-red-400'}">
                                         ${period.protected ? 'shield' : 'warning'}
                                     </span>
-                                    <span class="text-sm">Hours ${period.start} - ${period.end}</span>
+                                    <span class="text-sm">Hours ${sanitizeHtml(period.start.toString())} - ${sanitizeHtml(period.end.toString())}</span>
                                 </div>
                                 <div class="text-sm ${period.protected ? 'text-green-400' : 'text-red-400'}">
                                     ${period.protected ? 'Protected' : 'Risk of burning'}
@@ -320,25 +326,25 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="space-y-2 text-sm">
                             <div class="flex justify-between">
                                 <span class="text-light">Applications needed:</span>
-                                <span class="text-text">${analysis.sunscreenNeeded.applications}</span>
+                                <span class="text-text">${sanitizeHtml(analysis.sunscreenNeeded.applications.toString())}</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-light">Total amount:</span>
-                                <span class="text-text">${analysis.sunscreenNeeded.totalOz} oz</span>
+                                <span class="text-text">${sanitizeHtml(analysis.sunscreenNeeded.totalOz.toString())} oz</span>
                             </div>
                             <div class="border-t border-accent pt-2 mt-2">
                                 <div class="text-xs text-light mb-1">Estimated costs:</div>
                                 <div class="flex justify-between text-xs">
                                     <span class="text-light">Budget option:</span>
-                                    <span class="text-text">$${analysis.sunscreenNeeded.costs.budget}</span>
+                                    <span class="text-text">$${sanitizeHtml(analysis.sunscreenNeeded.costs.budget.toString())}</span>
                                 </div>
                                 <div class="flex justify-between text-xs">
                                     <span class="text-light">Mid-range:</span>
-                                    <span class="text-text">$${analysis.sunscreenNeeded.costs.mid}</span>
+                                    <span class="text-text">$${sanitizeHtml(analysis.sunscreenNeeded.costs.mid.toString())}</span>
                                 </div>
                                 <div class="flex justify-between text-xs">
                                     <span class="text-light">Premium:</span>
-                                    <span class="text-text">$${analysis.sunscreenNeeded.costs.premium}</span>
+                                    <span class="text-text">$${sanitizeHtml(analysis.sunscreenNeeded.costs.premium.toString())}</span>
                                 </div>
                             </div>
                         </div>
@@ -349,7 +355,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="space-y-2 text-sm">
                             <div class="flex justify-between">
                                 <span class="text-light">Base burn time:</span>
-                                <span class="text-text">${analysis.baseBurnTime} min</span>
+                                <span class="text-text">${sanitizeHtml(analysis.baseBurnTime.toString())} min</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-light">UV Index impact:</span>
@@ -361,7 +367,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-light">Application efficiency:</span>
-                                <span class="text-text">${Math.round(data.amountApplied * 100)}%</span>
+                                <span class="text-text">${sanitizeHtml(Math.round(data.amountApplied * 100).toString())}%</span>
                             </div>
                         </div>
                     </div>
@@ -377,9 +383,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <span class="material-icons text-sm ${rec.priority === 'high' ? 'text-red-400' : 'text-yellow-400'}">
                                         ${rec.priority === 'high' ? 'priority_high' : 'info'}
                                     </span>
-                                    <span class="font-medium text-sm">${rec.title}</span>
+                                    <span class="font-medium text-sm">${sanitizeHtml(rec.title)}</span>
                                 </div>
-                                <div class="text-sm text-light">${rec.message}</div>
+                                <div class="text-sm text-light">${sanitizeHtml(rec.message)}</div>
                             </div>
                         `).join('')}
                     </div>
@@ -394,19 +400,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     <ul class="space-y-2 text-sm text-light">
                         <li class="flex items-start gap-2">
                             <span class="material-icons text-xs text-accent mt-0.5">check_circle</span>
-                            Your effective SPF is ${analysis.effectiveSPF}, providing ${analysis.realProtectionTime} minutes of real protection
+                            Your effective SPF is ${sanitizeHtml(analysis.effectiveSPF.toString())}, providing ${sanitizeHtml(analysis.realProtectionTime.toString())} minutes of real protection
                         </li>
                         <li class="flex items-start gap-2">
                             <span class="material-icons text-xs text-accent mt-0.5">check_circle</span>
-                            Reapply every ${data.reapplicationFreq} hours or immediately after water/sweat exposure
+                            Reapply every ${sanitizeHtml(data.reapplicationFreq.toString())} hours or immediately after water/sweat exposure
                         </li>
                         <li class="flex items-start gap-2">
                             <span class="material-icons text-xs text-accent mt-0.5">check_circle</span>
-                            You'll need ${analysis.sunscreenNeeded.totalOz} oz of sunscreen for ${data.exposureDuration} hours of exposure
+                            You'll need ${sanitizeHtml(analysis.sunscreenNeeded.totalOz.toString())} oz of sunscreen for ${sanitizeHtml(data.exposureDuration.toString())} hours of exposure
                         </li>
                         <li class="flex items-start gap-2">
                             <span class="material-icons text-xs text-accent mt-0.5">check_circle</span>
-                            Proper use reduces skin cancer risk by approximately ${analysis.riskReduction}%
+                            Proper use reduces skin cancer risk by approximately ${sanitizeHtml(analysis.riskReduction.toString())}%
                         </li>
                     </ul>
                 </div>

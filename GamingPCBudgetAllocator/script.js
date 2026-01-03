@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('gaming-pc-form');
     
     form.addEventListener('submit', function(e) {
@@ -212,11 +212,11 @@ function calculatePerformanceExpectations(data, budgets) {
     let expectedFPS, qualitySettings, futureProofing;
 
     if (performanceRatio >= 1.2) {
-        expectedFPS = `${data.targetFPS}+ FPS consistently`;
+        expectedFPS = `${sanitizeText(data.targetFPS)}+ FPS consistently`;
         qualitySettings = "Ultra/High settings";
         futureProofing = "3-4 years at target settings";
     } else if (performanceRatio >= 1.0) {
-        expectedFPS = `${Math.round(data.targetFPS * 0.9)}-${data.targetFPS} FPS`;
+        expectedFPS = `${Math.round(data.targetFPS * 0.9)}-${sanitizeText(data.targetFPS)} FPS`;
         qualitySettings = "High/Medium settings";
         futureProofing = "2-3 years at target settings";
     } else if (performanceRatio >= 0.8) {
@@ -294,6 +294,12 @@ function displayResults(results) {
     const resultsDiv = document.getElementById('results');
     const contentDiv = document.getElementById('result-content');
 
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
     const html = `
         <div class="bg-primary/10 border-l-4 border-primary p-6 mb-6">
             <h3 class="text-2xl font-bold text-primary mb-2">Your Optimal Gaming PC Build</h3>
@@ -336,27 +342,27 @@ function displayResults(results) {
                 <div class="space-y-3">
                     <div>
                         <span class="text-light block">Graphics Card:</span>
-                        <span class="text-primary font-semibold">${results.recommendations.gpu}</span>
+                        <span class="text-primary font-semibold">${escapeHtml(results.recommendations.gpu)}</span>
                     </div>
                     <div>
                         <span class="text-light block">Processor:</span>
-                        <span class="text-primary font-semibold">${results.recommendations.cpu}</span>
+                        <span class="text-primary font-semibold">${escapeHtml(results.recommendations.cpu)}</span>
                     </div>
                     <div>
                         <span class="text-light block">Memory:</span>
-                        <span class="text-primary font-semibold">${results.recommendations.ram}</span>
+                        <span class="text-primary font-semibold">${escapeHtml(results.recommendations.ram)}</span>
                     </div>
                     <div>
                         <span class="text-light block">Storage:</span>
-                        <span class="text-primary font-semibold">${results.recommendations.storage}</span>
+                        <span class="text-primary font-semibold">${escapeHtml(results.recommendations.storage)}</span>
                     </div>
                     <div>
                         <span class="text-light block">Motherboard:</span>
-                        <span class="text-primary font-semibold">${results.recommendations.motherboard}</span>
+                        <span class="text-primary font-semibold">${escapeHtml(results.recommendations.motherboard)}</span>
                     </div>
                     <div>
                         <span class="text-light block">PSU & Case:</span>
-                        <span class="text-primary font-semibold">${results.recommendations.psuCase}</span>
+                        <span class="text-primary font-semibold">${escapeHtml(results.recommendations.psuCase)}</span>
                     </div>
                 </div>
             </div>
@@ -366,21 +372,21 @@ function displayResults(results) {
             <h4 class="text-xl font-bold text-accent mb-4">Performance Expectations</h4>
             <div class="grid md:grid-cols-3 gap-4">
                 <div class="bg-dark p-4 rounded border border-accent text-center">
-                    <div class="text-2xl font-bold text-primary mb-2">${results.performance.performanceScore}%</div>
+                    <div class="text-2xl font-bold text-primary mb-2">${sanitizeText(results.performance.performanceScore)}%</div>
                     <div class="text-sm text-light">Performance Score</div>
                 </div>
                 <div class="bg-dark p-4 rounded border border-accent">
                     <div class="text-sm text-light mb-1">Expected FPS:</div>
-                    <div class="text-primary font-semibold">${results.performance.expectedFPS}</div>
+                    <div class="text-primary font-semibold">${escapeHtml(results.performance.expectedFPS)}</div>
                 </div>
                 <div class="bg-dark p-4 rounded border border-accent">
                     <div class="text-sm text-light mb-1">Quality Settings:</div>
-                    <div class="text-primary font-semibold">${results.performance.qualitySettings}</div>
+                    <div class="text-primary font-semibold">${escapeHtml(results.performance.qualitySettings)}</div>
                 </div>
             </div>
             <div class="mt-4 p-4 bg-dark rounded border border-accent">
                 <div class="text-sm text-light mb-1">Future-Proofing:</div>
-                <div class="text-accent">${results.performance.futureProofing}</div>
+                <div class="text-accent">${escapeHtml(results.performance.futureProofing)}</div>
             </div>
         </div>
 
@@ -391,11 +397,11 @@ function displayResults(results) {
                 ${results.upgradeTimeline.map(upgrade => `
                     <div class="bg-dark p-4 rounded border border-accent">
                         <div class="flex justify-between items-start mb-2">
-                            <span class="text-primary font-semibold">${upgrade.component}</span>
-                            <span class="text-accent text-sm">${upgrade.timeframe}</span>
+                            <span class="text-primary font-semibold">${escapeHtml(upgrade.component)}</span>
+                            <span class="text-accent text-sm">${escapeHtml(upgrade.timeframe)}</span>
                         </div>
-                        <div class="text-light text-sm mb-1">${upgrade.reason}</div>
-                        <div class="text-light text-xs">Estimated cost: ${upgrade.estimatedCost}</div>
+                        <div class="text-light text-sm mb-1">${escapeHtml(upgrade.reason)}</div>
+                        <div class="text-light text-xs">Estimated cost: ${escapeHtml(upgrade.estimatedCost)}</div>
                     </div>
                 `).join('')}
             </div>

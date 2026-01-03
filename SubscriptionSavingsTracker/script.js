@@ -1,4 +1,4 @@
-// Recurring Subscription Savings Tracker Script
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Recurring Subscription Savings Tracker Script
 
 // Popup functionality
 function showPopup(message) {
@@ -168,7 +168,7 @@ function calculateSavingsOpportunities(data, subscriptions, hidden) {
                 opportunities.push({
                     type: 'duplicate',
                     category: category,
-                    description: `Multiple ${category} subscriptions detected`,
+                    description: `Multiple ${sanitizeText(category)} subscriptions detected`,
                     monthlySavings: savings,
                     annualSavings: savings * 12,
                     services: subs.map(s => s.name)
@@ -409,22 +409,28 @@ function getOptimizationPotential(usageLevel, subscriptionCount) {
 function displayResults(results) {
     const resultsDiv = document.getElementById('result-content');
     
+    function sanitizeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+    
     resultsDiv.innerHTML = `
         <!-- Current Spending Overview -->
         <div class="grid md:grid-cols-3 gap-6 mb-8">
             <div class="bg-dark/50 rounded-lg p-6 border border-accent/20 text-center">
                 <h3 class="text-lg font-semibold text-primary mb-2">Monthly Total</h3>
-                <p class="text-3xl font-bold text-accent">$${results.current.monthlyTotal.toFixed(2)}</p>
-                <p class="text-sm text-light mt-2">${results.current.subscriptions.length} active subscriptions</p>
+                <p class="text-3xl font-bold text-accent">$${sanitizeHtml(results.current.monthlyTotal.toFixed(2))}</p>
+                <p class="text-sm text-light mt-2">${sanitizeHtml(results.current.subscriptions.length.toString())} active subscriptions</p>
             </div>
             <div class="bg-dark/50 rounded-lg p-6 border border-accent/20 text-center">
                 <h3 class="text-lg font-semibold text-primary mb-2">Annual Total</h3>
-                <p class="text-3xl font-bold text-accent">$${results.current.annualTotal.toFixed(2)}</p>
-                <p class="text-sm text-light mt-2">Average $${results.current.averagePerService.toFixed(2)} per service</p>
+                <p class="text-3xl font-bold text-accent">$${sanitizeHtml(results.current.annualTotal.toFixed(2))}</p>
+                <p class="text-sm text-light mt-2">Average $${sanitizeHtml(results.current.averagePerService.toFixed(2))} per service</p>
             </div>
             <div class="bg-dark/50 rounded-lg p-6 border border-accent/20 text-center">
                 <h3 class="text-lg font-semibold text-primary mb-2">Spending Percentile</h3>
-                <p class="text-3xl font-bold text-accent">${results.benchmarks.percentile}th</p>
+                <p class="text-3xl font-bold text-accent">${sanitizeHtml(results.benchmarks.percentile.toString())}th</p>
                 <p class="text-sm text-light mt-2">Compared to similar households</p>
             </div>
         </div>
@@ -439,18 +445,18 @@ function displayResults(results) {
             <div class="grid md:grid-cols-3 gap-4">
                 <div>
                     <p class="text-sm text-light">Estimated Monthly Cost</p>
-                    <p class="text-2xl font-bold text-yellow-400">$${results.hidden.estimatedMonthlyCost.toFixed(2)}</p>
+                    <p class="text-2xl font-bold text-yellow-400">$${sanitizeHtml(results.hidden.estimatedMonthlyCost.toFixed(2))}</p>
                 </div>
                 <div>
                     <p class="text-sm text-light">Estimated Annual Cost</p>
-                    <p class="text-2xl font-bold text-yellow-400">$${results.hidden.estimatedAnnualCost.toFixed(2)}</p>
+                    <p class="text-2xl font-bold text-yellow-400">$${sanitizeHtml(results.hidden.estimatedAnnualCost.toFixed(2))}</p>
                 </div>
                 <div>
                     <p class="text-sm text-light">Confidence Level</p>
-                    <p class="text-lg font-semibold text-yellow-400 capitalize">${results.hidden.confidence}</p>
+                    <p class="text-lg font-semibold text-yellow-400 capitalize">${sanitizeHtml(results.hidden.confidence)}</p>
                 </div>
             </div>
-            <p class="text-light text-sm mt-4">Based on your management style and habits, you likely have ${results.hidden.estimatedCount} forgotten subscriptions.</p>
+            <p class="text-light text-sm mt-4">Based on your management style and habits, you likely have ${sanitizeHtml(results.hidden.estimatedCount.toString())} forgotten subscriptions.</p>
         </div>
         ` : ''}
 
@@ -461,18 +467,18 @@ function displayResults(results) {
                 ${results.savings.map(opportunity => `
                     <div class="bg-dark/50 rounded-lg p-6 border border-green-500/30">
                         <div class="flex justify-between items-start mb-3">
-                            <h4 class="font-semibold text-green-400 capitalize">${opportunity.type.replace('-', ' ')}</h4>
+                            <h4 class="font-semibold text-green-400 capitalize">${sanitizeHtml(opportunity.type.replace('-', ' '))}</h4>
                             <div class="text-right">
-                                <p class="text-green-400 font-bold">$${opportunity.monthlySavings.toFixed(2)}/month</p>
-                                <p class="text-sm text-light">$${opportunity.annualSavings.toFixed(2)}/year</p>
+                                <p class="text-green-400 font-bold">$${sanitizeHtml(opportunity.monthlySavings.toFixed(2))}/month</p>
+                                <p class="text-sm text-light">$${sanitizeHtml(opportunity.annualSavings.toFixed(2))}/year</p>
                             </div>
                         </div>
-                        <p class="text-light text-sm mb-2">${opportunity.description}</p>
+                        <p class="text-light text-sm mb-2">${sanitizeHtml(opportunity.description)}</p>
                         ${opportunity.services ? `
-                            <p class="text-xs text-accent">Affected services: ${opportunity.services.join(', ')}</p>
+                            <p class="text-xs text-accent">Affected services: ${sanitizeHtml(opportunity.services.join(', '))}</p>
                         ` : ''}
                         ${opportunity.confidence ? `
-                            <p class="text-xs text-light mt-2">Confidence: ${opportunity.confidence}</p>
+                            <p class="text-xs text-light mt-2">Confidence: ${sanitizeHtml(opportunity.confidence)}</p>
                         ` : ''}
                     </div>
                 `).join('')}
@@ -482,11 +488,11 @@ function displayResults(results) {
                 <h4 class="text-lg font-semibold text-green-400 mb-2">Total Potential Savings</h4>
                 <div class="grid md:grid-cols-2 gap-4">
                     <div>
-                        <p class="text-2xl font-bold text-green-400">$${results.savings.reduce((sum, opp) => sum + opp.monthlySavings, 0).toFixed(2)}</p>
+                        <p class="text-2xl font-bold text-green-400">$${sanitizeHtml(results.savings.reduce((sum, opp) => sum + opp.monthlySavings, 0).toFixed(2))}</p>
                         <p class="text-sm text-light">Per Month</p>
                     </div>
                     <div>
-                        <p class="text-2xl font-bold text-green-400">$${results.savings.reduce((sum, opp) => sum + opp.annualSavings, 0).toFixed(2)}</p>
+                        <p class="text-2xl font-bold text-green-400">$${sanitizeHtml(results.savings.reduce((sum, opp) => sum + opp.annualSavings, 0).toFixed(2))}</p>
                         <p class="text-sm text-light">Per Year</p>
                     </div>
                 </div>
@@ -500,12 +506,12 @@ function displayResults(results) {
                 ${results.current.subscriptions.map(sub => `
                     <div class="flex justify-between items-center p-4 bg-dark/50 rounded-lg border border-accent/20">
                         <div>
-                            <h4 class="font-semibold text-text">${sub.name}</h4>
-                            <p class="text-sm text-light capitalize">${sub.frequency} billing</p>
+                            <h4 class="font-semibold text-text">${sanitizeHtml(sub.name)}</h4>
+                            <p class="text-sm text-light capitalize">${sanitizeHtml(sub.frequency)} billing</p>
                         </div>
                         <div class="text-right">
-                            <p class="font-semibold text-accent">$${sub.monthlyCost.toFixed(2)}/month</p>
-                            <p class="text-sm text-light">$${(sub.monthlyCost * 12).toFixed(2)}/year</p>
+                            <p class="font-semibold text-accent">$${sanitizeHtml(sub.monthlyCost.toFixed(2))}/month</p>
+                            <p class="text-sm text-light">$${sanitizeHtml((sub.monthlyCost * 12).toFixed(2))}/year</p>
                         </div>
                     </div>
                 `).join('')}
@@ -518,20 +524,20 @@ function displayResults(results) {
             <div class="grid md:grid-cols-3 gap-4">
                 <div class="text-center">
                     <p class="text-sm text-light">Low Spenders</p>
-                    <p class="text-lg font-semibold text-green-400">$${results.benchmarks.benchmarks.low}</p>
+                    <p class="text-lg font-semibold text-green-400">$${sanitizeHtml(results.benchmarks.benchmarks.low.toString())}</p>
                 </div>
                 <div class="text-center">
                     <p class="text-sm text-light">Average Spenders</p>
-                    <p class="text-lg font-semibold text-yellow-400">$${results.benchmarks.benchmarks.average}</p>
+                    <p class="text-lg font-semibold text-yellow-400">$${sanitizeHtml(results.benchmarks.benchmarks.average.toString())}</p>
                 </div>
                 <div class="text-center">
                     <p class="text-sm text-light">High Spenders</p>
-                    <p class="text-lg font-semibold text-red-400">$${results.benchmarks.benchmarks.high}</p>
+                    <p class="text-lg font-semibold text-red-400">$${sanitizeHtml(results.benchmarks.benchmarks.high.toString())}</p>
                 </div>
             </div>
             <div class="mt-4 text-center">
-                <p class="text-light">Your spending: <span class="font-semibold text-primary">$${results.benchmarks.currentSpending.toFixed(2)}</span> 
-                (${results.benchmarks.category} spender)</p>
+                <p class="text-light">Your spending: <span class="font-semibold text-primary">$${sanitizeHtml(results.benchmarks.currentSpending.toFixed(2))}</span> 
+                (${sanitizeHtml(results.benchmarks.category)} spender)</p>
             </div>
         </div>
 
@@ -542,13 +548,13 @@ function displayResults(results) {
                 ${results.recommendations.map(rec => `
                     <div class="bg-dark/50 rounded-lg p-6 border border-accent/20">
                         <div class="flex justify-between items-start mb-3">
-                            <h4 class="font-semibold text-accent">${rec.category}</h4>
-                            <span class="px-2 py-1 text-xs rounded ${rec.priority === 'High' ? 'bg-red-500/20 text-red-400' : 'bg-yellow-500/20 text-yellow-400'}">${rec.priority}</span>
+                            <h4 class="font-semibold text-accent">${sanitizeHtml(rec.category)}</h4>
+                            <span class="px-2 py-1 text-xs rounded ${rec.priority === 'High' ? 'bg-red-500/20 text-red-400' : 'bg-yellow-500/20 text-yellow-400'}">${sanitizeHtml(rec.priority)}</span>
                         </div>
-                        <p class="text-light mb-2">${rec.action}</p>
+                        <p class="text-light mb-2">${sanitizeHtml(rec.action)}</p>
                         <div class="flex justify-between items-center text-sm">
-                            <span class="text-primary font-medium">${rec.impact}</span>
-                            <span class="text-light">${rec.timeframe}</span>
+                            <span class="text-primary font-medium">${sanitizeHtml(rec.impact)}</span>
+                            <span class="text-light">${sanitizeHtml(rec.timeframe)}</span>
                         </div>
                     </div>
                 `).join('')}
@@ -561,15 +567,15 @@ function displayResults(results) {
             <div class="grid md:grid-cols-2 gap-6">
                 <div>
                     <h4 class="font-semibold text-accent mb-2">Risk Assessment</h4>
-                    <p class="text-light text-sm mb-1">Management Risk: <span class="text-primary">${results.analysis.managementRisk}</span></p>
-                    <p class="text-light text-sm mb-1">Optimization Potential: <span class="text-primary">${results.analysis.optimizationPotential}</span></p>
-                    <p class="text-light text-sm">Subscription Density: <span class="text-primary">${results.analysis.subscriptionDensity.toFixed(1)} per person</span></p>
+                    <p class="text-light text-sm mb-1">Management Risk: <span class="text-primary">${sanitizeHtml(results.analysis.managementRisk)}</span></p>
+                    <p class="text-light text-sm mb-1">Optimization Potential: <span class="text-primary">${sanitizeHtml(results.analysis.optimizationPotential)}</span></p>
+                    <p class="text-light text-sm">Subscription Density: <span class="text-primary">${sanitizeHtml(results.analysis.subscriptionDensity.toFixed(1))} per person</span></p>
                 </div>
                 <div>
                     <h4 class="font-semibold text-accent mb-2">Key Metrics</h4>
-                    <p class="text-light text-sm mb-1">Budget Alignment: <span class="text-primary">${(results.analysis.budgetAlignment * 100).toFixed(0)}%</span></p>
-                    <p class="text-light text-sm mb-1">Avg Cost/Service: <span class="text-primary">$${results.analysis.averageCostPerService.toFixed(2)}</span></p>
-                    <p class="text-light text-sm">Total Services: <span class="text-primary">${results.current.subscriptions.length}</span></p>
+                    <p class="text-light text-sm mb-1">Budget Alignment: <span class="text-primary">${sanitizeHtml((results.analysis.budgetAlignment * 100).toFixed(0))}%</span></p>
+                    <p class="text-light text-sm mb-1">Avg Cost/Service: <span class="text-primary">$${sanitizeHtml(results.analysis.averageCostPerService.toFixed(2))}</span></p>
+                    <p class="text-light text-sm">Total Services: <span class="text-primary">${sanitizeHtml(results.current.subscriptions.length.toString())}</span></p>
                 </div>
             </div>
         </div>
@@ -600,4 +606,5 @@ document.getElementById('subscriptionForm').addEventListener('submit', function(
     const results = analyzeSubscriptions(data);
     displayResults(results);
 });
+
 

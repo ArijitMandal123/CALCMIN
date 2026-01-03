@@ -1,4 +1,4 @@
-// Asynchronous Communication Audit Tool Script
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Asynchronous Communication Audit Tool Script
 
 // Popup functionality
 function showPopup(message) {
@@ -394,10 +394,10 @@ function displayResults(results) {
         <!-- Overall Score -->
         <div class="text-center mb-8">
             <div class="inline-flex items-center justify-center w-32 h-32 rounded-full bg-gradient-to-br from-primary to-accent mb-4">
-                <span class="text-4xl font-bold text-white">${results.overallScore}</span>
+                <span class="text-4xl font-bold text-white">${sanitizeText(results.overallScore)}</span>
             </div>
-            <h3 class="text-2xl font-bold ${results.level.color} mb-2">${results.level.level}</h3>
-            <p class="text-light">${results.level.description}</p>
+            <h3 class="text-2xl font-bold ${sanitizeText(results.level.color)} mb-2">${sanitizeText(results.level.level)}</h3>
+            <p class="text-light">${sanitizeText(results.level.description)}</p>
         </div>
 
         <!-- Factor Breakdown -->
@@ -406,16 +406,16 @@ function displayResults(results) {
                 <div class="bg-dark/50 rounded-lg p-6 border border-accent/20">
                     <div class="flex justify-between items-center mb-3">
                         <h4 class="font-semibold text-primary">${factor.category}</h4>
-                        <span class="text-sm text-light">${factor.weight}% weight</span>
+                        <span class="text-sm text-light">${sanitizeText(factor.weight)}% weight</span>
                     </div>
                     <div class="flex items-center mb-3">
                         <div class="flex-1 bg-broder rounded-full h-2 mr-3">
                             <div class="bg-gradient-to-r from-primary to-accent h-2 rounded-full" 
-                                 style="width: ${factor.score}%"></div>
+                                 style="width: ${sanitizeText(factor.score)}%"></div>
                         </div>
                         <span class="text-sm font-medium text-text">${Math.round(factor.score)}</span>
                     </div>
-                    <p class="text-sm text-light">${factor.analysis}</p>
+                    <p class="text-sm text-light">${sanitizeText(factor.analysis)}</p>
                 </div>
             `).join('')}
         </div>
@@ -426,13 +426,13 @@ function displayResults(results) {
             <div class="grid md:grid-cols-2 gap-6">
                 <div>
                     <h4 class="font-semibold text-accent mb-2">Current State</h4>
-                    <p class="text-light mb-1">Productive Hours/Week: <span class="text-primary font-semibold">${results.productivity.currentHours}</span></p>
+                    <p class="text-light mb-1">Productive Hours/Week: <span class="text-primary font-semibold">${sanitizeText(results.productivity.currentHours)}</span></p>
                 </div>
                 <div>
                     <h4 class="font-semibold text-accent mb-2">Potential State</h4>
-                    <p class="text-light mb-1">Productive Hours/Week: <span class="text-green-400 font-semibold">${results.productivity.potentialHours}</span></p>
-                    <p class="text-light mb-1">Weekly Gain: <span class="text-green-400 font-semibold">+${results.productivity.weeklyGain} hours</span></p>
-                    <p class="text-light">Annual Gain: <span class="text-green-400 font-semibold">+${results.productivity.annualGain} hours</span></p>
+                    <p class="text-light mb-1">Productive Hours/Week: <span class="text-green-400 font-semibold">${sanitizeText(results.productivity.potentialHours)}</span></p>
+                    <p class="text-light mb-1">Weekly Gain: <span class="text-green-400 font-semibold">+${sanitizeText(results.productivity.weeklyGain)} hours</span></p>
+                    <p class="text-light">Annual Gain: <span class="text-green-400 font-semibold">+${sanitizeText(results.productivity.annualGain)} hours</span></p>
                 </div>
             </div>
         </div>
@@ -442,11 +442,11 @@ function displayResults(results) {
             <h3 class="text-xl font-bold text-accent mb-4">Team Time Savings Potential</h3>
             <div class="grid md:grid-cols-3 gap-4">
                 <div class="text-center">
-                    <p class="text-2xl font-bold text-primary">${results.timeSavings.personalWeekly}h</p>
+                    <p class="text-2xl font-bold text-primary">${sanitizeText(results.timeSavings.personalWeekly)}h</p>
                     <p class="text-sm text-light">Personal Weekly Savings</p>
                 </div>
                 <div class="text-center">
-                    <p class="text-2xl font-bold text-accent">${results.timeSavings.teamWeekly}h</p>
+                    <p class="text-2xl font-bold text-accent">${sanitizeText(results.timeSavings.teamWeekly)}h</p>
                     <p class="text-sm text-light">Team Weekly Savings</p>
                 </div>
                 <div class="text-center">
@@ -464,10 +464,10 @@ function displayResults(results) {
                     <div class="bg-dark/50 rounded-lg p-6 border border-accent/20">
                         <div class="flex justify-between items-start mb-3">
                             <h4 class="font-semibold text-accent">${rec.category}</h4>
-                            <span class="px-2 py-1 text-xs rounded ${rec.priority === 'High' ? 'bg-red-500/20 text-red-400' : 'bg-yellow-500/20 text-yellow-400'}">${rec.priority}</span>
+                            <span class="px-2 py-1 text-xs rounded ${rec.priority === 'High' ? 'bg-red-500/20 text-red-400' : 'bg-yellow-500/20 text-yellow-400'}">${sanitizeText(rec.priority)}</span>
                         </div>
-                        <p class="text-light mb-2">${rec.action}</p>
-                        <p class="text-sm text-primary font-medium">Expected Impact: ${rec.impact}</p>
+                        <p class="text-light mb-2">${sanitizeText(rec.action)}</p>
+                        <p class="text-sm text-primary font-medium">Expected Impact: ${sanitizeText(rec.impact)}</p>
                     </div>
                 `).join('')}
             </div>
@@ -511,4 +511,5 @@ document.getElementById('asyncAuditForm').addEventListener('submit', function(e)
     const results = calculateAsyncScore(data);
     displayResults(results);
 });
+
 

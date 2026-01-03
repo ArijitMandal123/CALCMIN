@@ -1,3 +1,12 @@
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('caffeineForm').addEventListener('submit', function(e) {
         e.preventDefault();
@@ -195,11 +204,11 @@ function displayResults(timeline, data) {
         <!-- Overview -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
             <div class="bg-dark p-4 rounded border border-accent text-center">
-                <div class="text-2xl font-bold text-primary">${totalDays}</div>
+                <div class="text-2xl font-bold text-primary">${sanitizeText(totalDays)}</div>
                 <div class="text-light text-sm">Days to Zero Caffeine</div>
             </div>
             <div class="bg-dark p-4 rounded border border-accent text-center">
-                <div class="text-2xl font-bold text-green-400">${initialAmount}mg</div>
+                <div class="text-2xl font-bold text-green-400">${sanitizeText(initialAmount)}mg</div>
                 <div class="text-light text-sm">Starting Daily Intake</div>
             </div>
             <div class="bg-dark p-4 rounded border border-accent text-center">
@@ -241,7 +250,7 @@ function displayResults(timeline, data) {
                         ${timeline.slice(0, 7).map(day => `
                             <tr class="border-b border-broder">
                                 <td class="text-text p-2">Day ${day.day}</td>
-                                <td class="text-right text-accent p-2">${day.caffeineAmount}mg</td>
+                                <td class="text-right text-accent p-2">${sanitizeText(day.caffeineAmount)}mg</td>
                                 <td class="text-light p-2 text-xs">
                                     ${day.symptoms.slice(0, 2).map(s => s.type).join(', ')}
                                 </td>
@@ -262,37 +271,37 @@ function displayResults(timeline, data) {
                 <div>
                     <h4 class="text-accent font-semibold mb-2">For Headaches:</h4>
                     <ul class="text-light text-sm space-y-1">
-                        <li>• Stay hydrated (extra water)</li>
-                        <li>• Apply cold/warm compress</li>
-                        <li>• Gentle neck massage</li>
-                        <li>• Peppermint oil on temples</li>
+                        <li>â€¢ Stay hydrated (extra water)</li>
+                        <li>â€¢ Apply cold/warm compress</li>
+                        <li>â€¢ Gentle neck massage</li>
+                        <li>â€¢ Peppermint oil on temples</li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-accent font-semibold mb-2">For Fatigue:</h4>
                     <ul class="text-light text-sm space-y-1">
-                        <li>• Light exercise (10-15 min walk)</li>
-                        <li>• Cold shower or splash face</li>
-                        <li>• Bright light exposure</li>
-                        <li>• Power nap (20 min max)</li>
+                        <li>â€¢ Light exercise (10-15 min walk)</li>
+                        <li>â€¢ Cold shower or splash face</li>
+                        <li>â€¢ Bright light exposure</li>
+                        <li>â€¢ Power nap (20 min max)</li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-accent font-semibold mb-2">For Irritability:</h4>
                     <ul class="text-light text-sm space-y-1">
-                        <li>• Deep breathing exercises</li>
-                        <li>• Meditation or mindfulness</li>
-                        <li>• Avoid stressful situations</li>
-                        <li>• Talk to supportive friends</li>
+                        <li>â€¢ Deep breathing exercises</li>
+                        <li>â€¢ Meditation or mindfulness</li>
+                        <li>â€¢ Avoid stressful situations</li>
+                        <li>â€¢ Talk to supportive friends</li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-accent font-semibold mb-2">For Sleep Issues:</h4>
                     <ul class="text-light text-sm space-y-1">
-                        <li>• Consistent sleep schedule</li>
-                        <li>• No screens 1 hour before bed</li>
-                        <li>• Chamomile tea or melatonin</li>
-                        <li>• Cool, dark bedroom</li>
+                        <li>â€¢ Consistent sleep schedule</li>
+                        <li>â€¢ No screens 1 hour before bed</li>
+                        <li>â€¢ Chamomile tea or melatonin</li>
+                        <li>â€¢ Cool, dark bedroom</li>
                     </ul>
                 </div>
             </div>
@@ -305,20 +314,20 @@ function displayResults(timeline, data) {
                 <div class="bg-broder p-3 rounded">
                     <div class="text-accent font-semibold mb-1">Daily Checklist:</div>
                     <div class="text-light text-sm">
-                        □ Measured caffeine intake<br>
-                        □ Tracked symptoms (1-10 scale)<br>
-                        □ Followed mitigation strategies<br>
-                        □ Got adequate sleep<br>
-                        □ Stayed hydrated
+                        â–¡ Measured caffeine intake<br>
+                        â–¡ Tracked symptoms (1-10 scale)<br>
+                        â–¡ Followed mitigation strategies<br>
+                        â–¡ Got adequate sleep<br>
+                        â–¡ Stayed hydrated
                     </div>
                 </div>
                 <div class="bg-broder p-3 rounded">
                     <div class="text-accent font-semibold mb-1">Weekly Goals:</div>
                     <div class="text-light text-sm">
-                        □ Reduced caffeine as scheduled<br>
-                        □ Maintained work/life balance<br>
-                        □ Exercised regularly<br>
-                        □ Managed stress effectively
+                        â–¡ Reduced caffeine as scheduled<br>
+                        â–¡ Maintained work/life balance<br>
+                        â–¡ Exercised regularly<br>
+                        â–¡ Managed stress effectively
                     </div>
                 </div>
             </div>
@@ -328,11 +337,11 @@ function displayResults(timeline, data) {
         <div class="bg-red-900 bg-opacity-20 border border-red-600 p-4 rounded mt-6">
             <h4 class="text-red-400 font-semibold mb-2">If Symptoms Become Severe:</h4>
             <ul class="text-red-200 text-sm space-y-1">
-                <li>• Slow down the reduction schedule</li>
-                <li>• Consider a small amount of caffeine to stabilize</li>
-                <li>• Consult healthcare provider if symptoms persist</li>
-                <li>• Don't hesitate to take time off work if needed</li>
-                <li>• Remember: temporary discomfort for long-term benefits</li>
+                <li>â€¢ Slow down the reduction schedule</li>
+                <li>â€¢ Consider a small amount of caffeine to stabilize</li>
+                <li>â€¢ Consult healthcare provider if symptoms persist</li>
+                <li>â€¢ Don't hesitate to take time off work if needed</li>
+                <li>â€¢ Remember: temporary discomfort for long-term benefits</li>
             </ul>
         </div>
     `;
@@ -346,17 +355,17 @@ function generateTimelineSummary(timeline, totalDays) {
     const phases = [
         { name: 'Initial Adjustment', days: '1-3', description: 'Mild symptoms begin, body starts adapting' },
         { name: 'Active Reduction', days: `4-${Math.floor(totalDays * 0.5)}`, description: 'Peak withdrawal symptoms, gradual improvement' },
-        { name: 'Final Elimination', days: `${Math.floor(totalDays * 0.5) + 1}-${totalDays}`, description: 'Symptoms subside, approaching zero caffeine' },
+        { name: 'Final Elimination', days: `${Math.floor(totalDays * 0.5) + 1}-${sanitizeText(totalDays)}`, description: 'Symptoms subside, approaching zero caffeine' },
         { name: 'Recovery Phase', days: `${totalDays + 1}-${totalDays + 7}`, description: 'Energy stabilizes, sleep improves' }
     ];
     
     return phases.map(phase => `
         <div class="flex justify-between items-center p-3 bg-broder rounded">
             <div>
-                <div class="font-semibold text-accent">${phase.name}</div>
-                <div class="text-light text-sm">${phase.description}</div>
+                <div class="font-semibold text-accent">${sanitizeText(phase.name)}</div>
+                <div class="text-light text-sm">${sanitizeText(phase.description)}</div>
             </div>
-            <div class="text-primary font-semibold">Days ${phase.days}</div>
+            <div class="text-primary font-semibold">Days ${sanitizeText(phase.days)}</div>
         </div>
     `).join('');
 }
@@ -375,8 +384,8 @@ function generateWeeklyBreakdown(timeline, totalWeeks) {
         weeks.push(`
             <div class="bg-broder p-4 rounded">
                 <div class="flex justify-between items-center mb-2">
-                    <h4 class="text-accent font-semibold">Week ${week}</h4>
-                    <div class="text-primary font-semibold">${avgCaffeine}mg avg</div>
+                    <h4 class="text-accent font-semibold">Week ${sanitizeText(week)}</h4>
+                    <div class="text-primary font-semibold">${sanitizeText(avgCaffeine)}mg avg</div>
                 </div>
                 <div class="text-light text-sm">
                     <strong>Common symptoms:</strong> ${commonSymptoms.join(', ')}<br>

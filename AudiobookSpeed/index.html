@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -111,7 +111,7 @@
             "name": "How does the audiobook speed calculator work?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The audiobook speed calculator uses the formula: New Listening Time = Original Duration ÷ Playback Speed. For example, a 10-hour audiobook at 2x speed takes 5 hours to complete."
+              "text": "The audiobook speed calculator uses the formula: New Listening Time = Original Duration Ã· Playback Speed. For example, a 10-hour audiobook at 2x speed takes 5 hours to complete."
             }
           },
           {
@@ -161,6 +161,12 @@
         ]
       }
     </script>
+    <!-- Security Headers -->
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:;">
+    
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -395,13 +401,13 @@
             Audible subscribers, podcast listeners, and lifelong learners.
           </p>
           <div class="bg-broder border border-accent rounded-lg p-4 mb-6">
-            <h3 class="text-primary font-semibold mb-2">🚀 Quick Benefits:</h3>
+            <h3 class="text-primary font-semibold mb-2">ðŸš€ Quick Benefits:</h3>
             <ul class="text-text text-sm space-y-1">
-              <li>✅ Calculate exact listening time for any audiobook duration</li>
-              <li>✅ Support for speeds from 0.5x to 10x playback</li>
-              <li>✅ Works with Audible, Spotify, Apple Books, Google Play Books</li>
-              <li>✅ Free forever - no registration required</li>
-              <li>✅ Mobile-friendly design for on-the-go calculations</li>
+              <li>âœ… Calculate exact listening time for any audiobook duration</li>
+              <li>âœ… Support for speeds from 0.5x to 10x playback</li>
+              <li>âœ… Works with Audible, Spotify, Apple Books, Google Play Books</li>
+              <li>âœ… Free forever - no registration required</li>
+              <li>âœ… Mobile-friendly design for on-the-go calculations</li>
             </ul>
           </div>
         </header>
@@ -427,11 +433,11 @@
           <div class="bg-broder border border-accent rounded-lg p-4 mb-6">
             <p class="text-primary font-mono text-lg">
               <strong
-                >New Listening Time = Original Duration ÷ Playback Speed</strong
+                >New Listening Time = Original Duration Ã· Playback Speed</strong
               >
             </p>
             <p class="text-light text-sm mt-2">
-              Example: 10-hour audiobook at 2x speed = 10 ÷ 2 = 5 hours
+              Example: 10-hour audiobook at 2x speed = 10 Ã· 2 = 5 hours
             </p>
           </div>
 
@@ -459,7 +465,7 @@
             <h4 class="text-primary font-semibold mb-3">Core Formulas:</h4>
             <ul class="text-text space-y-2">
               <li>
-                <strong>Time Reduction:</strong> New Time = Original Time ÷
+                <strong>Time Reduction:</strong> New Time = Original Time Ã·
                 Speed Multiplier
               </li>
               <li>
@@ -467,11 +473,11 @@
                 Time
               </li>
               <li>
-                <strong>Percentage Saved:</strong> % Saved = (Saved Time ÷
-                Original Time) × 100
+                <strong>Percentage Saved:</strong> % Saved = (Saved Time Ã·
+                Original Time) Ã— 100
               </li>
               <li>
-                <strong>Speed Efficiency:</strong> Efficiency = (Speed - 1) ×
+                <strong>Speed Efficiency:</strong> Efficiency = (Speed - 1) Ã—
                 100%
               </li>
             </ul>
@@ -515,9 +521,9 @@
               <h5 class="text-primary font-semibold mb-2">Audible Speed Options:</h5>
               <p class="text-text text-sm mb-2">Audible supports speeds from 0.5x to 3.5x in increments of 0.05x</p>
               <ul class="text-text text-xs space-y-1">
-                <li>• Most popular: 1.25x, 1.5x, 2x</li>
-                <li>• Premium feature: Variable speed</li>
-                <li>• Works on mobile & desktop apps</li>
+                <li>â€¢ Most popular: 1.25x, 1.5x, 2x</li>
+                <li>â€¢ Premium feature: Variable speed</li>
+                <li>â€¢ Works on mobile & desktop apps</li>
               </ul>
             </div>
             <div class="bg-broder border border-accent rounded-lg p-4">
@@ -649,7 +655,7 @@
                 How accurate is the audiobook time calculation?
               </h4>
               <p class="text-text text-sm">
-                Our calculator provides 99.9% accurate mathematical calculations using the formula: New Time = Original Duration ÷ Speed. Actual listening time may vary by 1-2% due to pauses, rewinds, or variable narrator speeds.
+                Our calculator provides 99.9% accurate mathematical calculations using the formula: New Time = Original Duration Ã· Speed. Actual listening time may vary by 1-2% due to pauses, rewinds, or variable narrator speeds.
               </p>
             </div>
             <div class="bg-broder border border-accent rounded-lg p-4">
@@ -696,19 +702,19 @@
             <div class="bg-broder border border-accent rounded-lg p-4">
               <h4 class="text-primary font-semibold mb-2">Media & Learning Tools:</h4>
               <ul class="text-text text-sm space-y-1">
-                <li>• <a href="/podcast-revenue-calculator" class="text-accent hover:text-primary">Podcast Revenue Calculator</a></li>
-                <li>• <a href="/youtube-optimizer" class="text-accent hover:text-primary">YouTube Video Length Optimizer</a></li>
-                <li>• <a href="/language-learning-time" class="text-accent hover:text-primary">Language Learning Time Calculator</a></li>
-                <li>• <a href="/social-engagement-calculator" class="text-accent hover:text-primary">Social Engagement Calculator</a></li>
+                <li>â€¢ <a href="/PodcastRevenue/" class="text-accent hover:text-primary">Podcast Revenue Calculator</a></li>
+                <li>â€¢ <a href="/YouTubeOptimizer/" class="text-accent hover:text-primary">YouTube Video Length Optimizer</a></li>
+                <li>â€¢ <a href="/LanguageLearningTime/" class="text-accent hover:text-primary">Language Learning Time Calculator</a></li>
+                <li>â€¢ <a href="/SocialEngagement/" class="text-accent hover:text-primary">Social Engagement Calculator</a></li>
               </ul>
             </div>
             <div class="bg-broder border border-accent rounded-lg p-4">
               <h4 class="text-primary font-semibold mb-2">Productivity & Time Tools:</h4>
               <ul class="text-text text-sm space-y-1">
-                <li>• <a href="/habit-streak-probability" class="text-accent hover:text-primary">Habit Streak Probability Calculator</a></li>
-                <li>• <a href="/sleep-debt-recovery" class="text-accent hover:text-primary">Sleep Debt Recovery Calculator</a></li>
-                <li>• <a href="/time-zone-coordinator" class="text-accent hover:text-primary">Time Zone Coordinator</a></li>
-                <li>• <a href="/workout-rest-day" class="text-accent hover:text-primary">Workout Rest Day Optimizer</a></li>
+                <li>â€¢ <a href="/HabitStreakProbability/" class="text-accent hover:text-primary">Habit Streak Probability Calculator</a></li>
+                <li>â€¢ <a href="/SleepDebtRecovery/" class="text-accent hover:text-primary">Sleep Debt Recovery Calculator</a></li>
+                <li>â€¢ <a href="/TimeZoneCoordinator/" class="text-accent hover:text-primary">Time Zone Coordinator</a></li>
+                <li>â€¢ <a href="/WorkoutRestDay/" class="text-accent hover:text-primary">Workout Rest Day Optimizer</a></li>
               </ul>
             </div>
           </div>
@@ -728,22 +734,22 @@
             class="bg-gradient-to-r from-primary to-accent rounded-lg p-6 text-center mb-8"
           >
             <h4 class="text-white font-bold text-xl mb-3">
-              🚀 Start Optimizing Your Audiobook Experience Today!
+              ðŸš€ Start Optimizing Your Audiobook Experience Today!
             </h4>
             <p class="text-white/90 text-base mb-4">
               Use our free audiobook speed calculator to save hours of listening time and consume more content efficiently. Perfect for students, professionals, and lifelong learners.
             </p>
             <div class="grid md:grid-cols-3 gap-4 text-white/90 text-sm">
               <div>
-                <strong>📚 50,000+</strong><br>
+                <strong>ðŸ“š 50,000+</strong><br>
                 Calculations performed
               </div>
               <div>
-                <strong>⏱️ 10,000+</strong><br>
+                <strong>â±ï¸ 10,000+</strong><br>
                 Hours saved by users
               </div>
               <div>
-                <strong>⭐ 4.9/5</strong><br>
+                <strong>â­ 4.9/5</strong><br>
                 User satisfaction rating
               </div>
             </div>
@@ -751,14 +757,14 @@
           
           <div class="bg-broder border border-accent rounded-lg p-6 mb-6">
             <h4 class="text-primary font-bold text-lg mb-3">
-              📊 Pro Tips for Maximum Time Savings:
+              ðŸ“Š Pro Tips for Maximum Time Savings:
             </h4>
             <ul class="text-text space-y-2">
-              <li>• <strong>Start slow:</strong> Begin with 1.25x speed and gradually increase</li>
-              <li>• <strong>Genre matters:</strong> Use higher speeds for familiar topics</li>
-              <li>• <strong>Take breaks:</strong> Pause every 45-60 minutes for better retention</li>
-              <li>• <strong>Use bookmarks:</strong> Mark important sections for review at normal speed</li>
-              <li>• <strong>Practice regularly:</strong> Your brain adapts to faster speeds over time</li>
+              <li>â€¢ <strong>Start slow:</strong> Begin with 1.25x speed and gradually increase</li>
+              <li>â€¢ <strong>Genre matters:</strong> Use higher speeds for familiar topics</li>
+              <li>â€¢ <strong>Take breaks:</strong> Pause every 45-60 minutes for better retention</li>
+              <li>â€¢ <strong>Use bookmarks:</strong> Mark important sections for review at normal speed</li>
+              <li>â€¢ <strong>Practice regularly:</strong> Your brain adapts to faster speeds over time</li>
             </ul>
           </div>
         </div>
@@ -783,10 +789,10 @@
             <div class="bg-broder border border-accent rounded-lg p-4">
               <h4 class="text-primary font-semibold mb-2">Research Highlights:</h4>
               <ul class="text-text text-sm space-y-1">
-                <li>• Optimal speed: 1.5x-2x for most content types</li>
-                <li>• Comprehension drops <5% at 2x speed</li>
-                <li>• Memory retention remains stable up to 2.25x</li>
-                <li>• Practice improves speed tolerance significantly</li>
+                <li>â€¢ Optimal speed: 1.5x-2x for most content types</li>
+                <li>â€¢ Comprehension drops <5% at 2x speed</li>
+                <li>â€¢ Memory retention remains stable up to 2.25x</li>
+                <li>â€¢ Practice improves speed tolerance significantly</li>
               </ul>
             </div>
           </div>
@@ -801,10 +807,10 @@
             <div class="bg-broder border border-accent rounded-lg p-4">
               <h4 class="text-primary font-semibold mb-2">Technical Specifications:</h4>
               <ul class="text-text text-sm space-y-1">
-                <li>• Precision: 99.95% accuracy</li>
-                <li>• Speed range: 0.1x to 50x supported</li>
-                <li>• Time formats: Hours, minutes, seconds</li>
-                <li>• Platform compatibility: Universal</li>
+                <li>â€¢ Precision: 99.95% accuracy</li>
+                <li>â€¢ Speed range: 0.1x to 50x supported</li>
+                <li>â€¢ Time formats: Hours, minutes, seconds</li>
+                <li>â€¢ Platform compatibility: Universal</li>
               </ul>
             </div>
           </div>
@@ -846,6 +852,7 @@
 
     <script src="../src/components/navbar.js"></script>
     <script src="../src/components/footer.js"></script>
+    <script src="../src/utils/security.js"></script>
     <script src="script.js"></script>
     
     <!-- Additional SEO JavaScript -->
@@ -872,6 +879,7 @@
     </script>
   </body>
 </html>
+
 
 
 

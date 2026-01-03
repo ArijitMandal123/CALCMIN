@@ -1,3 +1,12 @@
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('linkedin-form');
     const followerCountInput = document.getElementById('follower-count');
@@ -310,17 +319,17 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="space-y-2 text-sm">
                             <div class="bg-dark border border-accent rounded p-3">
                                 <strong class="text-accent">Optimization Score:</strong> 
-                                <span class="${optimizationColor}">${prediction.optimizationScore}/100</span>
+                                <span class="${sanitizeText(optimizationColor)}">${sanitizeText(prediction.optimizationScore)}/100</span>
                             </div>
                             <div class="bg-dark border border-accent rounded p-3">
                                 <strong class="text-accent">Engagement Rate:</strong> 
-                                <span class="${engagementColor}">${prediction.engagementRate.toFixed(1)}%</span>
+                                <span class="${sanitizeText(engagementColor)}">${prediction.engagementRate.toFixed(1)}%</span>
                             </div>
                             <div class="bg-dark border border-accent rounded p-3">
-                                <strong class="text-accent">Industry Benchmark:</strong> ${prediction.industryBenchmark}%
+                                <strong class="text-accent">Industry Benchmark:</strong> ${sanitizeText(prediction.industryBenchmark)}%
                             </div>
                             <div class="bg-dark border border-accent rounded p-3">
-                                <strong class="text-accent">Timing:</strong> ${prediction.timeOptimization}
+                                <strong class="text-accent">Timing:</strong> ${sanitizeText(prediction.timeOptimization)}
                             </div>
                         </div>
                     </div>
@@ -328,7 +337,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 ${prediction.recommendations.length > 0 ? `
                 <div class="mb-6">
-                    <h3 class="text-lg font-semibold text-primary mb-3">💡 Optimization Recommendations</h3>
+                    <h3 class="text-lg font-semibold text-primary mb-3">ðŸ’¡ Optimization Recommendations</h3>
                     <ul class="space-y-2">
                         ${prediction.recommendations.map(rec => `
                             <li class="flex items-start gap-2 text-text">
@@ -342,16 +351,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 <div class="grid md:grid-cols-2 gap-4">
                     <div class="bg-dark border border-accent rounded p-4">
-                        <h4 class="text-primary font-semibold mb-2">📊 Performance vs Industry</h4>
+                        <h4 class="text-primary font-semibold mb-2">ðŸ“Š Performance vs Industry</h4>
                         <div class="text-sm text-text">
                             ${prediction.engagementRate > prediction.industryBenchmark ? 
-                                `<span class="text-green-400">Above average!</span> Your predicted ${prediction.engagementRate.toFixed(1)}% beats the ${prediction.industryBenchmark}% industry benchmark.` :
-                                `<span class="text-yellow-400">Room for improvement.</span> Industry average is ${prediction.industryBenchmark}%, you're predicted at ${prediction.engagementRate.toFixed(1)}%.`
+                                `<span class="text-green-400">Above average!</span> Your predicted ${prediction.engagementRate.toFixed(1)}% beats the ${sanitizeText(prediction.industryBenchmark)}% industry benchmark.` :
+                                `<span class="text-yellow-400">Room for improvement.</span> Industry average is ${sanitizeText(prediction.industryBenchmark)}%, you're predicted at ${prediction.engagementRate.toFixed(1)}%.`
                             }
                         </div>
                     </div>
                     <div class="bg-dark border border-accent rounded p-4">
-                        <h4 class="text-primary font-semibold mb-2">🎯 Reach Potential</h4>
+                        <h4 class="text-primary font-semibold mb-2">ðŸŽ¯ Reach Potential</h4>
                         <div class="text-sm text-text">
                             Your post could reach <strong>${prediction.impressions.toLocaleString()}</strong> people 
                             (${((prediction.impressions / parseInt(followerCountInput.value)) * 100).toFixed(1)}% of your network)
@@ -360,7 +369,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 
                 <div class="mt-6 bg-gradient-to-r from-primary/20 to-accent/20 rounded-lg p-4 text-center">
-                    <div class="text-primary font-semibold mb-2">🚀 LinkedIn Success Prediction</div>
+                    <div class="text-primary font-semibold mb-2">ðŸš€ LinkedIn Success Prediction</div>
                     <div class="text-sm text-text">
                         Expected <strong>${prediction.totalEngagement.toLocaleString()} total engagements</strong> 
                         with <strong>${prediction.engagementRate.toFixed(1)}% engagement rate</strong>

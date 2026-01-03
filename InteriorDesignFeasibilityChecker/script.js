@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('design-feasibility-form');
     
     form.addEventListener('submit', function(e) {
@@ -229,6 +229,12 @@ function displayResults(results) {
     const resultsDiv = document.getElementById('results');
     const contentDiv = document.getElementById('result-content');
     
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+    
     const feasibilityLevel = results.feasibilityScore >= 8 ? 'Excellent' : 
                            results.feasibilityScore >= 6 ? 'Good' : 
                            results.feasibilityScore >= 4 ? 'Challenging' : 'Difficult';
@@ -241,11 +247,11 @@ function displayResults(results) {
         <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
             <h3 class="text-2xl font-bold text-primary mb-4">Design Feasibility Assessment</h3>
             
-            <div class="bg-${feasibilityColor}-900/20 border border-${feasibilityColor}-600 rounded p-6 mb-6">
+            <div class="bg-${sanitizeText(feasibilityColor)}-900/20 border border-${sanitizeText(feasibilityColor)}-600 rounded p-6 mb-6">
                 <div class="flex items-center mb-4">
-                    <div class="text-6xl font-bold text-${feasibilityColor}-400 mr-4">${results.feasibilityScore}/10</div>
+                    <div class="text-6xl font-bold text-${sanitizeText(feasibilityColor)}-400 mr-4">${sanitizeText(results.feasibilityScore)}/10</div>
                     <div>
-                        <h4 class="text-2xl font-bold text-${feasibilityColor}-400">${feasibilityLevel} Feasibility</h4>
+                        <h4 class="text-2xl font-bold text-${sanitizeText(feasibilityColor)}-400">${escapeHtml(feasibilityLevel)} Feasibility</h4>
                         <p class="text-light">
                             ${results.feasibilityScore >= 8 ? 'Your design concept is highly feasible within your budget!' : 
                               results.feasibilityScore >= 6 ? 'Your design concept is achievable with some adjustments.' : 
@@ -270,7 +276,7 @@ function displayResults(results) {
                         </div>
                         <div class="flex justify-between">
                             <span class="text-light">Cost per Sq Ft:</span>
-                            <span class="font-semibold">$${results.costPerSqFt}</span>
+                            <span class="font-semibold">$${sanitizeText(results.costPerSqFt)}</span>
                         </div>
                         ${results.diySavingsAmount > 0 ? `
                         <div class="flex justify-between">
@@ -320,10 +326,10 @@ function displayResults(results) {
                 <div class="grid md:grid-cols-3 gap-4">
                     ${Object.values(results.phasedPlan).map(phase => `
                         <div class="bg-broder p-4 rounded">
-                            <h5 class="font-semibold text-accent mb-2">${phase.name} (${phase.percentage}%)</h5>
+                            <h5 class="font-semibold text-accent mb-2">${phase.name} (${sanitizeText(phase.percentage)}%)</h5>
                             <p class="text-lg font-bold text-primary mb-2">$${phase.cost.toLocaleString()}</p>
                             <ul class="text-sm text-light space-y-1">
-                                ${phase.items.map(item => `<li>• ${item}</li>`).join('')}
+                                ${phase.items.map(item => `<li>â€¢ ${escapeHtml(item)}</li>`).join('')}
                             </ul>
                         </div>
                     `).join('')}
@@ -334,7 +340,7 @@ function displayResults(results) {
             <div class="bg-blue-900/20 border border-blue-600 rounded p-4 mb-6">
                 <h5 class="font-semibold text-blue-400 mb-2">Recommendations</h5>
                 <ul class="text-sm text-light space-y-1">
-                    ${results.recommendations.map(rec => `<li>• ${rec}</li>`).join('')}
+                    ${results.recommendations.map(rec => `<li>â€¢ ${escapeHtml(rec)}</li>`).join('')}
                 </ul>
             </div>
             ` : ''}
@@ -343,7 +349,7 @@ function displayResults(results) {
             <div class="bg-green-900/20 border border-green-600 rounded p-4 mb-6">
                 <h5 class="font-semibold text-green-400 mb-2">Alternative Approaches</h5>
                 <ul class="text-sm text-light space-y-1">
-                    ${results.alternatives.map(alt => `<li>• ${alt}</li>`).join('')}
+                    ${results.alternatives.map(alt => `<li>â€¢ ${escapeHtml(alt)}</li>`).join('')}
                 </ul>
             </div>
             ` : ''}
@@ -351,11 +357,11 @@ function displayResults(results) {
             <div class="bg-yellow-900/20 border border-yellow-600 rounded p-4">
                 <h5 class="font-semibold text-yellow-400 mb-2">Important Notes</h5>
                 <ul class="text-sm text-light space-y-1">
-                    <li>• Costs are estimates and may vary by location and specific items chosen</li>
-                    <li>• Consider shopping sales, clearance, and secondhand for better deals</li>
-                    <li>• Factor in delivery, assembly, and installation costs</li>
-                    <li>• Allow 10-20% buffer for unexpected expenses</li>
-                    <li>• Consult with interior designers for professional guidance</li>
+                    <li>â€¢ Costs are estimates and may vary by location and specific items chosen</li>
+                    <li>â€¢ Consider shopping sales, clearance, and secondhand for better deals</li>
+                    <li>â€¢ Factor in delivery, assembly, and installation costs</li>
+                    <li>â€¢ Allow 10-20% buffer for unexpected expenses</li>
+                    <li>â€¢ Consult with interior designers for professional guidance</li>
                 </ul>
             </div>
         </div>
@@ -371,17 +377,28 @@ function showPopup(message) {
     
     const popup = document.createElement('div');
     popup.className = 'bg-broder border border-accent rounded-lg p-6 max-w-md mx-4';
+    
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+    
     popup.innerHTML = `
         <div class="flex items-center mb-4">
             <span class="material-icons text-primary mr-2">info</span>
             <h3 class="text-lg font-semibold text-primary">Input Validation</h3>
         </div>
-        <p class="text-light mb-4">${message}</p>
-        <button onclick="this.closest('.fixed').remove()" 
-                class="w-full bg-primary hover:bg-accent text-white font-medium py-2 px-4 rounded transition duration-200">
+        <p class="text-light mb-4">${escapeHtml(message)}</p>
+        <button class="w-full bg-primary hover:bg-accent text-white font-medium py-2 px-4 rounded transition duration-200 close-btn">
             OK
         </button>
     `;
+    
+    const closeBtn = popup.querySelector('.close-btn');
+    closeBtn.addEventListener('click', () => {
+        overlay.remove();
+    });
     
     overlay.appendChild(popup);
     document.body.appendChild(overlay);

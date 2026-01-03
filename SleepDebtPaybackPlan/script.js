@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('sleep-form');
     const resultsDiv = document.getElementById('results');
     const resultContent = document.getElementById('result-content');
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
             recommendations.push({
                 type: 'environment',
                 title: 'Optimize Sleep Environment',
-                message: 'Ensure your bedroom is cool (65-68°F), dark, and quiet. Consider blackout curtains and white noise.',
+                message: 'Ensure your bedroom is cool (65-68Â°F), dark, and quiet. Consider blackout curtains and white noise.',
                 priority: 'medium'
             });
         }
@@ -273,15 +273,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 <div class="grid md:grid-cols-3 gap-4 mb-6">
                     <div class="bg-dark p-4 rounded border border-accent text-center">
-                        <div class="text-2xl font-bold ${debtColor}">${Math.abs(analysis.averageDebt)}h</div>
+                        <div class="text-2xl font-bold ${sanitizeText(debtColor)}">${Math.abs(analysis.averageDebt)}h</div>
                         <div class="text-sm text-light">Average Sleep Debt</div>
                     </div>
                     <div class="bg-dark p-4 rounded border border-accent text-center">
-                        <div class="text-2xl font-bold ${analysis.debtSeverity.color}">${analysis.debtSeverity.severity}</div>
+                        <div class="text-2xl font-bold ${sanitizeText(analysis.debtSeverity.color)}">${sanitizeText(analysis.debtSeverity.severity)}</div>
                         <div class="text-sm text-light">Severity Level</div>
                     </div>
                     <div class="bg-dark p-4 rounded border border-accent text-center">
-                        <div class="text-2xl font-bold text-primary">${analysis.recoveryPlan.adjustedTimeline}w</div>
+                        <div class="text-2xl font-bold text-primary">${sanitizeText(analysis.recoveryPlan.adjustedTimeline)}w</div>
                         <div class="text-sm text-light">Recovery Timeline</div>
                     </div>
                 </div>
@@ -291,14 +291,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="grid md:grid-cols-2 gap-4">
                         <div class="bg-dark p-4 rounded border border-accent">
                             <h5 class="font-medium text-accent mb-2">Recent Debt (7 days)</h5>
-                            <div class="text-2xl font-bold ${debtColor} mb-1">${Math.abs(analysis.weeklyDebt)}h</div>
+                            <div class="text-2xl font-bold ${sanitizeText(debtColor)} mb-1">${Math.abs(analysis.weeklyDebt)}h</div>
                             <div class="text-sm text-light">
                                 ${analysis.weeklyDebt > 0 ? 'Sleep deficit' : 'Sleep surplus'} from last week
                             </div>
                         </div>
                         <div class="bg-dark p-4 rounded border border-accent">
                             <h5 class="font-medium text-accent mb-2">Monthly Pattern (30 days)</h5>
-                            <div class="text-2xl font-bold ${debtColor} mb-1">${Math.abs(analysis.monthlyDebt)}h</div>
+                            <div class="text-2xl font-bold ${sanitizeText(debtColor)} mb-1">${Math.abs(analysis.monthlyDebt)}h</div>
                             <div class="text-sm text-light">
                                 ${analysis.monthlyDebt > 0 ? 'Chronic sleep debt' : 'Good sleep pattern'} over past month
                             </div>
@@ -315,15 +315,15 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <div class="space-y-2 text-sm">
                                     <div class="flex justify-between">
                                         <span class="text-light">Current average:</span>
-                                        <span class="text-text">${data.recentSleep}h/night</span>
+                                        <span class="text-text">${sanitizeText(data.recentSleep)}h/night</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span class="text-light">Recovery target:</span>
-                                        <span class="text-primary font-medium">${analysis.recoveryPlan.targetSleep}h/night</span>
+                                        <span class="text-primary font-medium">${sanitizeText(analysis.recoveryPlan.targetSleep)}h/night</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span class="text-light">Extra sleep needed:</span>
-                                        <span class="text-accent">+${analysis.recoveryPlan.dailyExtra}h/day</span>
+                                        <span class="text-accent">+${sanitizeText(analysis.recoveryPlan.dailyExtra)}h/day</span>
                                     </div>
                                 </div>
                             </div>
@@ -332,21 +332,21 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <div class="space-y-2 text-sm">
                                     <div class="flex justify-between">
                                         <span class="text-light">Base timeline:</span>
-                                        <span class="text-text">${analysis.recoveryPlan.timeline} weeks</span>
+                                        <span class="text-text">${sanitizeText(analysis.recoveryPlan.timeline)} weeks</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span class="text-light">Adjusted for lifestyle:</span>
-                                        <span class="text-primary font-medium">${analysis.recoveryPlan.adjustedTimeline} weeks</span>
+                                        <span class="text-primary font-medium">${sanitizeText(analysis.recoveryPlan.adjustedTimeline)} weeks</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span class="text-light">Expected recovery:</span>
-                                        <span class="text-accent">${analysis.recoveryPlan.recoveryPercentage}%</span>
+                                        <span class="text-accent">${sanitizeText(analysis.recoveryPlan.recoveryPercentage)}%</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="text-sm text-light bg-broder p-3 rounded">
-                            <strong>Recovery Strategy:</strong> Add ${analysis.recoveryPlan.dailyExtra} hours to your nightly sleep for ${analysis.recoveryPlan.adjustedTimeline} weeks. This gradual approach will help you recover approximately ${analysis.recoveryPlan.recoveryPercentage}% of your sleep debt while maintaining a sustainable schedule.
+                            <strong>Recovery Strategy:</strong> Add ${sanitizeText(analysis.recoveryPlan.dailyExtra)} hours to your nightly sleep for ${sanitizeText(analysis.recoveryPlan.adjustedTimeline)} weeks. This gradual approach will help you recover approximately ${sanitizeText(analysis.recoveryPlan.recoveryPercentage)}% of your sleep debt while maintaining a sustainable schedule.
                         </div>
                     </div>
                 </div>
@@ -358,14 +358,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         ${analysis.healthImpact.map(impact => `
                             <div class="bg-dark p-4 rounded border-l-4 ${impact.severity === 'High' ? 'border-red-500' : 'border-yellow-500'}">
                                 <div class="flex justify-between items-start mb-2">
-                                    <h5 class="font-medium text-accent">${impact.category}</h5>
-                                    <span class="text-xs px-2 py-1 rounded ${impact.severity === 'High' ? 'bg-red-600' : 'bg-yellow-600'} text-white">${impact.severity}</span>
+                                    <h5 class="font-medium text-accent">${sanitizeText(impact.category)}</h5>
+                                    <span class="text-xs px-2 py-1 rounded ${impact.severity === 'High' ? 'bg-red-600' : 'bg-yellow-600'} text-white">${sanitizeText(impact.severity)}</span>
                                 </div>
                                 <div class="text-sm text-light mb-2">
                                     <strong>Current effects:</strong> ${impact.effects.join(', ')}
                                 </div>
                                 <div class="text-xs text-light">
-                                    <strong>Recovery time:</strong> ${impact.recoveryTime}
+                                    <strong>Recovery time:</strong> ${sanitizeText(impact.recoveryTime)}
                                 </div>
                             </div>
                         `).join('')}
@@ -383,9 +383,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <span class="material-icons text-sm ${rec.priority === 'high' ? 'text-red-400' : 'text-yellow-400'}">
                                         ${rec.priority === 'high' ? 'priority_high' : 'info'}
                                     </span>
-                                    <span class="font-medium text-sm">${rec.title}</span>
+                                    <span class="font-medium text-sm">${sanitizeText(rec.title)}</span>
                                 </div>
-                                <div class="text-sm text-light">${rec.message}</div>
+                                <div class="text-sm text-light">${sanitizeText(rec.message)}</div>
                             </div>
                         `).join('')}
                     </div>

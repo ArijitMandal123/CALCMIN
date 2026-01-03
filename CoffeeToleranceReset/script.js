@@ -1,6 +1,12 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     document.getElementById('coffee-form').addEventListener('submit', calculateResetPlan);
 });
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
 
 function calculateResetPlan(e) {
     e.preventDefault();
@@ -273,18 +279,18 @@ function displayResults(analysis) {
                 <div class="bg-dark p-4 rounded border border-accent">
                     <h3 class="font-medium text-accent mb-2">Current Status</h3>
                     <div class="space-y-2 text-sm">
-                        <div>Daily Caffeine: <span class="text-primary font-medium">${analysis.currentCaffeine}mg</span></div>
-                        <div>Target Caffeine: <span class="text-primary font-medium">${analysis.targetCaffeine}mg</span></div>
+                        <div>Daily Caffeine: <span class="text-primary font-medium">${sanitizeText(analysis.currentCaffeine)}mg</span></div>
+                        <div>Target Caffeine: <span class="text-primary font-medium">${sanitizeText(analysis.targetCaffeine)}mg</span></div>
                         <div>Total Reduction: <span class="text-primary font-medium">${analysis.currentCaffeine - analysis.targetCaffeine}mg</span></div>
-                        <div>Timeline: <span class="text-primary font-medium">${analysis.timeline} weeks</span></div>
+                        <div>Timeline: <span class="text-primary font-medium">${sanitizeText(analysis.timeline)} weeks</span></div>
                     </div>
                 </div>
                 
                 <div class="bg-dark p-4 rounded border border-accent">
                     <h3 class="font-medium text-accent mb-2">Withdrawal Risk</h3>
                     <div class="space-y-2 text-sm">
-                        <div>Risk Level: <span class="${analysis.withdrawalRisk.color} font-medium">${analysis.withdrawalRisk.level}</span></div>
-                        <div class="text-light">${analysis.withdrawalRisk.description}</div>
+                        <div>Risk Level: <span class="${sanitizeText(analysis.withdrawalRisk.color)} font-medium">${escapeHtml(analysis.withdrawalRisk.level)}</span></div>
+                        <div class="text-light">${escapeHtml(analysis.withdrawalRisk.description)}</div>
                     </div>
                 </div>
             </div>
@@ -298,10 +304,10 @@ function displayResults(analysis) {
                         <div class="bg-dark p-3 rounded border border-accent">
                             <div class="flex justify-between items-center mb-2">
                                 <span class="font-medium text-sm">Week ${week.week}</span>
-                                <span class="text-primary font-medium">${week.caffeine}mg (${week.cups} cups)</span>
+                                <span class="text-primary font-medium">${sanitizeText(week.caffeine)}mg (${sanitizeText(week.cups)} cups)</span>
                             </div>
                             <div class="text-xs text-light">
-                                ${week.strategy.map(s => `• ${s}`).join('<br>')}
+                                ${week.strategy.map(s => `â€¢ ${escapeHtml(s)}`).join('<br>')}
                             </div>
                         </div>
                     `).join('')}
@@ -316,10 +322,10 @@ function displayResults(analysis) {
                     ${analysis.recommendations.map(rec => `
                         <div class="bg-dark p-3 rounded border-l-4 border-primary">
                             <div class="flex justify-between items-start mb-1">
-                                <span class="font-medium text-sm">${rec.category}</span>
-                                <span class="text-xs px-2 py-1 rounded ${rec.priority === 'Critical' ? 'bg-red-600' : rec.priority === 'High' ? 'bg-orange-600' : rec.priority === 'Medium' ? 'bg-yellow-600' : 'bg-green-600'} text-white">${rec.priority}</span>
+                                <span class="font-medium text-sm">${escapeHtml(rec.category)}</span>
+                                <span class="text-xs px-2 py-1 rounded ${rec.priority === 'Critical' ? 'bg-red-600' : rec.priority === 'High' ? 'bg-orange-600' : rec.priority === 'Medium' ? 'bg-yellow-600' : 'bg-green-600'} text-white">${escapeHtml(rec.priority)}</span>
                             </div>
-                            <div class="text-sm text-light">${rec.advice}</div>
+                            <div class="text-sm text-light">${escapeHtml(rec.advice)}</div>
                         </div>
                     `).join('')}
                 </div>
@@ -330,20 +336,20 @@ function displayResults(analysis) {
                     <span class="material-icons text-lg">tips_and_updates</span> Success Tips
                 </h3>
                 <ul class="space-y-1 text-sm text-light">
-                    <li>• Track your progress daily to stay motivated</li>
-                    <li>• Replace coffee rituals with herbal tea or decaf</li>
-                    <li>• Exercise regularly to boost natural energy</li>
-                    <li>• Stay hydrated - dehydration worsens withdrawal</li>
-                    <li>• Get adequate sleep to reduce caffeine dependence</li>
+                    <li>â€¢ Track your progress daily to stay motivated</li>
+                    <li>â€¢ Replace coffee rituals with herbal tea or decaf</li>
+                    <li>â€¢ Exercise regularly to boost natural energy</li>
+                    <li>â€¢ Stay hydrated - dehydration worsens withdrawal</li>
+                    <li>â€¢ Get adequate sleep to reduce caffeine dependence</li>
                 </ul>
             </div>
             
             <div class="mt-6 p-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded border border-primary/30">
-                <h3 class="font-medium text-primary mb-2">🎯 Reset Success Strategy</h3>
+                <h3 class="font-medium text-primary mb-2">ðŸŽ¯ Reset Success Strategy</h3>
                 <div class="text-sm text-light space-y-1">
-                    <p>• Your ${analysis.withdrawalRisk.level.toLowerCase()} withdrawal risk suggests a ${analysis.timeline}-week timeline is appropriate</p>
-                    <p>• Focus on gradual reduction rather than sudden elimination for lasting results</p>
-                    <p>• After reset, maintain 1-2 cups daily maximum to preserve sensitivity</p>
+                    <p>â€¢ Your ${escapeHtml(analysis.withdrawalRisk.level.toLowerCase())} withdrawal risk suggests a ${sanitizeText(analysis.timeline)}-week timeline is appropriate</p>
+                    <p>â€¢ Focus on gradual reduction rather than sudden elimination for lasting results</p>
+                    <p>â€¢ After reset, maintain 1-2 cups daily maximum to preserve sensitivity</p>
                 </div>
             </div>
         </div>

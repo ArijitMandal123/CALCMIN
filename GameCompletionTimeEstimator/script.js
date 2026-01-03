@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('game-time-form');
     const gameSelect = document.getElementById('gameTitle');
     const customSection = document.getElementById('custom-game-section');
@@ -262,25 +262,31 @@ function displayResults(results) {
     const resultsDiv = document.getElementById('results');
     const contentDiv = document.getElementById('result-content');
 
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
     const html = `
         <div class="bg-primary/10 border-l-4 border-primary p-6 mb-6">
-            <h3 class="text-2xl font-bold text-primary mb-2">Completion Time Estimate for ${results.gameInfo.name}</h3>
+            <h3 class="text-2xl font-bold text-primary mb-2">Completion Time Estimate for ${escapeHtml(results.gameInfo.name)}</h3>
             <p class="text-light">Based on your playstyle and gaming schedule</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-6 mb-6">
             <div class="bg-broder p-6 rounded-lg border border-accent text-center">
-                <div class="text-3xl font-bold text-primary mb-2">${results.estimatedHours}</div>
+                <div class="text-3xl font-bold text-primary mb-2">${sanitizeText(results.estimatedHours)}</div>
                 <div class="text-sm text-light mb-1">Hours to Complete</div>
                 <div class="text-xs text-accent">Your Playstyle</div>
             </div>
             <div class="bg-broder p-6 rounded-lg border border-accent text-center">
-                <div class="text-3xl font-bold text-accent mb-2">${results.weeksToComplete}</div>
+                <div class="text-3xl font-bold text-accent mb-2">${sanitizeText(results.weeksToComplete)}</div>
                 <div class="text-sm text-light mb-1">Weeks to Finish</div>
                 <div class="text-xs text-accent">At Your Pace</div>
             </div>
             <div class="bg-broder p-6 rounded-lg border border-accent text-center">
-                <div class="text-3xl font-bold text-yellow-400 mb-2">$${results.valueAssessment.costPerHour}</div>
+                <div class="text-3xl font-bold text-yellow-400 mb-2">$${sanitizeText(results.valueAssessment.costPerHour)}</div>
                 <div class="text-sm text-light mb-1">Cost per Hour</div>
                 <div class="text-xs text-accent">Entertainment Value</div>
             </div>
@@ -292,15 +298,15 @@ function displayResults(results) {
                 <div class="space-y-3">
                     <div class="flex justify-between items-center">
                         <span class="text-light">Story Only</span>
-                        <span class="text-primary font-semibold">${results.scenarios.story.hours}h (${results.scenarios.story.weeks} weeks)</span>
+                        <span class="text-primary font-semibold">${sanitizeText(results.scenarios.story.hours)}h (${sanitizeText(results.scenarios.story.weeks)} weeks)</span>
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-light">Main + Extras</span>
-                        <span class="text-primary font-semibold">${results.scenarios.extras.hours}h (${results.scenarios.extras.weeks} weeks)</span>
+                        <span class="text-primary font-semibold">${sanitizeText(results.scenarios.extras.hours)}h (${sanitizeText(results.scenarios.extras.weeks)} weeks)</span>
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-light">Completionist</span>
-                        <span class="text-primary font-semibold">${results.scenarios.completionist.hours}h (${results.scenarios.completionist.weeks} weeks)</span>
+                        <span class="text-primary font-semibold">${sanitizeText(results.scenarios.completionist.hours)}h (${sanitizeText(results.scenarios.completionist.weeks)} weeks)</span>
                     </div>
                 </div>
             </div>
@@ -310,14 +316,14 @@ function displayResults(results) {
                 <div class="space-y-3">
                     <div class="flex justify-between items-center">
                         <span class="text-light">Worth Rating</span>
-                        <span class="text-primary font-semibold">${results.valueAssessment.worthRating}</span>
+                        <span class="text-primary font-semibold">${escapeHtml(results.valueAssessment.worthRating)}</span>
                     </div>
                     <div class="flex justify-between items-center">
                         <span class="text-light">Time Commitment</span>
-                        <span class="text-primary font-semibold">${results.valueAssessment.timeCommitmentWeeks} weeks</span>
+                        <span class="text-primary font-semibold">${sanitizeText(results.valueAssessment.timeCommitmentWeeks)} weeks</span>
                     </div>
                     <div class="text-sm text-light mt-3">
-                        ${results.valueAssessment.worthDescription}
+                        ${escapeHtml(results.valueAssessment.worthDescription)}
                     </div>
                 </div>
             </div>
@@ -327,14 +333,14 @@ function displayResults(results) {
             <h4 class="text-xl font-bold text-accent mb-4">Your Playstyle Analysis</h4>
             <div class="grid md:grid-cols-2 gap-6">
                 <div>
-                    <h5 class="font-semibold text-primary mb-2">Focus: ${results.playstyleAnalysis.focus}</h5>
-                    <div class="text-sm text-light mb-3">${results.playstyleAnalysis.timeRange}</div>
-                    <div class="text-sm text-green-400 mb-2">✓ Benefits:</div>
-                    <div class="text-sm text-light mb-3">${results.playstyleAnalysis.benefits}</div>
+                    <h5 class="font-semibold text-primary mb-2">Focus: ${escapeHtml(results.playstyleAnalysis.focus)}</h5>
+                    <div class="text-sm text-light mb-3">${escapeHtml(results.playstyleAnalysis.timeRange)}</div>
+                    <div class="text-sm text-green-400 mb-2">âœ“ Benefits:</div>
+                    <div class="text-sm text-light mb-3">${escapeHtml(results.playstyleAnalysis.benefits)}</div>
                 </div>
                 <div>
-                    <div class="text-sm text-yellow-400 mb-2">⚠ Considerations:</div>
-                    <div class="text-sm text-light">${results.playstyleAnalysis.drawbacks}</div>
+                    <div class="text-sm text-yellow-400 mb-2">âš  Considerations:</div>
+                    <div class="text-sm text-light">${escapeHtml(results.playstyleAnalysis.drawbacks)}</div>
                 </div>
             </div>
         </div>
@@ -350,8 +356,8 @@ function displayResults(results) {
                                 ${rec.type === 'warning' ? 'warning' : rec.type === 'strategy' ? 'lightbulb' : 'schedule'}
                             </span>
                             <div>
-                                <h5 class="font-semibold text-accent mb-1">${rec.title}</h5>
-                                <p class="text-sm text-light">${rec.message}</p>
+                                <h5 class="font-semibold text-accent mb-1">${escapeHtml(rec.title)}</h5>
+                                <p class="text-sm text-light">${escapeHtml(rec.message)}</p>
                             </div>
                         </div>
                     </div>

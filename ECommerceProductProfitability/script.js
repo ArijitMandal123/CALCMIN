@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('profitability-form');
     const platformSelect = document.getElementById('platform');
     const platformFeeInput = document.getElementById('platformFee');
@@ -207,6 +207,12 @@ function displayResults(results) {
     const resultsDiv = document.getElementById('results');
     const contentDiv = document.getElementById('result-content');
     
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+    
     const getMarginColor = (margin) => {
         if (margin >= 20) return 'text-green-400';
         if (margin >= 15) return 'text-yellow-400';
@@ -216,7 +222,7 @@ function displayResults(results) {
     
     contentDiv.innerHTML = `
         <div class="bg-primary/10 border-l-4 border-primary p-6 mb-6">
-            <h3 class="text-2xl font-bold text-primary mb-4">Profitability Analysis for "${results.data.productName}"</h3>
+            <h3 class="text-2xl font-bold text-primary mb-4">Profitability Analysis for "${escapeHtml(results.data.productName)}"</h3>
             <div class="grid md:grid-cols-3 gap-4">
                 <div class="text-center">
                     <div class="text-3xl font-bold ${getMarginColor(results.netMargin)}">${results.netMargin.toFixed(1)}%</div>
@@ -227,8 +233,8 @@ function displayResults(results) {
                     <div class="text-light">Profit per Unit</div>
                 </div>
                 <div class="text-center">
-                    <div class="text-2xl font-bold ${results.profitabilityLevel.color}">${results.profitabilityLevel.level}</div>
-                    <div class="text-light">${results.profitabilityLevel.description}</div>
+                    <div class="text-2xl font-bold ${sanitizeText(results.profitabilityLevel.color)}">${sanitizeText(results.profitabilityLevel.level)}</div>
+                    <div class="text-light">${sanitizeText(results.profitabilityLevel.description)}</div>
                 </div>
             </div>
         </div>
@@ -319,7 +325,7 @@ function displayResults(results) {
                 <div class="space-y-2 text-sm">
                     <div class="flex justify-between">
                         <span class="text-light">Current Volume:</span>
-                        <span class="text-accent">${results.data.monthlyVolume} units/month</span>
+                        <span class="text-accent">${sanitizeText(results.data.monthlyVolume)} units/month</span>
                     </div>
                     <div class="flex justify-between">
                         <span class="text-light">Break-even Volume:</span>
@@ -347,8 +353,8 @@ function displayResults(results) {
                             ${suggestion.type === 'cost' ? 'trending_down' : suggestion.type === 'pricing' ? 'trending_up' : 'lightbulb'}
                         </span>
                         <div>
-                            <div class="font-semibold text-accent">${suggestion.title}</div>
-                            <div class="text-light text-sm">${suggestion.description}</div>
+                            <div class="font-semibold text-accent">${escapeHtml(suggestion.title)}</div>
+                            <div class="text-light text-sm">${escapeHtml(suggestion.description)}</div>
                         </div>
                     </div>
                 `).join('')}

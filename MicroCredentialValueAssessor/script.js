@@ -1,4 +1,4 @@
-// Micro-Credential Value Assessor Logic
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Micro-Credential Value Assessor Logic
 
 // Credential type data with base scores and multipliers
 const credentialData = {
@@ -322,7 +322,7 @@ function displayResults(results) {
     
     contentDiv.innerHTML = `
         <div class="bg-broder rounded-lg p-6 border border-accent mb-6">
-            <h3 class="text-2xl font-bold text-primary mb-4">Value Assessment: ${results.credentialName}</h3>
+            <h3 class="text-2xl font-bold text-primary mb-4">Value Assessment: ${sanitizeText(results.credentialName)}</h3>
             
             <!-- Overall Rating -->
             <div class="bg-primary/10 border-l-4 border-primary p-6 mb-6">
@@ -330,7 +330,7 @@ function displayResults(results) {
                     <h4 class="font-semibold text-primary">Overall Value Rating</h4>
                     <div class="text-3xl font-bold text-primary">${results.valueRating.toFixed(1)}/10</div>
                 </div>
-                <p class="text-lg ${results.recommendationClass}">${results.recommendation}</p>
+                <p class="text-lg ${sanitizeText(results.recommendationClass)}">${sanitizeText(results.recommendation)}</p>
             </div>
             
             <!-- Key Metrics -->
@@ -344,7 +344,7 @@ function displayResults(results) {
                     <div class="text-sm text-light">Market Demand</div>
                 </div>
                 <div class="bg-dark p-4 rounded border border-accent text-center">
-                    <div class="text-2xl font-bold text-yellow-400">${results.jobPlacementRate}%</div>
+                    <div class="text-2xl font-bold text-yellow-400">${sanitizeText(results.jobPlacementRate)}%</div>
                     <div class="text-sm text-light">Job Placement Rate</div>
                 </div>
             </div>
@@ -380,11 +380,11 @@ function displayResults(results) {
                     <div class="space-y-2 text-sm">
                         <div class="flex justify-between">
                             <span class="text-light">Time to Employment:</span>
-                            <span class="text-text">${results.timeToEmployment} months</span>
+                            <span class="text-text">${sanitizeText(results.timeToEmployment)} months</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="text-light">Credential Type:</span>
-                            <span class="text-text">${results.credentialType}</span>
+                            <span class="text-text">${sanitizeText(results.credentialType)}</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="text-light">Market Position:</span>
@@ -423,7 +423,7 @@ function displayResults(results) {
                 <div class="grid md:grid-cols-2 gap-4">
                     ${results.alternatives.map(alt => `
                         <div class="bg-broder p-3 rounded border border-accent">
-                            <p class="text-sm text-light">• ${alt}</p>
+                            <p class="text-sm text-light">â€¢ ${alt}</p>
                         </div>
                     `).join('')}
                 </div>

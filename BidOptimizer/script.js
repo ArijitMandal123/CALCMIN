@@ -1,3 +1,28 @@
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
+function sanitizeAttribute(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    return input.replace(/[<>"'&]/g, (match) => {
+        const entities = {'<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#x27;', '&': '&amp;'};
+        return entities[match];
+    });
+}
+
+function validateNumber(input, min = -Infinity, max = Infinity) {
+    const num = parseFloat(input);
+    if (isNaN(num)) return null;
+    if (num < min || num > max) return null;
+    return num;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('bid-form');
   const resultsDiv = document.getElementById('results');
@@ -5,6 +30,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
   form.addEventListener('submit', function(e) {
     e.preventDefault();
+    
+    // CSRF Protection
+    if (typeof window.Security !== 'undefined') {
+      const formData = new FormData(this);
+      if (!window.Security.validateCSRF(formData)) {
+        alert('Security token invalid. Please refresh the page.');
+        return;
+      }
+    }
+    
     optimizeBid();
   });
 
@@ -182,6 +217,12 @@ document.addEventListener('DOMContentLoaded', function() {
     return strategies;
   }
 
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
   function displayResults(optimization, formData) {
     const winColor = optimization.winProbability >= 60 ? 'text-green-400' : 
                      optimization.winProbability >= 40 ? 'text-yellow-400' : 'text-red-400';
@@ -195,15 +236,15 @@ document.addEventListener('DOMContentLoaded', function() {
         
         <div class="grid md:grid-cols-3 gap-4 mb-6">
           <div class="bg-dark p-4 rounded border border-accent text-center">
-            <div class="text-2xl font-bold text-primary">$${optimization.optimalRate}</div>
+            <div class="text-2xl font-bold text-primary">$${sanitizeText(optimization.optimalRate)}</div>
             <div class="text-sm text-light">Optimal Hourly Rate</div>
           </div>
           <div class="bg-dark p-4 rounded border border-accent text-center">
-            <div class="text-2xl font-bold text-accent">$${optimization.totalProjectCost.toLocaleString()}</div>
+            <div class="text-2xl font-bold text-accent">$${sanitizeText(optimization.totalProjectCost.toLocaleString())}</div>
             <div class="text-sm text-light">Total Project Cost</div>
           </div>
           <div class="bg-dark p-4 rounded border border-accent text-center">
-            <div class="text-2xl font-bold ${winColor}">${optimization.winProbability}%</div>
+            <div class="text-2xl font-bold ${sanitizeText(winColor)}">${sanitizeText(optimization.winProbability)}%</div>
             <div class="text-sm text-light">Win Probability</div>
           </div>
         </div>
@@ -213,17 +254,17 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="grid md:grid-cols-3 gap-3">
             <div class="p-3 bg-dark rounded border border-accent">
               <div class="font-medium text-green-400">Conservative</div>
-              <div class="text-xl font-bold text-text">$${optimization.priceRange.conservative}</div>
+              <div class="text-xl font-bold text-text">$${sanitizeText(optimization.priceRange.conservative)}</div>
               <div class="text-xs text-light">Higher win rate</div>
             </div>
             <div class="p-3 bg-dark rounded border border-primary">
               <div class="font-medium text-primary">Optimal</div>
-              <div class="text-xl font-bold text-text">$${optimization.priceRange.optimal}</div>
+              <div class="text-xl font-bold text-text">$${sanitizeText(optimization.priceRange.optimal)}</div>
               <div class="text-xs text-light">Recommended</div>
             </div>
             <div class="p-3 bg-dark rounded border border-accent">
               <div class="font-medium text-orange-400">Aggressive</div>
-              <div class="text-xl font-bold text-text">$${optimization.priceRange.aggressive}</div>
+              <div class="text-xl font-bold text-text">$${sanitizeText(optimization.priceRange.aggressive)}</div>
               <div class="text-xs text-light">Higher profit</div>
             </div>
           </div>
@@ -235,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="space-y-2">
               <div class="flex justify-between">
                 <span class="text-light">Client Budget/Hour:</span>
-                <span class="text-text">$${optimization.clientBudgetPerHour}</span>
+                <span class="text-text">$${sanitizeText(optimization.clientBudgetPerHour)}</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-light">Your Rate vs Budget:</span>
@@ -247,7 +288,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="space-y-2">
               <div class="flex justify-between">
                 <span class="text-light">Competition Level:</span>
-                <span class="text-text capitalize">${formData.competitionLevel.replace('-', ' ')}</span>
+                <span class="text-text capitalize">${escapeHtml(formData.competitionLevel.replace('-', ' '))}</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-light">Project Complexity:</span>
@@ -266,9 +307,9 @@ document.addEventListener('DOMContentLoaded', function() {
                   <span class="material-icons text-xs ${item.priority === 'high' ? 'text-red-400' : 'text-yellow-400'}">
                     ${item.priority === 'high' ? 'priority_high' : 'info'}
                   </span>
-                  <span class="font-medium text-text">${item.title}</span>
+                  <span class="font-medium text-text">${sanitizeText(item.title)}</span>
                 </div>
-                <div class="text-sm text-light">${item.description}</div>
+                <div class="text-sm text-light">${sanitizeText(item.description)}</div>
               </div>
             `).join('')}
           </div>

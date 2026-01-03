@@ -1,4 +1,4 @@
-document.getElementById('dorm-form').addEventListener('submit', function(e) {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.getElementById('dorm-form').addEventListener('submit', function(e) {
   e.preventDefault();
   
   const roomLength = parseFloat(document.getElementById('roomLength').value);
@@ -122,11 +122,11 @@ function displayResults(area, efficiency, efficiencyColor, tips, layout, roomTyp
           <div class="text-light text-sm">Square Feet</div>
         </div>
         <div class="bg-dark p-4 rounded text-center">
-          <div class="${sizeColor} text-2xl font-bold">${roomSize}</div>
+          <div class="${sanitizeText(sizeColor)} text-2xl font-bold">${sanitizeText(roomSize)}</div>
           <div class="text-light text-sm">Room Size</div>
         </div>
         <div class="bg-dark p-4 rounded text-center">
-          <div class="${efficiencyColor} text-2xl font-bold">${efficiency}</div>
+          <div class="${sanitizeText(efficiencyColor)} text-2xl font-bold">${sanitizeText(efficiency)}</div>
           <div class="text-light text-sm">Space Rating</div>
         </div>
       </div>
@@ -137,7 +137,7 @@ function displayResults(area, efficiency, efficiencyColor, tips, layout, roomTyp
           <div class="flex justify-between"><span class="text-light">Bed Space:</span><span class="text-text font-medium">${(layout.bed.length * layout.bed.width).toFixed(1)} sq ft</span></div>
           <div class="flex justify-between"><span class="text-light">Desk Space:</span><span class="text-text font-medium">${(layout.desk.length * layout.desk.width).toFixed(1)} sq ft</span></div>
           <div class="flex justify-between"><span class="text-light">Remaining Space:</span><span class="text-text font-medium">${layout.remainingSpace.toFixed(1)} sq ft</span></div>
-          <div class="flex justify-between border-t border-accent pt-2"><span class="text-light">Space Utilization:</span><span class="text-text font-medium">${layout.spaceUtilization}%</span></div>
+          <div class="flex justify-between border-t border-accent pt-2"><span class="text-light">Space Utilization:</span><span class="text-text font-medium">${sanitizeText(layout.spaceUtilization)}%</span></div>
         </div>
       </div>
 
@@ -154,11 +154,11 @@ function displayResults(area, efficiency, efficiencyColor, tips, layout, roomTyp
       </div>
       
       <div class="bg-accent/20 border border-accent rounded p-3 text-sm">
-        <strong>🏠 Layout Recommendations:</strong>
+        <strong>ðŸ  Layout Recommendations:</strong>
         <ul class="mt-2 space-y-1 text-light">
-          ${tips.map(tip => `<li>• ${tip}</li>`).join('')}
-          <li>• Measure twice, buy once - verify dimensions before purchasing</li>
-          <li>• Leave 2-3 feet of walking space around furniture</li>
+          ${tips.map(tip => `<li>â€¢ ${tip}</li>`).join('')}
+          <li>â€¢ Measure twice, buy once - verify dimensions before purchasing</li>
+          <li>â€¢ Leave 2-3 feet of walking space around furniture</li>
         </ul>
       </div>
     </div>

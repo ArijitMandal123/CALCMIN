@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('foodImpactForm');
     const resultsDiv = document.getElementById('results');
     const resultsContent = document.getElementById('resultsContent');
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
         foodItemDiv.className = 'food-item bg-broder p-4 rounded border border-accent';
         foodItemDiv.innerHTML = `
             <div class="flex justify-between items-center mb-3">
-                <h4 class="text-primary font-semibold">Food Item ${foodItemCount}</h4>
+                <h4 class="text-primary font-semibold">Food Item ${sanitizeText(foodItemCount)}</h4>
                 ${foodItemCount > 1 ? '<button type="button" class="remove-food-item text-red-400 hover:text-red-300"><span class="material-icons">close</span></button>' : ''}
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <label class="block text-light mb-2">Food Type</label>
                     <select class="food-type w-full p-2 bg-dark border border-accent rounded text-text" required>
                         <option value="">Select food...</option>
-                        <optgroup label="🍓 Dirty Dozen (High Priority)">
+                        <optgroup label="ðŸ“ Dirty Dozen (High Priority)">
                             <option value="strawberries">Strawberries</option>
                             <option value="spinach">Spinach</option>
                             <option value="kale">Kale</option>
@@ -72,14 +72,14 @@ document.addEventListener('DOMContentLoaded', function() {
                             <option value="blueberries">Blueberries</option>
                             <option value="green_beans">Green Beans</option>
                         </optgroup>
-                        <optgroup label="🥕 Medium Priority">
+                        <optgroup label="ðŸ¥• Medium Priority">
                             <option value="broccoli">Broccoli</option>
                             <option value="carrots">Carrots</option>
                             <option value="tomatoes">Tomatoes</option>
                             <option value="potatoes">Potatoes</option>
                             <option value="lettuce">Lettuce</option>
                         </optgroup>
-                        <optgroup label="✅ Clean Fifteen (Low Priority)">
+                        <optgroup label="âœ… Clean Fifteen (Low Priority)">
                             <option value="avocados">Avocados</option>
                             <option value="sweet_corn">Sweet Corn</option>
                             <option value="pineapple">Pineapple</option>
@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (!currentlyOrganic && item.data.category === 'dirty_dozen') {
                 recommendation = 'switch_to_organic';
-                reason = `High pesticide reduction (${item.data.pesticideReduction}%) and significant health benefits`;
+                reason = `High pesticide reduction (${sanitizeText(item.data.pesticideReduction)}%) and significant health benefits`;
             } else if (!currentlyOrganic && item.data.category === 'clean_fifteen') {
                 recommendation = 'stay_conventional';
                 reason = `Low pesticide residues make organic less cost-effective`;
@@ -344,7 +344,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <span class="material-icons mr-2">eco</span>
                         Organic Percentage
                     </h3>
-                    <div class="text-3xl font-bold text-primary mb-2">${results.currentImpact.organicPercentage}%</div>
+                    <div class="text-3xl font-bold text-primary mb-2">${sanitizeText(results.currentImpact.organicPercentage)}%</div>
                     <div class="text-light">of your food purchases</div>
                 </div>
                 
@@ -381,7 +381,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="space-y-4">
                         <div class="flex justify-between items-center">
                             <span class="text-light">Monthly Budget:</span>
-                            <span class="text-primary font-semibold">$${results.data.monthlyBudget}</span>
+                            <span class="text-primary font-semibold">$${sanitizeText(results.data.monthlyBudget)}</span>
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-light">Current Monthly Cost:</span>
@@ -392,7 +392,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <span class="text-primary font-semibold">$${results.improvements.monthlyCostIncrease.toFixed(0)}</span>
                         </div>
                         <div class="text-light text-sm mt-2">
-                            ${results.improvements.budgetFit ? '✅ Within recommended budget' : '⚠️ May exceed budget - prioritize high-impact foods'}
+                            ${results.improvements.budgetFit ? 'âœ… Within recommended budget' : 'âš ï¸ May exceed budget - prioritize high-impact foods'}
                         </div>
                     </div>
                 </div>
@@ -432,13 +432,13 @@ document.addEventListener('DOMContentLoaded', function() {
                             <div class="flex justify-between items-start mb-2">
                                 <h4 class="font-semibold text-primary capitalize">${rec.food.replace('_', ' ')}</h4>
                                 <span class="px-2 py-1 text-xs rounded ${rec.priority === 'High' ? 'bg-red-600' : rec.priority === 'Medium' ? 'bg-yellow-600' : 'bg-green-600'} text-white">
-                                    ${rec.priority} Priority
+                                    ${sanitizeText(rec.priority)} Priority
                                 </span>
                             </div>
                             <p class="text-light mb-2">${getRecommendationText(rec.recommendation)}</p>
-                            <p class="text-primary text-sm mb-2">${rec.reason}</p>
+                            <p class="text-primary text-sm mb-2">${sanitizeText(rec.reason)}</p>
                             <div class="flex justify-between text-sm">
-                                <span class="text-light">Pesticide reduction: ${rec.pesticideReduction}%</span>
+                                <span class="text-light">Pesticide reduction: ${sanitizeText(rec.pesticideReduction)}%</span>
                                 <span class="text-light">Cost increase: ${rec.costIncrease.toFixed(0)}%</span>
                             </div>
                         </div>
@@ -454,10 +454,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function getRecommendationText(recommendation) {
         const texts = {
-            'switch_to_organic': '🔄 Switch to organic for maximum health and environmental benefits',
-            'consider_organic': '🤔 Consider switching to organic when budget allows',
-            'stay_conventional': '✅ Conventional is fine - focus organic budget elsewhere',
-            'maintain': '👍 Continue current approach'
+            'switch_to_organic': 'ðŸ”„ Switch to organic for maximum health and environmental benefits',
+            'consider_organic': 'ðŸ¤” Consider switching to organic when budget allows',
+            'stay_conventional': 'âœ… Conventional is fine - focus organic budget elsewhere',
+            'maintain': 'ðŸ‘ Continue current approach'
         };
         return texts[recommendation] || 'No specific recommendation';
     }

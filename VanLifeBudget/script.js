@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     document.getElementById('vanlife-form').addEventListener('submit', calculateVanLifeBudget);
     document.getElementById('conversionType').addEventListener('change', updateConversionCost);
 });
@@ -293,9 +293,9 @@ function displayResults(analysis) {
                 <div class="bg-dark p-4 rounded border border-accent">
                     <h3 class="font-medium text-accent mb-2">Financial Readiness</h3>
                     <div class="space-y-2 text-sm">
-                        <div>Feasibility: <span class="${analysis.feasibility.level.color} font-medium">${analysis.feasibility.level.level}</span></div>
+                        <div>Feasibility: <span class="${sanitizeText(analysis.feasibility.level.color)} font-medium">${sanitizeText(analysis.feasibility.level.level)}</span></div>
                         <div>Monthly Balance: <span class="${analysis.feasibility.monthlyBalance >= 0 ? 'text-green-400' : 'text-red-400'} font-medium">${analysis.feasibility.monthlyBalance >= 0 ? '+' : ''}$${analysis.feasibility.monthlyBalance.toLocaleString()}</span></div>
-                        <div class="text-light text-xs">${analysis.feasibility.level.description}</div>
+                        <div class="text-light text-xs">${sanitizeText(analysis.feasibility.level.description)}</div>
                     </div>
                 </div>
             </div>
@@ -308,37 +308,37 @@ function displayResults(analysis) {
                     <div class="bg-dark p-3 rounded border border-accent">
                         <div class="flex justify-between text-sm mb-1">
                             <span>Fuel/Gas</span>
-                            <span class="text-primary">$${analysis.monthlyExpenses.fuel}</span>
+                            <span class="text-primary">$${sanitizeText(analysis.monthlyExpenses.fuel)}</span>
                         </div>
                         <div class="flex justify-between text-sm mb-1">
                             <span>Insurance</span>
-                            <span class="text-primary">$${analysis.monthlyExpenses.insurance}</span>
+                            <span class="text-primary">$${sanitizeText(analysis.monthlyExpenses.insurance)}</span>
                         </div>
                         <div class="flex justify-between text-sm mb-1">
                             <span>Camping/Parking</span>
-                            <span class="text-primary">$${analysis.monthlyExpenses.camping}</span>
+                            <span class="text-primary">$${sanitizeText(analysis.monthlyExpenses.camping)}</span>
                         </div>
                         <div class="flex justify-between text-sm">
                             <span>Maintenance</span>
-                            <span class="text-primary">$${analysis.monthlyExpenses.maintenance}</span>
+                            <span class="text-primary">$${sanitizeText(analysis.monthlyExpenses.maintenance)}</span>
                         </div>
                     </div>
                     <div class="bg-dark p-3 rounded border border-accent">
                         <div class="flex justify-between text-sm mb-1">
                             <span>Food</span>
-                            <span class="text-primary">$${analysis.monthlyExpenses.food}</span>
+                            <span class="text-primary">$${sanitizeText(analysis.monthlyExpenses.food)}</span>
                         </div>
                         <div class="flex justify-between text-sm mb-1">
                             <span>Internet/Phone</span>
-                            <span class="text-primary">$${analysis.monthlyExpenses.internet}</span>
+                            <span class="text-primary">$${sanitizeText(analysis.monthlyExpenses.internet)}</span>
                         </div>
                         <div class="flex justify-between text-sm mb-1">
                             <span>Entertainment</span>
-                            <span class="text-primary">$${analysis.monthlyExpenses.entertainment}</span>
+                            <span class="text-primary">$${sanitizeText(analysis.monthlyExpenses.entertainment)}</span>
                         </div>
                         <div class="flex justify-between text-sm border-t border-accent pt-1 mt-1 font-medium">
                             <span>Total Monthly</span>
-                            <span class="text-primary">$${analysis.monthlyExpenses.total}</span>
+                            <span class="text-primary">$${sanitizeText(analysis.monthlyExpenses.total)}</span>
                         </div>
                     </div>
                 </div>
@@ -368,9 +368,9 @@ function displayResults(analysis) {
                         <div class="bg-dark p-3 rounded border-l-4 border-primary">
                             <div class="flex justify-between items-start mb-1">
                                 <span class="font-medium text-sm">${rec.category}</span>
-                                <span class="text-xs px-2 py-1 rounded ${rec.priority === 'Critical' ? 'bg-red-600' : rec.priority === 'High' ? 'bg-orange-600' : 'bg-yellow-600'} text-white">${rec.priority}</span>
+                                <span class="text-xs px-2 py-1 rounded ${rec.priority === 'Critical' ? 'bg-red-600' : rec.priority === 'High' ? 'bg-orange-600' : 'bg-yellow-600'} text-white">${sanitizeText(rec.priority)}</span>
                             </div>
-                            <div class="text-sm text-light">${rec.advice}</div>
+                            <div class="text-sm text-light">${sanitizeText(rec.advice)}</div>
                         </div>
                     `).join('')}
                 </div>
@@ -393,19 +393,19 @@ function displayResults(analysis) {
                 <div class="mt-4 p-3 bg-gradient-to-r from-primary/10 to-accent/10 rounded">
                     <div class="text-sm">
                         ${analysis.comparisons.savings > 0 ? 
-                            `💰 Potential savings: $${analysis.comparisons.savings.toLocaleString()} (${analysis.comparisons.percentSavings}%)` :
-                            `💸 Additional cost: $${Math.abs(analysis.comparisons.savings).toLocaleString()}`
+                            `ðŸ’° Potential savings: $${analysis.comparisons.savings.toLocaleString()} (${sanitizeText(analysis.comparisons.percentSavings)}%)` :
+                            `ðŸ’¸ Additional cost: $${Math.abs(analysis.comparisons.savings).toLocaleString()}`
                         }
                     </div>
                 </div>
             </div>
             
             <div class="mt-6 p-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded border border-primary/30">
-                <h3 class="font-medium text-primary mb-2">🚐 Van Life Readiness Summary</h3>
+                <h3 class="font-medium text-primary mb-2">ðŸš Van Life Readiness Summary</h3>
                 <div class="text-sm text-light space-y-1">
-                    <p>• Financial readiness: ${analysis.feasibility.level.level} (${analysis.feasibility.score}/100)</p>
-                    <p>• Monthly budget: $${analysis.monthlyExpenses.total.toLocaleString()} for your lifestyle</p>
-                    <p>• ${analysis.feasibility.issues.length === 0 ? 'Ready to hit the road!' : 'Address financial challenges before departure'}</p>
+                    <p>â€¢ Financial readiness: ${sanitizeText(analysis.feasibility.level.level)} (${sanitizeText(analysis.feasibility.score)}/100)</p>
+                    <p>â€¢ Monthly budget: $${analysis.monthlyExpenses.total.toLocaleString()} for your lifestyle</p>
+                    <p>â€¢ ${analysis.feasibility.issues.length === 0 ? 'Ready to hit the road!' : 'Address financial challenges before departure'}</p>
                 </div>
             </div>
         </div>

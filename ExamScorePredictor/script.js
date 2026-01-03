@@ -1,4 +1,4 @@
-// Exam Score Predictor Calculator
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Exam Score Predictor Calculator
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('exam-predictor-form');
     
@@ -272,6 +272,12 @@ function analyzeGoalFeasibility(data, predictedScore, config) {
     };
 }
 
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
 function displayResults(prediction) {
     const resultsDiv = document.getElementById('results');
     const contentDiv = document.getElementById('result-content');
@@ -279,19 +285,19 @@ function displayResults(prediction) {
     contentDiv.innerHTML = `
         <div class="bg-primary/10 border-l-4 border-primary p-6 mb-6">
             <h3 class="text-2xl font-bold text-primary mb-2">Your Exam Score Prediction</h3>
-            <p class="text-light">Confidence Level: <span class="text-accent font-bold">${prediction.confidence}%</span></p>
+            <p class="text-light">Confidence Level: <span class="text-accent font-bold">${sanitizeText(prediction.confidence)}%</span></p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-6 mb-6">
             <div class="bg-dark p-6 rounded border border-accent">
                 <h4 class="text-xl font-semibold mb-4 text-accent">Predicted Score</h4>
                 <div class="text-center">
-                    <div class="text-4xl font-bold text-primary mb-2">${prediction.predictedScore}</div>
+                    <div class="text-4xl font-bold text-primary mb-2">${sanitizeText(prediction.predictedScore)}</div>
                     <div class="text-sm text-light mb-4">Expected Score</div>
                     <div class="bg-broder p-3 rounded">
                         <div class="text-sm text-light mb-1">Confidence Range</div>
                         <div class="text-lg font-semibold text-accent">
-                            ${prediction.confidenceInterval.low} - ${prediction.confidenceInterval.high}
+                            ${sanitizeText(prediction.confidenceInterval.low)} - ${sanitizeText(prediction.confidenceInterval.high)}
                         </div>
                     </div>
                 </div>
@@ -302,14 +308,14 @@ function displayResults(prediction) {
                 <div class="space-y-3">
                     <div class="flex justify-between">
                         <span>Expected Improvement:</span>
-                        <span class="font-bold text-primary">+${prediction.improvement} points</span>
+                        <span class="font-bold text-primary">+${sanitizeText(prediction.improvement)} points</span>
                     </div>
                     <div class="flex justify-between">
                         <span>Confidence Level:</span>
-                        <span class="font-bold text-accent">${prediction.confidence}%</span>
+                        <span class="font-bold text-accent">${sanitizeText(prediction.confidence)}%</span>
                     </div>
                     <div class="w-full bg-broder rounded-full h-3">
-                        <div class="bg-primary h-3 rounded-full" style="width: ${prediction.confidence}%"></div>
+                        <div class="bg-primary h-3 rounded-full" style="width: ${sanitizeText(prediction.confidence)}%"></div>
                     </div>
                 </div>
             </div>
@@ -328,10 +334,10 @@ function displayResults(prediction) {
                         <div class="text-lg font-semibold ${
                             prediction.goalAnalysis.feasibility === 'Achievable' ? 'text-green-400' :
                             prediction.goalAnalysis.feasibility.includes('possible') ? 'text-yellow-400' : 'text-red-400'
-                        }">${prediction.goalAnalysis.feasibility}</div>
+                        }">${escapeHtml(prediction.goalAnalysis.feasibility)}</div>
                     </div>
                 </div>
-                <p class="text-light mt-3">${prediction.goalAnalysis.recommendation}</p>
+                <p class="text-light mt-3">${escapeHtml(prediction.goalAnalysis.recommendation)}</p>
             </div>
         ` : ''}
 
@@ -340,23 +346,23 @@ function displayResults(prediction) {
             <div class="grid md:grid-cols-3 gap-4 mb-4">
                 <div class="bg-broder p-3 rounded text-center">
                     <div class="text-sm text-light">Phase 1</div>
-                    <div class="font-semibold text-primary">${prediction.studyPlan.phase1}</div>
+                    <div class="font-semibold text-primary">${sanitizeText(prediction.studyPlan.phase1)}</div>
                 </div>
                 <div class="bg-broder p-3 rounded text-center">
                     <div class="text-sm text-light">Phase 2</div>
-                    <div class="font-semibold text-accent">${prediction.studyPlan.phase2}</div>
+                    <div class="font-semibold text-accent">${sanitizeText(prediction.studyPlan.phase2)}</div>
                 </div>
                 <div class="bg-broder p-3 rounded text-center">
                     <div class="text-sm text-light">Phase 3</div>
-                    <div class="font-semibold text-light">${prediction.studyPlan.phase3}</div>
+                    <div class="font-semibold text-light">${sanitizeText(prediction.studyPlan.phase3)}</div>
                 </div>
             </div>
             <h5 class="font-semibold text-accent mb-2">Weekly Time Allocation</h5>
             <div class="space-y-2">
                 ${prediction.studyPlan.weeklySchedule.map(item => `
                     <div class="flex justify-between items-center p-2 bg-broder rounded">
-                        <span class="text-light">${item.activity}</span>
-                        <span class="font-bold text-primary">${item.hours} hours</span>
+                        <span class="text-light">${escapeHtml(item.activity)}</span>
+                        <span class="font-bold text-primary">${sanitizeText(item.hours)} hours</span>
                     </div>
                 `).join('')}
             </div>
@@ -368,7 +374,7 @@ function displayResults(prediction) {
                 ${prediction.recommendations.map(rec => `
                     <li class="flex items-start">
                         <span class="material-icons text-primary mr-3 mt-1">lightbulb</span>
-                        <span class="text-light">${rec}</span>
+                        <span class="text-light">${escapeHtml(rec)}</span>
                     </li>
                 `).join('')}
             </ul>

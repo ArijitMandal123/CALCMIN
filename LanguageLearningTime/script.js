@@ -1,4 +1,4 @@
-document.getElementById('language-form').addEventListener('submit', function(e) {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.getElementById('language-form').addEventListener('submit', function(e) {
   e.preventDefault();
   
   const nativeLanguage = document.getElementById('nativeLanguage').value;
@@ -66,9 +66,15 @@ function displayResults(hours, weeks, months, years, weeklyHours, level) {
   const resultsDiv = document.getElementById('results');
   const contentDiv = document.getElementById('result-content');
 
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
   const timeframe = years >= 2 ? `${years.toFixed(1)} years` : 
-                   months >= 12 ? `${months} months` : 
-                   `${weeks} weeks`;
+                   months >= 12 ? `${sanitizeText(months)} months` : 
+                   `${sanitizeText(weeks)} weeks`;
 
   const levelDescriptions = {
     a1: 'Basic phrases and simple conversations',
@@ -91,18 +97,18 @@ function displayResults(hours, weeks, months, years, weeklyHours, level) {
           <div class="text-light text-sm">Total Study Hours</div>
         </div>
         <div class="bg-dark p-4 rounded text-center">
-          <div class="text-accent text-3xl font-bold">${timeframe}</div>
+          <div class="text-accent text-3xl font-bold">${sanitizeText(timeframe)}</div>
           <div class="text-light text-sm">Time to Reach Goal</div>
         </div>
         <div class="bg-dark p-4 rounded text-center">
-          <div class="text-text text-2xl font-bold">${weeklyHours}</div>
+          <div class="text-text text-2xl font-bold">${sanitizeText(weeklyHours)}</div>
           <div class="text-light text-sm">Hours per Week</div>
         </div>
       </div>
 
       <div class="bg-dark p-4 rounded mb-4">
-        <h3 class="text-text font-medium mb-2">${level.toUpperCase()} Level Description</h3>
-        <p class="text-light text-sm">${levelDescriptions[level]}</p>
+        <h3 class="text-text font-medium mb-2">${escapeHtml(level.toUpperCase())} Level Description</h3>
+        <p class="text-light text-sm">${escapeHtml(levelDescriptions[level])}</p>
       </div>
 
       <div class="bg-dark p-4 rounded mb-4">
@@ -116,13 +122,13 @@ function displayResults(hours, weeks, months, years, weeklyHours, level) {
       </div>
       
       <div class="bg-accent/20 border border-accent rounded p-3 text-sm">
-        <strong>📚 Learning Tips:</strong>
+        <strong>ðŸ“š Learning Tips:</strong>
         <ul class="mt-2 space-y-1 text-light">
-          <li>• Consistency is more important than intensity</li>
-          <li>• Practice speaking from day one</li>
-          <li>• Use spaced repetition for vocabulary</li>
-          <li>• Immerse yourself in media (music, movies, podcasts)</li>
-          <li>• Find conversation partners or language exchange</li>
+          <li>â€¢ Consistency is more important than intensity</li>
+          <li>â€¢ Practice speaking from day one</li>
+          <li>â€¢ Use spaced repetition for vocabulary</li>
+          <li>â€¢ Immerse yourself in media (music, movies, podcasts)</li>
+          <li>â€¢ Find conversation partners or language exchange</li>
         </ul>
       </div>
     </div>

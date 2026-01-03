@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('deepwork-form');
     const resultsDiv = document.getElementById('results');
     const resultContent = document.getElementById('result-content');
@@ -85,8 +85,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function calculateWorkHours(startTime, endTime) {
-        const start = new Date(`2000-01-01T${startTime}`);
-        const end = new Date(`2000-01-01T${endTime}`);
+        const start = new Date(`2000-01-01T${sanitizeText(startTime)}`);
+        const end = new Date(`2000-01-01T${sanitizeText(endTime)}`);
         const diffMs = end - start;
         const diffHours = diffMs / (1000 * 60 * 60);
         return diffHours;
@@ -242,14 +242,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="grid md:grid-cols-2 gap-6 mb-6">
                     <div class="bg-dark p-4 rounded border border-accent">
                         <h3 class="font-semibold text-text mb-2">Focus Score</h3>
-                        <div class="text-3xl font-bold ${focusScoreColor} mb-2">${schedule.focusScore}/100</div>
+                        <div class="text-3xl font-bold ${sanitizeText(focusScoreColor)} mb-2">${sanitizeText(schedule.focusScore)}/100</div>
                         <p class="text-sm text-light">${getFocusScoreDescription(schedule.focusScore)}</p>
                     </div>
                     
                     <div class="bg-dark p-4 rounded border border-accent">
                         <h3 class="font-semibold text-text mb-2">Daily Deep Work Capacity</h3>
-                        <div class="text-3xl font-bold text-primary mb-2">${schedule.productivityMetrics.dailyDeepWork}h</div>
-                        <p class="text-sm text-light">${schedule.productivityMetrics.deepWorkPercentage}% of your work day</p>
+                        <div class="text-3xl font-bold text-primary mb-2">${sanitizeText(schedule.productivityMetrics.dailyDeepWork)}h</div>
+                        <p class="text-sm text-light">${sanitizeText(schedule.productivityMetrics.deepWorkPercentage)}% of your work day</p>
                     </div>
                 </div>
 
@@ -260,15 +260,15 @@ document.addEventListener('DOMContentLoaded', function() {
                             <div class="bg-dark p-4 rounded border border-accent">
                                 <div class="flex justify-between items-start mb-2">
                                     <div>
-                                        <h4 class="font-medium text-text">Block ${index + 1}: ${block.period}</h4>
-                                        <p class="text-sm text-light">${block.timeSlot} • ${block.duration} minutes</p>
+                                        <h4 class="font-medium text-text">Block ${index + 1}: ${sanitizeText(block.period)}</h4>
+                                        <p class="text-sm text-light">${sanitizeText(block.timeSlot)} â€¢ ${sanitizeText(block.duration)} minutes</p>
                                     </div>
                                     <div class="text-right">
-                                        <div class="text-lg font-bold ${getScoreColor(block.score)}">${block.score}%</div>
+                                        <div class="text-lg font-bold ${getScoreColor(block.score)}">${sanitizeText(block.score)}%</div>
                                         <p class="text-xs text-light">Effectiveness</p>
                                     </div>
                                 </div>
-                                <p class="text-sm text-light">${block.recommendation}</p>
+                                <p class="text-sm text-light">${sanitizeText(block.recommendation)}</p>
                             </div>
                         `).join('')}
                     </div>
@@ -281,10 +281,10 @@ document.addEventListener('DOMContentLoaded', function() {
                             <div class="bg-dark p-4 rounded border border-accent">
                                 <div class="flex justify-between items-start mb-2">
                                     <h4 class="font-medium text-text">${task.type}</h4>
-                                    <span class="text-primary font-semibold">${task.percentage}%</span>
+                                    <span class="text-primary font-semibold">${sanitizeText(task.percentage)}%</span>
                                 </div>
-                                <p class="text-sm text-light mb-2">${task.recommendation}</p>
-                                <p class="text-xs text-light italic">Examples: ${task.examples}</p>
+                                <p class="text-sm text-light mb-2">${sanitizeText(task.recommendation)}</p>
+                                <p class="text-xs text-light italic">Examples: ${sanitizeText(task.examples)}</p>
                             </div>
                         `).join('')}
                     </div>
@@ -294,15 +294,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h3 class="font-semibold text-text mb-3">Productivity Metrics</h3>
                     <div class="grid md:grid-cols-3 gap-4">
                         <div class="bg-dark p-4 rounded border border-accent text-center">
-                            <div class="text-2xl font-bold text-primary">${schedule.productivityMetrics.weeklyDeepWork}h</div>
+                            <div class="text-2xl font-bold text-primary">${sanitizeText(schedule.productivityMetrics.weeklyDeepWork)}h</div>
                             <p class="text-sm text-light">Weekly Deep Work</p>
                         </div>
                         <div class="bg-dark p-4 rounded border border-accent text-center">
-                            <div class="text-2xl font-bold text-primary">${schedule.productivityMetrics.monthlyDeepWork}h</div>
+                            <div class="text-2xl font-bold text-primary">${sanitizeText(schedule.productivityMetrics.monthlyDeepWork)}h</div>
                             <p class="text-sm text-light">Monthly Deep Work</p>
                         </div>
                         <div class="bg-dark p-4 rounded border border-accent text-center">
-                            <div class="text-2xl font-bold text-primary">${schedule.productivityMetrics.effectiveHours}h</div>
+                            <div class="text-2xl font-bold text-primary">${sanitizeText(schedule.productivityMetrics.effectiveHours)}h</div>
                             <p class="text-sm text-light">Effective Daily Hours</p>
                         </div>
                     </div>
@@ -314,14 +314,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="bg-dark p-4 rounded border border-accent">
                             <h4 class="font-medium text-text mb-2">Interruption Impact</h4>
                             <div class="flex justify-between items-center">
-                                <span class="text-light">Level: ${schedule.interruptionFactor.level}</span>
+                                <span class="text-light">Level: ${sanitizeText(schedule.interruptionFactor.level)}</span>
                                 <span class="font-semibold ${getInterruptionColor(schedule.interruptionFactor.level)}">${Math.round(schedule.interruptionFactor.factor * 100)}%</span>
                             </div>
                         </div>
                         <div class="bg-dark p-4 rounded border border-accent">
                             <h4 class="font-medium text-text mb-2">Meeting Impact</h4>
                             <div class="flex justify-between items-center">
-                                <span class="text-light">${schedule.meetingImpact.description}</span>
+                                <span class="text-light">${sanitizeText(schedule.meetingImpact.description)}</span>
                                 <span class="font-semibold ${getMeetingColor(schedule.meetingImpact.factor)}">${Math.round(schedule.meetingImpact.factor * 100)}%</span>
                             </div>
                         </div>
@@ -334,11 +334,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         Key Recommendations
                     </h3>
                     <ul class="text-sm text-light space-y-1">
-                        <li>• Start with ${schedule.optimalBlocks[0]?.duration || 120}-minute blocks during your ${schedule.energyPeaks[0]?.period.toLowerCase() || 'peak'} energy period</li>
-                        <li>• Protect your deep work time by setting clear boundaries and expectations</li>
-                        <li>• Use the Pomodoro Technique within blocks if you're new to extended focus</li>
-                        <li>• Track your actual focus duration and adjust block lengths accordingly</li>
-                        <li>• Consider noise-canceling headphones or "Do Not Disturb" signals</li>
+                        <li>â€¢ Start with ${schedule.optimalBlocks[0]?.duration || 120}-minute blocks during your ${schedule.energyPeaks[0]?.period.toLowerCase() || 'peak'} energy period</li>
+                        <li>â€¢ Protect your deep work time by setting clear boundaries and expectations</li>
+                        <li>â€¢ Use the Pomodoro Technique within blocks if you're new to extended focus</li>
+                        <li>â€¢ Track your actual focus duration and adjust block lengths accordingly</li>
+                        <li>â€¢ Consider noise-canceling headphones or "Do Not Disturb" signals</li>
                     </ul>
                 </div>
             </div>

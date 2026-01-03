@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('prompt-form');
     const promptTextInput = document.getElementById('prompt-text');
     const aiModelSelect = document.getElementById('ai-model');
@@ -426,8 +426,8 @@ document.addEventListener('DOMContentLoaded', function() {
         resultContent.innerHTML = `
             <div class="bg-broder border border-accent rounded-lg p-6">
                 <div class="text-center mb-6">
-                    <div class="text-6xl font-bold ${scoreColor} mb-2">${analysis.overallScore}/100</div>
-                    <div class="text-xl text-light">${scoreLevel}</div>
+                    <div class="text-6xl font-bold ${sanitizeText(scoreColor)} mb-2">${sanitizeText(analysis.overallScore)}/100</div>
+                    <div class="text-xl text-light">${escapeHtml(scoreLevel)}</div>
                 </div>
                 
                 <div class="grid md:grid-cols-2 gap-6 mb-6">
@@ -446,13 +446,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         <h3 class="text-lg font-semibold text-primary mb-3">Key Insights</h3>
                         <div class="space-y-2 text-sm">
                             <div class="bg-dark border border-accent rounded p-3">
-                                <strong class="text-accent">Clarity:</strong> ${analysis.clarity.feedback}
+                                <strong class="text-accent">Clarity:</strong> ${escapeHtml(analysis.clarity.feedback)}
                             </div>
                             <div class="bg-dark border border-accent rounded p-3">
-                                <strong class="text-accent">Specificity:</strong> ${analysis.specificity.feedback}
+                                <strong class="text-accent">Specificity:</strong> ${escapeHtml(analysis.specificity.feedback)}
                             </div>
                             <div class="bg-dark border border-accent rounded p-3">
-                                <strong class="text-accent">Context:</strong> ${analysis.context.feedback}
+                                <strong class="text-accent">Context:</strong> ${escapeHtml(analysis.context.feedback)}
                             </div>
                         </div>
                     </div>
@@ -460,7 +460,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 ${analysis.strengths.length > 0 ? `
                 <div class="mb-6">
-                    <h3 class="text-lg font-semibold text-green-400 mb-3">✅ Strengths</h3>
+                    <h3 class="text-lg font-semibold text-green-400 mb-3">âœ… Strengths</h3>
                     <ul class="space-y-2">
                         ${analysis.strengths.map(strength => `
                             <li class="flex items-start gap-2 text-text">
@@ -474,7 +474,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 ${analysis.improvements.length > 0 ? `
                 <div>
-                    <h3 class="text-lg font-semibold text-yellow-400 mb-3">💡 Improvement Suggestions</h3>
+                    <h3 class="text-lg font-semibold text-yellow-400 mb-3">ðŸ’¡ Improvement Suggestions</h3>
                     <ul class="space-y-2">
                         ${analysis.improvements.map(improvement => `
                             <li class="flex items-start gap-2 text-text">
@@ -493,12 +493,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const scoreColor = getScoreColor(score);
         return `
             <div class="flex items-center justify-between">
-                <span class="text-text text-sm">${label} (${weight}%)</span>
+                <span class="text-text text-sm">${sanitizeText(label)} (${sanitizeText(weight)}%)</span>
                 <div class="flex items-center gap-2">
                     <div class="w-24 h-2 bg-dark rounded-full overflow-hidden">
-                        <div class="h-full ${scoreColor} transition-all duration-500" style="width: ${score}%"></div>
+                        <div class="h-full ${sanitizeText(scoreColor)} transition-all duration-500" style="width: ${sanitizeText(score)}%"></div>
                     </div>
-                    <span class="text-text text-sm font-medium w-8">${score}</span>
+                    <span class="text-text text-sm font-medium w-8">${sanitizeText(score)}</span>
                 </div>
             </div>
         `;
