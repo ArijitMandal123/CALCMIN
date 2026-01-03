@@ -171,6 +171,22 @@ From the 50-New-Tool-Ideas-2025.md file, extract:
 
 ---
 
-## 📝 FILE STRUCTURE TEMPLATE
+## � Deployment on Netlify
+
+This website is optimized for hosting on Netlify. To deploy:
+
+1. **Connect your repository** to Netlify (GitHub, GitLab, or Bitbucket).
+2. **Build settings**:
+   - Build command: `echo 'No build step'`
+   - Publish directory: `.` (root)
+3. **Environment variables** (if any): None required.
+4. **Custom domains**: Configure in Netlify dashboard.
+5. **HTTPS**: Enabled by default.
+
+The `netlify.toml` file is included for configuration, including headers for security and caching.
+
+---
+
+## �📝 FILE STRUCTURE TEMPLATE
 
 ### HTML FILE STRUCTURE
