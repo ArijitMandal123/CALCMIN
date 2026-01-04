@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Homepage -->
   <url>
     <loc>https://calcmin.pro/</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -11,31 +11,31 @@
   <!-- AI Content & Creators Tools -->
   <url>
     <loc>https://calcmin.pro/AIPromptQualityScorer</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/ContentRepurposingCalculator</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/LinkedInEngagementPredictor</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/HashtagROICalculator</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/VideoScriptOptimizer</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -43,31 +43,31 @@
   <!-- Remote Work & Productivity Tools -->
   <url>
     <loc>https://calcmin.pro/DeepWorkScheduler</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/MeetingROICalculator</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/TimezoneFairMeetingFinder</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/FocusSessionSustainabilityCalculator</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/AsynchronousCommunicationAudit</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -75,31 +75,31 @@
   <!-- Personal Finance & Investing Tools -->
   <url>
     <loc>https://calcmin.pro/TaxBracketOptimizer</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/SubscriptionSavingsTracker</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/SalaryNegotiationCalculator</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/CryptoTaxLossHarvesting</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/DividendGrowthProjection</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
@@ -107,25 +107,25 @@
   <!-- Media & Entertainment Tools -->
   <url>
     <loc>https://calcmin.pro/AudiobookSpeed</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/TwitchEarnings</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/PodcastRevenue</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/YouTubeOptimizer</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -133,85 +133,85 @@
   <!-- Business & Finance Tools -->
   <url>
     <loc>https://calcmin.pro/BidOptimizer</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/BusinessInsurance</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/CollegeMajorROI</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/ContractorVsEmployee</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/CoworkingROI</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/EmergencyFund</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/FinancialIndependence</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/FreelanceProfitability</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/FreelancerRate</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/OnlineCoursePricing</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/PassiveIncomeTimeline</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/RemoteWorkTax</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/SubscriptionAudit</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/VacationRentalROI</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -219,67 +219,67 @@
   <!-- Lifestyle & Living Tools -->
   <url>
     <loc>https://calcmin.pro/ColivingExpense</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/DormRoomPlanner</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/FoodWasteCost</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/HouseVsApartment</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/MovingBoxCalculator</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/VanLifeBudget</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/HomeRenovationPrioritySequencer</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/RentVsBuyCalculator</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/PetAdoptionReadinessTest</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/InteriorDesignFeasibilityChecker</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/MovingCostEstimator</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -287,73 +287,73 @@
   <!-- Health & Wellness Tools -->
   <url>
     <loc>https://calcmin.pro/CoffeeToleranceReset</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/HabitStreakProbability</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/PetAdoptionReadiness</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/PetMedicationDosage</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/PlantGrowthLight</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/SleepDebtRecovery</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/WorkoutRestDay</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/WalkingStepEquivalent</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/CaffeineDependencyRecovery</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/SunscreenSPFCalculator</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/SleepDebtPaybackPlan</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/AlcoholToleranceReset</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -361,19 +361,19 @@
   <!-- Transportation & Environment Tools -->
   <url>
     <loc>https://calcmin.pro/EVChargingCost</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/EventCarbonFootprint</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/FuelStationQueue</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -381,55 +381,55 @@
   <!-- Education & Productivity Tools -->
   <url>
     <loc>https://calcmin.pro/StudyMaterialOptimizer</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/ExamScorePredictor</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/LanguageLearningTimelineCalculator</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/CertificationROICalculator</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/MicroCredentialValueAssessor</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/LanguageLearningTime</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/LinkedInPredictor</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/SocialEngagement</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/TimeZoneCoordinator</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -437,31 +437,31 @@
   <!-- Gaming & Entertainment Tools -->
   <url>
     <loc>https://calcmin.pro/GamingPCBudgetAllocator</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/GachaGameROICalculator</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/GameCompletionTimeEstimator</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/SpeedrunPotentialAnalyzer</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/StreamingEquipmentChecker</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -469,97 +469,97 @@
   <!-- Travel & Location Tools -->
   <url>
     <loc>https://calcmin.pro/DigitalNomadVisa</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/SustainableTravelCarbon</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/StaycationVsVacation</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/CruiseShipROI</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/ExpatCostOfLiving</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/FreelanceHourlyRate</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/BusinessBreakeven</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/ServiceBusinessPricing</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/ProductViabilityScorer</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/ECommerceProductProfitability</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/PlasticCarbonFootprint</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/WaterUsageCalculator</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/OrganicFoodImpactAnalyzer</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/RenewableEnergyChecker</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/SustainableShoppingTracker</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://calcmin.pro/AIAnxietyPredictor</loc>
-    <lastmod>2025-12-11</lastmod>
+    <lastmod>2026-01-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
