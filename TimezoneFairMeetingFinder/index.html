@@ -4,12 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-    <title>
-<link rel="icon" href="
-../src/favicon/favicon.svg
-" type="image/svg+xml" />
-      Timezone Fair Meeting Finder - Find Fair Meeting Times Across Time Zones | Free Tool 2025
-    </title><link rel="icon" href="/src/favicon/favicon.svg" type="image/svg+xml" />
+      Timezone Fair Meeting Finder - Find Fair Meeting Times Across Time Zones |
+      Free Tool 2025
+    </title>
+    <link rel="icon" href="/src/favicon/favicon.svg" type="image/svg+xml" />
     <meta
       name="description"
       content="Free timezone fair meeting finder calculates optimal meeting times that are 'fairly unfair' across distributed teams. Get unfairness scores, rotation schedules & best times for global remote teams with priority weighting."
@@ -212,13 +210,17 @@
             Timezone Fair Meeting Finder
           </h1>
           <p class="text-light mt-3 text-base leading-relaxed">
-            Find meeting times that are "fairly unfair" across distributed teams. Get unfairness scores, rotation schedules & optimal times for global remote teams.
+            Find meeting times that are "fairly unfair" across distributed
+            teams. Get unfairness scores, rotation schedules & optimal times for
+            global remote teams.
           </p>
         </div>
 
         <form id="timezone-form" class="flex flex-col gap-4 md:gap-6">
           <div>
-            <label class="block font-medium mb-2 text-text">Meeting Duration</label>
+            <label class="block font-medium mb-2 text-text"
+              >Meeting Duration</label
+            >
             <div class="grid md:grid-cols-2 gap-4">
               <div>
                 <input
@@ -250,7 +252,9 @@
           <div>
             <label class="block font-medium mb-2 text-text">Team Members</label>
             <div id="members-container">
-              <div class="member-row grid md:grid-cols-4 gap-4 mb-3 p-4 bg-broder rounded border border-accent">
+              <div
+                class="member-row grid md:grid-cols-4 gap-4 mb-3 p-4 bg-broder rounded border border-accent"
+              >
                 <div>
                   <label class="block text-sm text-light mb-1">Name</label>
                   <input
@@ -261,7 +265,9 @@
                 </div>
                 <div>
                   <label class="block text-sm text-light mb-1">Timezone</label>
-                  <select class="member-timezone w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary">
+                  <select
+                    class="member-timezone w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  >
                     <option value="">Select timezone</option>
                     <option value="UTC-12">UTC-12 (Baker Island)</option>
                     <option value="UTC-11">UTC-11 (American Samoa)</option>
@@ -292,8 +298,12 @@
                   </select>
                 </div>
                 <div>
-                  <label class="block text-sm text-light mb-1">Priority Weight</label>
-                  <select class="member-priority w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary">
+                  <label class="block text-sm text-light mb-1"
+                    >Priority Weight</label
+                  >
+                  <select
+                    class="member-priority w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  >
                     <option value="1">Normal (1x)</option>
                     <option value="1.5">Important (1.5x)</option>
                     <option value="2">High Priority (2x)</option>
@@ -301,8 +311,12 @@
                   </select>
                 </div>
                 <div>
-                  <label class="block text-sm text-light mb-1">Working Hours</label>
-                  <select class="member-hours w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary">
+                  <label class="block text-sm text-light mb-1"
+                    >Working Hours</label
+                  >
+                  <select
+                    class="member-hours w-full px-3 py-2 text-sm border border-accent rounded bg-dark text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                  >
                     <option value="9-17">9 AM - 5 PM</option>
                     <option value="8-16">8 AM - 4 PM</option>
                     <option value="10-18">10 AM - 6 PM</option>
@@ -324,7 +338,9 @@
           </div>
 
           <div>
-            <label class="block font-medium mb-2 text-text">Meeting Frequency</label>
+            <label class="block font-medium mb-2 text-text"
+              >Meeting Frequency</label
+            >
             <select
               id="meeting-frequency"
               class="w-full px-3 py-3 text-sm md:text-base border border-accent rounded bg-broder text-text focus:outline-none focus:ring-2 focus:ring-primary"
@@ -337,26 +353,53 @@
           </div>
 
           <div>
-            <label class="block font-medium mb-2 text-text">Preferred Days</label>
+            <label class="block font-medium mb-2 text-text"
+              >Preferred Days</label
+            >
             <div class="grid grid-cols-4 md:grid-cols-7 gap-2">
               <label class="flex items-center gap-2 text-sm">
-                <input type="checkbox" id="day-monday" class="text-primary" checked />
+                <input
+                  type="checkbox"
+                  id="day-monday"
+                  class="text-primary"
+                  checked
+                />
                 <span>Mon</span>
               </label>
               <label class="flex items-center gap-2 text-sm">
-                <input type="checkbox" id="day-tuesday" class="text-primary" checked />
+                <input
+                  type="checkbox"
+                  id="day-tuesday"
+                  class="text-primary"
+                  checked
+                />
                 <span>Tue</span>
               </label>
               <label class="flex items-center gap-2 text-sm">
-                <input type="checkbox" id="day-wednesday" class="text-primary" checked />
+                <input
+                  type="checkbox"
+                  id="day-wednesday"
+                  class="text-primary"
+                  checked
+                />
                 <span>Wed</span>
               </label>
               <label class="flex items-center gap-2 text-sm">
-                <input type="checkbox" id="day-thursday" class="text-primary" checked />
+                <input
+                  type="checkbox"
+                  id="day-thursday"
+                  class="text-primary"
+                  checked
+                />
                 <span>Thu</span>
               </label>
               <label class="flex items-center gap-2 text-sm">
-                <input type="checkbox" id="day-friday" class="text-primary" checked />
+                <input
+                  type="checkbox"
+                  id="day-friday"
+                  class="text-primary"
+                  checked
+                />
                 <span>Fri</span>
               </label>
               <label class="flex items-center gap-2 text-sm">
@@ -424,14 +467,20 @@
     <div id="footer-container"></div>
 
     <!-- Error Popup Modal -->
-    <div id="error-popup" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4">
+    <div
+      id="error-popup"
+      class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4"
+    >
       <div class="bg-dark border border-accent rounded-lg p-6 max-w-md w-full">
         <div class="flex items-center gap-3 mb-4">
           <span class="material-icons text-red-400">error</span>
           <h3 class="text-lg font-semibold text-text">Input Error</h3>
         </div>
         <p id="error-message" class="text-light mb-4"></p>
-        <button id="close-error" class="w-full bg-primary text-white px-4 py-2 rounded hover:bg-accent transition">
+        <button
+          id="close-error"
+          class="w-full bg-primary text-white px-4 py-2 rounded hover:bg-accent transition"
+        >
           OK
         </button>
       </div>
@@ -442,6 +491,3 @@
     <script src="script.js"></script>
   </body>
 </html>
-
-
-

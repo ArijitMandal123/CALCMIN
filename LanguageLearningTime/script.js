@@ -1,4 +1,13 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.getElementById('language-form').addEventListener('submit', function(e) {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
+document.getElementById('language-form').addEventListener('submit', function(e) {
   e.preventDefault();
   
   const nativeLanguage = document.getElementById('nativeLanguage').value;
@@ -122,13 +131,13 @@ function displayResults(hours, weeks, months, years, weeklyHours, level) {
       </div>
       
       <div class="bg-accent/20 border border-accent rounded p-3 text-sm">
-        <strong>ðŸ“š Learning Tips:</strong>
+        <strong>📚 Learning Tips:</strong>
         <ul class="mt-2 space-y-1 text-light">
-          <li>â€¢ Consistency is more important than intensity</li>
-          <li>â€¢ Practice speaking from day one</li>
-          <li>â€¢ Use spaced repetition for vocabulary</li>
-          <li>â€¢ Immerse yourself in media (music, movies, podcasts)</li>
-          <li>â€¢ Find conversation partners or language exchange</li>
+          <li>• Consistency is more important than intensity</li>
+          <li>• Practice speaking from day one</li>
+          <li>• Use spaced repetition for vocabulary</li>
+          <li>• Immerse yourself in media (music, movies, podcasts)</li>
+          <li>• Find conversation partners or language exchange</li>
         </ul>
       </div>
     </div>

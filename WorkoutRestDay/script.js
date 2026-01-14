@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
     document.getElementById('rest-form').addEventListener('submit', calculateRestSchedule);
 });
 
@@ -362,20 +370,20 @@ function displayResults(analysis) {
                     <span class="material-icons text-lg">tips_and_updates</span> Recovery Optimization Tips
                 </h3>
                 <ul class="space-y-1 text-sm text-light">
-                    <li>â€¢ Listen to your body - adjust rest days based on how you feel</li>
-                    <li>â€¢ Active recovery (light walking, yoga) can enhance blood flow</li>
-                    <li>â€¢ Prioritize sleep quality over training intensity</li>
-                    <li>â€¢ Hydration and nutrition significantly impact recovery speed</li>
-                    <li>â€¢ Consider deload weeks every 4-6 weeks for advanced trainees</li>
+                    <li>• Listen to your body - adjust rest days based on how you feel</li>
+                    <li>• Active recovery (light walking, yoga) can enhance blood flow</li>
+                    <li>• Prioritize sleep quality over training intensity</li>
+                    <li>• Hydration and nutrition significantly impact recovery speed</li>
+                    <li>• Consider deload weeks every 4-6 weeks for advanced trainees</li>
                 </ul>
             </div>
             
             <div class="mt-6 p-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded border border-primary/30">
-                <h3 class="font-medium text-primary mb-2">ðŸŽ¯ Recovery Strategy</h3>
+                <h3 class="font-medium text-primary mb-2">🎯 Recovery Strategy</h3>
                 <div class="text-sm text-light space-y-1">
-                    <p>â€¢ Your ${sanitizeText(analysis.recoveryScore)}/100 recovery score suggests ${sanitizeText(analysis.optimalRestDays)} rest days per week</p>
-                    <p>â€¢ ${sanitizeText(analysis.overtrainingRisk.level)} overtraining risk requires careful monitoring</p>
-                    <p>â€¢ Focus on sleep quality and stress management for optimal recovery</p>
+                    <p>• Your ${sanitizeText(analysis.recoveryScore)}/100 recovery score suggests ${sanitizeText(analysis.optimalRestDays)} rest days per week</p>
+                    <p>• ${sanitizeText(analysis.overtrainingRisk.level)} overtraining risk requires careful monitoring</p>
+                    <p>• Focus on sleep quality and stress management for optimal recovery</p>
                 </div>
             </div>
         </div>

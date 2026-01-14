@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Language Learning Timeline Calculator
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('language-timeline-form');
     

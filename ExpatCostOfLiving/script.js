@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Expat Cost of Living Advisor
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('expat-form');
     const resultsDiv = document.getElementById('results');
@@ -310,7 +318,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="mt-4">
                             <h5 class="font-semibold text-primary mb-2">Financial Tips:</h5>
                             <ul class="text-sm text-light space-y-1">
-                                ${data.recommendation.tips.map(tip => `<li>â€¢ ${escapeHtml(tip)}</li>`).join('')}
+                                ${data.recommendation.tips.map(tip => `<li>• ${escapeHtml(tip)}</li>`).join('')}
                             </ul>
                         </div>
                     ` : ''}

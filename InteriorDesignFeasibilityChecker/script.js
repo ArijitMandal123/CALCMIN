@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
     const form = document.getElementById('design-feasibility-form');
     
     form.addEventListener('submit', function(e) {
@@ -329,7 +337,7 @@ function displayResults(results) {
                             <h5 class="font-semibold text-accent mb-2">${phase.name} (${sanitizeText(phase.percentage)}%)</h5>
                             <p class="text-lg font-bold text-primary mb-2">$${phase.cost.toLocaleString()}</p>
                             <ul class="text-sm text-light space-y-1">
-                                ${phase.items.map(item => `<li>â€¢ ${escapeHtml(item)}</li>`).join('')}
+                                ${phase.items.map(item => `<li>• ${escapeHtml(item)}</li>`).join('')}
                             </ul>
                         </div>
                     `).join('')}
@@ -340,7 +348,7 @@ function displayResults(results) {
             <div class="bg-blue-900/20 border border-blue-600 rounded p-4 mb-6">
                 <h5 class="font-semibold text-blue-400 mb-2">Recommendations</h5>
                 <ul class="text-sm text-light space-y-1">
-                    ${results.recommendations.map(rec => `<li>â€¢ ${escapeHtml(rec)}</li>`).join('')}
+                    ${results.recommendations.map(rec => `<li>• ${escapeHtml(rec)}</li>`).join('')}
                 </ul>
             </div>
             ` : ''}
@@ -349,7 +357,7 @@ function displayResults(results) {
             <div class="bg-green-900/20 border border-green-600 rounded p-4 mb-6">
                 <h5 class="font-semibold text-green-400 mb-2">Alternative Approaches</h5>
                 <ul class="text-sm text-light space-y-1">
-                    ${results.alternatives.map(alt => `<li>â€¢ ${escapeHtml(alt)}</li>`).join('')}
+                    ${results.alternatives.map(alt => `<li>• ${escapeHtml(alt)}</li>`).join('')}
                 </ul>
             </div>
             ` : ''}
@@ -357,11 +365,11 @@ function displayResults(results) {
             <div class="bg-yellow-900/20 border border-yellow-600 rounded p-4">
                 <h5 class="font-semibold text-yellow-400 mb-2">Important Notes</h5>
                 <ul class="text-sm text-light space-y-1">
-                    <li>â€¢ Costs are estimates and may vary by location and specific items chosen</li>
-                    <li>â€¢ Consider shopping sales, clearance, and secondhand for better deals</li>
-                    <li>â€¢ Factor in delivery, assembly, and installation costs</li>
-                    <li>â€¢ Allow 10-20% buffer for unexpected expenses</li>
-                    <li>â€¢ Consult with interior designers for professional guidance</li>
+                    <li>• Costs are estimates and may vary by location and specific items chosen</li>
+                    <li>• Consider shopping sales, clearance, and secondhand for better deals</li>
+                    <li>• Factor in delivery, assembly, and installation costs</li>
+                    <li>• Allow 10-20% buffer for unexpected expenses</li>
+                    <li>• Consult with interior designers for professional guidance</li>
                 </ul>
             </div>
         </div>

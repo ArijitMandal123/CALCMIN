@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
     const form = document.getElementById('content-form');
     const contentTypeSelect = document.getElementById('content-type');
     const contentLengthInput = document.getElementById('content-length');
@@ -389,13 +397,13 @@
                 </div>
                 
                 <div class="mb-6">
-                    <h3 class="text-lg font-semibold text-primary mb-3">ðŸ“‹ Content Format Suggestions</h3>
+                    <h3 class="text-lg font-semibold text-primary mb-3">📋 Content Format Suggestions</h3>
                     <div class="grid md:grid-cols-2 gap-4">
                         ${Object.entries(analysis.platformBreakdown).map(([platform, data]) => `
                             <div class="bg-dark border border-accent rounded p-3">
                                 <h4 class="text-accent font-semibold capitalize mb-2">${platform.replace('-', ' ')}</h4>
                                 <ul class="text-xs text-text space-y-1">
-                                    ${data.formats.map(format => `<li>â€¢ ${format}</li>`).join('')}
+                                    ${data.formats.map(format => `<li>• ${format}</li>`).join('')}
                                 </ul>
                             </div>
                         `).join('')}
@@ -403,7 +411,7 @@
                 </div>
                 
                 <div>
-                    <h3 class="text-lg font-semibold text-primary mb-3">ðŸ’¡ Repurposing Strategy Tips</h3>
+                    <h3 class="text-lg font-semibold text-primary mb-3">💡 Repurposing Strategy Tips</h3>
                     <ul class="space-y-2">
                         ${analysis.contentSuggestions.map(suggestion => `
                             <li class="flex items-start gap-2 text-text">
@@ -415,7 +423,7 @@
                 </div>
                 
                 <div class="mt-6 bg-gradient-to-r from-primary/20 to-accent/20 rounded-lg p-4 text-center">
-                    <div class="text-primary font-semibold mb-2">ðŸš€ Content Multiplication Success!</div>
+                    <div class="text-primary font-semibold mb-2">🚀 Content Multiplication Success!</div>
                     <div class="text-sm text-text">
                         You can create <strong>${sanitizeText(analysis.totalPieces)}x more content</strong> in just <strong>${sanitizeText(analysis.timeInvestment)} hours</strong>
                         ${analysis.estimatedReach > 0 ? ` and potentially reach <strong>${analysis.estimatedReach.toLocaleString()} people</strong>` : ''}

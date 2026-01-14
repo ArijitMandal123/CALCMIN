@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
     document.getElementById('coffee-form').addEventListener('submit', calculateResetPlan);
 });
 
@@ -307,7 +315,7 @@ function displayResults(analysis) {
                                 <span class="text-primary font-medium">${sanitizeText(week.caffeine)}mg (${sanitizeText(week.cups)} cups)</span>
                             </div>
                             <div class="text-xs text-light">
-                                ${week.strategy.map(s => `â€¢ ${escapeHtml(s)}`).join('<br>')}
+                                ${week.strategy.map(s => `• ${escapeHtml(s)}`).join('<br>')}
                             </div>
                         </div>
                     `).join('')}
@@ -336,20 +344,20 @@ function displayResults(analysis) {
                     <span class="material-icons text-lg">tips_and_updates</span> Success Tips
                 </h3>
                 <ul class="space-y-1 text-sm text-light">
-                    <li>â€¢ Track your progress daily to stay motivated</li>
-                    <li>â€¢ Replace coffee rituals with herbal tea or decaf</li>
-                    <li>â€¢ Exercise regularly to boost natural energy</li>
-                    <li>â€¢ Stay hydrated - dehydration worsens withdrawal</li>
-                    <li>â€¢ Get adequate sleep to reduce caffeine dependence</li>
+                    <li>• Track your progress daily to stay motivated</li>
+                    <li>• Replace coffee rituals with herbal tea or decaf</li>
+                    <li>• Exercise regularly to boost natural energy</li>
+                    <li>• Stay hydrated - dehydration worsens withdrawal</li>
+                    <li>• Get adequate sleep to reduce caffeine dependence</li>
                 </ul>
             </div>
             
             <div class="mt-6 p-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded border border-primary/30">
-                <h3 class="font-medium text-primary mb-2">ðŸŽ¯ Reset Success Strategy</h3>
+                <h3 class="font-medium text-primary mb-2">🎯 Reset Success Strategy</h3>
                 <div class="text-sm text-light space-y-1">
-                    <p>â€¢ Your ${escapeHtml(analysis.withdrawalRisk.level.toLowerCase())} withdrawal risk suggests a ${sanitizeText(analysis.timeline)}-week timeline is appropriate</p>
-                    <p>â€¢ Focus on gradual reduction rather than sudden elimination for lasting results</p>
-                    <p>â€¢ After reset, maintain 1-2 cups daily maximum to preserve sensitivity</p>
+                    <p>• Your ${escapeHtml(analysis.withdrawalRisk.level.toLowerCase())} withdrawal risk suggests a ${sanitizeText(analysis.timeline)}-week timeline is appropriate</p>
+                    <p>• Focus on gradual reduction rather than sudden elimination for lasting results</p>
+                    <p>• After reset, maintain 1-2 cups daily maximum to preserve sensitivity</p>
                 </div>
             </div>
         </div>

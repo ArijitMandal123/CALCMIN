@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Digital Nomad Visa Feasibility Checker Calculator
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
 
 // Visa data for different countries
 const visaData = {
@@ -242,7 +250,7 @@ function displayResults(results, data) {
                             <div class="flex justify-between items-start mb-3">
                                 <div>
                                     <h5 class="font-semibold text-accent text-lg">${visa.name}</h5>
-                                    <div class="text-sm text-light">${sanitizeText(visa.duration)} month visa â€¢ ${sanitizeText(visa.region)}</div>
+                                    <div class="text-sm text-light">${sanitizeText(visa.duration)} month visa • ${sanitizeText(visa.region)}</div>
                                 </div>
                                 <div class="text-right">
                                     <div class="text-sm ${sanitizeText(visa.riskLevel.color)}">${sanitizeText(visa.riskLevel.level)} Risk</div>
@@ -280,7 +288,7 @@ function displayResults(results, data) {
                             <div class="flex justify-between items-start mb-3">
                                 <div>
                                     <h5 class="font-semibold text-light text-lg">${visa.name}</h5>
-                                    <div class="text-sm text-light">${sanitizeText(visa.duration)} month visa â€¢ ${sanitizeText(visa.region)}</div>
+                                    <div class="text-sm text-light">${sanitizeText(visa.duration)} month visa • ${sanitizeText(visa.region)}</div>
                                 </div>
                                 <div class="text-right">
                                     <div class="text-sm text-red-400">Need +$${(visa.requiredIncome - data.monthlyIncome).toLocaleString()}</div>

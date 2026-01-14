@@ -1,4 +1,13 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.getElementById('ev-form').addEventListener('submit', function(e) {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
+document.getElementById('ev-form').addEventListener('submit', function(e) {
   e.preventDefault();
   
   const evEfficiency = parseFloat(document.getElementById('evEfficiency').value);
@@ -82,13 +91,13 @@ function displayResults(evCost, gasCost, monthly, annual, perMile, kwh, gallons)
       </div>
       
       <div class="bg-accent/20 border border-accent rounded p-3 text-sm">
-        <strong>ðŸ’¡ Additional EV Benefits:</strong>
+        <strong>💡 Additional EV Benefits:</strong>
         <ul class="mt-2 space-y-1 text-light">
-          <li>â€¢ Lower maintenance costs (no oil changes)</li>
-          <li>â€¢ Potential tax incentives and rebates</li>
-          <li>â€¢ Reduced environmental impact</li>
-          <li>â€¢ Quieter operation</li>
-          <li>â€¢ Home charging convenience</li>
+          <li>• Lower maintenance costs (no oil changes)</li>
+          <li>• Potential tax incentives and rebates</li>
+          <li>• Reduced environmental impact</li>
+          <li>• Quieter operation</li>
+          <li>• Home charging convenience</li>
         </ul>
       </div>
     </div>

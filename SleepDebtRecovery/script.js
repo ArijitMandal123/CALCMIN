@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
     generateSleepDays();
     
     document.getElementById('fill-average').addEventListener('click', fillAverageHours);
@@ -282,16 +290,16 @@ function displayResults(analysis) {
                     <span class="material-icons text-lg">health_and_safety</span> Health Impact Assessment
                 </h3>
                 <ul class="space-y-1 text-sm text-light">
-                    ${analysis.healthImpact.map(impact => `<li>â€¢ ${impact}</li>`).join('')}
+                    ${analysis.healthImpact.map(impact => `<li>• ${impact}</li>`).join('')}
                 </ul>
             </div>
             
             <div class="mt-6 p-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded border border-primary/30">
-                <h3 class="font-medium text-primary mb-2">ðŸ’¡ Key Insights</h3>
+                <h3 class="font-medium text-primary mb-2">💡 Key Insights</h3>
                 <div class="text-sm text-light space-y-1">
-                    <p>â€¢ Sleep debt recovery requires consistency rather than occasional long sleeps</p>
-                    <p>â€¢ Your ${analysis.severity.level.toLowerCase()} sleep debt level needs ${sanitizeText(analysis.recoveryPlan.weeksToRecover)} weeks of dedicated recovery</p>
-                    <p>â€¢ Focus on sleep hygiene improvements alongside debt repayment for lasting results</p>
+                    <p>• Sleep debt recovery requires consistency rather than occasional long sleeps</p>
+                    <p>• Your ${analysis.severity.level.toLowerCase()} sleep debt level needs ${sanitizeText(analysis.recoveryPlan.weeksToRecover)} weeks of dedicated recovery</p>
+                    <p>• Focus on sleep hygiene improvements alongside debt repayment for lasting results</p>
                 </div>
             </div>
         </div>

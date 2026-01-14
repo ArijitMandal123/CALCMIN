@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
     const form = document.getElementById('plastic-form');
     
     form.addEventListener('submit', function(e) {
@@ -388,7 +396,7 @@ function displayResults(results) {
                 ${results.reductionPotential.map(reduction => `
                     <div class="flex justify-between items-center p-3 bg-dark rounded">
                         <div>
-                            <span class="text-light">${escapeHtml(reduction.item)}: ${sanitizeText(reduction.current)} â†’ ${sanitizeText(reduction.target)} per week</span>
+                            <span class="text-light">${escapeHtml(reduction.item)}: ${sanitizeText(reduction.current)} → ${sanitizeText(reduction.target)} per week</span>
                         </div>
                         <div class="text-right">
                             <div class="text-green-400 font-bold">${reduction.carbonSaved.toFixed(1)} kg CO2 saved</div>

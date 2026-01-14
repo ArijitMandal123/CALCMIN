@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
     const form = document.getElementById('timezone-form');
     const resultsDiv = document.getElementById('results');
     const resultContent = document.getElementById('result-content');
@@ -431,11 +439,11 @@
                         Key Insights
                     </h3>
                     <ul class="text-sm text-light space-y-1">
-                        <li>â€¢ Best unfairness score: ${sanitizeHtml(analysis.stats.bestScore)} (lower is better)</li>
-                        <li>â€¢ Average unfairness across all options: ${sanitizeHtml(analysis.stats.avgScore)}</li>
-                        <li>â€¢ Team spans ${sanitizeHtml(analysis.stats.timezoneSpread.toString())} different timezone${analysis.stats.timezoneSpread > 1 ? 's' : ''}</li>
-                        <li>â€¢ ${analysis.topOptions[0].memberTimes.filter(m => m.isWorkingHours).length} of ${sanitizeHtml(analysis.totalMembers.toString())} members in working hours for best option</li>
-                        ${analysis.rotationSchedule ? '<li>â€¢ Use rotation schedule to distribute inconvenience fairly over time</li>' : ''}
+                        <li>• Best unfairness score: ${sanitizeHtml(analysis.stats.bestScore)} (lower is better)</li>
+                        <li>• Average unfairness across all options: ${sanitizeHtml(analysis.stats.avgScore)}</li>
+                        <li>• Team spans ${sanitizeHtml(analysis.stats.timezoneSpread.toString())} different timezone${analysis.stats.timezoneSpread > 1 ? 's' : ''}</li>
+                        <li>• ${analysis.topOptions[0].memberTimes.filter(m => m.isWorkingHours).length} of ${sanitizeHtml(analysis.totalMembers.toString())} members in working hours for best option</li>
+                        ${analysis.rotationSchedule ? '<li>• Use rotation schedule to distribute inconvenience fairly over time</li>' : ''}
                     </ul>
                 </div>
             </div>

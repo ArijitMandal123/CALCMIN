@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Career satisfaction factor weights
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
 const satisfactionWeights = {
     compensation: {
         salary: 0.25,
@@ -440,7 +448,7 @@ function displayResults(data) {
         <!-- Category Breakdown -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
             <div class="bg-dark p-6 rounded-lg">
-                <h3 class="text-xl font-semibold text-primary mb-4">ðŸ“Š Satisfaction by Category</h3>
+                <h3 class="text-xl font-semibold text-primary mb-4">📊 Satisfaction by Category</h3>
                 <div class="space-y-4">
                     ${Object.entries(scores.categories).map(([category, score]) => {
                         const categoryNames = {
@@ -468,7 +476,7 @@ function displayResults(data) {
             </div>
 
             <div class="bg-dark p-6 rounded-lg">
-                <h3 class="text-xl font-semibold text-primary mb-4">ðŸŽ¯ Key Metrics</h3>
+                <h3 class="text-xl font-semibold text-primary mb-4">🎯 Key Metrics</h3>
                 <div class="space-y-4">
                     <div class="flex justify-between">
                         <span class="text-light">Manager Quality:</span>
@@ -512,7 +520,7 @@ function displayResults(data) {
 
         <!-- Recommendations -->
         <div class="mb-8">
-            <h3 class="text-xl font-semibold text-primary mb-4">ðŸ’¡ Personalized Recommendations</h3>
+            <h3 class="text-xl font-semibold text-primary mb-4">💡 Personalized Recommendations</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 ${recommendations.map(rec => `
                     <div class="bg-dark p-4 rounded-lg border border-accent">
@@ -535,22 +543,22 @@ function displayResults(data) {
 
         <!-- Next Steps -->
         <div class="bg-dark p-6 rounded-lg border border-accent">
-            <h3 class="text-xl font-semibold text-primary mb-4">ðŸ“‹ Your Next Steps</h3>
+            <h3 class="text-xl font-semibold text-primary mb-4">📋 Your Next Steps</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                     <h4 class="text-lg font-semibold text-primary mb-2">Immediate Actions (This Week)</h4>
                     <ul class="text-light space-y-2 text-sm">
-                        ${analysis.nextSteps.slice(0, 2).map(step => `<li>â€¢ ${escapeHtml(step)}</li>`).join('')}
-                        <li>â€¢ ${recommendations.length > 0 ? `Address ${recommendations[0].category.toLowerCase()} concerns` : 'Focus on maintaining current satisfaction levels'}</li>
-                        <li>â€¢ Document specific examples of satisfaction drivers and detractors</li>
+                        ${analysis.nextSteps.slice(0, 2).map(step => `<li>• ${escapeHtml(step)}</li>`).join('')}
+                        <li>• ${recommendations.length > 0 ? `Address ${recommendations[0].category.toLowerCase()} concerns` : 'Focus on maintaining current satisfaction levels'}</li>
+                        <li>• Document specific examples of satisfaction drivers and detractors</li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold text-primary mb-2">Strategic Actions (This Month)</h4>
                     <ul class="text-light space-y-2 text-sm">
-                        ${analysis.nextSteps.slice(2).map(step => `<li>â€¢ ${escapeHtml(step)}</li>`).join('')}
-                        <li>â€¢ Re-assess satisfaction after implementing changes</li>
-                        <li>â€¢ ${retentionLikelihood < 50 ? 'Begin exploring alternative opportunities' : 'Continue building on positive momentum'}</li>
+                        ${analysis.nextSteps.slice(2).map(step => `<li>• ${escapeHtml(step)}</li>`).join('')}
+                        <li>• Re-assess satisfaction after implementing changes</li>
+                        <li>• ${retentionLikelihood < 50 ? 'Begin exploring alternative opportunities' : 'Continue building on positive momentum'}</li>
                     </ul>
                 </div>
             </div>

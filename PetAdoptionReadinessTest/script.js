@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
     const form = document.getElementById('pet-adoption-form');
     const petTypeSelect = document.getElementById('petType');
     const petSizeSelect = document.getElementById('petSize');
@@ -327,7 +335,7 @@ function displayResults(results) {
             <div class="bg-red-900/20 border border-red-600 rounded p-4 mb-6">
                 <h5 class="font-semibold text-red-400 mb-2">Areas of Concern</h5>
                 <ul class="text-sm text-light space-y-1">
-                    ${readiness.issues.map(issue => `<li>â€¢ ${escapeHtml(issue)}</li>`).join('')}
+                    ${readiness.issues.map(issue => `<li>• ${escapeHtml(issue)}</li>`).join('')}
                 </ul>
             </div>
             ` : ''}
@@ -336,7 +344,7 @@ function displayResults(results) {
             <div class="bg-blue-900/20 border border-blue-600 rounded p-4 mb-6">
                 <h5 class="font-semibold text-blue-400 mb-2">Recommendations</h5>
                 <ul class="text-sm text-light space-y-1">
-                    ${readiness.recommendations.map(rec => `<li>â€¢ ${escapeHtml(rec)}</li>`).join('')}
+                    ${readiness.recommendations.map(rec => `<li>• ${escapeHtml(rec)}</li>`).join('')}
                 </ul>
             </div>
             ` : ''}
@@ -344,11 +352,11 @@ function displayResults(results) {
             <div class="bg-yellow-900/20 border border-yellow-600 rounded p-4">
                 <h5 class="font-semibold text-yellow-400 mb-2">Important Notes</h5>
                 <ul class="text-sm text-light space-y-1">
-                    <li>â€¢ These estimates are based on average costs and may vary by location</li>
-                    <li>â€¢ Consider pet insurance to help manage unexpected veterinary costs</li>
-                    <li>â€¢ Senior pets may have higher medical expenses</li>
-                    <li>â€¢ Factor in potential lifestyle changes and their financial impact</li>
-                    <li>â€¢ Consult with local veterinarians for more accurate cost estimates</li>
+                    <li>• These estimates are based on average costs and may vary by location</li>
+                    <li>• Consider pet insurance to help manage unexpected veterinary costs</li>
+                    <li>• Senior pets may have higher medical expenses</li>
+                    <li>• Factor in potential lifestyle changes and their financial impact</li>
+                    <li>• Consult with local veterinarians for more accurate cost estimates</li>
                 </ul>
             </div>
         </div>

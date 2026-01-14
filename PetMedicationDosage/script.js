@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
   const form = document.getElementById('dosage-form');
   const easyModeBtn = document.getElementById('easyMode');
   const advancedModeBtn = document.getElementById('advancedMode');
@@ -83,7 +91,7 @@
     if (medData.max === 0) {
       const resultHTML = `
         <div class="bg-red-900/30 p-4 md:p-6 rounded-lg border-l-4 border-red-500">
-          <h3 class="text-xl text-red-400 mb-4 flex items-center gap-2"><span class="material-icons">warning</span> âš ï¸ NOT SAFE</h3>
+          <h3 class="text-xl text-red-400 mb-4 flex items-center gap-2"><span class="material-icons">warning</span> ⚠️ NOT SAFE</h3>
           <div class="text-text text-sm md:text-base">
             <p class="text-lg font-bold mb-3">${sanitizeText(medData.name)} is NOT RECOMMENDED for ${sanitizeText(species)}s</p>
             <p class="mb-3">${sanitizeText(medData.notes)}</p>
@@ -140,7 +148,7 @@
           </div>` : ''}
           
           <div class="bg-accent/20 border border-accent rounded p-4">
-            <div class="flex items-center gap-2 mb-2"><span class="material-icons text-accent">warning</span><strong>âš ï¸ Important Safety Information:</strong></div>
+            <div class="flex items-center gap-2 mb-2"><span class="material-icons text-accent">warning</span><strong>⚠️ Important Safety Information:</strong></div>
             <ul class="ml-8 space-y-2 list-disc list-inside text-sm">
               <li><strong>Always consult your veterinarian</strong> before giving any medication</li>
               <li>Start with the lower dose and monitor your pet</li>

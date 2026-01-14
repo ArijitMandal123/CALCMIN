@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
   const form = document.getElementById('timezone-form');
   const resultsDiv = document.getElementById('results');
   const resultContent = document.getElementById('result-content');
@@ -242,10 +250,10 @@
           </h3>
           <p class="text-light">No meeting times work for all team members with current constraints. Try:</p>
           <ul class="mt-3 space-y-1 text-sm text-light">
-            <li>â€¢ Expanding work hours for some members</li>
-            <li>â€¢ Including weekend days</li>
-            <li>â€¢ Reducing meeting duration</li>
-            <li>â€¢ Setting some members as lower priority</li>
+            <li>• Expanding work hours for some members</li>
+            <li>• Including weekend days</li>
+            <li>• Reducing meeting duration</li>
+            <li>• Setting some members as lower priority</li>
           </ul>
         </div>
       `;
@@ -284,7 +292,7 @@
                       <span class="text-light">${member.name}:</span>
                       <span class="text-text font-medium">
                         ${sanitizeText(member.localTime)} (${sanitizeText(member.timezone)})
-                        ${member.score >= 90 ? 'ðŸŸ¢' : member.score >= 70 ? 'ðŸŸ¡' : 'ðŸŸ '}
+                        ${member.score >= 90 ? '🟢' : member.score >= 70 ? '🟡' : '🟠'}
                       </span>
                     </div>
                   `).join('')}
@@ -306,7 +314,7 @@
           </div>
 
           <div class="mt-4 text-xs text-light">
-            <p>ðŸŸ¢ Ideal time (10 AM - 4 PM local) | ðŸŸ¡ Good time | ðŸŸ  Acceptable time</p>
+            <p>🟢 Ideal time (10 AM - 4 PM local) | 🟡 Good time | 🟠 Acceptable time</p>
             <p>Meeting duration: ${sanitizeText(duration)} minutes</p>
           </div>
         </div>

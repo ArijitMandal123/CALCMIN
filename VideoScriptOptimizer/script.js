@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
     const form = document.getElementById('script-form');
     const platformSelect = document.getElementById('platform');
     const categorySelect = document.getElementById('category');
@@ -432,7 +440,7 @@
                 </div>
                 
                 <div class="mb-6">
-                    <h3 class="text-lg font-semibold text-primary mb-3">ðŸ“ Pacing Guide</h3>
+                    <h3 class="text-lg font-semibold text-primary mb-3">📝 Pacing Guide</h3>
                     <div class="bg-dark border border-accent rounded p-4">
                         <div class="text-center mb-3">
                             <span class="text-accent font-semibold">Average Pace: ${sanitizeHtml(optimization.pacingGuide.averageWPM.toString())} WPM</span>
@@ -453,7 +461,7 @@
                 
                 ${optimization.retentionAnalysis.dropOffPoints.length > 0 ? `
                 <div class="mb-6">
-                    <h3 class="text-lg font-semibold text-primary mb-3">ðŸ“Š Retention Analysis</h3>
+                    <h3 class="text-lg font-semibold text-primary mb-3">📊 Retention Analysis</h3>
                     <div class="grid md:grid-cols-2 gap-4">
                         <div class="bg-dark border border-accent rounded p-3">
                             <h4 class="text-accent font-semibold mb-2">Expected Retention</h4>
@@ -463,7 +471,7 @@
                             <h4 class="text-accent font-semibold mb-2">Common Drop-off Points</h4>
                             <ul class="text-xs text-text space-y-1">
                                 ${optimization.retentionAnalysis.dropOffPoints.map(point => `
-                                    <li>â€¢ ${sanitizeHtml(point)}</li>
+                                    <li>• ${sanitizeHtml(point)}</li>
                                 `).join('')}
                             </ul>
                         </div>
@@ -473,7 +481,7 @@
                 
                 ${optimization.recommendations.length > 0 ? `
                 <div class="mb-6">
-                    <h3 class="text-lg font-semibold text-primary mb-3">ðŸ’¡ Optimization Recommendations</h3>
+                    <h3 class="text-lg font-semibold text-primary mb-3">💡 Optimization Recommendations</h3>
                     <ul class="space-y-2">
                         ${optimization.recommendations.map(rec => `
                             <li class="flex items-start gap-2 text-text">
@@ -487,15 +495,15 @@
                 
                 <div class="grid md:grid-cols-2 gap-4">
                     <div class="bg-dark border border-accent rounded p-4">
-                        <h4 class="text-primary font-semibold mb-2">ðŸŽ¯ Script Structure</h4>
+                        <h4 class="text-primary font-semibold mb-2">🎯 Script Structure</h4>
                         <div class="text-sm text-text">
-                            Hook (${sanitizeHtml((optimization.contentBreakdown.hook?.percentage || 0).toString())}%) â†’ 
-                            Main Content (${sanitizeHtml((optimization.contentBreakdown.mainContent?.percentage || 0).toString())}%) â†’ 
+                            Hook (${sanitizeHtml((optimization.contentBreakdown.hook?.percentage || 0).toString())}%) → 
+                            Main Content (${sanitizeHtml((optimization.contentBreakdown.mainContent?.percentage || 0).toString())}%) → 
                             CTA (${sanitizeHtml((optimization.contentBreakdown.callToAction?.percentage || 0).toString())}%)
                         </div>
                     </div>
                     <div class="bg-dark border border-accent rounded p-4">
-                        <h4 class="text-primary font-semibold mb-2">â±ï¸ Timing Breakdown</h4>
+                        <h4 class="text-primary font-semibold mb-2">⏱️ Timing Breakdown</h4>
                         <div class="text-sm text-text">
                             ${sanitizeHtml(optimization.pacingGuide.sections.length.toString())} sections with 
                             ${sanitizeHtml(optimization.pacingGuide.averageWPM.toString())} WPM average pace
@@ -504,7 +512,7 @@
                 </div>
                 
                 <div class="mt-6 bg-gradient-to-r from-primary/20 to-accent/20 rounded-lg p-4 text-center">
-                    <div class="text-primary font-semibold mb-2">ðŸš€ Script Optimization Complete</div>
+                    <div class="text-primary font-semibold mb-2">🚀 Script Optimization Complete</div>
                     <div class="text-sm text-text">
                         Optimal script: <strong>${sanitizeHtml(optimization.optimalWordCount.toString())} words</strong> for 
                         <strong>${optimization.recommendedDuration >= 1 ? 

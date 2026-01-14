@@ -1,4 +1,13 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.getElementById('dorm-form').addEventListener('submit', function(e) {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
+document.getElementById('dorm-form').addEventListener('submit', function(e) {
   e.preventDefault();
   
   const roomLength = parseFloat(document.getElementById('roomLength').value);
@@ -154,11 +163,11 @@ function displayResults(area, efficiency, efficiencyColor, tips, layout, roomTyp
       </div>
       
       <div class="bg-accent/20 border border-accent rounded p-3 text-sm">
-        <strong>ðŸ  Layout Recommendations:</strong>
+        <strong>🏠 Layout Recommendations:</strong>
         <ul class="mt-2 space-y-1 text-light">
-          ${tips.map(tip => `<li>â€¢ ${tip}</li>`).join('')}
-          <li>â€¢ Measure twice, buy once - verify dimensions before purchasing</li>
-          <li>â€¢ Leave 2-3 feet of walking space around furniture</li>
+          ${tips.map(tip => `<li>• ${tip}</li>`).join('')}
+          <li>• Measure twice, buy once - verify dimensions before purchasing</li>
+          <li>• Leave 2-3 feet of walking space around furniture</li>
         </ul>
       </div>
     </div>

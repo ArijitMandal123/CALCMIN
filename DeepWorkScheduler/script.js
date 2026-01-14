@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
     const form = document.getElementById('deepwork-form');
     const resultsDiv = document.getElementById('results');
     const resultContent = document.getElementById('result-content');
@@ -261,7 +269,7 @@
                                 <div class="flex justify-between items-start mb-2">
                                     <div>
                                         <h4 class="font-medium text-text">Block ${index + 1}: ${sanitizeText(block.period)}</h4>
-                                        <p class="text-sm text-light">${sanitizeText(block.timeSlot)} â€¢ ${sanitizeText(block.duration)} minutes</p>
+                                        <p class="text-sm text-light">${sanitizeText(block.timeSlot)} • ${sanitizeText(block.duration)} minutes</p>
                                     </div>
                                     <div class="text-right">
                                         <div class="text-lg font-bold ${getScoreColor(block.score)}">${sanitizeText(block.score)}%</div>
@@ -334,11 +342,11 @@
                         Key Recommendations
                     </h3>
                     <ul class="text-sm text-light space-y-1">
-                        <li>â€¢ Start with ${schedule.optimalBlocks[0]?.duration || 120}-minute blocks during your ${schedule.energyPeaks[0]?.period.toLowerCase() || 'peak'} energy period</li>
-                        <li>â€¢ Protect your deep work time by setting clear boundaries and expectations</li>
-                        <li>â€¢ Use the Pomodoro Technique within blocks if you're new to extended focus</li>
-                        <li>â€¢ Track your actual focus duration and adjust block lengths accordingly</li>
-                        <li>â€¢ Consider noise-canceling headphones or "Do Not Disturb" signals</li>
+                        <li>• Start with ${schedule.optimalBlocks[0]?.duration || 120}-minute blocks during your ${schedule.energyPeaks[0]?.period.toLowerCase() || 'peak'} energy period</li>
+                        <li>• Protect your deep work time by setting clear boundaries and expectations</li>
+                        <li>• Use the Pomodoro Technique within blocks if you're new to extended focus</li>
+                        <li>• Track your actual focus duration and adjust block lengths accordingly</li>
+                        <li>• Consider noise-canceling headphones or "Do Not Disturb" signals</li>
                     </ul>
                 </div>
             </div>

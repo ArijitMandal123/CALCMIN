@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Home Renovation Priority Sequencer Logic
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
 
 let projects = [];
 let projectIdCounter = 0;
@@ -328,7 +336,7 @@ function displayResults(sequence) {
                             </div>
                             ${project.dependencies ? `
                                 <div class="mt-2 text-xs text-yellow-400">
-                                    âš  Requires ${escapeHtml(project.dependencies)} work first
+                                    ⚠ Requires ${escapeHtml(project.dependencies)} work first
                                 </div>
                             ` : ''}
                         </div>
@@ -352,7 +360,7 @@ function displayResults(sequence) {
                             <div class="grid md:grid-cols-2 gap-4">
                                 ${data.projects.map(project => `
                                     <div class="text-sm text-light">
-                                        â€¢ ${escapeHtml(project.name)} - $${project.budget.toLocaleString()}
+                                        • ${escapeHtml(project.name)} - $${project.budget.toLocaleString()}
                                     </div>
                                 `).join('')}
                             </div>
@@ -365,11 +373,11 @@ function displayResults(sequence) {
             <div class="bg-primary/10 border-l-4 border-primary p-6">
                 <h4 class="font-semibold text-primary mb-2">Key Recommendations</h4>
                 <ul class="text-sm text-light space-y-1">
-                    <li>â€¢ Start with highest urgency projects (roofing, HVAC, electrical)</li>
-                    <li>â€¢ Complete infrastructure work before cosmetic improvements</li>
-                    <li>â€¢ Budget 20% extra for unexpected costs and delays</li>
-                    <li>â€¢ Consider seasonal timing for exterior projects</li>
-                    <li>â€¢ Plan temporary living arrangements for major kitchen/bathroom work</li>
+                    <li>• Start with highest urgency projects (roofing, HVAC, electrical)</li>
+                    <li>• Complete infrastructure work before cosmetic improvements</li>
+                    <li>• Budget 20% extra for unexpected costs and delays</li>
+                    <li>• Consider seasonal timing for exterior projects</li>
+                    <li>• Plan temporary living arrangements for major kitchen/bathroom work</li>
                 </ul>
             </div>
         </div>

@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`nlet roommates = [];
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
 let roommateCount = 0;
 
 const form = document.getElementById('coliving-form');
@@ -260,7 +268,7 @@ function displayResults(results, totalRent, totalUtilities, totalShared, totalPa
       getsBack.forEach(creditor => {
         if (Math.abs(debtor.balance) > 0.01 && creditor.balance > 0.01) {
           const amount = Math.min(Math.abs(debtor.balance), creditor.balance);
-          html += `<div>â€¢ ${sanitizeText(debtor.name)} pays ${sanitizeText(creditor.name)}: $${amount.toFixed(2)}</div>`;
+          html += `<div>• ${sanitizeText(debtor.name)} pays ${sanitizeText(creditor.name)}: $${amount.toFixed(2)}</div>`;
           debtor.balance += amount;
           creditor.balance -= amount;
         }

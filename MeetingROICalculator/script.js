@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
     const form = document.getElementById('meeting-form');
     const resultsDiv = document.getElementById('results');
     const resultContent = document.getElementById('result-content');
@@ -362,7 +370,7 @@
                     <div class="bg-dark p-4 rounded border border-accent">
                         <h3 class="font-semibold text-text mb-2">Total Cost</h3>
                         <div class="text-3xl font-bold ${sanitizeText(costColor)} mb-2">$${analysis.totalCost.toFixed(0)}</div>
-                        <p class="text-sm text-light">${sanitizeText(analysis.totalMinutes)} minutes â€¢ ${sanitizeText(analysis.totalAttendees)} attendees</p>
+                        <p class="text-sm text-light">${sanitizeText(analysis.totalMinutes)} minutes • ${sanitizeText(analysis.totalAttendees)} attendees</p>
                     </div>
                     
                     <div class="bg-dark p-4 rounded border border-accent">
@@ -441,11 +449,11 @@
                         Key Insights
                     </h3>
                     <ul class="text-sm text-light space-y-1">
-                        <li>â€¢ Cost per attendee per hour: $${(analysis.avgHourlyRate).toFixed(0)}</li>
-                        <li>â€¢ This meeting costs $${(analysis.totalCost / analysis.totalMinutes).toFixed(2)} per minute</li>
-                        <li>â€¢ Context switching adds ${((analysis.contextSwitchingCost / analysis.totalCost) * 100).toFixed(0)}% to total cost</li>
+                        <li>• Cost per attendee per hour: $${(analysis.avgHourlyRate).toFixed(0)}</li>
+                        <li>• This meeting costs $${(analysis.totalCost / analysis.totalMinutes).toFixed(2)} per minute</li>
+                        <li>• Context switching adds ${((analysis.contextSwitchingCost / analysis.totalCost) * 100).toFixed(0)}% to total cost</li>
                         ${analysis.frequencyAnalysis.frequency !== 'one-time' ? 
-                            `<li>â€¢ Annual cost: $${analysis.frequencyAnalysis.annualCost.toLocaleString()} for ${sanitizeText(analysis.frequencyAnalysis.frequency)} meetings</li>` : ''}
+                            `<li>• Annual cost: $${analysis.frequencyAnalysis.annualCost.toLocaleString()} for ${sanitizeText(analysis.frequencyAnalysis.frequency)} meetings</li>` : ''}
                     </ul>
                 </div>
             </div>

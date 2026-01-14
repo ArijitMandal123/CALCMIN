@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
     const form = document.getElementById('focus-form');
     const resultsDiv = document.getElementById('results');
     const resultContent = document.getElementById('result-content');
@@ -366,7 +374,7 @@
                         <p class="text-red-400 font-medium mb-2">You're experiencing ${analysis.symptoms.length} burnout symptoms:</p>
                         <ul class="text-sm text-light space-y-1">
                             ${analysis.symptoms.map(symptom => `
-                                <li>â€¢ ${getSymptomDescription(symptom)}</li>
+                                <li>• ${getSymptomDescription(symptom)}</li>
                             `).join('')}
                         </ul>
                     </div>
@@ -379,12 +387,12 @@
                         Key Recommendations
                     </h3>
                     <ul class="text-sm text-light space-y-1">
-                        <li>â€¢ Limit deep focus work to ${sanitizeText(analysis.maxDailyFocus)} hours per day</li>
-                        <li>â€¢ Take ${sanitizeText(analysis.breakSchedule.totalBreaks)} breaks during focus sessions</li>
-                        <li>â€¢ Current capacity vs recommended: ${analysis.currentFocusHours.toFixed(1)}h vs ${sanitizeText(analysis.maxDailyFocus)}h</li>
-                        <li>â€¢ Weekly effective capacity: ${sanitizeText(analysis.weeklyCapacity.effectiveHours)}h at ${sanitizeText(analysis.weeklyCapacity.efficiency)}% efficiency</li>
+                        <li>• Limit deep focus work to ${sanitizeText(analysis.maxDailyFocus)} hours per day</li>
+                        <li>• Take ${sanitizeText(analysis.breakSchedule.totalBreaks)} breaks during focus sessions</li>
+                        <li>• Current capacity vs recommended: ${analysis.currentFocusHours.toFixed(1)}h vs ${sanitizeText(analysis.maxDailyFocus)}h</li>
+                        <li>• Weekly effective capacity: ${sanitizeText(analysis.weeklyCapacity.effectiveHours)}h at ${sanitizeText(analysis.weeklyCapacity.efficiency)}% efficiency</li>
                         ${analysis.vacationRecommendation.urgency !== 'Low' ? 
-                            `<li>â€¢ Schedule vacation ${analysis.vacationRecommendation.timeframe.toLowerCase()}</li>` : ''}
+                            `<li>• Schedule vacation ${analysis.vacationRecommendation.timeframe.toLowerCase()}</li>` : ''}
                     </ul>
                 </div>
             </div>

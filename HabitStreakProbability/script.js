@@ -1,4 +1,13 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.getElementById('habit-form').addEventListener('submit', function(e) {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
+document.getElementById('habit-form').addEventListener('submit', function(e) {
   e.preventDefault();
   
   const habitType = document.getElementById('habitType').value;
@@ -115,13 +124,13 @@ function displayResults(probability, daysToTarget, day7, day21, day66, day100) {
       </div>
       
       <div class="bg-accent/20 border border-accent rounded p-3 text-sm">
-        <strong>ðŸ’¡ Tips to Improve:</strong>
+        <strong>💡 Tips to Improve:</strong>
         <ul class="mt-2 space-y-1 text-light">
-          ${probability < 50 ? '<li>â€¢ Consider starting with a smaller target streak</li>' : ''}
-          ${probability < 60 ? '<li>â€¢ Add an accountability partner or join a community</li>' : ''}
-          ${probability < 70 ? '<li>â€¢ Optimize your environment to reduce friction</li>' : ''}
-          <li>â€¢ Track your progress daily to maintain momentum</li>
-          <li>â€¢ Prepare for obstacles and have backup plans</li>
+          ${probability < 50 ? '<li>• Consider starting with a smaller target streak</li>' : ''}
+          ${probability < 60 ? '<li>• Add an accountability partner or join a community</li>' : ''}
+          ${probability < 70 ? '<li>• Optimize your environment to reduce friction</li>' : ''}
+          <li>• Track your progress daily to maintain momentum</li>
+          <li>• Prepare for obstacles and have backup plans</li>
         </ul>
       </div>
     </div>

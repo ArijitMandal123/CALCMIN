@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
     const form = document.getElementById('foodImpactForm');
     const resultsDiv = document.getElementById('results');
     const resultsContent = document.getElementById('resultsContent');
@@ -58,7 +66,7 @@
                     <label class="block text-light mb-2">Food Type</label>
                     <select class="food-type w-full p-2 bg-dark border border-accent rounded text-text" required>
                         <option value="">Select food...</option>
-                        <optgroup label="ðŸ“ Dirty Dozen (High Priority)">
+                        <optgroup label="🍓 Dirty Dozen (High Priority)">
                             <option value="strawberries">Strawberries</option>
                             <option value="spinach">Spinach</option>
                             <option value="kale">Kale</option>
@@ -72,14 +80,14 @@
                             <option value="blueberries">Blueberries</option>
                             <option value="green_beans">Green Beans</option>
                         </optgroup>
-                        <optgroup label="ðŸ¥• Medium Priority">
+                        <optgroup label="🥕 Medium Priority">
                             <option value="broccoli">Broccoli</option>
                             <option value="carrots">Carrots</option>
                             <option value="tomatoes">Tomatoes</option>
                             <option value="potatoes">Potatoes</option>
                             <option value="lettuce">Lettuce</option>
                         </optgroup>
-                        <optgroup label="âœ… Clean Fifteen (Low Priority)">
+                        <optgroup label="✅ Clean Fifteen (Low Priority)">
                             <option value="avocados">Avocados</option>
                             <option value="sweet_corn">Sweet Corn</option>
                             <option value="pineapple">Pineapple</option>
@@ -392,7 +400,7 @@
                             <span class="text-primary font-semibold">$${results.improvements.monthlyCostIncrease.toFixed(0)}</span>
                         </div>
                         <div class="text-light text-sm mt-2">
-                            ${results.improvements.budgetFit ? 'âœ… Within recommended budget' : 'âš ï¸ May exceed budget - prioritize high-impact foods'}
+                            ${results.improvements.budgetFit ? '✅ Within recommended budget' : '⚠️ May exceed budget - prioritize high-impact foods'}
                         </div>
                     </div>
                 </div>
@@ -454,10 +462,10 @@
 
     function getRecommendationText(recommendation) {
         const texts = {
-            'switch_to_organic': 'ðŸ”„ Switch to organic for maximum health and environmental benefits',
-            'consider_organic': 'ðŸ¤” Consider switching to organic when budget allows',
-            'stay_conventional': 'âœ… Conventional is fine - focus organic budget elsewhere',
-            'maintain': 'ðŸ‘ Continue current approach'
+            'switch_to_organic': '🔄 Switch to organic for maximum health and environmental benefits',
+            'consider_organic': '🤔 Consider switching to organic when budget allows',
+            'stay_conventional': '✅ Conventional is fine - focus organic budget elsewhere',
+            'maintain': '👍 Continue current approach'
         };
         return texts[recommendation] || 'No specific recommendation';
     }

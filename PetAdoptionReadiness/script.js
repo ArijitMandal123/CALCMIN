@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
     document.getElementById('pet-form').addEventListener('submit', assessPetReadiness);
 });
 
@@ -518,9 +526,9 @@ function displayResults(analysis) {
                         </div>
                         ${analysis.financialReadiness.issues.length > 0 ? `
                             <div class="text-xs text-red-300">
-                                ${analysis.financialReadiness.issues.map(issue => `â€¢ ${escapeHtml(issue)}`).join('<br>')}
+                                ${analysis.financialReadiness.issues.map(issue => `• ${escapeHtml(issue)}`).join('<br>')}
                             </div>
-                        ` : '<div class="text-xs text-green-300">âœ“ Financially prepared</div>'}
+                        ` : '<div class="text-xs text-green-300">✓ Financially prepared</div>'}
                     </div>
                     
                     <div class="bg-dark p-3 rounded border border-accent">
@@ -530,9 +538,9 @@ function displayResults(analysis) {
                         </div>
                         ${analysis.lifestyleCompatibility.issues.length > 0 ? `
                             <div class="text-xs text-red-300">
-                                ${analysis.lifestyleCompatibility.issues.map(issue => `â€¢ ${escapeHtml(issue)}`).join('<br>')}
+                                ${analysis.lifestyleCompatibility.issues.map(issue => `• ${escapeHtml(issue)}`).join('<br>')}
                             </div>
-                        ` : '<div class="text-xs text-green-300">âœ“ Lifestyle compatible</div>'}
+                        ` : '<div class="text-xs text-green-300">✓ Lifestyle compatible</div>'}
                     </div>
                     
                     <div class="bg-dark p-3 rounded border border-accent">
@@ -542,9 +550,9 @@ function displayResults(analysis) {
                         </div>
                         ${analysis.timeAvailability.issues.length > 0 ? `
                             <div class="text-xs text-red-300">
-                                ${analysis.timeAvailability.issues.map(issue => `â€¢ ${escapeHtml(issue)}`).join('<br>')}
+                                ${analysis.timeAvailability.issues.map(issue => `• ${escapeHtml(issue)}`).join('<br>')}
                             </div>
-                        ` : '<div class="text-xs text-green-300">âœ“ Sufficient time available</div>'}
+                        ` : '<div class="text-xs text-green-300">✓ Sufficient time available</div>'}
                     </div>
                     
                     <div class="bg-dark p-3 rounded border border-accent">
@@ -554,9 +562,9 @@ function displayResults(analysis) {
                         </div>
                         ${analysis.experienceLevel.issues.length > 0 ? `
                             <div class="text-xs text-red-300">
-                                ${analysis.experienceLevel.issues.map(issue => `â€¢ ${escapeHtml(issue)}`).join('<br>')}
+                                ${analysis.experienceLevel.issues.map(issue => `• ${escapeHtml(issue)}`).join('<br>')}
                             </div>
-                        ` : '<div class="text-xs text-green-300">âœ“ Appropriate experience level</div>'}
+                        ` : '<div class="text-xs text-green-300">✓ Appropriate experience level</div>'}
                     </div>
                 </div>
             </div>
@@ -584,25 +592,25 @@ function displayResults(analysis) {
                 </h3>
                 <div class="text-sm text-light space-y-2">
                     ${analysis.overallScore.score >= 70 ? `
-                        <p>âœ… You appear ready for pet adoption! Consider visiting local shelters.</p>
-                        <p>â€¢ Research reputable shelters and rescue organizations</p>
-                        <p>â€¢ Prepare your home with necessary supplies</p>
-                        <p>â€¢ Schedule a meet-and-greet with potential pets</p>
+                        <p>✅ You appear ready for pet adoption! Consider visiting local shelters.</p>
+                        <p>• Research reputable shelters and rescue organizations</p>
+                        <p>• Prepare your home with necessary supplies</p>
+                        <p>• Schedule a meet-and-greet with potential pets</p>
                     ` : `
-                        <p>âš ï¸ Address the identified issues before adopting.</p>
-                        <p>â€¢ Work on improving your readiness score</p>
-                        <p>â€¢ Consider fostering to gain experience</p>
-                        <p>â€¢ Volunteer at shelters to learn more about pet care</p>
+                        <p>⚠️ Address the identified issues before adopting.</p>
+                        <p>• Work on improving your readiness score</p>
+                        <p>• Consider fostering to gain experience</p>
+                        <p>• Volunteer at shelters to learn more about pet care</p>
                     `}
                 </div>
             </div>
             
             <div class="mt-6 p-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded border border-primary/30">
-                <h3 class="font-medium text-primary mb-2">ðŸ¾ Adoption Success Tips</h3>
+                <h3 class="font-medium text-primary mb-2">🐾 Adoption Success Tips</h3>
                 <div class="text-sm text-light space-y-1">
-                    <p>â€¢ Your ${analysis.overallScore.level.level.toLowerCase()} readiness score suggests ${analysis.overallScore.score >= 70 ? 'you\'re prepared' : 'more preparation is needed'}</p>
-                    <p>â€¢ ${sanitizeText(analysis.petRequirements.name)} requires ${sanitizeText(analysis.petRequirements.dailyTime)} hours daily and $${sanitizeText(analysis.petRequirements.monthlyCost.min)}-${sanitizeText(analysis.petRequirements.monthlyCost.max)}/month</p>
-                    <p>â€¢ Proper preparation reduces the chance of pet returns and ensures a happy relationship</p>
+                    <p>• Your ${analysis.overallScore.level.level.toLowerCase()} readiness score suggests ${analysis.overallScore.score >= 70 ? 'you\'re prepared' : 'more preparation is needed'}</p>
+                    <p>• ${sanitizeText(analysis.petRequirements.name)} requires ${sanitizeText(analysis.petRequirements.dailyTime)} hours daily and $${sanitizeText(analysis.petRequirements.monthlyCost.min)}-${sanitizeText(analysis.petRequirements.monthlyCost.max)}/month</p>
+                    <p>• Proper preparation reduces the chance of pet returns and ensures a happy relationship</p>
                 </div>
             </div>
         </div>

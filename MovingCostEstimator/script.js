@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
     const form = document.getElementById('moving-cost-form');
     
     form.addEventListener('submit', function(e) {
@@ -362,19 +370,19 @@ function displayResults(results) {
             <div class="bg-green-900/20 border border-green-600 rounded p-4 mb-6">
                 <h5 class="font-semibold text-green-400 mb-2">Negotiation Tips</h5>
                 <ul class="text-sm text-light space-y-1">
-                    ${results.negotiationTips.map(tip => `<li>â€¢ ${tip}</li>`).join('')}
+                    ${results.negotiationTips.map(tip => `<li>• ${tip}</li>`).join('')}
                 </ul>
             </div>
             
             <div class="bg-yellow-900/20 border border-yellow-600 rounded p-4">
                 <h5 class="font-semibold text-yellow-400 mb-2">Important Reminders</h5>
                 <ul class="text-sm text-light space-y-1">
-                    <li>â€¢ Get at least 3 written estimates from licensed companies</li>
-                    <li>â€¢ Verify insurance coverage and understand your liability</li>
-                    <li>â€¢ Read all contracts carefully before signing</li>
-                    <li>â€¢ Take inventory and photos of valuable items</li>
-                    <li>â€¢ Keep important documents with you during the move</li>
-                    <li>â€¢ Confirm pickup and delivery dates in writing</li>
+                    <li>• Get at least 3 written estimates from licensed companies</li>
+                    <li>• Verify insurance coverage and understand your liability</li>
+                    <li>• Read all contracts carefully before signing</li>
+                    <li>• Take inventory and photos of valuable items</li>
+                    <li>• Keep important documents with you during the move</li>
+                    <li>• Confirm pickup and delivery dates in writing</li>
                 </ul>
             </div>
         </div>

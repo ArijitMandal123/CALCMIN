@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
     document.getElementById('housing-form').addEventListener('submit', compareHousingCosts);
 });
 
@@ -338,7 +346,7 @@ function displayResults(analysis) {
             </div>
             
             <div class="mb-6 p-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded border border-primary/30">
-                <h3 class="font-medium text-primary mb-2">ðŸ’° Financial Summary (${sanitizeText(analysis.timeHorizon)} years)</h3>
+                <h3 class="font-medium text-primary mb-2">💰 Financial Summary (${sanitizeText(analysis.timeHorizon)} years)</h3>
                 <div class="text-sm text-light">
                     <p><strong>${winner === 'house' ? 'House' : 'Apartment'}</strong> is $${savings.toLocaleString()} cheaper overall</p>
                     <p>This includes all costs: payments, maintenance, opportunity costs, and time investment</p>
@@ -438,11 +446,11 @@ function displayResults(analysis) {
                     <span class="material-icons text-lg">insights</span> Key Insights
                 </h3>
                 <ul class="space-y-1 text-sm text-light">
-                    <li>â€¢ Monthly cash flow difference: $${Math.abs(analysis.houseCosts.monthlyTotal - (analysis.apartmentCosts.monthlyRent + document.getElementById('apartmentUtilities').value)).toLocaleString()}</li>
-                    <li>â€¢ Down payment opportunity cost: $${analysis.opportunityCosts.downPaymentOpportunityCost.toLocaleString()}</li>
-                    <li>â€¢ Annual maintenance time value: $${analysis.lifestyleFactors.annualTimeCost.toLocaleString()}</li>
-                    <li>â€¢ Home appreciation adds $${(analysis.houseCosts.futureValue - document.getElementById('housePrice').value).toLocaleString()} in value</li>
-                    <li>â€¢ Consider your lifestyle priorities and financial flexibility needs</li>
+                    <li>• Monthly cash flow difference: $${Math.abs(analysis.houseCosts.monthlyTotal - (analysis.apartmentCosts.monthlyRent + document.getElementById('apartmentUtilities').value)).toLocaleString()}</li>
+                    <li>• Down payment opportunity cost: $${analysis.opportunityCosts.downPaymentOpportunityCost.toLocaleString()}</li>
+                    <li>• Annual maintenance time value: $${analysis.lifestyleFactors.annualTimeCost.toLocaleString()}</li>
+                    <li>• Home appreciation adds $${(analysis.houseCosts.futureValue - document.getElementById('housePrice').value).toLocaleString()} in value</li>
+                    <li>• Consider your lifestyle priorities and financial flexibility needs</li>
                 </ul>
             </div>
         </div>

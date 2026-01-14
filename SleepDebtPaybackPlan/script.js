@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
     const form = document.getElementById('sleep-form');
     const resultsDiv = document.getElementById('results');
     const resultContent = document.getElementById('result-content');
@@ -242,7 +250,7 @@
             recommendations.push({
                 type: 'environment',
                 title: 'Optimize Sleep Environment',
-                message: 'Ensure your bedroom is cool (65-68Â°F), dark, and quiet. Consider blackout curtains and white noise.',
+                message: 'Ensure your bedroom is cool (65-68°F), dark, and quiet. Consider blackout curtains and white noise.',
                 priority: 'medium'
             });
         }

@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
     const form = document.getElementById('hashtag-form');
     const avgImpressionsInput = document.getElementById('avg-impressions');
     const conversionRateInput = document.getElementById('conversion-rate');
@@ -336,7 +344,7 @@
                                         <span class="${getROIColor(hashtag.roi)} font-bold">${hashtag.roi.toFixed(0)}%</span>
                                     </div>
                                     <div class="text-xs text-light">
-                                        ${sanitizeText(hashtag.conversions)} conversions â€¢ $${hashtag.revenue.toFixed(2)} revenue â€¢ ${hashtag.conversionRate.toFixed(2)}% rate
+                                        ${sanitizeText(hashtag.conversions)} conversions • $${hashtag.revenue.toFixed(2)} revenue • ${hashtag.conversionRate.toFixed(2)}% rate
                                     </div>
                                 </div>
                             `).join('')}
@@ -364,7 +372,7 @@
                 </div>
                 
                 <div class="mb-6">
-                    <h3 class="text-lg font-semibold text-primary mb-3">ðŸ“Š Detailed Hashtag Analysis</h3>
+                    <h3 class="text-lg font-semibold text-primary mb-3">📊 Detailed Hashtag Analysis</h3>
                     <div class="overflow-x-auto">
                         <table class="w-full text-sm">
                             <thead>
@@ -399,7 +407,7 @@
                 
                 ${analysis.recommendations.length > 0 ? `
                 <div class="mb-6">
-                    <h3 class="text-lg font-semibold text-primary mb-3">ðŸ’¡ ROI Optimization Recommendations</h3>
+                    <h3 class="text-lg font-semibold text-primary mb-3">💡 ROI Optimization Recommendations</h3>
                     <ul class="space-y-2">
                         ${analysis.recommendations.map(rec => `
                             <li class="flex items-start gap-2 text-text">
@@ -413,7 +421,7 @@
                 
                 <div class="grid md:grid-cols-2 gap-4">
                     <div class="bg-dark border border-accent rounded p-4">
-                        <h4 class="text-primary font-semibold mb-2">ðŸ“ˆ ROI Insights</h4>
+                        <h4 class="text-primary font-semibold mb-2">📈 ROI Insights</h4>
                         <div class="text-sm text-text">
                             ${analysis.totalROI > 200 ? 
                                 `<span class="text-green-400">Excellent performance!</span> Your hashtags are generating strong returns.` :
@@ -424,7 +432,7 @@
                         </div>
                     </div>
                     <div class="bg-dark border border-accent rounded p-4">
-                        <h4 class="text-primary font-semibold mb-2">ðŸŽ¯ Next Steps</h4>
+                        <h4 class="text-primary font-semibold mb-2">🎯 Next Steps</h4>
                         <div class="text-sm text-text">
                             ${analysis.summary.highPerformers > 0 ?
                                 `Double down on your ${analysis.summary.highPerformers} high-performing hashtags and find similar ones.` :
@@ -435,10 +443,10 @@
                 </div>
                 
                 <div class="mt-6 bg-gradient-to-r from-primary/20 to-accent/20 rounded-lg p-4 text-center">
-                    <div class="text-primary font-semibold mb-2">ðŸš€ Hashtag ROI Analysis Complete</div>
+                    <div class="text-primary font-semibold mb-2">🚀 Hashtag ROI Analysis Complete</div>
                     <div class="text-sm text-text">
-                        Total ROI: <strong>${analysis.totalROI.toFixed(1)}%</strong> â€¢ 
-                        Revenue: <strong>$${analysis.totalRevenue.toFixed(2)}</strong> â€¢ 
+                        Total ROI: <strong>${analysis.totalROI.toFixed(1)}%</strong> • 
+                        Revenue: <strong>$${analysis.totalRevenue.toFixed(2)}</strong> • 
                         Best Hashtag: <strong>${escapeHtml(analysis.summary.bestHashtag?.name || 'N/A')}</strong>
                     </div>
                 </div>

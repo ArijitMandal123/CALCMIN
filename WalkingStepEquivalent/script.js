@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
     document.getElementById('stepForm').addEventListener('submit', function(e) {
         e.preventDefault();
         calculateStepEquivalent();
@@ -120,7 +128,7 @@ function calculateSteps(data) {
     // Get MET value for activity and intensity
     const metValue = getActivityMET(data.activityType, data.intensity);
     
-    // Calculate calories burned: METs Ã— weight (kg) Ã— time (hours)
+    // Calculate calories burned: METs × weight (kg) × time (hours)
     const weightInKg = data.bodyWeight / 2.20462;
     const timeInHours = data.duration / 60;
     const caloriesBurned = metValue * weightInKg * timeInHours;
@@ -284,11 +292,11 @@ function displayResults(results, data) {
         <div class="bg-blue-900 bg-opacity-20 border border-blue-600 p-4 rounded mt-6">
             <h4 class="text-blue-400 font-semibold mb-2">Tracking Tips</h4>
             <ul class="text-blue-200 text-sm space-y-1">
-                <li>â€¢ Add these equivalent steps to your fitness tracker manually</li>
-                <li>â€¢ Track actual activity time, excluding rest periods</li>
-                <li>â€¢ Adjust intensity level based on your actual effort</li>
-                <li>â€¢ Combine with regular walking for comprehensive fitness</li>
-                <li>â€¢ Update your weight periodically for accurate calculations</li>
+                <li>• Add these equivalent steps to your fitness tracker manually</li>
+                <li>• Track actual activity time, excluding rest periods</li>
+                <li>• Adjust intensity level based on your actual effort</li>
+                <li>• Combine with regular walking for comprehensive fitness</li>
+                <li>• Update your weight periodically for accurate calculations</li>
             </ul>
         </div>
     `;

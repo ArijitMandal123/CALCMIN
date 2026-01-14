@@ -1,4 +1,13 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.getElementById('coworking-form').addEventListener('submit', function(e) {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
+document.getElementById('coworking-form').addEventListener('submit', function(e) {
   e.preventDefault();
   
   const teamSize = parseInt(document.getElementById('teamSize').value);
@@ -100,13 +109,13 @@ function displayResults(current, coworking, monthly, annual, roi, benefits) {
       </div>
       
       <div class="bg-accent/20 border border-accent rounded p-3 text-sm">
-        <strong>ðŸ’¡ Coworking Benefits:</strong>
+        <strong>💡 Coworking Benefits:</strong>
         <ul class="mt-2 space-y-1 text-light">
-          <li>â€¢ Networking opportunities and community</li>
-          <li>â€¢ Flexible workspace without long-term commitment</li>
-          <li>â€¢ Professional environment boosts productivity</li>
-          <li>â€¢ Access to meeting rooms and amenities</li>
-          <li>â€¢ Reduced overhead and maintenance costs</li>
+          <li>• Networking opportunities and community</li>
+          <li>• Flexible workspace without long-term commitment</li>
+          <li>• Professional environment boosts productivity</li>
+          <li>• Access to meeting rooms and amenities</li>
+          <li>• Reduced overhead and maintenance costs</li>
         </ul>
       </div>
     </div>

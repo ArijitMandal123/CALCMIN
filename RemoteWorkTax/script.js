@@ -1,4 +1,13 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.getElementById('tax-form').addEventListener('submit', function(e) {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
+document.getElementById('tax-form').addEventListener('submit', function(e) {
   e.preventDefault();
   
   const employmentType = document.getElementById('employmentType').value;
@@ -81,7 +90,7 @@ function displayResults(method, total, direct, simplified, equipment, operating,
   const contentDiv = document.getElementById('result-content');
   
   const eligibilityNote = empType === 'employee' 
-    ? '<div class="bg-red-900/30 border border-red-500 rounded p-3 text-sm mb-4"><strong>âš ï¸ Note:</strong> W-2 employees generally cannot deduct home office expenses under current tax law (TCJA 2017-2025). These calculations are for informational purposes.</div>'
+    ? '<div class="bg-red-900/30 border border-red-500 rounded p-3 text-sm mb-4"><strong>⚠️ Note:</strong> W-2 employees generally cannot deduct home office expenses under current tax law (TCJA 2017-2025). These calculations are for informational purposes.</div>'
     : '';
   
   contentDiv.innerHTML = `
@@ -121,13 +130,13 @@ function displayResults(method, total, direct, simplified, equipment, operating,
       </div>
       
       <div class="bg-accent/20 border border-accent rounded p-3 text-sm">
-        <strong>ðŸ“‹ Important Notes:</strong>
+        <strong>📋 Important Notes:</strong>
         <ul class="mt-2 space-y-1 text-light">
-          <li>â€¢ Keep detailed records and receipts for all expenses</li>
-          <li>â€¢ Home office must be used regularly and exclusively for business</li>
-          <li>â€¢ Equipment over $2,500 may need to be depreciated</li>
-          <li>â€¢ Consult a tax professional for personalized advice</li>
-          <li>â€¢ Tax laws vary by state and change frequently</li>
+          <li>• Keep detailed records and receipts for all expenses</li>
+          <li>• Home office must be used regularly and exclusively for business</li>
+          <li>• Equipment over $2,500 may need to be depreciated</li>
+          <li>• Consult a tax professional for personalized advice</li>
+          <li>• Tax laws vary by state and change frequently</li>
         </ul>
       </div>
     </div>

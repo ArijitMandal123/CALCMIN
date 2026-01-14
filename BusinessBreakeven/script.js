@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Business Breakeven Analysis Tool
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('breakeven-form');
     const resultsDiv = document.getElementById('results');
@@ -207,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <div class="text-sm text-light">Units to Break Even</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-3xl font-bold ${sanitizeText(monthsClass)} mb-2">${data.monthsToBreakeven === Infinity ? 'âˆž' : data.monthsToBreakeven}</div>
+                            <div class="text-3xl font-bold ${sanitizeText(monthsClass)} mb-2">${data.monthsToBreakeven === Infinity ? '∞' : data.monthsToBreakeven}</div>
                             <div class="text-sm text-light">Months to Break Even</div>
                         </div>
                     </div>
@@ -302,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="bg-dark p-6 rounded border border-accent">
                     <h4 class="text-lg font-semibold text-accent mb-3">Recommendations & Next Steps</h4>
                     <ul class="text-sm text-light space-y-2 mb-4">
-                        ${data.recommendations.map(rec => `<li>â€¢ ${rec}</li>`).join('')}
+                        ${data.recommendations.map(rec => `<li>• ${rec}</li>`).join('')}
                     </ul>
                     
                     <div class="mt-4 p-4 bg-broder rounded border border-accent">

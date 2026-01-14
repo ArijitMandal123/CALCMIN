@@ -1,4 +1,13 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.getElementById('insurance-form').addEventListener('submit', function(e) {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
+document.getElementById('insurance-form').addEventListener('submit', function(e) {
   e.preventDefault();
   
   const businessType = document.getElementById('businessType').value;
@@ -135,13 +144,13 @@ function displayResults(gl, wc, prop, prof, totalAnnual, totalMonthly) {
       </div>
       
       <div class="bg-accent/20 border border-accent rounded p-3 text-sm">
-        <strong>ðŸ“‹ Important Notes:</strong>
+        <strong>📋 Important Notes:</strong>
         <ul class="mt-2 space-y-1 text-light">
-          <li>â€¢ These are estimates - actual costs may vary</li>
-          <li>â€¢ Consider additional coverage like cyber liability</li>
-          <li>â€¢ Shop around with multiple insurance providers</li>
-          <li>â€¢ Bundle policies for potential discounts</li>
-          <li>â€¢ Review coverage annually as your business grows</li>
+          <li>• These are estimates - actual costs may vary</li>
+          <li>• Consider additional coverage like cyber liability</li>
+          <li>• Shop around with multiple insurance providers</li>
+          <li>• Bundle policies for potential discounts</li>
+          <li>• Review coverage annually as your business grows</li>
         </ul>
       </div>
     </div>

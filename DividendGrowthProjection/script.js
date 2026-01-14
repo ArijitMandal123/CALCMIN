@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
     document.getElementById('dividendForm').addEventListener('submit', function(e) {
         e.preventDefault();
         calculateDividendProjection();
@@ -290,11 +298,11 @@ function displayResults(projection, data) {
         <div class="bg-yellow-900 bg-opacity-20 border border-yellow-600 p-4 rounded mt-6">
             <h4 class="text-yellow-400 font-semibold mb-2">Important Considerations</h4>
             <ul class="text-yellow-200 text-sm space-y-1">
-                <li>â€¢ Projections are based on assumptions and may not reflect actual results</li>
-                <li>â€¢ Dividend payments can be reduced or eliminated by companies</li>
-                <li>â€¢ Consider inflation impact on purchasing power over time</li>
-                <li>â€¢ Diversification across sectors and companies reduces risk</li>
-                <li>â€¢ Regular portfolio review and rebalancing is recommended</li>
+                <li>• Projections are based on assumptions and may not reflect actual results</li>
+                <li>• Dividend payments can be reduced or eliminated by companies</li>
+                <li>• Consider inflation impact on purchasing power over time</li>
+                <li>• Diversification across sectors and companies reduces risk</li>
+                <li>• Regular portfolio review and rebalancing is recommended</li>
             </ul>
         </div>
     `;

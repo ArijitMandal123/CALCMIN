@@ -1,4 +1,13 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.getElementById('carbon-form').addEventListener('submit', function(e) {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
+document.getElementById('carbon-form').addEventListener('submit', function(e) {
   e.preventDefault();
   
   const attendees = parseInt(document.getElementById('attendees').value);
@@ -84,11 +93,11 @@ function displayResults(total, perPerson, trees, travel, food, energy, materials
       <div class="grid md:grid-cols-3 gap-4 mb-4">
         <div class="bg-dark p-4 rounded text-center">
           <div class="text-primary text-3xl font-bold">${total.toFixed(0)}</div>
-          <div class="text-light text-sm">kg COâ‚‚ Total</div>
+          <div class="text-light text-sm">kg CO₂ Total</div>
         </div>
         <div class="bg-dark p-4 rounded text-center">
           <div class="text-accent text-2xl font-bold">${perPerson.toFixed(1)}</div>
-          <div class="text-light text-sm">kg COâ‚‚ per Person</div>
+          <div class="text-light text-sm">kg CO₂ per Person</div>
         </div>
         <div class="bg-dark p-4 rounded text-center">
           <div class="${sanitizeText(impactColor)} text-2xl font-bold">${escapeHtml(impactLevel)}</div>
@@ -99,10 +108,10 @@ function displayResults(total, perPerson, trees, travel, food, energy, materials
       <div class="bg-dark p-4 rounded mb-4">
         <h3 class="text-text font-medium mb-3">Emissions Breakdown</h3>
         <div class="space-y-2 text-sm">
-          <div class="flex justify-between"><span class="text-light">Travel:</span><span class="text-text font-medium">${travel.toFixed(0)} kg COâ‚‚ (${((travel/total)*100).toFixed(1)}%)</span></div>
-          <div class="flex justify-between"><span class="text-light">Food & Catering:</span><span class="text-text font-medium">${food.toFixed(0)} kg COâ‚‚ (${((food/total)*100).toFixed(1)}%)</span></div>
-          <div class="flex justify-between"><span class="text-light">Energy Usage:</span><span class="text-text font-medium">${energy.toFixed(0)} kg COâ‚‚ (${((energy/total)*100).toFixed(1)}%)</span></div>
-          <div class="flex justify-between"><span class="text-light">Materials:</span><span class="text-text font-medium">${materials.toFixed(0)} kg COâ‚‚ (${((materials/total)*100).toFixed(1)}%)</span></div>
+          <div class="flex justify-between"><span class="text-light">Travel:</span><span class="text-text font-medium">${travel.toFixed(0)} kg CO₂ (${((travel/total)*100).toFixed(1)}%)</span></div>
+          <div class="flex justify-between"><span class="text-light">Food & Catering:</span><span class="text-text font-medium">${food.toFixed(0)} kg CO₂ (${((food/total)*100).toFixed(1)}%)</span></div>
+          <div class="flex justify-between"><span class="text-light">Energy Usage:</span><span class="text-text font-medium">${energy.toFixed(0)} kg CO₂ (${((energy/total)*100).toFixed(1)}%)</span></div>
+          <div class="flex justify-between"><span class="text-light">Materials:</span><span class="text-text font-medium">${materials.toFixed(0)} kg CO₂ (${((materials/total)*100).toFixed(1)}%)</span></div>
         </div>
       </div>
 
@@ -112,14 +121,14 @@ function displayResults(total, perPerson, trees, travel, food, energy, materials
       </div>
       
       <div class="bg-accent/20 border border-accent rounded p-3 text-sm">
-        <strong>ðŸŒ± Reduction Strategies:</strong>
+        <strong>🌱 Reduction Strategies:</strong>
         <ul class="mt-2 space-y-1 text-light">
-          <li>â€¢ Encourage virtual attendance options</li>
-          <li>â€¢ Choose venues with renewable energy</li>
-          <li>â€¢ Offer plant-based catering options</li>
-          <li>â€¢ Use digital materials instead of printed</li>
-          <li>â€¢ Partner with local suppliers</li>
-          <li>â€¢ Purchase verified carbon offsets</li>
+          <li>• Encourage virtual attendance options</li>
+          <li>• Choose venues with renewable energy</li>
+          <li>• Offer plant-based catering options</li>
+          <li>• Use digital materials instead of printed</li>
+          <li>• Partner with local suppliers</li>
+          <li>• Purchase verified carbon offsets</li>
         </ul>
       </div>
     </div>

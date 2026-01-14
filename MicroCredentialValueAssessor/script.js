@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Micro-Credential Value Assessor Logic
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
 
 // Credential type data with base scores and multipliers
 const credentialData = {
@@ -423,7 +431,7 @@ function displayResults(results) {
                 <div class="grid md:grid-cols-2 gap-4">
                     ${results.alternatives.map(alt => `
                         <div class="bg-broder p-3 rounded border border-accent">
-                            <p class="text-sm text-light">â€¢ ${alt}</p>
+                            <p class="text-sm text-light">• ${alt}</p>
                         </div>
                     `).join('')}
                 </div>

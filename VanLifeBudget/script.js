@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
     document.getElementById('vanlife-form').addEventListener('submit', calculateVanLifeBudget);
     document.getElementById('conversionType').addEventListener('change', updateConversionCost);
 });
@@ -393,19 +401,19 @@ function displayResults(analysis) {
                 <div class="mt-4 p-3 bg-gradient-to-r from-primary/10 to-accent/10 rounded">
                     <div class="text-sm">
                         ${analysis.comparisons.savings > 0 ? 
-                            `ðŸ’° Potential savings: $${analysis.comparisons.savings.toLocaleString()} (${sanitizeText(analysis.comparisons.percentSavings)}%)` :
-                            `ðŸ’¸ Additional cost: $${Math.abs(analysis.comparisons.savings).toLocaleString()}`
+                            `💰 Potential savings: $${analysis.comparisons.savings.toLocaleString()} (${sanitizeText(analysis.comparisons.percentSavings)}%)` :
+                            `💸 Additional cost: $${Math.abs(analysis.comparisons.savings).toLocaleString()}`
                         }
                     </div>
                 </div>
             </div>
             
             <div class="mt-6 p-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded border border-primary/30">
-                <h3 class="font-medium text-primary mb-2">ðŸš Van Life Readiness Summary</h3>
+                <h3 class="font-medium text-primary mb-2">🚐 Van Life Readiness Summary</h3>
                 <div class="text-sm text-light space-y-1">
-                    <p>â€¢ Financial readiness: ${sanitizeText(analysis.feasibility.level.level)} (${sanitizeText(analysis.feasibility.score)}/100)</p>
-                    <p>â€¢ Monthly budget: $${analysis.monthlyExpenses.total.toLocaleString()} for your lifestyle</p>
-                    <p>â€¢ ${analysis.feasibility.issues.length === 0 ? 'Ready to hit the road!' : 'Address financial challenges before departure'}</p>
+                    <p>• Financial readiness: ${sanitizeText(analysis.feasibility.level.level)} (${sanitizeText(analysis.feasibility.score)}/100)</p>
+                    <p>• Monthly budget: $${analysis.monthlyExpenses.total.toLocaleString()} for your lifestyle</p>
+                    <p>• ${analysis.feasibility.issues.length === 0 ? 'Ready to hit the road!' : 'Address financial challenges before departure'}</p>
                 </div>
             </div>
         </div>

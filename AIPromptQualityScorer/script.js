@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
     const form = document.getElementById('prompt-form');
     const promptTextInput = document.getElementById('prompt-text');
     const aiModelSelect = document.getElementById('ai-model');
@@ -253,7 +261,7 @@
         }
         
         // Check for proper punctuation and capitalization
-        const hasProperCapitalization = /^[A-Z]/.test(promptText.trim());
+        const hasProperCapitalization = /[A-Z]/.test(promptText.trim());
         const hasProperPunctuation = /[.!?]$/.test(promptText.trim());
         
         if (hasProperCapitalization && hasProperPunctuation) {
@@ -460,7 +468,7 @@
                 
                 ${analysis.strengths.length > 0 ? `
                 <div class="mb-6">
-                    <h3 class="text-lg font-semibold text-green-400 mb-3">âœ… Strengths</h3>
+                    <h3 class="text-lg font-semibold text-green-400 mb-3">✅ Strengths</h3>
                     <ul class="space-y-2">
                         ${analysis.strengths.map(strength => `
                             <li class="flex items-start gap-2 text-text">
@@ -474,7 +482,7 @@
                 
                 ${analysis.improvements.length > 0 ? `
                 <div>
-                    <h3 class="text-lg font-semibold text-yellow-400 mb-3">ðŸ’¡ Improvement Suggestions</h3>
+                    <h3 class="text-lg font-semibold text-yellow-400 mb-3">💡 Improvement Suggestions</h3>
                     <ul class="space-y-2">
                         ${analysis.improvements.map(improvement => `
                             <li class="flex items-start gap-2 text-text">

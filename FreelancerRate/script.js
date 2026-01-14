@@ -1,4 +1,13 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.getElementById('rate-form').addEventListener('submit', function(e) {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
+document.getElementById('rate-form').addEventListener('submit', function(e) {
   e.preventDefault();
   
   const skillCategory = document.getElementById('skillCategory').value;
@@ -94,13 +103,13 @@ function displayResults(suggested, min, max, current, skill, experience) {
       ` : ''}
       
       <div class="bg-accent/20 border border-accent rounded p-3 text-sm">
-        <strong>ðŸ’¡ Rate Optimization Tips:</strong>
+        <strong>💡 Rate Optimization Tips:</strong>
         <ul class="mt-2 space-y-1 text-light">
-          <li>â€¢ Build a strong portfolio showcasing your best work</li>
-          <li>â€¢ Collect client testimonials and case studies</li>
-          <li>â€¢ Specialize in high-demand niches</li>
-          <li>â€¢ Consider value-based pricing for complex projects</li>
-          <li>â€¢ Regularly review and adjust your rates</li>
+          <li>• Build a strong portfolio showcasing your best work</li>
+          <li>• Collect client testimonials and case studies</li>
+          <li>• Specialize in high-demand niches</li>
+          <li>• Consider value-based pricing for complex projects</li>
+          <li>• Regularly review and adjust your rates</li>
         </ul>
       </div>
     </div>

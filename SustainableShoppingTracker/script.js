@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Shopping items storage
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
 let shoppingItems = [];
 
 // Material impact factors (CO2 kg per dollar spent)
@@ -278,7 +286,7 @@ function displayResults(data) {
 
         <!-- Recommendations -->
         <div class="mb-8">
-            <h3 class="text-xl font-semibold text-primary mb-4">ðŸŽ¯ Personalized Recommendations</h3>
+            <h3 class="text-xl font-semibold text-primary mb-4">🎯 Personalized Recommendations</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 ${recommendations.map(rec => `
                     <div class="bg-dark p-4 rounded-lg border border-accent">
@@ -302,7 +310,7 @@ function displayResults(data) {
         <!-- Category Breakdown -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
             <div class="bg-dark p-6 rounded-lg">
-                <h3 class="text-xl font-semibold text-primary mb-4">ðŸ“Š Spending by Category</h3>
+                <h3 class="text-xl font-semibold text-primary mb-4">📊 Spending by Category</h3>
                 <div class="space-y-3">
                     ${Object.entries(analysis.categoryBreakdown)
                         .sort((a, b) => b[1].cost - a[1].cost)
@@ -322,7 +330,7 @@ function displayResults(data) {
             </div>
 
             <div class="bg-dark p-6 rounded-lg">
-                <h3 class="text-xl font-semibold text-primary mb-4">ðŸŒ Environmental Impact</h3>
+                <h3 class="text-xl font-semibold text-primary mb-4">🌍 Environmental Impact</h3>
                 <div class="space-y-4">
                     <div class="flex justify-between">
                         <span class="text-light">Waste Generated:</span>
@@ -346,7 +354,7 @@ function displayResults(data) {
 
         <!-- Progress Tracking -->
         <div class="bg-dark p-6 rounded-lg">
-            <h3 class="text-xl font-semibold text-primary mb-4">ðŸ“ˆ Progress Tracking</h3>
+            <h3 class="text-xl font-semibold text-primary mb-4">📈 Progress Tracking</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="text-center">
                     <div class="text-3xl font-bold text-primary mb-2">${analysis.avgSustainabilityScore.toFixed(0)}%</div>

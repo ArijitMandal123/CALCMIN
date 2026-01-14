@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`n// Sustainable Travel Carbon Offset Calculator
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
 
 // Emission factors (kg CO2 per passenger-mile)
 const emissionFactors = {
@@ -228,19 +236,19 @@ function displayResults(results, data) {
             <h4 class="text-xl font-semibold text-primary mb-4">Environmental Impact Equivalents</h4>
             <div class="grid md:grid-cols-2 gap-4">
                 <div class="bg-dark p-3 rounded border border-accent">
-                    <div class="text-accent font-medium">ðŸš— ${results.equivalents.carMiles.toLocaleString()} miles</div>
+                    <div class="text-accent font-medium">🚗 ${results.equivalents.carMiles.toLocaleString()} miles</div>
                     <div class="text-sm text-light">Driving an average car</div>
                 </div>
                 <div class="bg-dark p-3 rounded border border-accent">
-                    <div class="text-accent font-medium">â›½ ${sanitizeText(results.equivalents.gasoline)} gallons</div>
+                    <div class="text-accent font-medium">⛽ ${sanitizeText(results.equivalents.gasoline)} gallons</div>
                     <div class="text-sm text-light">Gasoline consumed</div>
                 </div>
                 <div class="bg-dark p-3 rounded border border-accent">
-                    <div class="text-accent font-medium">ðŸŒ³ ${sanitizeText(results.equivalents.treesNeeded)} trees</div>
+                    <div class="text-accent font-medium">🌳 ${sanitizeText(results.equivalents.treesNeeded)} trees</div>
                     <div class="text-sm text-light">Needed to absorb this CO2</div>
                 </div>
                 <div class="bg-dark p-3 rounded border border-accent">
-                    <div class="text-accent font-medium">ðŸ  ${sanitizeText(results.equivalents.homeEnergyDays)} days</div>
+                    <div class="text-accent font-medium">🏠 ${sanitizeText(results.equivalents.homeEnergyDays)} days</div>
                     <div class="text-sm text-light">Average home energy use</div>
                 </div>
             </div>
@@ -268,7 +276,7 @@ function displayResults(results, data) {
                             </div>
                         </div>
                         <div class="text-sm text-light">
-                            ${sanitizeText(offset.co2PerTree)} kg CO2 absorbed per tree annually â€¢ $${offset.costPerTree.toFixed(2)} per tree
+                            ${sanitizeText(offset.co2PerTree)} kg CO2 absorbed per tree annually • $${offset.costPerTree.toFixed(2)} per tree
                         </div>
                     </div>
                 `).join('')}
@@ -289,7 +297,7 @@ function displayResults(results, data) {
                         <div class="flex justify-between items-start mb-2">
                             <div>
                                 <h5 class="font-semibold text-accent">${offset.name}</h5>
-                                <div class="text-sm text-light">${sanitizeText(offset.type)} â€¢ ${sanitizeText(offset.verification)}</div>
+                                <div class="text-sm text-light">${sanitizeText(offset.type)} • ${sanitizeText(offset.verification)}</div>
                             </div>
                             <div class="text-right">
                                 <div class="text-lg font-bold text-primary">$${offset.totalCost.toFixed(2)}</div>
@@ -297,7 +305,7 @@ function displayResults(results, data) {
                             </div>
                         </div>
                         <div class="text-sm text-light">
-                            $${sanitizeText(offset.costPerTon)}/ton CO2 â€¢ Immediate offset effect
+                            $${sanitizeText(offset.costPerTon)}/ton CO2 • Immediate offset effect
                         </div>
                     </div>
                 `).join('')}

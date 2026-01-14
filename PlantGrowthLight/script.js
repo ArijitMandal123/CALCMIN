@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
   const form = document.getElementById('light-form');
   
   const lightRequirements = {
@@ -81,7 +89,7 @@
           
           <div class="bg-dark p-4 rounded">
             <div class="flex items-center gap-2 mb-2"><span class="material-icons text-accent">science</span><strong>PPFD Target:</strong></div>
-            <p class="text-xl text-accent ml-8">${sanitizeText(ppfdRequired)} Î¼mol/mÂ²/s</p>
+            <p class="text-xl text-accent ml-8">${sanitizeText(ppfdRequired)} μmol/m²/s</p>
             <p class="text-sm text-light ml-8">Photosynthetic Photon Flux Density</p>
           </div>
           
@@ -99,7 +107,7 @@
             <ul class="ml-8 space-y-2 list-disc list-inside text-sm">
               <li>Use adjustable hangers to maintain proper distance as plants grow</li>
               <li>Install reflective material on walls to maximize light efficiency</li>
-              <li>Monitor leaf temperature - should be 75-85Â°F under lights</li>
+              <li>Monitor leaf temperature - should be 75-85°F under lights</li>
               <li>Ensure adequate ventilation to prevent heat buildup</li>
               <li>Use a timer for consistent light cycles</li>
               ${lightType === 'led' ? '<li class="text-green-400">LED lights are most energy-efficient and produce less heat</li>' : ''}

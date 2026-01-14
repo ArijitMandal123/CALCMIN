@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
     const form = document.getElementById('rent-buy-form');
     
     form.addEventListener('submit', function(e) {
@@ -335,10 +343,10 @@ function displayResults(results) {
             <div class="bg-yellow-900/20 border border-yellow-600 rounded p-4">
                 <h5 class="font-semibold text-yellow-400 mb-2">Important Considerations</h5>
                 <ul class="text-sm text-light space-y-1">
-                    <li>â€¢ This analysis assumes you invest the down payment difference when renting</li>
-                    <li>â€¢ Actual costs may vary based on market conditions and personal circumstances</li>
-                    <li>â€¢ Consider non-financial factors like stability, flexibility, and lifestyle preferences</li>
-                    <li>â€¢ Consult with financial and real estate professionals for personalized advice</li>
+                    <li>• This analysis assumes you invest the down payment difference when renting</li>
+                    <li>• Actual costs may vary based on market conditions and personal circumstances</li>
+                    <li>• Consider non-financial factors like stability, flexibility, and lifestyle preferences</li>
+                    <li>• Consult with financial and real estate professionals for personalized advice</li>
                 </ul>
             </div>
         </div>

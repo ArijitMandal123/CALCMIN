@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
     // Add holding functionality
     document.getElementById('addHolding').addEventListener('click', addHolding);
     
@@ -376,11 +384,11 @@ function displayResults(analysis, data) {
         <div class="bg-yellow-900 bg-opacity-20 border border-yellow-600 p-4 rounded mt-6">
             <h4 class="text-yellow-400 font-semibold mb-2">Important Considerations</h4>
             <ul class="text-yellow-200 text-sm space-y-1">
-                <li>â€¢ Tax laws vary by jurisdiction and change frequently</li>
-                <li>â€¢ Consider transaction costs when implementing recommendations</li>
-                <li>â€¢ Consult with a tax professional for personalized advice</li>
-                <li>â€¢ Keep detailed records of all transactions</li>
-                <li>â€¢ Be aware of potential wash sale rules in your jurisdiction</li>
+                <li>• Tax laws vary by jurisdiction and change frequently</li>
+                <li>• Consider transaction costs when implementing recommendations</li>
+                <li>• Consult with a tax professional for personalized advice</li>
+                <li>• Keep detailed records of all transactions</li>
+                <li>• Be aware of potential wash sale rules in your jurisdiction</li>
             </ul>
         </div>
     `;

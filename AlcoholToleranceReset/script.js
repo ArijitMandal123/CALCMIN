@@ -1,4 +1,12 @@
-﻿// Security utilities - Prevent XSS and code injection`nfunction sanitizeText(input) {`n    if (input === null ^|^| input === undefined) return '';`n    if (typeof input !== 'string') input = String(input);`n    const div = document.createElement('div');`n    div.textContent = input;`n    return div.innerHTML;`n}`n`ndocument.addEventListener('DOMContentLoaded', function() {
+// Security utilities - Prevent XSS and code injection
+function sanitizeText(input) {
+    if (input === null || input === undefined) return '';
+    if (typeof input !== 'string') input = String(input);
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
     const form = document.getElementById('alcohol-form');
     const resultsDiv = document.getElementById('results');
     const resultContent = document.getElementById('result-content');
@@ -395,7 +403,7 @@
                             <div class="bg-dark rounded p-4 border border-accent">
                                 <h5 class="font-semibold text-primary mb-2">${escapeHtml(period.timeframe)}</h5>
                                 <ul class="text-sm text-light space-y-1">
-                                    ${period.benefits.map(benefit => `<li>â€¢ ${escapeHtml(benefit)}</li>`).join('')}
+                                    ${period.benefits.map(benefit => `<li>• ${escapeHtml(benefit)}</li>`).join('')}
                                 </ul>
                             </div>
                         `).join('')}
@@ -430,25 +438,25 @@
                         <div class="bg-dark rounded p-4 border border-accent">
                             <h5 class="font-semibold text-primary mb-2">Social Alternatives</h5>
                             <ul class="text-sm text-light space-y-1">
-                                ${results.alternatives.social.slice(0, 3).map(alt => `<li>â€¢ ${escapeHtml(alt)}</li>`).join('')}
+                                ${results.alternatives.social.slice(0, 3).map(alt => `<li>• ${escapeHtml(alt)}</li>`).join('')}
                             </ul>
                         </div>
                         <div class="bg-dark rounded p-4 border border-accent">
                             <h5 class="font-semibold text-primary mb-2">Stress Management</h5>
                             <ul class="text-sm text-light space-y-1">
-                                ${results.alternatives.stress.slice(0, 3).map(alt => `<li>â€¢ ${escapeHtml(alt)}</li>`).join('')}
+                                ${results.alternatives.stress.slice(0, 3).map(alt => `<li>• ${escapeHtml(alt)}</li>`).join('')}
                             </ul>
                         </div>
                         <div class="bg-dark rounded p-4 border border-accent">
                             <h5 class="font-semibold text-primary mb-2">Evening Routines</h5>
                             <ul class="text-sm text-light space-y-1">
-                                ${results.alternatives.evening.slice(0, 3).map(alt => `<li>â€¢ ${escapeHtml(alt)}</li>`).join('')}
+                                ${results.alternatives.evening.slice(0, 3).map(alt => `<li>• ${escapeHtml(alt)}</li>`).join('')}
                             </ul>
                         </div>
                         <div class="bg-dark rounded p-4 border border-accent">
                             <h5 class="font-semibold text-primary mb-2">Weekend Activities</h5>
                             <ul class="text-sm text-light space-y-1">
-                                ${results.alternatives.weekend.slice(0, 3).map(alt => `<li>â€¢ ${escapeHtml(alt)}</li>`).join('')}
+                                ${results.alternatives.weekend.slice(0, 3).map(alt => `<li>• ${escapeHtml(alt)}</li>`).join('')}
                             </ul>
                         </div>
                     </div>
