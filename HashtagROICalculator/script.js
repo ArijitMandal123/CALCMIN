@@ -7,6 +7,8 @@ function sanitizeText(input) {
     return div.innerHTML;
 }
 
+
+document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('hashtag-form');
     const avgImpressionsInput = document.getElementById('avg-impressions');
     const conversionRateInput = document.getElementById('conversion-rate');

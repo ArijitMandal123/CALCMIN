@@ -7,6 +7,8 @@ function sanitizeText(input) {
     return div.innerHTML;
 }
 
+
+document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('viability-form');
     
     form.addEventListener('submit', function(e) {

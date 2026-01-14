@@ -7,6 +7,8 @@ function sanitizeText(input) {
     return div.innerHTML;
 }
 
+
+document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('script-form');
     const platformSelect = document.getElementById('platform');
     const categorySelect = document.getElementById('category');

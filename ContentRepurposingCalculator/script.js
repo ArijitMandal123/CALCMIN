@@ -7,6 +7,8 @@ function sanitizeText(input) {
     return div.innerHTML;
 }
 
+
+document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('content-form');
     const contentTypeSelect = document.getElementById('content-type');
     const contentLengthInput = document.getElementById('content-length');

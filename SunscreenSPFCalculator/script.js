@@ -7,6 +7,8 @@ function sanitizeText(input) {
     return div.innerHTML;
 }
 
+
+document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('sunscreen-form');
     const resultsDiv = document.getElementById('results');
     const resultContent = document.getElementById('result-content');

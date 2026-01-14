@@ -7,6 +7,8 @@ function sanitizeText(input) {
     return div.innerHTML;
 }
 
+
+document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('prompt-form');
     const promptTextInput = document.getElementById('prompt-text');
     const aiModelSelect = document.getElementById('ai-model');

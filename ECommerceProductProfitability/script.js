@@ -7,6 +7,8 @@ function sanitizeText(input) {
     return div.innerHTML;
 }
 
+
+document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('profitability-form');
     const platformSelect = document.getElementById('platform');
     const platformFeeInput = document.getElementById('platformFee');

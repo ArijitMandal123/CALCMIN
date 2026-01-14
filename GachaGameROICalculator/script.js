@@ -7,6 +7,8 @@ function sanitizeText(input) {
     return div.innerHTML;
 }
 
+
+document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('gacha-roi-form');
     const satisfactionInput = document.getElementById('satisfactionLevel');
     const satisfactionText = document.getElementById('satisfaction-text');

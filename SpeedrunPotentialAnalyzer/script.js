@@ -7,6 +7,8 @@ function sanitizeText(input) {
     return div.innerHTML;
 }
 
+
+document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('speedrun-form');
     const gameSelect = document.getElementById('gameTitle');
     const customSection = document.getElementById('custom-game-section');

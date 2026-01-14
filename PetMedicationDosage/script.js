@@ -7,6 +7,8 @@ function sanitizeText(input) {
     return div.innerHTML;
 }
 
+
+document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('dosage-form');
   const easyModeBtn = document.getElementById('easyMode');
   const advancedModeBtn = document.getElementById('advancedMode');
